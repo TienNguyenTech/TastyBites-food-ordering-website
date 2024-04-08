@@ -65,7 +65,6 @@ class OrdersTable extends Table
     {
         $validator
             ->dateTime('order_datetime')
-            ->requirePresence('order_datetime', 'create')
             ->notEmptyDateTime('order_datetime');
 
         $validator
