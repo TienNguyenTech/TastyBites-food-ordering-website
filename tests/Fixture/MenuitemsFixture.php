@@ -20,10 +20,11 @@ class MenuitemsFixture extends TestFixture
         $this->records = [
             [
                 'menuitem_id' => 1,
+                'menuitem_name' => 'Lorem ipsum dolor sit amet',
+                'menuitem_image' => 'Lorem ipsum dolor sit amet',
                 'menuitem_desc' => 'Lorem ipsum dolor sit amet',
                 'menuitem_price' => 1,
                 'menuitem_rating' => 1,
-                'menuitem_name' => 'Lorem ipsum dolor sit amet',
             ],
         ];
         parent::init();

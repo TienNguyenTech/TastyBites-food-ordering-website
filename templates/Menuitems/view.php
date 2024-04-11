@@ -19,12 +19,16 @@
             <h3><?= h($menuitem->menuitem_desc) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Menuitem Desc') ?></th>
-                    <td><?= h($menuitem->menuitem_desc) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Menuitem Name') ?></th>
                     <td><?= h($menuitem->menuitem_name) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Menuitem Image') ?></th>
+                    <td><?= h($menuitem->menuitem_image) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Menuitem Desc') ?></th>
+                    <td><?= h($menuitem->menuitem_desc) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Menuitem Id') ?></th>

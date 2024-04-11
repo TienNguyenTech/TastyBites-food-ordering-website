@@ -18,10 +18,11 @@
             <fieldset>
                 <legend><?= __('Add Menuitem') ?></legend>
                 <?php
+                    echo $this->Form->control('menuitem_name');
+                    echo $this->Form->control('menuitem_image');
                     echo $this->Form->control('menuitem_desc');
                     echo $this->Form->control('menuitem_price');
                     echo $this->Form->control('menuitem_rating');
-                    echo $this->Form->control('menuitem_name');
                     echo $this->Form->control('orders._ids', ['options' => $orders]);
                 ?>
             </fieldset>

@@ -6,18 +6,14 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * Menuitem Entity
+ * User Entity
  *
- * @property int $menuitem_id
- * @property string $menuitem_name
- * @property string $menuitem_image
- * @property string $menuitem_desc
- * @property float $menuitem_price
- * @property float $menuitem_rating
- *
- * @property \App\Model\Entity\Order[] $orders
+ * @property int $user_id
+ * @property string $username
+ * @property string $password
+ * @property int $user_type
  */
-class Menuitem extends Entity
+class User extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -29,11 +25,17 @@ class Menuitem extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
-        'menuitem_name' => true,
-        'menuitem_image' => true,
-        'menuitem_desc' => true,
-        'menuitem_price' => true,
-        'menuitem_rating' => true,
-        'orders' => true,
+        'username' => true,
+        'password' => true,
+        'user_type' => true,
+    ];
+
+    /**
+     * Fields that are excluded from JSON versions of the entity.
+     *
+     * @var list<string>
+     */
+    protected array $_hidden = [
+        'password',
     ];
 }
