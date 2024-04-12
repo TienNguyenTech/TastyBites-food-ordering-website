@@ -20,7 +20,7 @@
 
     <!-- Custom styles for this template-->
     <?= $this->Html->css('sb-admin-2.min.css') ?>
-
+    
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
 
@@ -33,14 +33,14 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build('/') ?>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-hamburger"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Tasty Bites Kitchen <sup></sup></div>
+            <div class="sidebar-brand-text mx-3">Tasty Bites Kitchen<sup></sup></div>
         </a>
 
         <!-- Divider -->
