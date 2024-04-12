@@ -5,19 +5,20 @@
  */
 ?>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Order'), ['action' => 'edit', $order->order_id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Order'), ['action' => 'delete', $order->order_id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->order_id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Orders'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Order'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
+<!--    <aside class="column" >-->
+<!--        <div class="side-nav">-->
+<!--            <h4 class="heading">--><?php //= __('Actions') ?><!--</h4>-->
+<!--            --><?php //= $this->Html->link(__('Edit Order'), ['action' => 'edit', $order->order_id], ['class' => 'side-nav-item']) ?>
+<!--            --><?php //= $this->Form->postLink(__('Delete Order'), ['action' => 'delete', $order->order_id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->order_id), 'class' => 'side-nav-item']) ?>
+<!--            --><?php //= $this->Html->link(__('List Orders'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+<!--            --><?php //= $this->Html->link(__('New Order'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+<!--        </div>-->
+<!--    </aside>-->
     <div class="column column-80">
-        <div class="orders view content">
-            <h3><?= h($order->order_id) ?></h3>
-            <table>
+        <div class="orders view content" >
+            <h3><?= h( 'Order Information') ?></h3>
+<!--            <h3>--><?php //= h( $order->order_id) ?><!--</h3>-->
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <tr>
                     <th><?= __('Customer') ?></th>
                     <td><?= $order->hasValue('customer') ? $this->Html->link($order->customer->customer_fname, ['controller' => 'Customers', 'action' => 'view', $order->customer->customer_id]) : '' ?></td>
@@ -39,7 +40,7 @@
                 <h4><?= __('Related Menuitems') ?></h4>
                 <?php if (!empty($order->menuitems)) : ?>
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
                             <th><?= __('Menuitem Id') ?></th>
                             <th><?= __('Menuitem Desc') ?></th>
@@ -68,4 +69,9 @@
             </div>
         </div>
     </div>
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
 </div>
