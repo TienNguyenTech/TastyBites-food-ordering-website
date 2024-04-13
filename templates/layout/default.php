@@ -20,6 +20,7 @@
 
     <!-- Custom styles for this template-->
     <?= $this->Html->css('sb-admin-2.min.css') ?>
+    <?= $this->Html->css('styles.css') ?>
     
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -33,14 +34,14 @@
 <div id="wrapper">
 
     <!-- Sidebar -->
-    <ul class="navbar-nav bg-gradient-warning sidebar sidebar-dark accordion" id="accordionSidebar">
+    <ul class="navbar-nav slidebar-background sidebar sidebar-dark accordion" id="accordionSidebar">
 
         <!-- Sidebar - Brand -->
         <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build('/') ?>">
             <div class="sidebar-brand-icon rotate-n-15">
                 <i class="fas fa-hamburger"></i>
             </div>
-            <div class="sidebar-brand-text mx-3">Tasty Bites Kitchen<sup></sup></div>
+            <div class="sidebar-brand-text mx-3 bc-red">Tasty Bites Kitchen<sup></sup></div>
         </a>
 
         <!-- Divider -->
@@ -57,7 +58,7 @@
         <hr class="sidebar-divider">
 
         <!-- Heading -->
-        <div class="sidebar-heading">
+        <div class="sidebar-heading bc-red">
             Functions
         </div>
 
@@ -150,7 +151,7 @@
         <hr class="sidebar-divider d-none d-md-block">
 
         <!-- Sidebar Toggler (Sidebar) -->
-        <div class="text-center d-none d-md-inline">
+        <div class="text-center d-none d-md-inline bc-red">
             <button class="rounded-circle border-0" id="sidebarToggle"></button>
         </div>
 
@@ -158,13 +159,13 @@
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-wrapper" class="d-flex flex-column navbar-colour">
 
         <!-- Main Content -->
         <div id="content">
 
             <!-- Topbar -->
-            <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
+            <nav class="navbar navbar-expand navbar-light navbar-colour topbar mb-4 static-top shadow">
 
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
@@ -178,14 +179,14 @@
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Douglas McGee</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><p>Douglas McGee</p></span>
                             <?= $this->Html->image('undraw_profile.svg',['class'=>'img-profile rounded-circle'])?>
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
                             <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                Logout
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i><p>
+                                Logout</p>
                             </a>
                         </div>
                     </li>
@@ -196,7 +197,7 @@
             <!-- End of Topbar -->
 
             <!-- Begin Page Content -->
-            <div class="container-fluid">
+            <div class="container-fluid con-colour">
                 <!-- page content here -->
                 <?= $this->Flash->render() ?>
                 <?= $this->fetch('content') ?>
@@ -207,7 +208,7 @@
         <!-- End of Main Content -->
 
         <!-- Footer -->
-        <footer class="sticky-footer bg-white">
+        <footer class="sticky-footer navbar-colour">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
                     <span>Copyright &copy; Tasty Bites Kitchen 2024</span>
