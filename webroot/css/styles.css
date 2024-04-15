@@ -32,9 +32,10 @@ p{
     color: #fff5f1;
 }
 
-div{
+/*div{
     background-color:#001011;
 }
+*/
 
 /*.container-fluid.con-colour p {
     color: white;
@@ -53,3 +54,8 @@ div{
 /*footer {
     background-color: #273d4f;
 }*/
+
+.dashboard_bar {
+    font-size: large;
+    font-weight: 500;
+}

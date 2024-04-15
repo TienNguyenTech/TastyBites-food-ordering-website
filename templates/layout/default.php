@@ -167,6 +167,11 @@
             <!-- Topbar -->
             <nav class="navbar navbar-expand navbar-light navbar-colour topbar mb-4 static-top shadow">
 
+                <div class="header-left navbar-colour">
+                            <div class="dashboard_bar">
+                                Dashboard
+                            </div>
+                </div>
                 <!-- Sidebar Toggle (Topbar) -->
                 <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
