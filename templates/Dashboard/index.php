@@ -6,45 +6,35 @@
  */
 ?>
 
+<h1>Tasty Bites Kitchen</h1>
+<h2>Admin Dashboard</h2>
+
 <div class="index content">
-
     <div class="table-responsive" style="margin-bottom: 10px">
-        <h2>Menu Items</h2>
+        <h2><?= $this->Html->link('Menu Items Overview', ['controller' => 'menuitems', 'action' => 'index']) ?></h2>
         <table>
-            <tr>
-                <th>Name</th>
-                <th>Price</th>
-                <th>Description</th>
-                <th>Rating</th>
-            </tr>
-            <?php foreach ($menuitems as $menuItem): ?>
+            <thead>
                 <tr>
-                    <td><?= $menuItem->menuitem_name ?></td>
-                    <td><?= $menuItem->menuitem_price ?></td>
-                    <td><?= $menuItem->menuitem_desc ?></td>
-                    <td><?= $menuItem->menuitem_rating ?></td>
+                    <td><?= $this->Paginator->sort('menuitem_name', 'Name') ?></td>
+                    <td><?= $this->Paginator->sort('menuitem_price', 'Price') ?></td>
+                    <td><?= $this->Paginator->sort('menuitem_desc', 'Description') ?></td>
+                    <td><?= $this->Paginator->sort('menuitem_rating', 'Rating') ?></td>
                 </tr>
-            <?php endforeach; ?>
+            </thead>
+            <tbody>
+                <?php foreach ($menuitems as $menuItem): ?>
+                    <tr>
+                        <td><?= h($menuItem->menuitem_name) ?></td>
+                        <td><?= $this->Number->format($menuItem->menuitem_price) ?></td>
+                        <td><?= h($menuItem->menuitem_desc) ?></td>
+                        <td><?= $this->Number->format($menuItem->menuitem_rating) ?></td>
+                    </tr>
+                <?php endforeach; ?>
+            </tbody>
         </table>
     </div>
 
-    <div class="table-responsive">
-        <h2>Orders</h2>
-        <table>
-            <tr>
-                <th>Customer</th>
-                <th>Item</th>
-                <th>Quantity</th>
-            </tr>
-            <?php foreach ($orders as $order): ?>
-                <tr>
-                    <td><?= $order->customer ?></td>
-                    <td><?= $order->item ?></td>
-                    <td><?= $order->quantity ?></td>
-                </tr>
-            <?php endforeach; ?>
-        </table>
-    </div>
+    <button>Add Menu Item</button>
 
 </div>
 
