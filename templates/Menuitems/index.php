@@ -27,11 +27,11 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th><?= h('menuitem_id') ?></th>
-                    <th><?= h('menuitem_name') ?></th>
+                    <th>Item ID</th>
+                    <th>Name</th>
 <!--                    <th>--><?php //= h('menuitem_image') ?><!--</th>-->
-                    <th><?= h('menuitem_desc') ?></th>
-                    <th><?= h('menuitem_price') ?></th>
+                    <th>Description</th>
+                    <th>Price</th>
 <!--                    <th>--><?php //= h('menuitem_rating') ?><!--</th>-->
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
