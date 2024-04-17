@@ -40,7 +40,7 @@ $this->assign('title', 'Register new user');
                 ?>
             </div>
 
-            <?= $this->Form->control('avatar', ['type' => 'file']); ?>
+<!--            --><?php //= $this->Form->control('avatar', ['type' => 'file']); ?>
 
         </fieldset>
 

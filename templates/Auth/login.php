@@ -37,12 +37,12 @@ $this->assign('title', 'Login');
                         'type' => 'email',
                         'required' => true,
                         'autofocus' => true,
-                        'value' => $debug ? "test@example.com" : "",
+//                        'value' => $debug ? "test@example.com" : "",
                     ]);
                     echo $this->Form->control('password', [
                         'type' => 'password',
                         'required' => true,
-                        'value' => $debug ? '1234' : '',
+//                        'value' => $debug ? '1234' : '',
                     ]);
                     ?>
                     <?= $this->Html->link('Forgot password?', ['controller' => 'Auth', 'action' => 'forgetPassword']) ?>
