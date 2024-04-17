@@ -13,13 +13,14 @@ $this->assign('title', 'Login');
 <div class="container login">
     <div class="row">
         <div class="column column-50 column-offset-25">
+            <h1 class="page-title">Tasty Bites Kitchen</h1>
             <div class="users form content">
 
                 <?= $this->Form->create() ?>
 
                 <fieldset>
 
-                    <legend>Login</legend>
+                    <legend style="font-size: 24px;">Login</legend>
 
                     <?= $this->Flash->render() ?>
 
@@ -41,18 +42,18 @@ $this->assign('title', 'Login');
                     echo $this->Form->control('password', [
                         'type' => 'password',
                         'required' => true,
-                        'value' => $debug ? 'password' : '',
+                        'value' => $debug ? '1234' : '',
                     ]);
                     ?>
+                    <?= $this->Html->link('Forgot password?', ['controller' => 'Auth', 'action' => 'forgetPassword']) ?>
                 </fieldset>
 
                 <?= $this->Form->button('Login') ?>
-                <?= $this->Html->link('Forgot password?', ['controller' => 'Auth', 'action' => 'forgetPassword'], ['class' => 'button button-outline']) ?>
                 <?= $this->Form->end() ?>
 
                 <hr class="hr-between-buttons">
 
-                <?= $this->Html->link('Register new user', ['controller' => 'Auth', 'action' => 'register'], ['class' => 'button button-clear']) ?>
+                <?= $this->Html->link("Don't have an account? Sign Up", ['controller' => 'Auth', 'action' => 'register'], ['class' => 'button button-clear']) ?>
                 <?= $this->Html->link('Go to Homepage', '/', ['class' => 'button button-clear']) ?>
             </div>
         </div>
