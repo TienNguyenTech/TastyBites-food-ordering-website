@@ -162,32 +162,46 @@ endif;
 
 
 <!-- Features section-->
-<section class="py-5 border-bottom" id="features">
+<style>
+    /* Override Bootstrap's primary color and gradient */
+    .custom-bg {
+        background-color: #273d4f; /* Your desired background color */
+    }
+    .feature-text{
+        color: #fff5f1;
+    }
+    .custom-icon-bg {
+        background-color: #6fb89c; /* Your desired background color */
+    }
+    }
+</style>
+
+<section class="py-5 border-bottom custom-bg" id="features">
     <div class="container px-5 my-5">
         <div class="row gx-5">
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                <h2 class="h4 fw-bolder">Step 1: Place an Order </h2>
-                <p>Choose from our wide selection of Nepalese momo and soup dishes.</p>
+                <div class="feature custom-icon-bg text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                <h2 class="h4 fw-bolder feature-text">Step 1: Place an Order </h2>
+                <p class="feature-text">Choose from our wide selection of Nepalese momo and soup dishes.</p>
                 <a class="text-decoration-none" href="#!">
                     Check out our Menu!
                     <i class="bi bi-arrow-right"></i>
                 </a>
             </div>
             <div class="col-lg-4 mb-5 mb-lg-0">
-                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                <h2 class="h4 fw-bolder">Step 2: Pickup your order</h2>
-                <p>Head to our kitchen, and pick up your order along with the cooking instructions.</p>
-
+                <div class="feature custom-icon-bg text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                <h2 class="h4 fw-bolder feature-text ">Step 2: Pickup your order</h2>
+                <p class="feature-text">Head to our kitchen, and pick up your order along with the cooking instructions.</p>
             </div>
             <div class="col-lg-4">
-                <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                <h2 class="h4 fw-bolder">Step 3: Enjoy!</h2>
-                <p>Prepare the meal according to our recipe, or add your own flair! </p>
-
+                <div class="feature custom-icon-bg text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                <h2 class="h4 fw-bolder feature-text">Step 3: Enjoy!</h2>
+                <p class="feature-text">Prepare the meal according to our recipe, or add your own flair! </p>
             </div>
         </div>
     </div>
+</section>
+
 </section>
 
 <section class="py-5 border-bottom">
