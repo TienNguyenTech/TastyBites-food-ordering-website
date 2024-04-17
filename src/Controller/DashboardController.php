@@ -14,6 +14,8 @@ class DashboardController extends AppController {
         $menuitemsTable = $this->getTableLocator()->get('Menuitems')->find();
         $menuitems = $this->paginate($menuitemsTable);
 
-        $this->set(compact('menuitems'));
+        $menuitemsAmount = count($menuitemsTable->toArray());
+
+        $this->set(compact('menuitems', 'menuitemsAmount'));
     }
 }
