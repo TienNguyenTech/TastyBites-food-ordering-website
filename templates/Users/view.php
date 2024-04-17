@@ -16,19 +16,35 @@
     </aside>
     <div class="column column-80">
         <div class="users view content">
-            <h3><?= h($user->username) ?></h3>
+            <h3><?= h($user->email) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Username') ?></th>
-                    <td><?= h($user->username) ?></td>
+                    <th><?= __('Email') ?></th>
+                    <td><?= h($user->email) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Nonce') ?></th>
+                    <td><?= h($user->nonce) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('User Type') ?></th>
+                    <td><?= h($user->user_type) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('User Id') ?></th>
                     <td><?= $this->Number->format($user->user_id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('User Type') ?></th>
-                    <td><?= $this->Number->format($user->user_type) ?></td>
+                    <th><?= __('Nonce Expiry') ?></th>
+                    <td><?= h($user->nonce_expiry) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Created') ?></th>
+                    <td><?= h($user->created) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Modified') ?></th>
+                    <td><?= h($user->modified) ?></td>
                 </tr>
             </table>
         </div>

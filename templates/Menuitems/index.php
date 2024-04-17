@@ -3,6 +3,9 @@
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\Menuitem> $menuitems
  */
+echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css',['block'=>true]);
+echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js',['block'=>true]);
+echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['block'=>true]);
 ?>
 <div class="menuitems index content">
     <?= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'button float-right']) ?>
@@ -21,15 +24,15 @@
     <?= $this->Html->link('Clear', ['action' => 'index'], ['class' => 'button']) ?>
 
     <div class="table-responsive">
-        <table>
+        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th><?= $this->Paginator->sort('menuitem_id') ?></th>
-                    <th><?= $this->Paginator->sort('menuitem_name') ?></th>
-                    <th><?= $this->Paginator->sort('menuitem_image') ?></th>
-                    <th><?= $this->Paginator->sort('menuitem_desc') ?></th>
-                    <th><?= $this->Paginator->sort('menuitem_price') ?></th>
-                    <th><?= $this->Paginator->sort('menuitem_rating') ?></th>
+                    <th><?= h('menuitem_id') ?></th>
+                    <th><?= h('menuitem_name') ?></th>
+                    <th><?= h('menuitem_image') ?></th>
+                    <th><?= h('menuitem_desc') ?></th>
+                    <th><?= h('menuitem_price') ?></th>
+                    <th><?= h('menuitem_rating') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -52,14 +55,9 @@
             </tbody>
         </table>
     </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
-    </div>
+    <script>
+        $(document).ready(function() {
+            $('#dataTable').DataTable();
+        });
+    </script>
 </div>
