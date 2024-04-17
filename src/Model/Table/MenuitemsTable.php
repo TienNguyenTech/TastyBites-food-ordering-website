@@ -59,6 +59,18 @@ class MenuitemsTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
+            ->scalar('menuitem_name')
+            ->maxLength('menuitem_name', 50)
+            ->requirePresence('menuitem_name', 'create')
+            ->notEmptyString('menuitem_name');
+
+        $validator
+            ->scalar('menuitem_image')
+            ->maxLength('menuitem_image', 200)
+            ->requirePresence('menuitem_image', 'create')
+            ->notEmptyFile('menuitem_image');
+
+        $validator
             ->scalar('menuitem_desc')
             ->maxLength('menuitem_desc', 200)
             ->requirePresence('menuitem_desc', 'create')
@@ -73,12 +85,6 @@ class MenuitemsTable extends Table
             ->numeric('menuitem_rating')
             ->requirePresence('menuitem_rating', 'create')
             ->notEmptyString('menuitem_rating');
-
-        $validator
-            ->scalar('menuitem_name')
-            ->maxLength('menuitem_name', 50)
-            ->requirePresence('menuitem_name', 'create')
-            ->notEmptyString('menuitem_name');
 
         return $validator;
     }

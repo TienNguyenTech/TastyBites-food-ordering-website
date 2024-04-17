@@ -9,10 +9,11 @@ use Cake\ORM\Entity;
  * Menuitem Entity
  *
  * @property int $menuitem_id
+ * @property string $menuitem_name
+ * @property string $menuitem_image
  * @property string $menuitem_desc
  * @property float $menuitem_price
  * @property float $menuitem_rating
- * @property string $menuitem_name
  *
  * @property \App\Model\Entity\Order[] $orders
  */
@@ -28,10 +29,11 @@ class Menuitem extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
+        'menuitem_name' => true,
+        'menuitem_image' => true,
         'menuitem_desc' => true,
         'menuitem_price' => true,
         'menuitem_rating' => true,
-        'menuitem_name' => true,
         'orders' => true,
     ];
 }

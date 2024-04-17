@@ -5,26 +5,31 @@
  */
 ?>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Menuitem'), ['action' => 'edit', $menuitem->menuitem_id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Menuitem'), ['action' => 'delete', $menuitem->menuitem_id], ['confirm' => __('Are you sure you want to delete # {0}?', $menuitem->menuitem_id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Menuitems'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
+<!--    <aside class="column">-->
+<!--        <div class="side-nav">-->
+<!--            <h4 class="heading">--><?php //= __('Actions') ?><!--</h4>-->
+<!--            --><?php //= $this->Html->link(__('Edit Menuitem'), ['action' => 'edit', $menuitem->menuitem_id], ['class' => 'side-nav-item']) ?>
+<!--            --><?php //= $this->Form->postLink(__('Delete Menuitem'), ['action' => 'delete', $menuitem->menuitem_id], ['confirm' => __('Are you sure you want to delete # {0}?', $menuitem->menuitem_id), 'class' => 'side-nav-item']) ?>
+<!--            --><?php //= $this->Html->link(__('List Menuitems'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
+<!--            --><?php //= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+<!--        </div>-->
+<!--    </aside>-->
     <div class="column column-80">
         <div class="menuitems view content">
-            <h3><?= h($menuitem->menuitem_desc) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('Menuitem Desc') ?></th>
-                    <td><?= h($menuitem->menuitem_desc) ?></td>
-                </tr>
+            <h3><?= h('Menuitem Information') ?></h3>
+<!--            <h3>--><?php //= h($menuitem->menuitem_desc) ?><!--</h3>-->
+            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <tr>
                     <th><?= __('Menuitem Name') ?></th>
                     <td><?= h($menuitem->menuitem_name) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Menuitem Image') ?></th>
+                    <td><?= h($menuitem->menuitem_image) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Menuitem Desc') ?></th>
+                    <td><?= h($menuitem->menuitem_desc) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Menuitem Id') ?></th>
@@ -43,7 +48,7 @@
                 <h4><?= __('Related Orders') ?></h4>
                 <?php if (!empty($menuitem->orders)) : ?>
                 <div class="table-responsive">
-                    <table>
+                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
                             <th><?= __('Order Id') ?></th>
                             <th><?= __('Order Datetime') ?></th>

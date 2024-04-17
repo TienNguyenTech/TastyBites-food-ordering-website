@@ -58,182 +58,183 @@ endif;
 
 ?>
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <?= $this->Html->charset() ?>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>
-        CakePHP: the rapid development PHP framework:
-        <?= $this->fetch('title') ?>
-    </title>
-    <?= $this->Html->meta('icon') ?>
-
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake', 'home']) ?>
-
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-    <?= $this->fetch('script') ?>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+    <meta name="description" content="" />
+    <meta name="author" content="" />
+    <title>Tasty Bites Kitchen</title>
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="webroot/assets/momo.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles2.css" rel="stylesheet" />
 </head>
 <body>
-    <header>
-        <div class="container text-center">
-            <a href="https://cakephp.org/" target="_blank" rel="noopener">
-                <img alt="CakePHP" src="https://cakephp.org/v2/img/logos/CakePHP_Logo.svg" width="350" />
-            </a>
-            <h1>
-                Welcome to CakePHP <?= h(Configure::version()) ?> Chiffon (🍰)
-            </h1>
+<!-- Responsive navbar-->
+<style>
+    /* Override Bootstrap's primary color */
+    .navbar-tea {
+        background-color: #273d4f;
+    }
+
+    .fire-text {
+        color: #fff5f1; /* Color of fire text */
+    }
+    .fire-text:hover{
+        color: #cb4c46;
+    }
+    .Big-Stuff {
+        color: #fff5f1; /* Color of active page */
+        font-size: 25px;
+    }
+    .Big-Stuff:hover{
+        color: #cb4c46;
+    }
+    .active-home {
+        color:#6fb89c ;
+    }
+    .active-home:hover {
+        color: #cb4c46;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-tea">
+    <div class="container px-5">
+        <a class="navbar-brand Big-Stuff" href="#!">Tasty Bites Kitchen</a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item"><a class="nav-link active-home fire-text" aria-current="page" href="#!">Home</a></li>
+                <li class="nav-item"><a class="nav-link fire-text" href="#!">About</a></li>
+                <li class="nav-item"><a class="nav-link fire-text" href="#!">Menu</a></li>
+                <li class="nav-item"><a class="nav-link fire-text" href="#!">Cart</a></li>
+            </ul>
         </div>
-    </header>
-    <main class="main">
-        <div class="container">
-            <div class="content">
-                <div class="row">
-                    <div class="column">
-                        <div class="message default text-center">
-                            <small>Please be aware that this page will not be shown if you turn off debug mode unless you replace templates/Pages/home.php with your own version.</small>
-                        </div>
-                        <div id="url-rewriting-warning" style="padding: 1rem; background: #fcebea; color: #cc1f1a; border-color: #ef5753;">
-                            <ul>
-                                <li class="bullet problem">
-                                    URL rewriting is not properly configured on your server.<br />
-                                    1) <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/en/installation.html#url-rewriting">Help me configure it</a><br />
-                                    2) <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/en/development/configuration.html#general-configuration">I don't / can't use URL rewriting</a>
-                                </li>
-                            </ul>
-                        </div>
-                        <?php Debugger::checkSecurityKeys(); ?>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="column">
-                        <h4>Environment</h4>
-                        <ul>
-                        <?php if (version_compare(PHP_VERSION, '8.1.0', '>=')) : ?>
-                            <li class="bullet success">Your version of PHP is 8.1.0 or higher (detected <?= PHP_VERSION ?>).</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your version of PHP is too low. You need PHP 8.1.0 or higher to use CakePHP (detected <?= PHP_VERSION ?>).</li>
-                        <?php endif; ?>
+    </div>
+</nav>
 
-                        <?php if (extension_loaded('mbstring')) : ?>
-                            <li class="bullet success">Your version of PHP has the mbstring extension loaded.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your version of PHP does NOT have the mbstring extension loaded.</li>
-                        <?php endif; ?>
 
-                        <?php if (extension_loaded('openssl')) : ?>
-                            <li class="bullet success">Your version of PHP has the openssl extension loaded.</li>
-                        <?php elseif (extension_loaded('mcrypt')) : ?>
-                            <li class="bullet success">Your version of PHP has the mcrypt extension loaded.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your version of PHP does NOT have the openssl or mcrypt extension loaded.</li>
-                        <?php endif; ?>
+<!-- Header-->
+<style>
+    .header-bg {
+        background-image: url("webroot/img/momo_background.jpg"); /* Add the file extension ".jpg" */
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+    }
+    .header-title {
+        color: #fff5f1;
+        font-size: 36px;
+        margin-bottom: 20px;
+        /* Add text shadow */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        /* Add text stroke */
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black
+    }
+    .header-text {
+        color: #fff5f1;
+        font-size: 18px;
+        margin-bottom: 20px;
+        /* Add text shadow */
+        text-shadow: 4px 2px 4px rgba(0, 0, 0, 0.5);
+    }
 
-                        <?php if (extension_loaded('intl')) : ?>
-                            <li class="bullet success">Your version of PHP has the intl extension loaded.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your version of PHP does NOT have the intl extension loaded.</li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4>Filesystem</h4>
-                        <ul>
-                        <?php if (is_writable(TMP)) : ?>
-                            <li class="bullet success">Your tmp directory is writable.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your tmp directory is NOT writable.</li>
-                        <?php endif; ?>
+    .button-primary {
+        background-color:#6fb89c; /* Default button color */
+        border-color: #6fb89c;
+        color: #273d4f;
+    }
 
-                        <?php if (is_writable(LOGS)) : ?>
-                            <li class="bullet success">Your logs directory is writable.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your logs directory is NOT writable.</li>
-                        <?php endif; ?>
+    .button-primary:hover {
+        background-color: #cb4c46; /* Button color on hover */
+        border-color: #cb4c46;
 
-                        <?php $settings = Cache::getConfig('_cake_core_'); ?>
-                        <?php if (!empty($settings)) : ?>
-                            <li class="bullet success">The <em><?= h($settings['className']) ?></em> is being used for core caching. To change the config edit config/app.php</li>
-                        <?php else : ?>
-                            <li class="bullet problem">Your cache is NOT working. Please check the settings in config/app.php</li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column">
-                        <h4>Database</h4>
-                        <?php
-                        $result = $checkConnection('default');
-                        ?>
-                        <ul>
-                        <?php if ($result['connected']) : ?>
-                            <li class="bullet success">CakePHP is able to connect to the database.</li>
-                        <?php else : ?>
-                            <li class="bullet problem">CakePHP is NOT able to connect to the database.<br /><?= h($result['error']) ?></li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                    <div class="column">
-                        <h4>DebugKit</h4>
-                        <ul>
-                        <?php if (Plugin::isLoaded('DebugKit')) : ?>
-                            <li class="bullet success">DebugKit is loaded.</li>
-                            <?php
-                            $result = $checkConnection('debug_kit');
-                            ?>
-                            <?php if ($result['connected']) : ?>
-                                <li class="bullet success">DebugKit can connect to the database.</li>
-                            <?php else : ?>
-                                <li class="bullet problem">There are configuration problems present which need to be fixed:<br /><?= $result['error'] ?></li>
-                            <?php endif; ?>
-                        <?php else : ?>
-                            <li class="bullet problem">DebugKit is <strong>not</strong> loaded.</li>
-                        <?php endif; ?>
-                        </ul>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column links">
-                        <h3>Getting Started</h3>
-                        <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/en/">CakePHP Documentation</a>
-                        <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/en/tutorials-and-examples/cms/installation.html">The 20 min CMS Tutorial</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column links">
-                        <h3>Help and Bug Reports</h3>
-                        <a target="_blank" rel="noopener" href="https://slack-invite.cakephp.org/">Slack</a>
-                        <a target="_blank" rel="noopener" href="https://github.com/cakephp/cakephp/issues">CakePHP Issues</a>
-                        <a target="_blank" rel="noopener" href="https://discourse.cakephp.org/">CakePHP Forum</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column links">
-                        <h3>Docs and Downloads</h3>
-                        <a target="_blank" rel="noopener" href="https://api.cakephp.org/">CakePHP API</a>
-                        <a target="_blank" rel="noopener" href="https://bakery.cakephp.org">The Bakery</a>
-                        <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/en/">CakePHP Documentation</a>
-                        <a target="_blank" rel="noopener" href="https://plugins.cakephp.org">CakePHP plugins repo</a>
-                        <a target="_blank" rel="noopener" href="https://github.com/cakephp/">CakePHP Code</a>
-                        <a target="_blank" rel="noopener" href="https://github.com/FriendsOfCake/awesome-cakephp">CakePHP Awesome List</a>
-                        <a target="_blank" rel="noopener" href="https://www.cakephp.org">CakePHP</a>
-                    </div>
-                </div>
-                <hr>
-                <div class="row">
-                    <div class="column links">
-                        <h3>Training and Certification</h3>
-                        <a target="_blank" rel="noopener" href="https://cakefoundation.org/">Cake Software Foundation</a>
-                        <a target="_blank" rel="noopener" href="https://training.cakephp.org/">CakePHP Training</a>
+</style>
+
+<header class="bg-dark py-5 header-bg">
+    <div class="container px-5">
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <div class="text-center my-5">
+                    <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to Tasty Bites Kitchen</h1>
+                    <h2 class=" header-text">The most authentic nepalese cuisine experience in melbourne</h2>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
+                        <a class="btn button-primary btn-lg px-4 me-sm-3" href="#features">How it works</a>
+                        <a class="btn button-primary btn-lg px-4" href="#!">Browse dishes</a>
                     </div>
                 </div>
             </div>
         </div>
-    </main>
+    </div>
+</header>
+
+
+<!-- Features section-->
+<style>
+    /* Override Bootstrap's primary color and gradient */
+    .custom-bg {
+        background-color: #273d4f; /* Your desired background color */
+    }
+    .feature-text{
+        color: #fff5f1;
+    }
+    .custom-icon-bg {
+        background-color: #6fb89c; /* Your desired background color */
+    }
+    .menu-link {
+        color: #6fb89c; /* Base color */
+        text-decoration: none;
+    }
+
+    .menu-link:hover {
+        color: #cb4c46; /* Color on hover */
+    }
+    }
+</style>
+
+<section class="py-5 border-bottom custom-bg" id="features">
+    <div class="container px-5 my-5">
+        <div class="row gx-5">
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="feature custom-icon-bg text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
+                <h2 class="h4 fw-bolder feature-text">Step 1: Place an Order </h2>
+                <p class="feature-text">Choose from our wide selection of Nepalese momo and soup dishes.</p>
+                <a class="text-decoration-none menu-link" href="#!">
+                    Check out our Menu!
+                    <i class="bi bi-arrow-right"></i>
+                </a>
+            </div>
+            <div class="col-lg-4 mb-5 mb-lg-0">
+                <div class="feature custom-icon-bg text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
+                <h2 class="h4 fw-bolder feature-text ">Step 2: Pickup your order</h2>
+                <p class="feature-text">Head to our kitchen, and pick up your order along with the cooking instructions.</p>
+            </div>
+            <div class="col-lg-4">
+                <div class="feature custom-icon-bg text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
+                <h2 class="h4 fw-bolder feature-text">Step 3: Enjoy!</h2>
+                <p class="feature-text">Prepare the meal according to our recipe, or add your own flair! </p>
+            </div>
+        </div>
+    </div>
+</section>
+
+</section>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Tasty Bites Kitchen</p></div>
+</footer>
+<!-- Bootstrap core JS-->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+<!-- Core theme JS-->
+<script src="js/scripts.js"></script>
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<!-- * *                               SB Forms JS                               * *-->
+<!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
+<!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
+<script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 </html>
