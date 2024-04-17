@@ -203,7 +203,7 @@ class AuthController extends AppController
             // Check user type after login
             $user = $this->Authentication->getIdentity()->getOriginalData();
             if ($user['user_type'] === 'customer') {
-                return $this->redirect(['controller' => 'Pages', 'action' => 'home']); // Redirect customer to homepage
+                return $this->redirect('/'); // Redirect customer to homepage
             } elseif ($user['user_type'] === 'admin') {
                 return $this->redirect(['controller' => 'Dashboard', 'action' => 'index']); // Redirect admin to user page
             }
