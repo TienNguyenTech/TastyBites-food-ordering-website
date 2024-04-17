@@ -52,32 +52,41 @@
             <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Pages','action'=>'display','home']) ?>">
                 <i class="fas fa-fw fa-home"></i>
                 <span>Homepage</span></a>
+            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Dashboard','action'=>'index']) ?>">
+                <i class="fas fa-fw fa-cog"></i>
+                <span>Dashboard</span></a>
+            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Menuitems','action'=>'index']) ?>">
+                <i class="fas fa-fw fa-birthday-cake"></i>
+                <span>Menu</span></a>
+            <a class="nav-link" href="<?= $this->Url->build(['controller'=>'Orders','action'=>'index']) ?>">
+                <i class="fas fa-fw fa-pen"></i>
+                <span>Orders</span></a>
         </li>
 
         <!-- Divider -->
         <hr class="sidebar-divider">
 
         <!-- Heading -->
-        <div class="sidebar-heading bc-red">
-            Functions
-        </div>
-        <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/">Documentation</a>
-            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
-            <?php
-            if (!$this->Identity->isLoggedIn()) {
-                echo $this->Html->link(
-                    'Log in',
-                    ['controller' => 'Auth', 'action' => 'login'],
-                    ['class' => 'button button-outline']);
-            }
-            ?>
-            <?php
-            if ($this->Identity->isLoggedIn()) {
-                echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout']);
-            }
-            ?>
-        </div>
+<!--        <div class="sidebar-heading bc-red">-->
+<!--            Functions-->
+<!--        </div>-->
+<!--        <div class="top-nav-links">-->
+<!--            <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/">Documentation</a>-->
+<!--            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>-->
+<!--            --><?php
+//            if (!$this->Identity->isLoggedIn()) {
+//                echo $this->Html->link(
+//                    'Log in',
+//                    ['controller' => 'Auth', 'action' => 'login'],
+//                    ['class' => 'button button-outline']);
+//            }
+//            ?>
+<!--            --><?php
+//            if ($this->Identity->isLoggedIn()) {
+//                echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout']);
+//            }
+//            ?>
+<!--        </div>-->
 
     </ul>
     <!-- End of Sidebar -->
