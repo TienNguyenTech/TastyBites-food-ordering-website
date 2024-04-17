@@ -7,6 +7,17 @@
 <div class="menuitems index content">
     <?= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Menuitems') ?></h3>
+
+    <?= $this->Form->create(null, [
+        'url' => [
+            'action' => 'search'
+        ]
+    ]) ?>
+
+    <?= $this->Form->control('search') ?>
+    <?= $this->Form->submit('Search') ?>
+    <?= $this->Form->end() ?>
+
     <div class="table-responsive">
         <table>
             <thead>

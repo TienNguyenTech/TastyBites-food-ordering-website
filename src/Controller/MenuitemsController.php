@@ -23,6 +23,19 @@ class MenuitemsController extends AppController
         $this->set(compact('menuitems'));
     }
 
+    public function search() {
+        $search = $this->request->getData();
+
+        $search = array_filter(array_map('trim', $search));
+
+        $url = [
+            'action' => 'index',
+            '?' => $search
+        ];
+
+        return $this->redirect($url);
+    }
+
     /**
      * View method
      *
