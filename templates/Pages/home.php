@@ -116,12 +116,16 @@ endif;
                     echo $this->Html->link(
                         'Log in',
                         ['controller' => 'Auth', 'action' => 'login'],
-                        ['class' => 'button button-outline']);
+                        ['class' => 'nav-link fire-text']);
                 }
                 ?>
                 <?php
                 if ($this->Identity->isLoggedIn()) {
-                    echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout']);
+                    echo $this->Html->link(
+                        'Dashboard',
+                        ['controller' => 'Dashboard', 'action' => 'index'],
+                        ['class' => 'nav-link fire-text']);
+                    echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
                 }
                 ?>
 
