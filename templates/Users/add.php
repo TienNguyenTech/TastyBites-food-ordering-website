@@ -19,7 +19,6 @@
                 <?php
                     echo $this->Form->control('username');
                     echo $this->Form->control('password');
-                    //echo $this->Form->control('user_type');
                     echo '<label for="user_type">User Type</label>';
                     echo $this->Form->select('user_type',
                     [1 => 'Admin', 3 => 'Customer']);

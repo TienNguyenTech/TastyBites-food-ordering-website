@@ -22,7 +22,7 @@
                 <tr>
                     <td><?= $this->Number->format($user->user_id) ?></td>
                     <td><?= h($user->username) ?></td>
-                    <td><?= $this->Number->format($user->user_type) ?></td>
+                    <td><?= h($user->user_type == '1' ? 'Admin' : 'Customer') ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $user->user_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->user_id]) ?>
