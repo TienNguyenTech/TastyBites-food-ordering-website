@@ -74,20 +74,37 @@ endif;
 </head>
 <body>
 <!-- Responsive navbar-->
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+<style>
+    /* Override Bootstrap's primary color */
+    .navbar-tea {
+        background-color: #273d4f;
+    }
+
+    .fire-text {
+        color: #fff5f1; /* Color of fire text */
+    }
+    .Big-Stuff {
+        color: #cb4c46; /* Color of active page */
+        font-size: 25px;
+    }
+</style>
+
+<nav class="navbar navbar-expand-lg navbar-tea">
     <div class="container px-5">
-        <a class="navbar-brand" href="#!">Tasty Bites Kitchen</a>
+        <a class="navbar-brand Big-Stuff" href="#!">Tasty Bites Kitchen</a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Menu</a></li>
-                <li class="nav-item"><a class="nav-link" href="#!">Cart</a></li>
+                <li class="nav-item"><a class="nav-link active fire-text" aria-current="page" href="#!">Home</a></li>
+                <li class="nav-item"><a class="nav-link fire-text" href="#!">About</a></li>
+                <li class="nav-item"><a class="nav-link fire-text" href="#!">Menu</a></li>
+                <li class="nav-item"><a class="nav-link fire-text" href="#!">Cart</a></li>
             </ul>
         </div>
     </div>
 </nav>
+
+
 <!-- Header-->
 <style>
     .header-bg {
@@ -97,7 +114,7 @@ endif;
         background-repeat: no-repeat;
     }
     .header-title {
-        color: #ffffff;
+        color: #fff5f1;
         font-size: 36px;
         margin-bottom: 20px;
         /* Add text shadow */
@@ -107,12 +124,23 @@ endif;
         -webkit-text-stroke-color: black
     }
     .header-text {
-        color: #ffffff;
+        color: #fff5f1;
         font-size: 18px;
         margin-bottom: 20px;
         /* Add text shadow */
         text-shadow: 4px 2px 4px rgba(0, 0, 0, 0.5);
     }
+
+    .button-primary {
+        background-color:#6fb89c; /* Default button color */
+        border-color: #6fb89c;
+        color: #273d4f;
+    }
+
+    .button-primary:hover {
+        background-color: #cb4c46; /* Button color on hover */
+        border-color: #cb4c46;
+
 </style>
 
 <header class="bg-dark py-5 header-bg">
@@ -123,8 +151,8 @@ endif;
                     <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to Tasty Bites Kitchen</h1>
                     <h2 class=" header-text">The most authentic nepalese cuisine experience in melbourne</h2>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                        <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
-                        <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
+                        <a class="btn button-primary btn-lg px-4 me-sm-3" href="#features">How it works</a>
+                        <a class="btn button-primary btn-lg px-4" href="#!">Learn More</a>
                     </div>
                 </div>
             </div>
