@@ -96,6 +96,23 @@ endif;
         background-position: center;
         background-repeat: no-repeat;
     }
+    .header-title {
+        color: #ffffff;
+        font-size: 36px;
+        margin-bottom: 20px;
+        /* Add text shadow */
+        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        /* Add text stroke */
+        -webkit-text-stroke-width: 1px;
+        -webkit-text-stroke-color: black
+    }
+    .header-text {
+        color: #ffffff;
+        font-size: 18px;
+        margin-bottom: 20px;
+        /* Add text shadow */
+        text-shadow: 4px 2px 4px rgba(0, 0, 0, 0.5);
+    }
 </style>
 
 <header class="bg-dark py-5 header-bg">
@@ -103,8 +120,8 @@ endif;
         <div class="row gx-5 justify-content-center">
             <div class="col-lg-6">
                 <div class="text-center my-5">
-                    <h1 class="display-5 fw-bolder text-white mb-2">Welcome to Tasty Bites Kitchen</h1>
-                    <p class="lead text-white-50 mb-4">Quickly design and customize responsive mobile-first sites with Bootstrap, the world’s most popular front-end open source toolkit!</p>
+                    <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to Tasty Bites Kitchen</h1>
+                    <h2 class=" header-text">The most authentic nepalese cuisine experience in melbourne</h2>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                         <a class="btn btn-primary btn-lg px-4 me-sm-3" href="#features">Get Started</a>
                         <a class="btn btn-outline-light btn-lg px-4" href="#!">Learn More</a>
