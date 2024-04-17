@@ -18,6 +18,8 @@
     <?= $this->Form->submit('Search') ?>
     <?= $this->Form->end() ?>
 
+    <?= $this->Html->link('Clear', ['action' => 'index'], ['class' => 'button']) ?>
+
     <div class="table-responsive">
         <table>
             <thead>
