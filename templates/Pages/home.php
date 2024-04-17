@@ -111,6 +111,21 @@ endif;
                 <li class="nav-item"><a class="nav-link fire-text" href="#!">About</a></li>
                 <li class="nav-item"><a class="nav-link fire-text" href="#!">Menu</a></li>
                 <li class="nav-item"><a class="nav-link fire-text" href="#!">Cart</a></li>
+                <?php
+                if (!$this->Identity->isLoggedIn()) {
+                    echo $this->Html->link(
+                        'Log in',
+                        ['controller' => 'Auth', 'action' => 'login'],
+                        ['class' => 'button button-outline']);
+                }
+                ?>
+                <?php
+                if ($this->Identity->isLoggedIn()) {
+                    echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout']);
+                }
+                ?>
+
+
             </ul>
         </div>
     </div>

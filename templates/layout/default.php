@@ -21,7 +21,7 @@
     <!-- Custom styles for this template-->
     <?= $this->Html->css('sb-admin-2.min.css') ?>
     <?= $this->Html->css('styles.css') ?>
-    
+
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
 
@@ -104,7 +104,6 @@
                 <!-- Topbar Navbar -->
                 <ul class="navbar-nav ml-auto">
 
-                    <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -113,10 +112,9 @@
                         </a>
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i><p>
-                                Logout</p>
-                            </a>
+                            <?php if ($this->Identity->isLoggedIn()): ?>
+                                <?= $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'dropdown-item']) ?>
+                            <?php endif; ?>
                         </div>
                     </li>
 
