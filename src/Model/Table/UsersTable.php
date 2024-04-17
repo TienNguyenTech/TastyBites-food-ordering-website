@@ -24,6 +24,8 @@ use Cake\Validation\Validator;
  * @method iterable<\App\Model\Entity\User>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\User> saveManyOrFail(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\User>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\User>|false deleteMany(iterable $entities, array $options = [])
  * @method iterable<\App\Model\Entity\User>|\Cake\Datasource\ResultSetInterface<\App\Model\Entity\User> deleteManyOrFail(iterable $entities, array $options = [])
+ *
+ * @mixin \Cake\ORM\Behavior\TimestampBehavior
  */
 class UsersTable extends Table
 {
@@ -38,8 +40,10 @@ class UsersTable extends Table
         parent::initialize($config);
 
         $this->setTable('users');
-        $this->setDisplayField('username');
+        $this->setDisplayField('email');
         $this->setPrimaryKey('user_id');
+
+        $this->addBehavior('Timestamp');
     }
 
     /**
@@ -51,21 +55,27 @@ class UsersTable extends Table
     public function validationDefault(Validator $validator): Validator
     {
         $validator
-            ->scalar('username')
-            ->maxLength('username', 30)
-            ->requirePresence('username', 'create')
-            ->notEmptyString('username')
-            ->add('username', 'unique', ['rule' => 'validateUnique', 'provider' => 'table']);
+            ->email('email')
+            ->requirePresence('email', 'create')
+            ->notEmptyString('email');
 
         $validator
             ->scalar('password')
-            ->maxLength('password', 100)
+            ->maxLength('password', 255)
             ->requirePresence('password', 'create')
             ->notEmptyString('password');
 
         $validator
-            ->integer('user_type')
-            ->requirePresence('user_type', 'create')
+            ->scalar('nonce')
+            ->maxLength('nonce', 255)
+            ->allowEmptyString('nonce');
+
+        $validator
+            ->dateTime('nonce_expiry')
+            ->allowEmptyDateTime('nonce_expiry');
+
+        $validator
+            ->scalar('user_type')
             ->notEmptyString('user_type');
 
         return $validator;
@@ -80,7 +90,7 @@ class UsersTable extends Table
      */
     public function buildRules(RulesChecker $rules): RulesChecker
     {
-        $rules->add($rules->isUnique(['username']), ['errorField' => 'username']);
+        $rules->add($rules->isUnique(['email']), ['errorField' => 'email']);
 
         return $rules;
     }
