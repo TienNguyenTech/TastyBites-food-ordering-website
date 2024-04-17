@@ -7,25 +7,24 @@
  */
 ?>
 
-<h1>Tasty Bites Kitchen</h1>
-<h2>Admin Dashboard</h2>
+<h2 class="text-gray-800">Admin Dashboard</h2>
 
 <div class="index">
-    <div class="content" style="margin-bottom: 20px">
+    <div class="content" style="margin-bottom: 20px; padding: 10px">
         <h2><?= $this->Html->link('Menu Items Manager', ['controller' => 'menuitems', 'action' => 'index']) ?></h2>
 
-        <h4>Current Menu: <?= $menuitemsAmount ?> <?= $menuitemsAmount == 1 ? "item" : "items" ?></h4>
+        <h4 class="text-gray-800">Current Menu: <?= $menuitemsAmount ?> <?= $menuitemsAmount == 1 ? "item" : "items" ?></h4>
 
-        <?= $this->Html->link(__('View Menu'), ['controller' => 'menuitems', 'action' => 'index'], ['class' => 'button']) ?>
-        <?= $this->Html->link(__('Add Menu Item'), ['controller' => 'menuitems', 'action' => 'add'], ['class' => 'button']) ?>
+        <?= $this->Html->link(__('View Menu'), ['controller' => 'menuitems', 'action' => 'index'], ['class' => 'btn btn-primary']) ?>
+        <?= $this->Html->link(__('Add Menu Item'), ['controller' => 'menuitems', 'action' => 'add'], ['class' => 'btn btn-primary']) ?>
 
     </div>
 
-    <div class="content">
-        <h2>Account Manager</h2>
+    <div class="content" style="padding: 10px;">
+        <h2 class="text-gray-800">Account Manager</h2>
 
-        <?= $this->Html->link(__('Create New Account'), ['controller' => 'users', 'action' => 'add'], ['class' => 'button']) ?>
-        <?= $this->Html->link(__('View Admin Accounts'), ['controller' => 'users', 'action' => 'admin'], ['class' => 'button']) ?>
+        <?= $this->Html->link(__('Create New Account'), ['controller' => 'users', 'action' => 'add'], ['class' => 'btn btn-primary']) ?>
+        <?= $this->Html->link(__('View Admin Accounts'), ['controller' => 'users', 'action' => 'admin'], ['class' => 'btn btn-primary']) ?>
     </div>
 
 
