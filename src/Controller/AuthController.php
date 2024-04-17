@@ -47,6 +47,11 @@ class AuthController extends AppController
     {
         $user = $this->Users->newEmptyEntity();
         if ($this->request->is('post')) {
+            // Include 'user_type' field in the data being patched
+            $userData = $this->request->getData();
+            $userData['user_type'] = 'customer'; // Set user_type to 'customer'
+
+
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success('You have been registered. Please log in. ');
@@ -195,6 +200,13 @@ class AuthController extends AppController
 
         // if user passes authentication, grant access to the system
         if ($result && $result->isValid()) {
+            // Check user type after login
+            $user = $this->Authentication->getIdentity()->getOriginalData();
+            if ($user['user_type'] === 'customer') {
+                return $this->redirect(['controller' => 'Pages', 'action' => 'home']); // Redirect customer to homepage
+            } elseif ($user['user_type'] === 'admin') {
+                return $this->redirect(['controller' => 'Users', 'action' => 'index']); // Redirect admin to user page
+            }
             // set a fallback location in case user logged in without triggering 'unauthenticatedRedirect'
             $fallbackLocation = ['controller' => 'Users', 'action' => 'index'];
 

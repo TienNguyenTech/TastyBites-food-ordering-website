@@ -23,9 +23,9 @@ class UsersFixture extends TestFixture
                 'email' => 'Lorem ipsum dolor sit amet',
                 'password' => 'Lorem ipsum dolor sit amet',
                 'nonce' => 'Lorem ipsum dolor sit amet',
-                'nonce_expiry' => '2024-04-17 05:27:07',
-                'created' => '2024-04-17 05:27:07',
-                'modified' => '2024-04-17 05:27:07',
+                'nonce_expiry' => '2024-04-17 06:15:33',
+                'created' => '2024-04-17 06:15:33',
+                'modified' => '2024-04-17 06:15:33',
                 'user_type' => 'Lorem ipsum dolor sit amet',
             ],
         ];
