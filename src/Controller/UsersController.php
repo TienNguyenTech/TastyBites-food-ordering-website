@@ -30,7 +30,7 @@ class UsersController extends AppController
      * @return \Cake\Http\Response|null|void Renders view
      */
     public function admin() {
-        $query = $this->Users->find()->where(['user_type' => 1]);
+        $query = $this->Users->find()->where(['user_type' => 'admin']);
         $users = $this->paginate($query);
 
         $this->set(compact('users'));
