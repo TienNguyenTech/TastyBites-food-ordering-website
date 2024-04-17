@@ -7,9 +7,9 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css',['block
 echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js',['block'=>true]);
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['block'=>true]);
 ?>
-<div class="menuitems index content">
+<div class="menuitems index content text-gray-800">
     <?= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'button float-right']) ?>
-    <h3><?= __('Menuitems') ?></h3>
+    <h3 class="text-gray-800">Menu Items</h3>
 
     <?= $this->Form->create(null, [
         'url' => [
@@ -17,11 +17,11 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
         ]
     ]) ?>
 
-    <?= $this->Form->control('search') ?>
-    <?= $this->Form->submit('Search') ?>
+    <?= $this->Form->control('search', ['class' => 'form-control', 'style' => 'margin-bottom: 10px']) ?>
+    <?= $this->Form->submit('Search', ['class' => 'btn btn-primary', 'style' => 'margin-bottom: 10px']) ?>
     <?= $this->Form->end() ?>
 
-    <?= $this->Html->link('Clear', ['action' => 'index'], ['class' => 'button']) ?>
+    <?= $this->Html->link('Clear', ['action' => 'index'], ['class' => 'btn btn-secondary', 'style' => 'margin-bottom: 10px']) ?>
 
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -29,10 +29,10 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                 <tr>
                     <th><?= h('menuitem_id') ?></th>
                     <th><?= h('menuitem_name') ?></th>
-                    <th><?= h('menuitem_image') ?></th>
+<!--                    <th>--><?php //= h('menuitem_image') ?><!--</th>-->
                     <th><?= h('menuitem_desc') ?></th>
                     <th><?= h('menuitem_price') ?></th>
-                    <th><?= h('menuitem_rating') ?></th>
+<!--                    <th>--><?php //= h('menuitem_rating') ?><!--</th>-->
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -41,10 +41,10 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                 <tr>
                     <td><?= $this->Number->format($menuitem->menuitem_id) ?></td>
                     <td><?= h($menuitem->menuitem_name) ?></td>
-                    <td><?= h($menuitem->menuitem_image) ?></td>
+<!--                    <td>--><?php //= h($menuitem->menuitem_image) ?><!--</td>-->
                     <td><?= h($menuitem->menuitem_desc) ?></td>
-                    <td><?= $this->Number->format($menuitem->menuitem_price) ?></td>
-                    <td><?= $this->Number->format($menuitem->menuitem_rating) ?></td>
+                    <td><?= $this->Number->currency($menuitem->menuitem_price) ?></td>
+<!--                    <td>--><?php //= $this->Number->format($menuitem->menuitem_rating) ?><!--</td>-->
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $menuitem->menuitem_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $menuitem->menuitem_id]) ?>
