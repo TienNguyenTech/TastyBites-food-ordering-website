@@ -167,30 +167,24 @@ endif;
         <div class="row gx-5">
             <div class="col-lg-4 mb-5 mb-lg-0">
                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
-                <h2 class="h4 fw-bolder">Featured title</h2>
-                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
+                <h2 class="h4 fw-bolder">Step 1: Place an Order </h2>
+                <p>Choose from our wide selection of Nepalese momo and soup dishes.</p>
                 <a class="text-decoration-none" href="#!">
-                    Call to action
+                    Check out our Menu!
                     <i class="bi bi-arrow-right"></i>
                 </a>
             </div>
             <div class="col-lg-4 mb-5 mb-lg-0">
                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-building"></i></div>
-                <h2 class="h4 fw-bolder">Featured title</h2>
-                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-                <a class="text-decoration-none" href="#!">
-                    Call to action
-                    <i class="bi bi-arrow-right"></i>
-                </a>
+                <h2 class="h4 fw-bolder">Step 2: Pickup your order</h2>
+                <p>Head to our kitchen, and pick up your order along with the cooking instructions.</p>
+
             </div>
             <div class="col-lg-4">
                 <div class="feature bg-primary bg-gradient text-white rounded-3 mb-3"><i class="bi bi-toggles2"></i></div>
-                <h2 class="h4 fw-bolder">Featured title</h2>
-                <p>Paragraph of text beneath the heading to explain the heading. We'll add onto it with another sentence and probably just keep going until we run out of words.</p>
-                <a class="text-decoration-none" href="#!">
-                    Call to action
-                    <i class="bi bi-arrow-right"></i>
-                </a>
+                <h2 class="h4 fw-bolder">Step 3: Enjoy!</h2>
+                <p>Prepare the meal according to our recipe, or add your own flair! </p>
+
             </div>
         </div>
     </div>
