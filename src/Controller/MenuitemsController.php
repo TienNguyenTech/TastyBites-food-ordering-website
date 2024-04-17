@@ -17,7 +17,15 @@ class MenuitemsController extends AppController
      */
     public function index()
     {
-        $query = $this->Menuitems->find();
+        $search = $this->request->getQuery('search');
+        $searchConditions = [
+            'OR' => [
+                'menuitem_name LIKE' => "%{$search}%",
+                'menuitem_desc LIKE' => "%{$search}%"
+            ]
+        ];
+
+        $query = $this->Menuitems->find()->where($searchConditions);
         $menuitems = $this->paginate($query);
 
         $this->set(compact('menuitems'));
