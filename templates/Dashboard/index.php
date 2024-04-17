@@ -25,6 +25,7 @@
         <h2>Account Manager</h2>
 
         <?= $this->Html->link(__('Create New Account'), ['controller' => 'users', 'action' => 'add'], ['class' => 'button']) ?>
+        <?= $this->Html->link(__('View Admin Accounts'), ['controller' => 'users', 'action' => 'admin'], ['class' => 'button']) ?>
     </div>
 
 
