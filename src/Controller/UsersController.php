@@ -24,6 +24,19 @@ class UsersController extends AppController
     }
 
     /**
+     * Admin method
+     * Lists all admin accounts
+     *
+     * @return \Cake\Http\Response|null|void Renders view
+     */
+    public function admin() {
+        $query = $this->Users->find()->where(['user_type' => 1]);
+        $users = $this->paginate($query);
+
+        $this->set(compact('users'));
+    }
+
+    /**
      * View method
      *
      * @param string|null $id User id.

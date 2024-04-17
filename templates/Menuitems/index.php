@@ -8,11 +8,21 @@ echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js',['block'=
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['block'=>true]);
 ?>
 <div class="menuitems index content">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><?= __('Menuitems') ?></h1>
-        <a href="<?= $this->Url->build(['action' => 'add'])?>" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                class="fas fa-plus fa-sm text-white-50"></i> New Menuitem</a>
-    </div>
+    <?= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <h3><?= __('Menuitems') ?></h3>
+
+    <?= $this->Form->create(null, [
+        'url' => [
+            'action' => 'search'
+        ]
+    ]) ?>
+
+    <?= $this->Form->control('search') ?>
+    <?= $this->Form->submit('Search') ?>
+    <?= $this->Form->end() ?>
+
+    <?= $this->Html->link('Clear', ['action' => 'index'], ['class' => 'button']) ?>
+
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
