@@ -140,9 +140,8 @@ $this->disableAutoLayout();
             <div class="col-lg-6">
                 <div class="text-center my-5">
                     <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to Tasty Bites Kitchen</h1>
-                    <p class="lead text-white-50 mb-4 header-text">Experience the most authentic Nepalese cuisine in Melbourne</p>
+                    <p class="lead text-white mb-4 header-text">Experience the most authentic Nepalese cuisine in Melbourne</p>
                     <div class="d-grid gap-3 d-sm-flex justify-content-center">
-                        <a class="btn button-primary btn-lg px-4 me-sm-3" href="#features">How it works</a>
                         <?= $this->Html->link("Browse Dishes", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'btn button-primary btn-lg px-4']) ?>
                     </div>
                 </div>
