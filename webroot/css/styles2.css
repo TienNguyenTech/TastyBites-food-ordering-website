@@ -10875,3 +10875,12 @@ li a:hover {
 #whiteText {
   color: #fff; /* Set text color to white */
 }
+
+/* Custom CSS for the footer */
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: -1; /* Set z-index to position behind content */
+}
+
