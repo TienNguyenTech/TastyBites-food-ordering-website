@@ -59,37 +59,47 @@
 </style>
 
 <nav class="navbar navbar-expand-lg navbar-tea">
-    <div class="container px-5">
-        <a class="navbar-brand Big-Stuff" href="#!">Tasty Bites Kitchen</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+    <div class="container-fluid">
+        <a class="navbar-brand text-white" href="#"><b>Tasty Bites Kitchen</b></a>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <li class="nav-item"><a class="nav-link active-home fire-text" aria-current="page" href="#!">Home</a></li>
-                <li class="nav-item"><a class="nav-link fire-text" href="#!">About</a></li>
-                <li class="nav-item"><a class="nav-link fire-text" href="#!">Menu</a></li>
-                <li class="nav-item"><?= $this->Html->link('Enquiry', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?></li>
-                <?php
-                if (!$this->Identity->isLoggedIn()) {
-                    echo $this->Html->link(
-                        'Log in',
-                        ['controller' => 'Auth', 'action' => 'login'],
-                        ['class' => 'nav-link fire-text']);
-                }
-                ?>
-                <?php
-                if ($this->Identity->isLoggedIn()) {
-                    echo $this->Html->link(
-                        'Dashboard',
-                        ['controller' => 'Dashboard', 'action' => 'index'],
-                        ['class' => 'nav-link fire-text']);
-                    echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
-                }
-                ?>
-
-
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!-- Changed 'ms-auto' to 'me-auto' -->
+                <li class="nav-item">
+                    <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link text-white" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link('Menu', ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link text-white']) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link('Enquiry', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link text-white']) ?>
+                </li>
+                <?php if (!$this->Identity->isLoggedIn()): ?>
+                <li class="nav-item">
+                    <?= $this->Html->link('Log in', ['controller' => 'Auth', 'action' => 'login'], ['class' => 'nav-link text-white']) ?>
+                </li>
+                <?php endif; ?>
+                <?php if ($this->Identity->isLoggedIn()): ?>
+                <li class="nav-item">
+                    <?= $this->Html->link('Dashboard', ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'nav-link text-white']) ?>
+                </li>
+                </ul> <!-- Close the 'ul' tag here -->
+                <ul class="navbar-nav"> <!-- New 'ul' tag for the right-aligned items -->
+                    <li class="nav-item">
+                        <form action="<?= $this->Url->build(['controller' => 'Auth', 'action' => 'logout']) ?>" method="post">
+                            <button type="submit" class="btn btn-outline-light">Logout</button>
+                        </form>
+                    </li>
+                </ul>
+                <?php endif; ?>
             </ul>
         </div>
     </div>
 </nav>
+
 
 <?= $this->fetch('content') ?>

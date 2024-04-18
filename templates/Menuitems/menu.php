@@ -8,10 +8,10 @@
 <div class="container my-4">
     <div class="row justify-content-between align-items-center mb-3">
         <div class="col">
-            <h3 class="text-gray-800 mb-0">Menu Items</h3>
+            <h3 class="text-gray-800 mb-0"><b>Menu Items</b></h3>
         </div>
         <div class="col-auto">
-            <?= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
+            <?= $this->Html->link(__('Add New Item'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
         </div>
     </div>
 
