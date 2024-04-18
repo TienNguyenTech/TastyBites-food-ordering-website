@@ -66,7 +66,7 @@
                 <li class="nav-item"><a class="nav-link active-home fire-text" aria-current="page" href="#!">Home</a></li>
                 <li class="nav-item"><a class="nav-link fire-text" href="#!">About</a></li>
                 <li class="nav-item"><a class="nav-link fire-text" href="#!">Menu</a></li>
-                <li class="nav-item"><a class="nav-link fire-text" href="#!">Cart</a></li>
+                <li class="nav-item"><?= $this->Html->link('Enquiry', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?></li>
                 <?php
                 if (!$this->Identity->isLoggedIn()) {
                     echo $this->Html->link(
