@@ -143,7 +143,7 @@ $this->disableAutoLayout();
                     <h2 class=" header-text">The most authentic nepalese cuisine experience in melbourne</h2>
                     <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
                         <a class="btn button-primary btn-lg px-4 me-sm-3" href="#features">How it works</a>
-                        <a class="btn button-primary btn-lg px-4" href="#!">Browse dishes</a>
+                        <a class="btn button-primary btn-lg px-4" href="#!"><?= $this->Html->link("Browse Dishes", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?></a>
                     </div>
                 </div>
             </div>
