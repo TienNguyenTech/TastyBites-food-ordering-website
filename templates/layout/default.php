@@ -145,10 +145,7 @@
 
                 // Define the URL for the menu item index page
                 $menuIndexUrl = $this->Url->build(['controller' => 'Menuitems', 'action' => 'index']);
-
-                // Initialize submit counter
-                $submitCounter = 0;
-
+                
                 // Render the back button based on the page type
                 if (!$isDashboardPage) {
                     if ($isEditPage || $isAddPage || $isIndexPage) {
