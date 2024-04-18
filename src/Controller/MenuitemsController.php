@@ -31,6 +31,15 @@ class MenuitemsController extends AppController
         $this->set(compact('menuitems'));
     }
 
+    public function menu()
+    {
+
+        $query = $this->Menuitems->find();
+        $menuitems = $this->paginate($query);
+
+        $this->set(compact('menuitems'));
+    }
+
     public function search() {
         $search = $this->request->getData();
 
@@ -43,6 +52,7 @@ class MenuitemsController extends AppController
 
         return $this->redirect($url);
     }
+    
 
     /**
      * View method

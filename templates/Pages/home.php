@@ -109,7 +109,7 @@ endif;
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active-home fire-text" aria-current="page" href="#!">Home</a></li>
                 <li class="nav-item"><a class="nav-link fire-text" href="#!">About</a></li>
-                <li class="nav-item"><a class="nav-link fire-text" href="#!">Menu</a></li>
+                <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>                
                 <li class="nav-item"><a class="nav-link fire-text" href="#!">Cart</a></li>
                 <?php
                 if (!$this->Identity->isLoggedIn()) {
