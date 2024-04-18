@@ -99,50 +99,62 @@
                             <?= $this->Html->link('Dashboard', ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'nav-link text-white']) ?>
                         </li>
                     </ul> <!-- Close the 'ul' tag here -->
-                    <ul class="navbar-nav"> <!-- New 'ul' tag for the right-aligned items -->
-                        <li class="nav-item">
-                            <form action="<?= $this->Url->build(['controller' => 'Auth', 'action' => 'logout']) ?>"
-                                method="post">
-                                <button type="submit" class="btn btn-outline-light">Logout</button>
-                            </form>
-                        </li>
-                    </ul>
+                    <?php
+                    if (!$this->Identity->isLoggedIn()) {
+                        echo $this->Html->link(
+                            'Log in',
+                            ['controller' => 'Auth', 'action' => 'login'],
+                            ['class' => 'nav-link fire-text']
+                        );
+                    }
+                    ?>
+                    <?php
+                    if ($this->Identity->isLoggedIn()) {
+                        echo $this->Html->link(
+                            'Dashboard',
+                            ['controller' => 'Dashboard', 'action' => 'index'],
+                            ['class' => 'nav-link fire-text']
+                        );
+                        echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
+                    }
+                    ?>
                 <?php endif; ?>
                 </ul>
             </div>
         </div>
     </nav>
 
-    
+
     <!-- Site footer -->
     <footer class="bg-dark text-white py-4 fixed-bottom">
-    <div class="container">
-        <div class="row">
-            <div class="col-md-4">
-                <h5>About Us</h5>
-                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros elementum tristique.</p>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>About Us</h5>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse varius enim in eros
+                        elementum tristique.</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Contact Us</h5>
+                    <p>123 Main Street, City, Country</p>
+                    <p>Email: info@example.com</p>
+                    <p>Phone: +123 456 7890</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>Follow Us</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="#"><i class="bi bi-facebook"></i> Facebook</a></li>
+                        <li><a href="#"><i class="bi bi-twitter"></i> Twitter</a></li>
+                        <li><a href="#"><i class="bi bi-instagram"></i> Instagram</a></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-md-4">
-                <h5>Contact Us</h5>
-                <p>123 Main Street, City, Country</p>
-                <p>Email: info@example.com</p>
-                <p>Phone: +123 456 7890</p>
-            </div>
-            <div class="col-md-4">
-                <h5>Follow Us</h5>
-                <ul class="list-unstyled">
-                    <li><a href="#"><i class="bi bi-facebook"></i> Facebook</a></li>
-                    <li><a href="#"><i class="bi bi-twitter"></i> Twitter</a></li>
-                    <li><a href="#"><i class="bi bi-instagram"></i> Instagram</a></li>
-                </ul>
+            <hr class="bg-light">
+            <div class="text-center">
+                <p>&copy; <?= date('Y') ?> Tasty Bites Kitchen. All rights reserved.</p>
             </div>
         </div>
-        <hr class="bg-light">
-        <div class="text-center">
-            <p>&copy; <?= date('Y') ?> Tasty Bites Kitchen. All rights reserved.</p>
-        </div>
-    </div>
-</footer>
+    </footer>
 
 
 
