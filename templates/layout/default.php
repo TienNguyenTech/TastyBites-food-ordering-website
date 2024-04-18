@@ -112,6 +112,27 @@
                 </button>
 
 <!--                back button And hidden when back to dashboard index-->
+                <?php
+                // Determine if the current page is the dashboard page
+                $isDashboardPage = $this->getRequest()->getParam('controller') === 'Dashboard' && $this->getRequest()->getParam('action') === 'index';
+
+                // Define the URL for the dashboard page
+                $dashboardIndexUrl = $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']);
+
+                // Render the back button if not on the dashboard page
+                if (!$isDashboardPage) {
+                    echo $this->Html->tag(
+                        'button',
+                        $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
+                        ['onclick' => 'goBack()', 'class' => 'btn btn-secondary']
+                    );
+                }
+                ?>
+                <script>
+                    function goBack() {
+                        window.history.back();
+                    }
+                </script>
 
 
                 <!-- Topbar Navbar -->
