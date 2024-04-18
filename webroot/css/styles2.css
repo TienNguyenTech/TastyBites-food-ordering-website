@@ -10884,3 +10884,7 @@ li a:hover {
   z-index: -1; /* Set z-index to position behind content */
 }
 
+.navbar {
+  background-color: transparent; /* Set the background color to transparent */
+  border: none; /* Optionally, remove any border */
+}
