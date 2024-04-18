@@ -48,7 +48,8 @@ class MenuitemsController extends AppController
 
         // Use default (customer ) layout
         // $this->viewBuilder()->setLayout('default');
-    //Stashed changes
+        //Stashed changes
+        //$this->render('index');
 
         $query = $this->Menuitems->find();
         $menuitems = $this->paginate($query);

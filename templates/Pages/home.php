@@ -172,7 +172,7 @@ $this->disableAutoLayout();
     .menu-link:hover {
         color: #cb4c46; /* Color on hover */
     }
-    }
+    
 </style>
 
 <section class="py-5 border-bottom custom-bg" id="features">

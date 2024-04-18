@@ -12,6 +12,7 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles2.css" rel="stylesheet" />
+   
 
     <!-- Custom fonts for this template-->
     <?= $this->Html->css('/vendor/fontawesome-free/css/all.min.css') ?>
@@ -21,7 +22,7 @@
 
     <!-- Custom styles for this template-->
     <?= $this->Html->css('sb-admin-2.min.css') ?>
-<!--    --><?php //= $this->Html->css('styles.css') ?>
+    <?php //= $this->Html->css('styles.css') ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
