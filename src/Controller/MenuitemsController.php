@@ -10,6 +10,16 @@ namespace App\Controller;
  */
 class MenuitemsController extends AppController
 {
+    // TODO: custoemr views: menu, search; everything else are admin
+
+    public function initialize(): void {
+        parent::initialize();
+
+        //By default, use admin layout
+        // $this->viewBuilder()->setLayout('admin');
+        // Override individual functions if to use default (i.e. customers ) layout
+    }
+
     /**
      * Index method
      *
@@ -33,7 +43,12 @@ class MenuitemsController extends AppController
 
     public function menu()
     {
+    //Updated upstream
         $this->viewBuilder()->setLayout('customer');
+
+        // Use default (customer ) layout
+        // $this->viewBuilder()->setLayout('default');
+    //Stashed changes
 
         $query = $this->Menuitems->find();
         $menuitems = $this->paginate($query);

@@ -18,22 +18,23 @@
     ]) ?>
 
 
-
-    <div>
-        <?php foreach ($menuitems as $menuitem): ?>
-            <div class="card" style="width: 18rem;">
-                <img src="../webroot/img/momo_background.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title"><?= $menuitem->menuitem_name?></h5>
-                    <h5><?= $this->Number->currency($menuitem->menuitem_price) ?></h5>
-                    <p class="card-text text-gray-800"><?= $menuitem->menuitem_desc ?></p>
-                </div>
-                <div class="card-body">
-                    <a href="#" class="card-link"><button>Add to cart</button></a>
-                </div>
+<!-- File: src/Template/Menu/index.ctp -->
+<div class="menu-container">
+    <?php foreach ($menuitems as $menuitem): ?>
+        <div class="card" style="width: 18rem; margin: 10px;">
+            <img src="../webroot/img/momo_background.jpg" class="card-img-top" alt="...">
+            <div class="card-body">
+                <h5 class="card-title"><?= $menuitem->menuitem_name?></h5>
+                <h5><?= $this->Number->currency($menuitem->menuitem_price) ?></h5>
+                <p class="card-text text-gray-800"><?= $menuitem->menuitem_desc ?></p>
             </div>
-        <?php endforeach; ?>
-    </div>
+            <div class="card-body">
+                <a href="#" class="card-link"><button>Add to cart</button></a>
+            </div>
+        </div>
+    <?php endforeach; ?>
+</div>
+
 
 <script>
     $(document).ready(function () {
