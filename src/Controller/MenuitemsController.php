@@ -33,6 +33,7 @@ class MenuitemsController extends AppController
 
     public function menu()
     {
+        $this->viewBuilder()->setLayout('customer');
 
         $query = $this->Menuitems->find();
         $menuitems = $this->paginate($query);
@@ -52,7 +53,7 @@ class MenuitemsController extends AppController
 
         return $this->redirect($url);
     }
-    
+
 
     /**
      * View method
