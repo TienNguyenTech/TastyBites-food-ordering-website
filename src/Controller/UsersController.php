@@ -23,6 +23,13 @@ class UsersController extends AppController
         $this->set(compact('users'));
     }
 
+    public function admin() {
+        $query = $this->Users->find()->where(['user_type' => 'admin']);
+        $users = $this->paginate($query);
+
+        $this->set(compact('users'));
+    }
+
     /**
      * View method
      *
