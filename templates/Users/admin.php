@@ -26,8 +26,7 @@
                     <td class="actions">
 <!--                        --><?php //= $this->Html->link(__('View'), ['action' => 'view', $user->user_id]) ?>
 <!--                        --><?php //= $this->Html->link(__('Edit'), ['action' => 'edit', $user->user_id]) ?>
-<!--                        --><?php //= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->user_id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->user_id)]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->user_id], ['confirm' => __('Are you sure you want to delete this user?')]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->user_id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->user_id)]) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
