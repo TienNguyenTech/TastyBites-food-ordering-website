@@ -7,7 +7,7 @@
 <div class="row">
     <div class="column column-80 text-gray-800">
         <div class="user view content">
-            <h3><?= h('Menu Item Information') ?></h3>
+            <h3><?= h('User Information') ?></h3>
             <!--            <h3>--><?php //= h($menuitem->menuitem_desc) ?><!--</h3>-->
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <th><?= __('Email') ?></th>

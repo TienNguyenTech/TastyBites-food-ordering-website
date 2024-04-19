@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Enquiry $enquiry
  */
 ?>
-<div class="row">
+<!--<div class="row">-->
 <!--    <aside class="column">-->
 <!--        <div class="side-nav">-->
 <!--            <h4 class="heading">--><?php //= __('Actions') ?><!--</h4>-->
@@ -38,7 +38,8 @@
 <!--            -->
 <!--            -->
 <!--        </div>-->
-    </div>    <div class="column column-80 text-gray-800">
+<div class="row">
+   <div class="column column-80 text-gray-800">
         <div class="enquirys view content">
             <h3><?= h('Enquiry Information') ?></h3>
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
@@ -52,7 +53,7 @@
                 </tr>
                 <tr>
                     <th><?= __('Enquiry Email') ?></th>
-                    <td><?= $this->Number->currency($enquiry->enquiry_email) ?></td>
+                    <td><?= h($enquiry->enquiry_email) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Enquiry Message') ?></th>
@@ -60,5 +61,6 @@
                 </tr>
             </table>
 
-
+        </div>
+   </div>
 </div>
