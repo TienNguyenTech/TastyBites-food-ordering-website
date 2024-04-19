@@ -10888,3 +10888,30 @@ li a:hover {
   background-color: transparent; /* Set the background color to transparent */
   border: none; /* Optionally, remove any border */
 }
+
+/*.navbar-team009red {
+  background-color: rgb(235, 23, 0);
+}*/
+
+.header .navbar .navbar-collapse {
+  height: 100%;
+  width: 100%;
+}
+.navbar-expand .navbar-collapse {
+  display: flex !important;
+  flex-basis: auto;
+}
+.collapse:not(.show) {
+  display: none;
+}
+.justify-content-between {
+  justify-content: space-between !important;
+}
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+}
+div, span, ol, ul {
+  scrollbar-width: thin;
+}

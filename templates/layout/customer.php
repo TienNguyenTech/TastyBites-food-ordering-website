@@ -67,7 +67,7 @@
         }
     </style>
 
-    <nav class="navbar navbar-expand-lg navbar-tea">
+    <nav class="navbar navbar-expand-lg navbar-tea" style="background-color: rgb(235, 23, 0);">
         <div class="container-fluid">
             <a class="navbar-brand text-white" href="#"><b>Tasty Bites Kitchen</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -95,17 +95,17 @@
                         </li>
                     <?php endif; ?>
                     <!--<?php if ($this->Identity->isLoggedIn()): ?>
-                        <li class="nav-item">
-                            <?= $this->Html->link('DASHBOARD', ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'nav-link text-white']) ?>
-                        </li>
-                    -->
+                    <li class="nav-item">
+                        <?= $this->Html->link('DASHBOARD', ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'nav-link text-white']) ?>
+                    </li>
+                -->
                     </ul> <!-- Close the 'ul' tag here -->
                     <?php
                     if (!$this->Identity->isLoggedIn()) {
                         echo $this->Html->link(
                             'LOG IN',
                             ['controller' => 'Auth', 'action' => 'login'],
-                            ['class' => 'nav-link fire-text']
+                            ['class' => 'nav-link text-white']
                         );
                     }
                     ?>
@@ -114,9 +114,9 @@
                         echo $this->Html->link(
                             'DASHBOARD',
                             ['controller' => 'Dashboard', 'action' => 'index'],
-                            ['class' => 'nav-link fire-text']
+                            ['class' => 'nav-link text-white']
                         );
-                        echo $this->Html->link('LOG OUT', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
+                        echo $this->Html->link('LOG OUT', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link text-white']);
                     }
                     ?>
                 <?php endif; ?>
@@ -124,7 +124,8 @@
             </div>
         </div>
     </nav>
-    
+
+
 
     <!-- Site footer -->
     <footer class="bg-dark text-white py-4 fixed-bottom">
