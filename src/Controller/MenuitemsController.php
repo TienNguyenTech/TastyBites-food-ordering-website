@@ -51,7 +51,7 @@ class MenuitemsController extends AppController
         $this->viewBuilder()->setLayout('customer');
 
         // Use default (customer ) layout
-        // $this->viewBuilder()->setLayout('default');
+//         $this->viewBuilder()->setLayout('default');
         //Stashed changes
         //$this->render('index');
 

@@ -11,7 +11,7 @@
             <h3 class="text-gray-800 mb-0"><b>Menu Items</b></h3>
         </div>
         <div class="col-auto">
-            <?= $this->Html->link(__('Add New Item'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
+<!--            --><?php //= $this->Html->link(__('Add New Item'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
         </div>
     </div>
 
@@ -26,7 +26,7 @@
                         <p class="card-text"><?= $menuitem->menuitem_desc ?></p>
                     </div>
                     <div class="card-footer bg-white border-top-0 text-center">
-                        <a href="#" class="btn btn-primary">Add to Cart</a>
+<!--                        <a href="#" class="btn btn-primary">Add to Cart</a>-->
                     </div>
                 </div>
             </div>
