@@ -68,8 +68,8 @@ $this->disableAutoLayout();
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active-home fire-text" aria-current="page" href="#!">Home</a></li>
-                <li class="nav-item"><a class="nav-link fire-text" href="#!">About</a></li>
-                <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>                
+                <li class="nav-item"><?= $this->Html->link('Contact Us', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?></li>
+                <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
                 <li class="nav-item"><a class="nav-link fire-text" href="#!">Cart</a></li>
                 <?php
                 if (!$this->Identity->isLoggedIn()) {
@@ -142,7 +142,7 @@ $this->disableAutoLayout();
                     <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to Tasty Bites Kitchen</h1>
                     <p class="lead text-white mb-4 header-text">Experience the most authentic Nepalese cuisine in Melbourne</p>
                     <div class="d-grid gap-3 d-sm-flex justify-content-center">
-                        
+
                         <?= $this->Html->link("Browse Dishes", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'btn button-primary btn-lg px-4']) ?>
                     </div>
                 </div>
@@ -272,7 +272,7 @@ $this->disableAutoLayout();
     .menu-link:hover {
         color: #cb4c46; /* Color on hover */
     }
-    
+
 </style>
 
 <section class="py-5 border-bottom custom-bg" id="features">
