@@ -7,27 +7,31 @@
 $this->layout = 'login';
 $this->assign('title', 'Register new user');
 ?>
-<div class="container register">
-    <div class="users form content">
+<div class="container login">
+    <div class="column column-50 column-offset-25">
+        <h1 class="page-title">Tasty Bites Kitchen</h1>
+        <div class="users form content">
 
         <?= $this->Form->create($user) ?>
 
         <fieldset>
-            <legend>Register new user</legend>
+            <legend style="font-size: 24px;">Sign Up</legend>
 
             <?= $this->Flash->render() ?>
 
             <?= $this->Form->control('email'); ?>
 
             <div class="row">
-                <?= $this->Form->control('first_name', ['templateVars' => ['container_class' => 'column']]); ?>
-                <?= $this->Form->control('last_name', ['templateVars' => ['container_class' => 'column']]); ?>
+                <?= $this->Form->control('first_name', ['templateVars' => ['container_class' => 'column'], 'required' => true]); ?>
+                <?= $this->Form->control('last_name', ['templateVars' => ['container_class' => 'column'], 'required' => true]); ?>
             </div>
 
             <div class="row">
                 <?php
                 echo $this->Form->control('password', [
                     'value' => '',  // Ensure password is not sending back to the client side
+                    'pattern' => '^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$', // Minimum 8 characters and at least one number
+                    'title' => 'Password must be at least 8 characters long and contain at least one number',
                     'templateVars' => ['container_class' => 'column']
                 ]);
                 // Validate password by repeating it
@@ -50,3 +54,4 @@ $this->assign('title', 'Register new user');
 
     </div>
 </div>
+

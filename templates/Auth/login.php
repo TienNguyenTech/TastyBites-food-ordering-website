@@ -41,7 +41,6 @@ $this->assign('title', 'Login');
                     ]);
                     echo $this->Form->control('password', [
                         'type' => 'password',
-                        'label' => 'Password*',
                         'required' => true,
 //                        'value' => $debug ? '1234' : '',
                     ]);
