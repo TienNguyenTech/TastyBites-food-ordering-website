@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+
 /**
  * Menuitems Controller
  *
@@ -14,6 +15,9 @@ class MenuitemsController extends AppController
 
     public function initialize(): void {
         parent::initialize();
+        // Controller-level function/action whitelist for authentication
+        $this->Authentication->allowUnauthenticated(['index', 'menu', 'search', 'view', 'add', 'edit', 'delete']);
+
 
         //By default, use admin layout
         // $this->viewBuilder()->setLayout('admin');
