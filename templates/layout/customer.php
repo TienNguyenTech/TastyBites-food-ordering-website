@@ -94,10 +94,7 @@
                             <?= $this->Html->link('Log In', ['controller' => 'Auth', 'action' => 'login'], ['class' => 'nav-link text-white']) ?>
                         </li>
                     <?php endif; ?>
-                    <?php if ($this->Identity->isLoggedIn()): ?>
-                    <li class="nav-item">
-                        <?= $this->Html->link('Dashboard', ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'nav-link text-white']) ?>
-                    </li>
+
 
                 </ul>
            <!-- Close the 'ul' tag here -->
@@ -120,7 +117,6 @@
                         echo $this->Html->link('Log Out', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link text-white']);
                     }
                     ?>
-                <?php endif; ?>
             </div>
         </ul>
     </nav>
