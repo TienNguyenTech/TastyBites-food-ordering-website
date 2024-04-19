@@ -27,6 +27,8 @@
                     echo $this->Form->control('nonce');
                     echo $this->Form->control('nonce_expiry', ['empty' => true]);
                     echo $this->Form->control('user_type');
+                    echo $this->Form->control('first_name');
+                    echo $this->Form->control('last_name');
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
