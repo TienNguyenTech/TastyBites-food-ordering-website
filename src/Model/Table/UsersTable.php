@@ -80,15 +80,27 @@ class UsersTable extends Table
 
         $validator
             ->scalar('first_name')
-            ->maxLength('first_name', 255)
+            ->maxLength('first_name', 50)
             ->requirePresence('first_name', 'create')
-            ->notEmptyString('first_name');
+            ->notEmptyString('first_name')
+            ->add('first_name', [
+                'validFormat' => [
+                    'rule' => ['custom', '/^[A-Za-z\s]{1,50}$/'],
+                    'message' => 'first name can only contain alphabetic characters and spaces.'
+                ]
+            ]);
 
         $validator
             ->scalar('last_name')
-            ->maxLength('last_name', 255)
+            ->maxLength('last_name', 50)
             ->requirePresence('last_name', 'create')
-            ->notEmptyString('last_name');
+            ->notEmptyString('last_name')
+            ->add('last_name', [
+                'validFormat' => [
+                    'rule' => ['custom', '/^[A-Za-z\s]{1,50}$/'],
+                    'message' => 'last name can only contain alphabetic characters and spaces.'
+                ]
+            ]);
 
         return $validator;
     }
