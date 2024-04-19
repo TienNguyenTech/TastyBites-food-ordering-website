@@ -16,7 +16,7 @@ class MenuitemsController extends AppController
     public function initialize(): void {
         parent::initialize();
         // Controller-level function/action whitelist for authentication
-        $this->Authentication->allowUnauthenticated(['index', 'menu', 'search', 'view', 'add', 'edit', 'delete']);
+        $this->Authentication->allowUnauthenticated(['menu']);
 
 
         //By default, use admin layout
@@ -125,20 +125,54 @@ class MenuitemsController extends AppController
      * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
-    public function edit($id = null)
+    public function edit2($id = null)
     {
-        $menuitem = $this->Menuitems->get($id, contain: ['Orders']);
+        $menuitem = $this->Menuitems->get($id);
         if ($this->request->is(['patch', 'post', 'put'])) {
             $requestData = $this->request->getData();
+
+
 
             if(!empty($this->request->getData('menuitem_image')->getClientFilename())) {
                 $image = $this->request->getUploadedFiles();
 
                 $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
                 $image['menuitem_image']->moveTo(WWW_ROOT . 'img' . DS . 'menu' . DS . $menuitem->menuitem_image);
+
+                //dd([$requestData, $image['menuitem_image']->getClientFilename(), $menuitem]);
             } else {
                 $requestData['menuitem_image'] = null;
             }
+
+            $menuitem = $this->Menuitems->patchEntity($menuitem, $this->request->getData());
+
+            //dd([$menuitem, $requestData]);
+
+            if ($this->Menuitems->save($menuitem)) {
+                $this->Flash->success(__('The menuitem has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The menuitem could not be saved. Please, try again.'));
+        }
+        $orders = $this->Menuitems->Orders->find('list', limit: 200)->all();
+        $this->set(compact('menuitem', 'orders'));
+    }
+
+    public function edit($id = null)
+    {
+        $menuitem = $this->Menuitems->get($id, contain: ['Orders']);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $requestData = $this->request->getData();
+
+//            if(!empty($this->request->getData('menuitem_image')->getClientFilename())) {
+//                $image = $this->request->getUploadedFiles();
+//
+//                $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
+//                $image['menuitem_image']->moveTo(WWW_ROOT . 'img' . DS . 'menu' . DS . $menuitem->menuitem_image);
+//            } else {
+//                $requestData['menuitem_image'] = null;
+//            }
 
             $menuitem = $this->Menuitems->patchEntity($menuitem, $requestData);
 
@@ -153,6 +187,9 @@ class MenuitemsController extends AppController
         $orders = $this->Menuitems->Orders->find('list', limit: 200)->all();
         $this->set(compact('menuitem', 'orders'));
     }
+
+
+
 
 
 

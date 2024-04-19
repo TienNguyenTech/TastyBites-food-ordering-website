@@ -8,7 +8,7 @@
 <div class="container my-4">
     <div class="row justify-content-between align-items-center mb-3">
         <div class="col">
-            <h3 class="text-gray-800 mb-0"><b>Menu Items</b></h3>
+            <h3 class="text-gray-800 mb-0"><b>Tasty Bites Menu</b></h3>
         </div>
         <div class="col-auto">
 <!--            --><?php //= $this->Html->link(__('Add New Item'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
@@ -19,7 +19,7 @@
         <?php foreach ($menuitems as $menuitem): ?>
             <div class="col mb-4">
                 <div class="card h-100 shadow">
-                    <img src="../webroot/img/momo_background.jpg" class="card-img-top" alt="...">
+                    <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'card-img-top']) ?>
                     <div class="card-body">
                         <h5 class="card-title"><?= $menuitem->menuitem_name ?></h5>
                         <h5><?= $this->Number->currency($menuitem->menuitem_price) ?></h5>
