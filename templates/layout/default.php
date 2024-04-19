@@ -103,16 +103,52 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow">
 
-                    <div class="header-left">
-                        <div class="dashboard_bar" style="color:black">
-                            <?= h($pageTitle ?? 'Dashboard') ?>
-                        </div>
-                    </div>
-
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
+
+                    <?php
+                    // Determine if the current page is the dashboard page
+                    $isDashboardPage = $this->getRequest()->getParam('controller') === 'Dashboard' && $this->getRequest()->getParam('action') === 'index';
+
+                    // Determine if the current page is the edit, add, or index page
+                    $isEditPage = $this->getRequest()->getParam('action') === 'edit';
+                    $isAddPage = $this->getRequest()->getParam('action') === 'add';
+                    $isIndexPage = $this->getRequest()->getParam('action') === 'index';
+
+                    // Define the URL for the menu item index page
+                    $menuIndexUrl = $this->Url->build(['controller' => 'Menuitems', 'action' => 'index']);
+
+                    // Render the back button based on the page type
+                    if (!$isDashboardPage) {
+                        if ($isEditPage || $isAddPage || $isIndexPage) {
+                            echo $this->Html->tag(
+                                'button',
+                                $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
+                                ['onclick' => 'returnToMenu()', 'class' => 'btn btn-secondary']
+                            );
+                        } else {
+                            echo $this->Html->tag(
+                                'button',
+                                $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
+                                ['onclick' => 'goBack()', 'class' => 'btn btn-secondary']
+                            );
+                        }
+                    }
+                    ?>
+                    <script>
+                        // Function to navigate back to the menu item index and clear history
+                        function returnToMenu() {
+                            window.location.href = '<?php echo $menuIndexUrl; ?>';
+                            window.history.replaceState(null, null, '<?php echo $menuIndexUrl; ?>');
+                        }
+
+                        // Function to navigate back
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
