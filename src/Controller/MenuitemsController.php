@@ -55,6 +55,8 @@ class MenuitemsController extends AppController
         $menuitems = $this->paginate($query);
 
         $this->set(compact('menuitems'));
+        $this->set('pageTitle', 'Menu');
+
     }
 
     public function search() {

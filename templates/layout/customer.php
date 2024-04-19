@@ -67,7 +67,7 @@
         }
     </style>
 
-    <nav class="navbar navbar-expand-lg navbar-tea" style="background-color: rgb(235, 23, 0);">
+    <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container-fluid">
             <a class="navbar-brand text-white" href="#"><b>Tasty Bites Kitchen</b></a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
@@ -78,32 +78,32 @@
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!-- Changed 'ms-auto' to 'me-auto' -->
                     <li class="nav-item">
-                        <a class="nav-link active text-white" aria-current="page" href="#">HOME</a>
+                        <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link text-white" href="#">ABOUT</a>
+                        <a class="nav-link text-white" href="#">About</a>
                     </li>
                     <li class="nav-item">
-                        <?= $this->Html->link('MENU', ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link text-white']) ?>
+                        <?= $this->Html->link('Menu', ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link text-white']) ?>
                     </li>
                     <li class="nav-item">
-                        <?= $this->Html->link('ENQUIRY', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link text-white']) ?>
+                        <?= $this->Html->link('Enquiry', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link text-white']) ?>
                     </li>
                     <?php if (!$this->Identity->isLoggedIn()): ?>
                         <li class="nav-item">
-                            <?= $this->Html->link('LOG IN', ['controller' => 'Auth', 'action' => 'login'], ['class' => 'nav-link text-white']) ?>
+                            <?= $this->Html->link('Log In', ['controller' => 'Auth', 'action' => 'login'], ['class' => 'nav-link text-white']) ?>
                         </li>
                     <?php endif; ?>
                     <!--<?php if ($this->Identity->isLoggedIn()): ?>
                     <li class="nav-item">
-                        <?= $this->Html->link('DASHBOARD', ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'nav-link text-white']) ?>
+                        <?= $this->Html->link('Dashboard', ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'nav-link text-white']) ?>
                     </li>
                 -->
                     </ul> <!-- Close the 'ul' tag here -->
                     <?php
                     if (!$this->Identity->isLoggedIn()) {
                         echo $this->Html->link(
-                            'LOG IN',
+                            'Log In',
                             ['controller' => 'Auth', 'action' => 'login'],
                             ['class' => 'nav-link text-white']
                         );
@@ -112,11 +112,11 @@
                     <?php
                     if ($this->Identity->isLoggedIn()) {
                         echo $this->Html->link(
-                            'DASHBOARD',
+                            'Dashboard',
                             ['controller' => 'Dashboard', 'action' => 'index'],
                             ['class' => 'nav-link text-white']
                         );
-                        echo $this->Html->link('LOG OUT', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link text-white']);
+                        echo $this->Html->link('Log Out', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link text-white']);
                     }
                     ?>
                 <?php endif; ?>
@@ -125,10 +125,16 @@
         </div>
     </nav>
 
-
+    <!-- Page Content -->
+    <div id="content-wrapper" class="d-flex flex-column navbar-colour">
+        <div id="content">
+            <!-- Main Content -->
+            <?= $this->fetch('content') ?>
+        </div>
+    </div>
 
     <!-- Site footer -->
-    <footer class="bg-dark text-white py-4 fixed-bottom">
+    <footer class="bg-dark text-white py-4">
         <div class="container">
             <div class="row">
                 <div class="col-md-4">
@@ -157,6 +163,7 @@
             </div>
         </div>
     </footer>
+
 
 
 
