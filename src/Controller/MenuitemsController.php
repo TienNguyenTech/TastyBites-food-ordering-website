@@ -101,6 +101,8 @@ class MenuitemsController extends AppController
             $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
             $image['menuitem_image']->moveTo(WWW_ROOT . 'img' . DS . 'menu' . DS . $menuitem->menuitem_image);
 
+
+
             if ($this->Menuitems->save($menuitem)) {
                 $this->Flash->success(__('The menuitem has been saved.'));
 
@@ -123,7 +125,20 @@ class MenuitemsController extends AppController
     {
         $menuitem = $this->Menuitems->get($id, contain: ['Orders']);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $menuitem = $this->Menuitems->patchEntity($menuitem, $this->request->getData());
+            $requestData = $this->request->getData();
+
+            if(!empty($this->request->getData('menuitem_image')->getClientFilename())) {
+                $image = $this->request->getUploadedFiles();
+
+                $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
+                $image['menuitem_image']->moveTo(WWW_ROOT . 'img' . DS . 'menu' . DS . $menuitem->menuitem_image);
+            } else {
+                $requestData['menuitem_image'] = null;
+            }
+
+            $menuitem = $this->Menuitems->patchEntity($menuitem, $requestData);
+
+
             if ($this->Menuitems->save($menuitem)) {
                 $this->Flash->success(__('The menuitem has been saved.'));
 
@@ -134,6 +149,8 @@ class MenuitemsController extends AppController
         $orders = $this->Menuitems->Orders->find('list', limit: 200)->all();
         $this->set(compact('menuitem', 'orders'));
     }
+
+
 
     /**
      * Delete method
