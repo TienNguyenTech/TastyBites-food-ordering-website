@@ -10832,3 +10832,86 @@ textarea.form-control-lg {
   width: 4rem;
   font-size: 2rem;
 }
+
+nav {
+  background-color: #333;
+  padding: 10px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  text-align: center;
+}
+
+li {
+  display: inline;
+  margin-right: 20px;
+}
+
+li a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 18px;
+}
+
+li a:hover {
+  color: #ff0;
+}
+
+@media only screen and (max-width: 600px) {
+  nav {
+      padding: 5px;
+  }
+
+  li {
+      display: block;
+      margin-bottom: 10px;
+  }
+}
+
+
+#whiteText {
+  color: #fff; /* Set text color to white */
+}
+
+/* Custom CSS for the footer */
+#footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  z-index: -1; /* Set z-index to position behind content */
+}
+
+.navbar {
+  background-color: transparent; /* Set the background color to transparent */
+  border: none; /* Optionally, remove any border */
+}
+
+/*.navbar-team009red {
+  background-color: rgb(235, 23, 0);
+}*/
+
+/*.header .navbar .navbar-collapse {
+  height: 100%;
+  width: 100%;
+}
+.navbar-expand .navbar-collapse {
+  display: flex !important;
+  flex-basis: auto;
+}
+.collapse:not(.show) {
+  display: none;
+}
+.justify-content-between {
+  justify-content: space-between !important;
+}
+.navbar-collapse {
+  flex-basis: 100%;
+  flex-grow: 1;
+  align-items: center;
+}
+div, span, ol, ul {
+  scrollbar-width: thin;
+}*/
