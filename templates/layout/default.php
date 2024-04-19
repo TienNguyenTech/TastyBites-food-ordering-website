@@ -60,9 +60,9 @@
                 <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Menuitems', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-birthday-cake"></i>
                     <span>Menu</span></a>
-                <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Orders', 'action' => 'index']) ?>">
+                <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Enquirys', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-pen"></i>
-                    <span>Orders</span></a>
+                    <span>Enquiries</span></a>
 
             </li>
 
