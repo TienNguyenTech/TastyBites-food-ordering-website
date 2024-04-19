@@ -11,7 +11,7 @@
         <table class="table table-bordered">
             <thead>
             <tr>
-                <th><?= $this->Paginator->sort('user_id', 'User ID') ?></th>
+                <th><?= $this->Paginator->sort('user_id', 'Admin ID') ?></th>
                 <th><?= $this->Paginator->sort('email') ?></th>
                 <th><?= $this->Paginator->sort('user_type') ?></th>
                 <th class="actions"><?= __('Actions') ?></th>
