@@ -75,7 +75,7 @@
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="collapse navbar-collapse" id="navbarSupportedContent">
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!-- Changed 'ms-auto' to 'me-auto' -->
                     <li class="nav-item">
                         <a class="nav-link active text-white" aria-current="page" href="#">Home</a>
@@ -94,12 +94,13 @@
                             <?= $this->Html->link('Log In', ['controller' => 'Auth', 'action' => 'login'], ['class' => 'nav-link text-white']) ?>
                         </li>
                     <?php endif; ?>
-                    <!--<?php if ($this->Identity->isLoggedIn()): ?>
+                    <?php if ($this->Identity->isLoggedIn()): ?>
                     <li class="nav-item">
                         <?= $this->Html->link('Dashboard', ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'nav-link text-white']) ?>
                     </li>
-                -->
-                    </ul> <!-- Close the 'ul' tag here -->
+
+                </ul>
+           <!-- Close the 'ul' tag here -->
                     <?php
                     if (!$this->Identity->isLoggedIn()) {
                         echo $this->Html->link(
@@ -121,7 +122,7 @@
                     ?>
                 <?php endif; ?>
             </div>
-        </div>
+        </ul>
     </nav>
 
     <!-- Page Content -->
