@@ -153,6 +153,105 @@ $this->disableAutoLayout();
 
 <!--<a class="btn button-primary btn-lg px-4 me-sm-3" href="#features">How it works</a>-->
 
+<!-- About Us section-->
+
+<style>
+    .about-us-bg-color {
+        background-color: #273d4f;
+    }
+    .about-us-text-color {
+        color: #fff5f1;
+    }
+    .carousel-control-prev, .carousel-control-next {
+        width: 3rem;
+        height: 3rem;
+        background-color: rgba(255, 255, 255, 0.5);
+        border-radius: 50%;
+        color: #273d4f;
+    }
+    .carousel-control-prev-icon, .carousel-control-next-icon {
+        background-color: #273d4f;
+    }
+    .carousel-control-prev:hover, .carousel-control-next:hover {
+        background-color: #fff;
+    }
+</style>
+
+<style>
+    .about-us-bg-color {
+        background-color: #273d4f;
+    }
+    .about-us-text-color {
+        color: #fff5f1;
+    }
+    .carousel-item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+</style>
+
+<style>
+    .about-us-bg-color {
+        background-color: #273d4f;
+    }
+    .about-us-text-color {
+        color: #fff5f1;
+    }
+    .carousel-item img {
+        width: 100%;
+        height: auto;
+        object-fit: cover;
+    }
+</style>
+
+<section class="py-5 about-us-bg-color">
+    <div class="container px-5 my-5 px-5">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="about-us-text-color">
+                    <div class="text-center mb-5">
+                        <h2 class="fw-bolder">About Us</h2>
+                        <p class="lead mb-0">Discover the story behind our Nepalese take-and-make food service</p>
+                    </div>
+                    <div>
+                        <p>We are passionate about bringing the authentic flavors of Nepal to your home with our take-and-make food service. Our journey began with a love for Nepalese cuisine and a desire to share it with others.</p>
+                        <p>At our core, we believe in using fresh, high-quality ingredients to create mouthwatering dishes that capture the essence of Nepalese cooking. Each meal is carefully crafted to deliver an unforgettable culinary experience.</p>
+                        <p>Whether you're craving momo dumplings, flavorful curries, or aromatic rice dishes, we have something for everyone. Our easy-to-prepare meals allow you to enjoy restaurant-quality food in the comfort of your own kitchen.</p>
+                        <p>Join us on a culinary adventure as we celebrate the rich heritage and diverse flavors of Nepal. With our take-and-make food service, you can savor the taste of Nepal without leaving home.</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active">
+                            <img src="webroot/img/LMAO1.jpg" class="d-block w-100" alt="Image 1">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="webroot/img/LMAO3.jpg" class="d-block w-100" alt="Image 3">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="webroot/img/LMAO4.jpg" class="d-block w-100" alt="Image 4">
+                        </div>
+                        <div class="carousel-item">
+                            <img src="webroot/img/LMAO5.jpg" class="d-block w-100" alt="Image 5">
+                        </div>
+                    </div>
+                    <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Previous</span>
+                    </button>
+                    <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleSlidesOnly" data-bs-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="visually-hidden">Next</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
 <!-- Features section-->
 <style>
     /* Override Bootstrap's primary color and gradient */
@@ -201,8 +300,56 @@ $this->disableAutoLayout();
         </div>
     </div>
 </section>
+<!-- Testimonials section-->
 
+
+<style>
+    .testimonial_color {
+        background-color: #273d4f;
+
+        .testimonial-text{
+            color: #fff5f1;
+
+    }
+</style>
+<section class="py-5 border-bottom testimonial_color" id ="testimonials">
+    <div class="container px-5 my-5 px-5">
+        <div class="text-center mb-5">
+            <h2 class="fw-bolder testimonial-text">Customer testimonials</h2>
+            <p class="lead mb- testimonial-text">Hear from our delighted Customers!</p>
+        </div>
+        <div class="row gx-5 justify-content-center">
+            <div class="col-lg-6">
+                <!-- Testimonial 1-->
+                <div class="card mb-4">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
+                            <div class="ms-4">
+                                <p class="mb-1">Wow, what an amazing experience! This team brought the authentic flavors of Nepal right into my kitchen. Highly recommend to all nepalese food enthusiasts!</p>
+                                <div class="small text-muted">- Priya Sharma, Richmond</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <!-- Testimonial 2-->
+                <div class="card">
+                    <div class="card-body p-4">
+                        <div class="d-flex">
+                            <div class="flex-shrink-0"><i class="bi bi-chat-right-quote-fill text-primary fs-1"></i></div>
+                            <div class="ms-4">
+                                <p class="mb-1">As someone with a busy schedule, I'm always on the lookout for convenient meal options that don't compromise on taste. The flavors transported me back to the streets of Kathmandu. Thank you for making dinner time a delight</p>
+                                <div class="small text-muted">- Rajesh Patel, Clayton</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </section>
+
+
 <!-- Footer-->
 <footer class="py-5 bg-dark">
     <div class="container px-5"><p class="m-0 text-center text-white">Copyright &copy; Tasty Bites Kitchen</p></div>
