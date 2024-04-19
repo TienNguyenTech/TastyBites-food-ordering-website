@@ -109,32 +109,42 @@
                     </button>
 
                     <?php
-                    // Determine if the current page is the dashboard page
-                    $isDashboardPage = $this->getRequest()->getParam('controller') === 'Dashboard' && $this->getRequest()->getParam('action') === 'index';
+                    // Determine if the current page is the menuitem add, edit, or index page
+                    $isMenuItemEditPage = $this->getRequest()->getParam('controller') === 'Menuitems' && in_array($this->getRequest()->getParam('action'), ['edit', 'add']);
+                    $isMenuItemIndexPage = $this->getRequest()->getParam('controller') === 'Menuitems' && $this->getRequest()->getParam('action') === 'index';
 
-                    // Determine if the current page is the edit, add, or index page
-                    $isEditPage = $this->getRequest()->getParam('action') === 'edit';
-                    $isAddPage = $this->getRequest()->getParam('action') === 'add';
-                    $isIndexPage = $this->getRequest()->getParam('action') === 'index';
+                    // Determine if the current page is the user add, edit, or index page
+                    $isUserEditPage = $this->getRequest()->getParam('controller') === 'Users' && in_array($this->getRequest()->getParam('action'), ['edit', 'add']);
+                    $isUserIndexPage = $this->getRequest()->getParam('controller') === 'Users' && $this->getRequest()->getParam('action') === 'index';
 
                     // Define the URL for the menu item index page
                     $menuIndexUrl = $this->Url->build(['controller' => 'Menuitems', 'action' => 'index']);
 
+                    // Define the URL for the dashboard index page
+                    $dashboardIndexUrl = $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']);
+
                     // Render the back button based on the page type
-                    if (!$isDashboardPage) {
-                        if ($isEditPage || $isAddPage || $isIndexPage) {
-                            echo $this->Html->tag(
-                                'button',
-                                $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
-                                ['onclick' => 'returnToMenu()', 'class' => 'btn btn-secondary']
-                            );
-                        } else {
-                            echo $this->Html->tag(
-                                'button',
-                                $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
-                                ['onclick' => 'goBack()', 'class' => 'btn btn-secondary']
-                            );
-                        }
+                    if ($isMenuItemEditPage || $isMenuItemIndexPage) {
+                        // If it's the edit or index page for menu items, return to the menu item index
+                        echo $this->Html->tag(
+                            'button',
+                            $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
+                            ['onclick' => 'returnToMenu()', 'class' => 'btn btn-secondary']
+                        );
+                    } elseif ($isUserEditPage || $isUserIndexPage) {
+                        // If it's the edit or index page for users, return to the dashboard index
+                        echo $this->Html->tag(
+                            'button',
+                            $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
+                            ['onclick' => 'returnToDashboard()', 'class' => 'btn btn-secondary']
+                        );
+                    } else {
+                        // Otherwise, use the default back functionality
+                        echo $this->Html->tag(
+                            'button',
+                            $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
+                            ['onclick' => 'goBack()', 'class' => 'btn btn-secondary']
+                        );
                     }
                     ?>
                     <script>
@@ -142,6 +152,12 @@
                         function returnToMenu() {
                             window.location.href = '<?php echo $menuIndexUrl; ?>';
                             window.history.replaceState(null, null, '<?php echo $menuIndexUrl; ?>');
+                        }
+
+                        // Function to navigate back to the dashboard index and clear history
+                        function returnToDashboard() {
+                            window.location.href = '<?php echo $dashboardIndexUrl; ?>';
+                            window.history.replaceState(null, null, '<?php echo $dashboardIndexUrl; ?>');
                         }
 
                         // Function to navigate back
