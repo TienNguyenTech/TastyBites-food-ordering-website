@@ -15,7 +15,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
                 <tr>
-                    <th>Item ID</th>
+<!--                    <th>Item ID</th>-->
                     <th>Name</th>
                     <!--                    <th>--><?php //= h('menuitem_image') ?><!--</th>-->
                     <th>Image</th>
@@ -28,7 +28,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
             <tbody>
                 <?php foreach ($menuitems as $menuitem): ?>
                     <tr>
-                        <td><?= $this->Number->format($menuitem->menuitem_id) ?></td>
+<!--                        <td>--><?php //= $this->Number->format($menuitem->menuitem_id) ?><!--</td>-->
                         <td><?= h($menuitem->menuitem_name) ?></td>
                         <td><?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'style' => 'max-width: 100px;']) ?>
                         </td>
