@@ -109,6 +109,26 @@ endif;
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active-home fire-text" aria-current="page" href="#!">Home</a></li>
                 <li class="nav-item"><a class="nav-link fire-text" href="#!">Menu</a></li>
+                <li class="nav-item"><a class="nav-link fire-text" href="#!">Cart</a></li>
+                <?php
+                if (!$this->Identity->isLoggedIn()) {
+                    echo $this->Html->link(
+                        'Log in',
+                        ['controller' => 'Auth', 'action' => 'login'],
+                        ['class' => 'nav-link fire-text']);
+                }
+                ?>
+                <?php
+                if ($this->Identity->isLoggedIn()) {
+                    echo $this->Html->link(
+                        'Dashboard',
+                        ['controller' => 'Dashboard', 'action' => 'index'],
+                        ['class' => 'nav-link fire-text']);
+                    echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
+                }
+                ?>
+
+
             </ul>
         </div>
     </div>

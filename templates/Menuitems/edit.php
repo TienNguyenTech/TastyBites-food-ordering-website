@@ -5,15 +5,12 @@
  * @var string[]|\Cake\Collection\CollectionInterface $orders
  */
 ?>
-<h1 class="h3 mb-2 text-gray-800">Edit Menuitem</h1>
-<?= $this->Form->create($menuitem) ?>
+<h1 class="h3 mb-2 text-gray-800">Edit Menu Item</h1>
+<?= $this->Form->create($menuitem, ['class' => 'text-gray-800']) ?>
 <?php
-echo $this->Form->control('menuitem_name');
-echo $this->Form->control('menuitem_image');
-echo $this->Form->control('menuitem_desc');
-echo $this->Form->control('menuitem_price');
-echo $this->Form->control('menuitem_rating');
-echo $this->Form->control('orders._ids', ['options' => $orders]);
+echo $this->Form->control('menuitem_name', ['label' => 'Name', 'class' => 'form-control']);
+echo $this->Form->control('menuitem_desc', ['label' => 'Description', 'class' => 'form-control', 'type' => 'textarea']);
+echo $this->Form->control('menuitem_price', ['label' => 'Price', 'class' => 'form-control', 'min' => '0', 'style' => 'margin-bottom: 10px']);
 ?>
 <?= $this->Form->button(__('Submit'),['class'=>'btn btn-primary']) ?>
 <?= $this->Form->end() ?>
