@@ -13,48 +13,8 @@
  * @license   https://opensource.org/licenses/mit-license.php MIT License
  * @var \App\View\AppView $this
  */
-use Cake\Cache\Cache;
-use Cake\Core\Configure;
-use Cake\Core\Plugin;
-use Cake\Datasource\ConnectionManager;
-use Cake\Error\Debugger;
-use Cake\Http\Exception\NotFoundException;
 
 $this->disableAutoLayout();
-
-$checkConnection = function (string $name) {
-    $error = null;
-    $connected = false;
-    try {
-        ConnectionManager::get($name)->getDriver()->connect();
-        // No exception means success
-        $connected = true;
-    } catch (Exception $connectionError) {
-        $error = $connectionError->getMessage();
-        if (method_exists($connectionError, 'getAttributes')) {
-            $attributes = $connectionError->getAttributes();
-            if (isset($attributes['message'])) {
-                $error .= '<br />' . $attributes['message'];
-            }
-        }
-        if ($name === 'debug_kit') {
-            $error = 'Try adding your current <b>top level domain</b> to the
-                <a href="https://book.cakephp.org/debugkit/5/en/index.html#configuration" target="_blank">DebugKit.safeTld</a>
-            config and reload.';
-            if (!in_array('sqlite', \PDO::getAvailableDrivers())) {
-                $error .= '<br />You need to install the PHP extension <code>pdo_sqlite</code> so DebugKit can work properly.';
-            }
-        }
-    }
-
-    return compact('connected', 'error');
-};
-
-if (!Configure::read('debug')) :
-    throw new NotFoundException(
-        'Please replace templates/Pages/home.php with your own version or re-enable debug mode.'
-    );
-endif;
 
 ?>
 <!DOCTYPE html>
@@ -109,7 +69,7 @@ endif;
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <li class="nav-item"><a class="nav-link active-home fire-text" aria-current="page" href="#!">Home</a></li>
                 <li class="nav-item"><a class="nav-link fire-text" href="#!">About</a></li>
-                <li class="nav-item"><a class="nav-link fire-text" href="#!">Menu</a></li>
+                <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>                
                 <li class="nav-item"><a class="nav-link fire-text" href="#!">Cart</a></li>
                 <?php
                 if (!$this->Identity->isLoggedIn()) {
@@ -171,7 +131,7 @@ endif;
     .button-primary:hover {
         background-color: #cb4c46; /* Button color on hover */
         border-color: #cb4c46;
-
+    }
 </style>
 
 <header class="bg-dark py-5 header-bg">
@@ -180,10 +140,10 @@ endif;
             <div class="col-lg-6">
                 <div class="text-center my-5">
                     <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to Tasty Bites Kitchen</h1>
-                    <h2 class=" header-text">The most authentic nepalese cuisine experience in melbourne</h2>
-                    <div class="d-grid gap-3 d-sm-flex justify-content-sm-center">
-                        <a class="btn button-primary btn-lg px-4 me-sm-3" href="#features">How it works</a>
-                        <a class="btn button-primary btn-lg px-4" href="#!">Browse dishes</a>
+                    <p class="lead text-white mb-4 header-text">Experience the most authentic Nepalese cuisine in Melbourne</p>
+                    <div class="d-grid gap-3 d-sm-flex justify-content-center">
+                        
+                        <?= $this->Html->link("Browse Dishes", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'btn button-primary btn-lg px-4']) ?>
                     </div>
                 </div>
             </div>
@@ -191,6 +151,7 @@ endif;
     </div>
 </header>
 
+<!--<a class="btn button-primary btn-lg px-4 me-sm-3" href="#features">How it works</a>-->
 
 <!-- Features section-->
 <style>
@@ -212,7 +173,7 @@ endif;
     .menu-link:hover {
         color: #cb4c46; /* Color on hover */
     }
-    }
+    
 </style>
 
 <section class="py-5 border-bottom custom-bg" id="features">

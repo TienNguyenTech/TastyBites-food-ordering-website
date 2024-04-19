@@ -42,10 +42,10 @@
                 <div class="table-responsive">
                     <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                         <tr>
-                            <th><?= __('Menuitem Id') ?></th>
-                            <th><?= __('Menuitem Name') ?></th>
-                            <th><?= __('Menuitem Price') ?></th>
-                            <th><?= __('Menuitem Desc') ?></th>
+                            <th><?= __('Id') ?></th>
+                            <th><?= __('Name') ?></th>
+                            <th><?= __('Price') ?></th>
+                            <th><?= __('Description') ?></th>
 
 
                             <th class="actions"><?= __('Actions') ?></th>

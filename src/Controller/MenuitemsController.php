@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+
 /**
  * Menuitems Controller
  *
@@ -10,6 +11,19 @@ namespace App\Controller;
  */
 class MenuitemsController extends AppController
 {
+    // TODO: custoemr views: menu, search; everything else are admin
+
+    public function initialize(): void {
+        parent::initialize();
+        // Controller-level function/action whitelist for authentication
+        $this->Authentication->allowUnauthenticated(['index', 'menu', 'search', 'view', 'add', 'edit', 'delete']);
+
+
+        //By default, use admin layout
+        // $this->viewBuilder()->setLayout('admin');
+        // Override individual functions if to use default (i.e. customers ) layout
+    }
+
     /**
      * Index method
      *
@@ -31,6 +45,24 @@ class MenuitemsController extends AppController
         $this->set(compact('menuitems'));
     }
 
+    public function menu()
+    {
+    //Updated upstream
+        $this->viewBuilder()->setLayout('customer');
+
+        // Use default (customer ) layout
+//         $this->viewBuilder()->setLayout('default');
+        //Stashed changes
+        //$this->render('index');
+
+        $query = $this->Menuitems->find();
+        $menuitems = $this->paginate($query);
+
+        $this->set(compact('menuitems'));
+        $this->set('pageTitle', 'Menu');
+
+    }
+
     public function search() {
         $search = $this->request->getData();
 
@@ -43,6 +75,7 @@ class MenuitemsController extends AppController
 
         return $this->redirect($url);
     }
+
 
     /**
      * View method
@@ -67,6 +100,13 @@ class MenuitemsController extends AppController
         $menuitem = $this->Menuitems->newEmptyEntity();
         if ($this->request->is('post')) {
             $menuitem = $this->Menuitems->patchEntity($menuitem, $this->request->getData());
+            $image = $this->request->getUploadedFiles();
+
+            $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
+            $image['menuitem_image']->moveTo(WWW_ROOT . 'img' . DS . 'menu' . DS . $menuitem->menuitem_image);
+
+
+
             if ($this->Menuitems->save($menuitem)) {
                 $this->Flash->success(__('The menuitem has been saved.'));
 
@@ -89,7 +129,20 @@ class MenuitemsController extends AppController
     {
         $menuitem = $this->Menuitems->get($id, contain: ['Orders']);
         if ($this->request->is(['patch', 'post', 'put'])) {
-            $menuitem = $this->Menuitems->patchEntity($menuitem, $this->request->getData());
+            $requestData = $this->request->getData();
+
+            if(!empty($this->request->getData('menuitem_image')->getClientFilename())) {
+                $image = $this->request->getUploadedFiles();
+
+                $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
+                $image['menuitem_image']->moveTo(WWW_ROOT . 'img' . DS . 'menu' . DS . $menuitem->menuitem_image);
+            } else {
+                $requestData['menuitem_image'] = null;
+            }
+
+            $menuitem = $this->Menuitems->patchEntity($menuitem, $requestData);
+
+
             if ($this->Menuitems->save($menuitem)) {
                 $this->Flash->success(__('The menuitem has been saved.'));
 
@@ -100,6 +153,8 @@ class MenuitemsController extends AppController
         $orders = $this->Menuitems->Orders->find('list', limit: 200)->all();
         $this->set(compact('menuitem', 'orders'));
     }
+
+
 
     /**
      * Delete method
