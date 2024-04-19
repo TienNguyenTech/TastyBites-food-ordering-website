@@ -42,7 +42,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <tr>
                         <td><?= $this->Number->format($menuitem->menuitem_id) ?></td>
                         <td><?= h($menuitem->menuitem_name) ?></td>
-                        <td><?= $this->Html->image($menuitem->menuitem_image, ['alt' => 'Menu Item Image', 'style' => 'max-width: 100px;']) ?>
+                        <td><?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'style' => 'max-width: 100px;']) ?>
                         </td>
                         <td><?= h($menuitem->menuitem_desc) ?></td>
                         <td><?= $this->Number->currency($menuitem->menuitem_price) ?></td>

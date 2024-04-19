@@ -96,6 +96,11 @@ class MenuitemsController extends AppController
         $menuitem = $this->Menuitems->newEmptyEntity();
         if ($this->request->is('post')) {
             $menuitem = $this->Menuitems->patchEntity($menuitem, $this->request->getData());
+            $image = $this->request->getUploadedFiles();
+
+            $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
+            $image['menuitem_image']->moveTo(WWW_ROOT . 'img' . DS . 'menu' . DS . $menuitem->menuitem_image);
+
             if ($this->Menuitems->save($menuitem)) {
                 $this->Flash->success(__('The menuitem has been saved.'));
 
