@@ -21,7 +21,7 @@
     <div class="row row-cols-1 row-cols-md-5 g-4 ">
         <?php foreach ($menuitems as $menuitem): ?>
             <div class="col mb-4">
-                <div class="card shadow" style="height: 70%;">
+                <div class="card shadow" style="height: 99%;">
                     <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'card-img-top img-fluid']) ?>
                     <div class="card-body">
                         <h5 class="card-title"><?= $menuitem->menuitem_name ?></h5>
