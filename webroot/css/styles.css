@@ -70,3 +70,37 @@ p{
 .menu-card p {
     margin-bottom: 10px;
 }
+
+
+/*Menu page modifying*/
+.card {
+    width: 200px; /* Set a fixed width for the card */
+}
+
+.card-img-top {
+    width: 100%; /* Set a fixed width for the image */
+    height: 150px; /* Set a fixed height for the image */
+    object-fit: cover; /* Maintain aspect ratio */
+}
+
+.card-body {
+    height: 100px; /* Set a fixed height for the card body */
+}
+
+.card-title {
+    font-size: 16px; /* Set font size for the title */
+}
+
+.card-text {
+    font-size: 14px; /* Set font size for the description */
+}
+
+.card-footer {
+    height: 50px; /* Set a fixed height for the card footer */
+}
+
+.btn {
+    padding: 8px 16px; /* Set padding for the button */
+    font-size: 14px; /* Set font size for the button */
+}
+
