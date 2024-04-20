@@ -15,6 +15,7 @@ class OrdersMenuitemsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
+    
     public function index()
     {
         $query = $this->OrdersMenuitems->find()
@@ -101,5 +102,21 @@ class OrdersMenuitemsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
+    }
+    public function cart()
+    {
+        $this->viewBuilder()->setLayout('customer');
+        
+        // Fetch cart items from the database
+        $cartItems = $this->OrdersMenuitems->find('all');
+        
+        // Calculate total
+        $cartTotal = 0;
+        foreach ($cartItems as $item) {
+            $cartTotal += $item['om_quantity'] * $item['om_price'];
+        }
+        
+        // Pass variables to the view
+        $this->set(compact('cartItems', 'cartTotal'));
     }
 }
