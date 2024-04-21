@@ -33,9 +33,26 @@
 <body>
     <!-- Responsive navbar-->
     <style>
+        .container {
+            display: flex;
+            justify-content: space-between;
+            /* Aligns left and right */
+            padding: 20px;
+        }
+
+        .align-left {
+            justify-content: flex-start;
+        }
+
+        .align-right {
+            justify-content: flex-end;
+        }
+
         /* Override Bootstrap's primary color */
         .navbar-tea {
             background-color: #273d4f;
+            display: flex;
+            justify-content: space-between;
         }
 
         .fire-text {
@@ -64,48 +81,75 @@
         .active-home:hover {
             color: #cb4c46;
         }
+
+        .btn-primary {
+            background-color: #273d4f;
+            /* Custom color for the button */
+            width: 100%;
+            /* Button takes full width of the footer */
+            margin: 0;
+            /* No extra margin on any side */
+            width: 100px;
+
+
+        }
+    
+
+        .navbar-links {
+            display: flex;
+            /* This makes the child elements align horizontally */
+            justify-content: flex-start;
+            /* Default alignment */
+            align-items: center;
+            /* Align items vertically in the center */
+        }
+
+        .nav-item {
+            margin-right: 15px;
+            /* Spacing between items */
+        }
     </style>
+    </head>
 
-    <nav class="navbar navbar-expand-lg navbar-tea">
-        <div class="container px-5">
-            <a class="navbar-brand Big-Stuff" href="/">Tasty Bites Kitchen</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item"><a class="nav-link active-home fire-text" aria-current="page" href="/">Home</a>
-                    </li>
-                    <li class="nav-item">
-                        <?= $this->Html->link('Menu', ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
-                    </li>
-                    <li class="nav-item">
-                        <?= $this->Html->link('Contact Us', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
-                    </li>
-                    <?php
-                    if (!$this->Identity->isLoggedIn()) {
-                        echo $this->Html->link(
-                            'Log in',
-                            ['controller' => 'Auth', 'action' => 'login'],
-                            ['class' => 'nav-link fire-text']
-                        );
-                    }
-                    ?>
-                    <?php
-                    if ($this->Identity->isLoggedIn()) {
-                        echo $this->Html->link(
-                            'Dashboard',
-                            ['controller' => 'Dashboard', 'action' => 'index'],
-                            ['class' => 'nav-link fire-text']
-                        );
-                        echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
-                    }
-                    ?>
-                    <?= $this->Html->link("Cart", ['controller' => 'Menuitems', 'action' => 'cart'], ['class' => 'nav-link fire-text']) ?>
-
-                </ul>
+    <body>
+        <nav class="navbar navbar-expand-lg navbar-tea">
+            <div class="container">
+                <a class="navbar-brand Big-Stuff" href="/">Tasty Bites Kitchen</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+                    aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <div class="navbar-links ms-auto">
+                        <div class="nav-item">
+                            <a class="nav-link fire-text" aria-current="page" href="/">Home</a>
+                        </div>
+                        <div class="nav-item">
+                            <?= $this->Html->link('Menu', ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
+                        </div>
+                        <div class="nav-item">
+                            <?= $this->Html->link('Contact Us', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                        </div>
+                        <div class="nav-item">
+                            <?php if (!$this->Identity->isLoggedIn()): ?>
+                                <?= $this->Html->link('Log in', ['controller' => 'Auth', 'action' => 'login'], ['class' => 'btn btn-primary']) ?>
+                            <?php endif; ?>
+                        </div>
+                        <div class="nav-item">
+                            <?php if ($this->Identity->isLoggedIn()): ?>
+                                <?= $this->Html->link('Dashboard', ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'btn btn-primary']) ?>
+                                <?= $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'btn btn-primary']) ?>
+                            <?php endif; ?>
+                        </div>
+                        <div class="nav-item">
+                            <?= $this->Html->link("Cart", ['controller' => 'Menuitems', 'action' => 'cart'], ['class' => 'btn btn-primary']) ?>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </nav>
+        </nav>
+    </body>
+
 
     <?= $this->fetch('content') ?>
