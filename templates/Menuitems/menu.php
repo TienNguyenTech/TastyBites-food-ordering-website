@@ -7,6 +7,7 @@
     <title>Tasty Bites Menu</title>
     <link rel="stylesheet" type="text/css" href="<?= $this->Url->css('styles.css') ?>">
     <style>
+        /*too lazy. I will create a CSS file later*/
         body {
             background-color: white;
             /* Background color for the whole page */
@@ -16,7 +17,7 @@
 
         .card {
             height: 400px;
-            /* Card height increased by approximately 30% */
+            /* Set a fixed height for the cards */
             width: 250px;
             /* Set a consistent width for the cards */
             display: flex;
