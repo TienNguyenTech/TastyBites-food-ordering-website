@@ -13,7 +13,8 @@ class MenuitemsController extends AppController
 {
     // TODO: custoemr views: menu, search; everything else are admin
 
-    public function initialize(): void {
+    public function initialize(): void
+    {
         parent::initialize();
         // Controller-level function/action whitelist for authentication
         $this->Authentication->allowUnauthenticated(['menu']);
@@ -47,7 +48,7 @@ class MenuitemsController extends AppController
 
     public function menu()
     {
-    //Updated upstream
+        //Updated upstream
         $this->viewBuilder()->setLayout('customer');
 
         // Use default (customer ) layout
@@ -63,7 +64,8 @@ class MenuitemsController extends AppController
 
     }
 
-    public function search() {
+    public function search()
+    {
         $search = $this->request->getData();
 
         $search = array_filter(array_map('trim', $search));
@@ -133,7 +135,7 @@ class MenuitemsController extends AppController
 
 
 
-            if(!empty($this->request->getData('menuitem_image')->getClientFilename())) {
+            if (!empty($this->request->getData('menuitem_image')->getClientFilename())) {
                 $image = $this->request->getUploadedFiles();
 
                 $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
@@ -165,7 +167,7 @@ class MenuitemsController extends AppController
         if ($this->request->is(['patch', 'post', 'put'])) {
             $requestData = $this->request->getData();
 
-//            if(!empty($this->request->getData('menuitem_image')->getClientFilename())) {
+            //            if(!empty($this->request->getData('menuitem_image')->getClientFilename())) {
 //                $image = $this->request->getUploadedFiles();
 //
 //                $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
@@ -210,7 +212,7 @@ class MenuitemsController extends AppController
     }
 
     /**View Cart actions */
-    public function viewCart()
+    public function cart()
     {
         $this->viewBuilder()->setLayout('customer');
 

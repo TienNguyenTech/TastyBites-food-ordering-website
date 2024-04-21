@@ -108,7 +108,7 @@
                         </div>
                         <div class="card-footer">
                             <!-- Add to Cart button, centered in the footer -->
-                            <?= $this->Html->link(__('Add to Cart'), ['controller' => 'OrdersMenuitems', 'action' => 'cart', $menuitem->id, 1], ['class' => 'btn btn-primary']) ?>
+                            <?= $this->Html->link(__('Add to Cart'), ['controller' => 'Menuitems', 'action' => 'cart', $menuitem->id, 1], ['class' => 'btn btn-primary']) ?>
                         </div>
                     </div>
                 </div>
