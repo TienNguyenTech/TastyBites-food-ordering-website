@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
-use Cake\Event\EventInterface;
 
 /**
  * Menuitems Controller
@@ -12,89 +11,205 @@ use Cake\Event\EventInterface;
  */
 class MenuitemsController extends AppController
 {
-    /**
-     * Initialize method
-     */
-    public function initialize(): void
-    {
+    // TODO: custoemr views: menu, search; everything else are admin
+
+    public function initialize(): void {
         parent::initialize();
-        $this->Authentication->allowUnauthenticated(['menu', 'addToCart', 'viewCart']);
+        // Controller-level function/action whitelist for authentication
+        $this->Authentication->allowUnauthenticated(['menu']);
+
+
+        //By default, use admin layout
+        // $this->viewBuilder()->setLayout('admin');
+        // Override individual functions if to use default (i.e. customers ) layout
     }
 
     /**
-     * Menu method
+     * Index method
      *
-     * Display all available menu items.
-     *
-     * @return \Cake\Http\Response|null|void
+     * @return \Cake\Http\Response|null|void Renders view
      */
-    public function menu()
+    public function index()
     {
-        $this->viewBuilder()->setLayout('customer');
-        $menuitems = $this->Menuitems->find('all');
+        $search = $this->request->getQuery('search');
+        $searchConditions = [
+            'OR' => [
+                'menuitem_name LIKE' => "%{$search}%",
+                'menuitem_desc LIKE' => "%{$search}%"
+            ]
+        ];
+
+        $query = $this->Menuitems->find()->where($searchConditions);
+        $menuitems = $this->paginate($query);
+
         $this->set(compact('menuitems'));
     }
 
-    /**
-     * Add to Cart method
-     *
-     * Add a menu item to the cart.
-     *
-     * @param string|null $menuitemId The ID of the menu item to add.
-     * @param int $quantity The quantity to add.
-     * @return \Cake\Http\Response|null|void
-     */
-    public function addToCart($menuitemId = null, $quantity = 1)
+    public function menu()
     {
-        if (!$menuitemId) {
-            $this->Flash->error(__('Invalid menu item.'));
-            return $this->redirect(['action' => 'menu']);
-        }
-
-        $menuitem = $this->Menuitems->get($menuitemId);
-
-        // Get cart from session or initialize it if it doesn't exist
-        $cart = $this->request->getSession()->read('Cart', []);
-
-        if (isset($cart[$menuitemId])) {
-            $cart[$menuitemId]['quantity'] += $quantity;
-        } else {
-            $cart[$menuitemId] = [
-                'name' => $menuitem->menuitem_name,
-                'quantity' => $quantity,
-                'price' => $menuitem->menuitem_price
-            ];
-        }
-
-        $this->request->getSession()->write('Cart', $cart);
-
-        $this->Flash->success(__('Added to cart.'));
-        return $this->redirect(['action' => 'menu']);
-    }
-
-    /**
-     * View Cart method
-     *
-     * Display the contents of the cart.
-     *
-     * @return \Cake\Http\Response|null|void
-     */
-    public function viewCart()
-    {
+    //Updated upstream
         $this->viewBuilder()->setLayout('customer');
 
-        $cart = $this->request->getSession()->read('Cart', []);
-        $cartTotal = 0;
+        // Use default (customer ) layout
+//         $this->viewBuilder()->setLayout('default');
+        //Stashed changes
+        //$this->render('index');
 
-        foreach ($cart as $item) {
-            $cartTotal += $item['quantity'] * $item['price'];
-        }
+        $query = $this->Menuitems->find();
+        $menuitems = $this->paginate($query);
 
-        $this->set(compact('cart', 'cartTotal'));
+        $this->set(compact('menuitems'));
+        $this->set('pageTitle', 'Menu');
+
     }
 
-    /**Cart */
-    /**Cart actions */
+    public function search() {
+        $search = $this->request->getData();
+
+        $search = array_filter(array_map('trim', $search));
+
+        $url = [
+            'action' => 'index',
+            '?' => $search
+        ];
+
+        return $this->redirect($url);
+    }
+
+
+    /**
+     * View method
+     *
+     * @param string|null $id Menuitem id.
+     * @return \Cake\Http\Response|null|void Renders view
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function view($id = null)
+    {
+        $menuitem = $this->Menuitems->get($id, contain: ['Orders']);
+        $this->set(compact('menuitem'));
+    }
+
+    /**
+     * Add method
+     *
+     * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
+     */
+    public function add()
+    {
+        $menuitem = $this->Menuitems->newEmptyEntity();
+        if ($this->request->is('post')) {
+            $menuitem = $this->Menuitems->patchEntity($menuitem, $this->request->getData());
+            $image = $this->request->getUploadedFiles();
+
+            $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
+            $image['menuitem_image']->moveTo(WWW_ROOT . 'img' . DS . 'menu' . DS . $menuitem->menuitem_image);
+
+
+
+            if ($this->Menuitems->save($menuitem)) {
+                $this->Flash->success(__('The menuitem has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The menuitem could not be saved. Please, try again.'));
+        }
+        $orders = $this->Menuitems->Orders->find('list', limit: 200)->all();
+        $this->set(compact('menuitem', 'orders'));
+    }
+
+    /**
+     * Edit method
+     *
+     * @param string|null $id Menuitem id.
+     * @return \Cake\Http\Response|null|void Redirects on successful edit, renders view otherwise.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function edit2($id = null)
+    {
+        $menuitem = $this->Menuitems->get($id);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $requestData = $this->request->getData();
+
+
+
+            if(!empty($this->request->getData('menuitem_image')->getClientFilename())) {
+                $image = $this->request->getUploadedFiles();
+
+                $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
+                $image['menuitem_image']->moveTo(WWW_ROOT . 'img' . DS . 'menu' . DS . $menuitem->menuitem_image);
+
+                //dd([$requestData, $image['menuitem_image']->getClientFilename(), $menuitem]);
+            } else {
+                $requestData['menuitem_image'] = null;
+            }
+
+            $menuitem = $this->Menuitems->patchEntity($menuitem, $this->request->getData());
+
+            //dd([$menuitem, $requestData]);
+
+            if ($this->Menuitems->save($menuitem)) {
+                $this->Flash->success(__('The menuitem has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The menuitem could not be saved. Please, try again.'));
+        }
+        $orders = $this->Menuitems->Orders->find('list', limit: 200)->all();
+        $this->set(compact('menuitem', 'orders'));
+    }
+
+    public function edit($id = null)
+    {
+        $menuitem = $this->Menuitems->get($id, contain: ['Orders']);
+        if ($this->request->is(['patch', 'post', 'put'])) {
+            $requestData = $this->request->getData();
+
+//            if(!empty($this->request->getData('menuitem_image')->getClientFilename())) {
+//                $image = $this->request->getUploadedFiles();
+//
+//                $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
+//                $image['menuitem_image']->moveTo(WWW_ROOT . 'img' . DS . 'menu' . DS . $menuitem->menuitem_image);
+//            } else {
+//                $requestData['menuitem_image'] = null;
+//            }
+
+            $menuitem = $this->Menuitems->patchEntity($menuitem, $requestData);
+
+
+            if ($this->Menuitems->save($menuitem)) {
+                $this->Flash->success(__('The menuitem has been saved.'));
+
+                return $this->redirect(['action' => 'index']);
+            }
+            $this->Flash->error(__('The menuitem could not be saved. Please, try again.'));
+        }
+        $orders = $this->Menuitems->Orders->find('list', limit: 200)->all();
+        $this->set(compact('menuitem', 'orders'));
+    }
+
+
+    /**
+     * Delete method
+     *
+     * @param string|null $id Menuitem id.
+     * @return \Cake\Http\Response|null Redirects to index.
+     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+     */
+    public function delete($id = null)
+    {
+        $this->request->allowMethod(['post', 'delete']);
+        $menuitem = $this->Menuitems->get($id);
+        if ($this->Menuitems->delete($menuitem)) {
+            $this->Flash->success(__('The menuitem has been deleted.'));
+        } else {
+            $this->Flash->error(__('The menuitem could not be deleted. Please, try again.'));
+        }
+
+        return $this->redirect(['action' => 'index']);
+    }
+
+    /**View Cart actions */
     public function viewCart()
     {
         $this->viewBuilder()->setLayout('customer');
@@ -177,3 +292,4 @@ class MenuitemsController extends AppController
         return $this->redirect(['action' => 'viewCart']);
     }
 }
+
