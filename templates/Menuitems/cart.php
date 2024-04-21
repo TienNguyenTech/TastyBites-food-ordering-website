@@ -72,6 +72,17 @@
         /* Button takes full width of the footer */
         margin: 0;
         /* No extra margin on any side */
+        width: 100px;
+    }
+
+    /* Aligh Left */
+    .float-left {
+        float: left;
+    }
+
+    /* Align right */
+    .float-right {
+        float: right;
     }
 </style>
 
@@ -81,14 +92,14 @@
 
     <?php if (empty($cart)): ?>
         <div class="alert alert-info">Your cart is empty.</div>
-        <div class="card-footer">
-            <!-- Add to Cart button, centered in the footer -->
+        <div class="card-footer" style="display: flex; justify-content: space-between;">
+            <!-- "Go Back" button on the left -->
             <?= $this->Html->link(__('Go Back'), ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'btn btn-primary']) ?>
+
+            <!-- "Checkout" button on the right -->
+            <?= $this->Html->link(__('Checkout'), ['controller' => 'Menuitems', 'action' => 'checkout'], ['class' => 'btn btn-primary']) ?>
         </div>
-        <div class="card-footer">
-            <!-- Add to Cart button, centered in the footer -->
-            <?= $this->Html->link(__('Checkout'), ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'btn btn-primary']) ?>
-        </div>
+
     <?php else: ?>
         <div class="row">
             <?php foreach ($cart as $menuitemId => $item): ?>
@@ -105,13 +116,12 @@
                                 Remove
                             </a>
                         </div>
-                        <div class="card-footer">
-                            <!-- Add to Cart button, centered in the footer -->
-                            <?= $this->Html->link(__('Go Back'), ['controller' => 'Menuitems', 'action' => 'menu',], ['class' => 'btn btn-primary']) ?>
-                        </div>
-                        <div class="card-footer">
-                            <!-- Add to Cart button, centered in the footer -->
-                            <?= $this->Html->link(__('Checkout'), ['controller' => 'Menuitems', 'action' => 'menu',], ['class' => 'btn btn-primary']) ?>
+                        <div class="card-footer" style="display: flex; justify-content: space-between;">
+                            <!-- "Go Back" button on the left -->
+                            <?= $this->Html->link(__('Go Back'), ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'btn btn-primary']) ?>
+
+                            <!-- "Checkout" button on the right -->
+                            <?= $this->Html->link(__('Checkout'), ['controller' => 'Menuitems', 'action' => 'checkout'], ['class' => 'btn btn-primary']) ?>
                         </div>
                     </div>
                 </div>
