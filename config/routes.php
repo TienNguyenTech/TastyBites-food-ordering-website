@@ -26,8 +26,8 @@ use Cake\Routing\RouteBuilder;
 
 /*
  * This file is loaded in the context of the `Application` class.
-  * So you can use  `$this` to reference the application class instance
-  * if required.
+ * So you can use  `$this` to reference the application class instance
+ * if required.
  */
 return function (RouteBuilder $routes): void {
     /*
@@ -75,6 +75,9 @@ return function (RouteBuilder $routes): void {
          * You can remove these routes once you've connected the
          * routes you want in your application.
          */
+        $builder->connect('/cart', ['controller' => 'OrdersMenuitems', 'action' => 'cart']);
+        $builder->connect('/add-to-cart/*', ['controller' => 'OrdersMenuitems', 'action' => 'addToCart'], ['_method' => 'POST']);
+
         $builder->fallbacks();
     });
 
