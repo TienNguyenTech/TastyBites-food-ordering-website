@@ -101,7 +101,7 @@
                         echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
                     }
                     ?>
-                    <?= $this->Html->link("Cart", ['controller' => 'OrdersMenuitems', 'action' => 'cart'], ['class' => 'nav-link fire-text']) ?>
+                    <?= $this->Html->link("Cart", ['controller' => 'Menuitems', 'action' => 'cart'], ['class' => 'nav-link fire-text']) ?>
 
                 </ul>
             </div>

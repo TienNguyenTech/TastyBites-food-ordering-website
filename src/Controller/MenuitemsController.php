@@ -235,31 +235,29 @@ class MenuitemsController extends AppController
             return $this->redirect(['controller' => 'Menuitems', 'action' => 'menu']);
         }
 
-        // Fetch the menu item from the database
         $menuitem = $this->Menuitems->get($menuitemId);
-
-        // Read or initialize the cart from the session
         $cart = $this->request->getSession()->read('Cart', []);
 
         if (isset($cart[$menuitemId])) {
-            // If the item is already in the cart, update the quantity
             $cart[$menuitemId]['quantity'] += $quantity;
         } else {
-            // Add a new item to the cart
             $cart[$menuitemId] = [
                 'name' => $menuitem->menuitem_name,
                 'quantity' => $quantity,
                 'price' => $menuitem->menuitem_price,
-                'image' => $menuitem->menuitem_image, // If available
+                'image' => $menuitem->menuitem_image,
             ];
         }
 
-        // Save the cart back to the session
         $this->request->getSession()->write('Cart', $cart);
+
+        // Debugging session data
+        debug($this->request->getSession()->read('Cart')); // Output session data to see what's stored
 
         $this->Flash->success(__('Item added to cart.'));
         return $this->redirect(['controller' => 'Menuitems', 'action' => 'menu']);
     }
+
 
     public function removeFromCart($menuitemId)
     {

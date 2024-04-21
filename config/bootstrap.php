@@ -64,7 +64,7 @@ require CAKE . 'functions.php';
  * If you use .env files, be careful to not commit them to source control to avoid
  * security risks. See https://github.com/josegonzalez/php-dotenv#general-security-information
  * for more information for recommended practices.
-*/
+ */
 // if (!env('APP_NAME') && file_exists(CONFIG . '.env')) {
 //     $dotenv = new \josegonzalez\Dotenv\Loader([CONFIG . '.env']);
 //     $dotenv->parse()
@@ -229,3 +229,5 @@ ServerRequest::addDetector('tablet', function ($request) {
 // and https://unicode-org.github.io/icu/userguide/format_parse/datetime/#datetime-format-syntax
 //\Cake\I18n\FrozenDate::setToStringFormat('dd.MM.yyyy');
 //\Cake\I18n\FrozenTime::setToStringFormat('dd.MM.yyyy HH:mm');
+
+
