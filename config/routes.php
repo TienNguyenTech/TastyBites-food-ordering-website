@@ -75,8 +75,8 @@ return function (RouteBuilder $routes): void {
          * You can remove these routes once you've connected the
          * routes you want in your application.
          */
-        $builder->connect('/cart', ['controller' => 'OrdersMenuitems', 'action' => 'cart']);
-        $builder->connect('/add-to-cart/*', ['controller' => 'OrdersMenuitems', 'action' => 'addToCart'], ['_method' => 'POST']);
+        $builder->connect('/cart', ['controller' => 'Menuitems', 'action' => 'cart']);
+        $builder->connect('/add-to-cart/*', ['controller' => 'Menuitems', 'action' => 'addToCart'], ['_method' => 'POST']);
 
         $builder->fallbacks();
     });
