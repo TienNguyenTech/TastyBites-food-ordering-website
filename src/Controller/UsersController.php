@@ -56,7 +56,7 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'add']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
@@ -85,23 +85,61 @@ class UsersController extends AppController
         $this->set(compact('user'));
     }
 
+//    /**
+//     * Delete method
+//     *
+//     * @param string|null $id User id.
+//     * @return \Cake\Http\Response|null Redirects to index.
+//     * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
+//     */
+//    public function delete($id = null)
+//    {
+//        $this->request->allowMethod(['post', 'delete']);
+//        $user = $this->Users->get($id);
+//        if ($this->Users->delete($user)) {
+//            $this->Flash->success(__('The user has been deleted.'));
+//        } else {
+//            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+//        }
+//
+//        return $this->redirect(['action' => 'index']);
+//    }
     /**
      * Delete method
      *
      * @param string|null $id User id.
-     * @return \Cake\Http\Response|null Redirects to index.
+     * @return \Cake\Http\Response|null Redirects to index or admin.
      * @throws \Cake\Datasource\Exception\RecordNotFoundException When record not found.
      */
     public function delete($id = null)
     {
         $this->request->allowMethod(['post', 'delete']);
-        $user = $this->Users->get($id);
-        if ($this->Users->delete($user)) {
-            $this->Flash->success(__('The user has been deleted.'));
-        } else {
-            $this->Flash->error(__('The user could not be deleted. Please, try again.'));
-        }
 
-        return $this->redirect(['action' => 'index']);
+        // Check if the user being deleted is an admin
+        $user = $this->Users->get($id);
+        if ($user->user_type === 'admin') {
+            // Count the number of admin users
+            $adminCount = $this->Users->find()->where(['user_type' => 'admin'])->count();
+            if ($adminCount === 1) {
+                // If there is only one admin user, don't allow deletion
+                $this->Flash->error(__('Currently, there is only one admin account. Deleting the admin account is not allowed.'));
+                return $this->redirect(['action' => 'admin']);
+            }
+            // If admin count is more than 1 or user is not an admin, proceed with deletion
+            if ($this->Users->delete($user)) {
+                $this->Flash->success(__('The user has been deleted.'));
+            } else {
+                $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            }
+            return $this->redirect(['action' => 'admin']);
+        } else {
+            // For non-admin users (e.g., customers), proceed with deletion
+            if ($this->Users->delete($user)) {
+                $this->Flash->success(__('The user has been deleted.'));
+            } else {
+                $this->Flash->error(__('The user could not be deleted. Please, try again.'));
+            }
+            return $this->redirect(['action' => 'index']);
+        }
     }
 }

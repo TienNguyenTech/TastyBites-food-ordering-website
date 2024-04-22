@@ -103,36 +103,100 @@
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light topbar mb-4 static-top shadow">
 
-                    <div class="header-left">
-                        <div class="dashboard_bar" style="color:black">
-                            <?= h($pageTitle ?? 'Dashboard') ?>
-                        </div>
-                    </div>
-
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
                     </button>
 
+                    <?php
+                    // Determine if the current page is the menuitem add, edit, or index page
+                    $isMenuItemEditPage = $this->getRequest()->getParam('controller') === 'Menuitems' && in_array($this->getRequest()->getParam('action'), ['edit', 'add']);
+                    $isMenuItemIndexPage = $this->getRequest()->getParam('controller') === 'Menuitems' && $this->getRequest()->getParam('action') === 'index';
+                    $isDashboardPage = $this->getRequest()->getParam('controller') === 'Dashboard' && $this->getRequest()->getParam('action') === 'index';
+
+                    // Determine if the current page is the user add, edit, or index page
+                    $isUserEditPage = $this->getRequest()->getParam('controller') === 'Users' && in_array($this->getRequest()->getParam('action'), ['edit', 'add']);
+                    $isUserIndexPage = $this->getRequest()->getParam('controller') === 'Users' && $this->getRequest()->getParam('action') === 'index';
+
+                    // Define the URL for the menu item index page
+                    $menuIndexUrl = $this->Url->build(['controller' => 'Menuitems', 'action' => 'index']);
+
+                    // Define the URL for the dashboard index page
+                    $dashboardIndexUrl = $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']);
+
+                    // Render the back button based on the page type
+                    if(!$isDashboardPage) {
+                        if ($isMenuItemEditPage || $isMenuItemIndexPage) {
+                            // If it's the edit or index page for menu items, return to the menu item index
+                            echo $this->Html->tag(
+                                'button',
+                                $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
+                                ['onclick' => 'returnToMenu()', 'class' => 'btn btn-secondary']
+                            );
+                        } elseif ($isUserEditPage || $isUserIndexPage) {
+                            // If it's the edit or index page for users, return to the dashboard index
+                            echo $this->Html->tag(
+                                'button',
+                                $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
+                                ['onclick' => 'returnToDashboard()', 'class' => 'btn btn-secondary']
+                            );
+                        } else {
+                            // Otherwise, use the default back functionality
+                            echo $this->Html->tag(
+                                'button',
+                                $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
+                                ['onclick' => 'goBack()', 'class' => 'btn btn-secondary']
+                            );
+                        }
+                    }
+                    ?>
+                    <script>
+                        // Function to navigate back to the menu item index and clear history
+                        function returnToMenu() {
+                            window.location.href = '<?php echo $menuIndexUrl; ?>';
+                            window.history.replaceState(null, null, '<?php echo $menuIndexUrl; ?>');
+                        }
+
+                        // Function to navigate back to the dashboard index and clear history
+                        function returnToDashboard() {
+                            window.location.href = '<?php echo $dashboardIndexUrl; ?>';
+                            window.history.replaceState(null, null, '<?php echo $dashboardIndexUrl; ?>');
+                        }
+
+                        // Function to navigate back
+                        function goBack() {
+                            window.history.back();
+                        }
+                    </script>
+
                     <!-- Topbar Navbar -->
+
                     <ul class="navbar-nav ml-auto">
-
-                        <li class="nav-item dropdown no-arrow">
-                            <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-                                data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <!--                            <span class="mr-2 d-none d-lg-inline text-gray-600 small"><p>Douglas McGee</p></span>-->
-                                <?= $this->Html->image('undraw_profile.svg', ['class' => 'img-profile rounded-circle']) ?>
-                            </a>
-                            <!-- Dropdown - User Information -->
-                            <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in"
-                                aria-labelledby="userDropdown">
-                                <?php if ($this->Identity->isLoggedIn()): ?>
-                                    <?= $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'dropdown-item']) ?>
-                                <?php endif; ?>
-                            </div>
+                        <li class="nav-item">
+                            <?php if ($this->Identity->isLoggedIn()): ?>
+                                <a class="nav-link" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
+                            <?php endif; ?>
                         </li>
-
                     </ul>
+
+                    <!-- Logout Confirmation Modal -->
+                    <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" style="color: black;" id="exampleModalLabel">Ready to Leave?</h5>
+                                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">×</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" style="color: black;">Are you sure you want to logout?</div>
+                                <div class="modal-footer">
+                                    <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
+                                    <?= $this->Html->link('Yes', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'btn btn-primary']) ?>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </nav>
                 <!-- End of Topbar -->
