@@ -66,9 +66,7 @@ class MenuitemsTable extends Table
 
         $validator
             ->scalar('menuitem_image')
-            ->maxLength('menuitem_image', 200)
-            ->requirePresence('menuitem_image', 'create')
-            ->notEmptyFile('menuitem_image');
+            ->maxLength('menuitem_image', 200);
 
         $validator
             ->scalar('menuitem_desc')
@@ -82,9 +80,7 @@ class MenuitemsTable extends Table
             ->notEmptyString('menuitem_price');
 
         $validator
-            ->numeric('menuitem_rating')
-            ->requirePresence('menuitem_rating', 'create')
-            ->notEmptyString('menuitem_rating');
+            ->numeric('menuitem_rating');
 
         return $validator;
     }

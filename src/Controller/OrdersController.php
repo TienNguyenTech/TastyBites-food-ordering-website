@@ -22,6 +22,8 @@ class OrdersController extends AppController
         $orders = $this->paginate($query);
 
         $this->set(compact('orders'));
+        $this->set('pageTitle', 'Orders');
+
     }
 
     /**
