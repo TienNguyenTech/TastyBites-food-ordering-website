@@ -112,6 +112,7 @@
                     // Determine if the current page is the menuitem add, edit, or index page
                     $isMenuItemEditPage = $this->getRequest()->getParam('controller') === 'Menuitems' && in_array($this->getRequest()->getParam('action'), ['edit', 'add']);
                     $isMenuItemIndexPage = $this->getRequest()->getParam('controller') === 'Menuitems' && $this->getRequest()->getParam('action') === 'index';
+                    $isDashboardPage = $this->getRequest()->getParam('controller') === 'Dashboard' && $this->getRequest()->getParam('action') === 'index';
 
                     // Determine if the current page is the user add, edit, or index page
                     $isUserEditPage = $this->getRequest()->getParam('controller') === 'Users' && in_array($this->getRequest()->getParam('action'), ['edit', 'add']);
@@ -124,27 +125,29 @@
                     $dashboardIndexUrl = $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']);
 
                     // Render the back button based on the page type
-                    if ($isMenuItemEditPage || $isMenuItemIndexPage) {
-                        // If it's the edit or index page for menu items, return to the menu item index
-                        echo $this->Html->tag(
-                            'button',
-                            $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
-                            ['onclick' => 'returnToMenu()', 'class' => 'btn btn-secondary']
-                        );
-                    } elseif ($isUserEditPage || $isUserIndexPage) {
-                        // If it's the edit or index page for users, return to the dashboard index
-                        echo $this->Html->tag(
-                            'button',
-                            $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
-                            ['onclick' => 'returnToDashboard()', 'class' => 'btn btn-secondary']
-                        );
-                    } else {
-                        // Otherwise, use the default back functionality
-                        echo $this->Html->tag(
-                            'button',
-                            $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
-                            ['onclick' => 'goBack()', 'class' => 'btn btn-secondary']
-                        );
+                    if(!$isDashboardPage) {
+                        if ($isMenuItemEditPage || $isMenuItemIndexPage) {
+                            // If it's the edit or index page for menu items, return to the menu item index
+                            echo $this->Html->tag(
+                                'button',
+                                $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
+                                ['onclick' => 'returnToMenu()', 'class' => 'btn btn-secondary']
+                            );
+                        } elseif ($isUserEditPage || $isUserIndexPage) {
+                            // If it's the edit or index page for users, return to the dashboard index
+                            echo $this->Html->tag(
+                                'button',
+                                $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
+                                ['onclick' => 'returnToDashboard()', 'class' => 'btn btn-secondary']
+                            );
+                        } else {
+                            // Otherwise, use the default back functionality
+                            echo $this->Html->tag(
+                                'button',
+                                $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
+                                ['onclick' => 'goBack()', 'class' => 'btn btn-secondary']
+                            );
+                        }
                     }
                     ?>
                     <script>
