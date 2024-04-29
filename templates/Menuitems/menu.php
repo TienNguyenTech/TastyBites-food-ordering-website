@@ -119,7 +119,7 @@
             <?php endforeach; ?>
         </div>
     </div>
-
+<!-- JavaScript for DataTables -->
     <!-- JavaScript for DataTables -->
     <script>
         $(document).ready(function () {
