@@ -65,7 +65,7 @@ class MenuitemsTable extends Table
             ->notEmptyString('menuitem_name')
             ->add('menuitem_name', [
                 'validFormat' => [
-                    'rule' => ['custom', '/^[A-Za-z\s]{1,50}$/'],
+                    'rule' => ['custom', '/^[A-Za-z\s\-]{1,50}$/'],
                     'message' => 'Menu item name can only contain alphabetic characters and spaces, and must be less than 50 characters.'
                 ]
             ]);
@@ -76,16 +76,15 @@ class MenuitemsTable extends Table
 
         $validator
             ->scalar('menuitem_desc')
-            ->maxLength('menuitem_desc', 200)
+            ->maxLength('menuitem_desc', 500)
             ->requirePresence('menuitem_desc', 'create')
             ->notEmptyString('menuitem_desc')
             ->add('menuitem_desc', [
                 'validFormat' => [
-                    'rule' => ['custom', '/^[A-Za-z0-9\s]{1,200}$/'],
-                    'message' => 'Menu item description can only contain alphabetic characters, numbers, and spaces'
+                    'rule' => ['custom', '/^[\w\s.,\-\()!?]+$/'],
+                    'message' => 'Menu item description can only contain alphabetic characters, numbers, spaces, commas, periods, hyphens, single quotes, parentheses, exclamation marks, and question marks'
                 ]
-            ])
-        ;
+            ]);
 
         $validator
             ->numeric('menuitem_price')
