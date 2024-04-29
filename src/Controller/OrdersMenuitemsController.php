@@ -15,7 +15,10 @@ class OrdersMenuitemsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
+<<<<<<< HEAD
 
+=======
+>>>>>>> main
     public function index()
     {
         $query = $this->OrdersMenuitems->find()
@@ -102,87 +105,6 @@ class OrdersMenuitemsController extends AppController
         }
 
         return $this->redirect(['action' => 'index']);
-    }
-
-    /**View Cart actions */
-    public function cart()
-    {
-        $this->viewBuilder()->setLayout('customer');
-
-        // Fetch cart items from the session
-        $cart = $this->request->getSession()->read('Cart', []);
-
-        // Calculate the total price
-        $cartTotal = 0;
-        foreach ($cart as $item) {
-            $cartTotal += $item['quantity'] * $item['price'];
-        }
-
-        $this->set(compact('cart', 'cartTotal'));
-    }
-
-    public function addToCart($menuitemId, $quantity = 1)
-    {
-        if (!$menuitemId) {
-            $this->Flash->error(__('Invalid menu item.'));
-            return $this->redirect(['controller' => 'Menuitems', 'action' => 'menu']);
-        }
-
-        $menuitem = $this->Menuitems->get($menuitemId);
-        $cart = $this->request->getSession()->read('Cart', []);
-
-        if (isset($cart[$menuitemId])) {
-            $cart[$menuitemId]['quantity'] += $quantity;
-        } else {
-            $cart[$menuitemId] = [
-                'name' => $menuitem->menuitem_name,
-                'quantity' => $quantity,
-                'price' => $menuitem->menuitem_price,
-                'image' => $menuitem->menuitem_image,
-            ];
-        }
-
-        $this->request->getSession()->write('Cart', $cart);
-
-        // Debugging session data
-        debug($this->request->getSession()->read('Cart')); // Output session data to see what's stored
-
-        $this->Flash->success(__('Item added to cart.'));
-        return $this->redirect(['controller' => 'Menuitems', 'action' => 'menu']);
-    }
-
-
-    public function removeFromCart($menuitemId)
-    {
-        // Fetch the cart from the session
-        $cart = $this->request->getSession()->read('Cart', []);
-
-        // If the item exists in the cart, remove it
-        if (isset($cart[$menuitemId])) {
-            unset($cart[$menuitemId]);
-        }
-
-        // Update the session with the modified cart
-        $this->request->getSession()->write('Cart', $cart);
-
-        $this->Flash->success(__('Item removed from cart.'));
-        return $this->redirect(['action' => 'viewCart']);
-    }
-
-    public function updateQuantity($menuitemId, $quantity)
-    {
-        // Fetch the cart from the session
-        $cart = $this->request->getSession()->read('Cart', []);
-
-        if (isset($cart[$menuitemId])) {
-            // Update the quantity for the specified item
-            $cart[$menuitemId]['quantity'] = $quantity;
-        }
-
-        // Save the updated cart back to the session
-        $this->request->getSession()->write('Cart', $cart);
-
-        return $this->redirect(['action' => 'viewCart']);
     }
 
 }
