@@ -5,7 +5,6 @@
  */
 ?>
 
-<<<<<<< HEAD
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -118,7 +117,6 @@
                     </div>
                 </div>
             <?php endforeach; ?>
-=======
 <div class="container my-4">
     <div class="row justify-content-between align-items-center mb-3">
         <div class="col">
@@ -126,7 +124,6 @@
         </div>
         <div class="col-auto">
 <!--            --><?php //= $this->Html->link(__('Add New Item'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
->>>>>>> main
         </div>
     </div>
 

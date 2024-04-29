@@ -15,10 +15,6 @@ class OrdersMenuitemsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Renders view
      */
-<<<<<<< HEAD
-
-=======
->>>>>>> main
     public function index()
     {
         $query = $this->OrdersMenuitems->find()
@@ -106,7 +102,4 @@ class OrdersMenuitemsController extends AppController
 
         return $this->redirect(['action' => 'index']);
     }
-
 }
-
-
