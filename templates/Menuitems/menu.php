@@ -97,32 +97,40 @@
                 <!-- Add New Item button -->
                 <?= $this->Html->link(__('Add New Item'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
             </div>
-        </div>
+            <div class="icon-cart">
+                <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true" xmlns="http://www.w3.org/2000/svg"
+                    width="24" height="24" fill="none" viewBox="0 0 24 24">
+                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
+                </svg>
+                <span>0</span>
+            </div>
 
-        <div class="row row-cols-1 row-cols-md-5 g-4">
-            <?php foreach ($menuitems as $menuitem): ?>
-                <div class="col">
-                    <div class="card shadow">
-                        <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'card-img-top']) ?>
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $menuitem->menuitem_name ?></h5>
-                            <p class="card-text"><?= $menuitem->menuitem_desc ?></p> <!-- Description section -->
-                            <span class="text-muted"><?= $this->Number->currency($menuitem->menuitem_price) ?></span>
-                            <!-- Price aligned left, just below description -->
-                        </div>
-                        <div class="card-footer">
-                            <!-- Add to Cart button, centered in the footer -->
-                            <?= $this->Html->link(__('Add to Cart'), ['controller' => 'OrdersMenuitems', 'action' => 'cart', $menuitem->id, 1], ['class' => 'btn btn-primary']) ?>
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                <?php foreach ($menuitems as $menuitem): ?>
+                    <div class="col">
+                        <div class="card shadow">
+                            <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'card-img-top']) ?>
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $menuitem->menuitem_name ?></h5>
+                                <p class="card-text"><?= $menuitem->menuitem_desc ?></p> <!-- Description section -->
+                                <span class="text-muted"><?= $this->Number->currency($menuitem->menuitem_price) ?></span>
+                                <!-- Price aligned left, just below description -->
+                            </div>
+                            <div class="card-footer">
+                                <!-- Add to Cart button, centered in the footer -->
+                                <?= $this->Html->link(__('Add to Cart'), ['controller' => 'OrdersMenuitems', 'action' => 'cart', $menuitem->id, 1], ['class' => 'btn btn-primary']) ?>
+                            </div>
                         </div>
                     </div>
-                </div>
-            <?php endforeach; ?>
+                <?php endforeach; ?>
+            </div>
         </div>
-    </div>
+</body>
+
 <!-- JavaScript for DataTables -->
-    <!-- JavaScript for DataTables -->
-    <script>
-        $(document).ready(function () {
-            $('#dataTable').DataTable();
-        });
-    </script>
+<script>
+    $(document).ready(function () {
+        $('#dataTable').DataTable();
+    });
+</script>
