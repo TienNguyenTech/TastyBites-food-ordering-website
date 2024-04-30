@@ -81,8 +81,8 @@ class MenuitemsTable extends Table
             ->notEmptyString('menuitem_desc')
             ->add('menuitem_desc', [
                 'validFormat' => [
-                    'rule' => ['custom', '/^[\w\s.,\-\()!?]+$/'],
-                    'message' => 'Menu item description can only contain alphabetic characters, numbers, spaces, commas, periods, hyphens, single quotes, parentheses, exclamation marks, and question marks'
+                    'rule' => ['custom', '/^[\w\s.,\'\-()!?":]+$/'],
+                    'message' => 'Menu item description can only contain alphabetic characters, numbers, spaces, Special characters such as". - \'()? ! :"'
                 ]
             ]);
 
