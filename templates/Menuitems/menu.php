@@ -115,7 +115,7 @@
             align-items: center;
             color: white;
             border-radius: 50%;
-            position: absolute;
+            /*position: absolute;*/
             top: 50%;
             right: -20px;
         }
@@ -124,7 +124,7 @@
             width: 400px;
             background-color: gray;
             color: white;
-            position: fixed;
+           /* position: fixed;*/
             inset: 0 0 0 auto;
             display: grid;
             grid-template-rows: 70px 1fr 70px;
@@ -138,23 +138,23 @@
 
         }
 
-        .cartTab .btn {
+        /*.cartTab .btn {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
 
-        }
+        }*/
 
-        .cartTab .btn button {
+        /*.cartTab .btn button {
             background-color: #273d4f;
             color: white;
             border: none;
             padding: 10px;
             cursor: pointer;
-        }
+        }*/
 
-        .cartTab .close {
+        /*.cartTab .close {
             background-color: white;
-        }
+        }*/
     </style>
 </head>
 
@@ -209,7 +209,7 @@
                 <h1>Cart</h1>
                 <div class="listCart">
                     <div class="item>
-                        <div class="image">
+                        <div class=" image">
                         <img src="abc.png" alt="">
                     </div>
                 </div>
@@ -225,11 +225,12 @@
                     <span class="plus">+</span>
                 </div>
             </div>
+            <div class="btn">
+            <?= $this->Html->link("Close", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'btn btn-primary']) ?>
+        
+            <?= $this->Html->link("Checkput", ['controller' => 'Checkout', 'action' => 'checkout'], ['class' => 'btn btn-primary']) ?>            </div>
         </div>
-        <div class="btn">
-            <button class="close">Close</button>
-            <button class="checkout">Checkout</button>
-        </div>
+
 
     </div>
 
