@@ -12,8 +12,6 @@
     <link rel="stylesheet" type="text/css" href="<?= $this->Url->css('styles.css') ?>">
     <style>
         body {
-            background-color: white;
-            /* Background color for the whole page */
             color: black;
             /* Default text color for the whole page */
         }
