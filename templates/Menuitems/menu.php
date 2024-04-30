@@ -119,6 +119,42 @@
             top: 50%;
             right: -20px;
         }
+
+        .cartTab {
+            width: 400px;
+            background-color: gray;
+            color: white;
+            position: fixed;
+            inset: 0 0 0 auto;
+            display: grid;
+            grid-template-rows: 70px 1fr 70px;
+
+        }
+
+        .cartTab h1 {
+            padding: 20px;
+            margin: 0;
+            font-weight: 300;
+
+        }
+
+        .cartTab .btn {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+
+        }
+
+        .cartTab .btn button {
+            background-color: #273d4f;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+        }
+
+        .cartTab .close {
+            background-color: white;
+        }
     </style>
 </head>
 
@@ -144,31 +180,59 @@
                         </svg>
                         <span>0</span>
                     </div>
+                </header>
             </div>
-            <header>
 
 
-                <div class="row row-cols-1 row-cols-md-5 g-4">
-                    <?php foreach ($menuitems as $menuitem): ?>
-                        <div class="col">
-                            <div class="card shadow">
-                                <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'card-img-top']) ?>
-                                <div class="card-body">
-                                    <h5 class="card-title"><?= $menuitem->menuitem_name ?></h5>
-                                    <p class="card-text"><?= $menuitem->menuitem_desc ?></p> <!-- Description section -->
-                                    <span
-                                        class="text-muted"><?= $this->Number->currency($menuitem->menuitem_price) ?></span>
-                                    <!-- Price aligned left, just below description -->
-                                </div>
-                                <div class="card-footer">
-                                    <!-- Add to Cart button, centered in the footer -->
-                                    <?= $this->Html->link(__('Add to Cart'), ['controller' => 'OrdersMenuitems', 'action' => 'cart', $menuitem->id, 1], ['class' => 'btn btn-primary']) ?>
-                                </div>
+
+            <div class="row row-cols-1 row-cols-md-5 g-4">
+                <?php foreach ($menuitems as $menuitem): ?>
+                    <div class="col">
+                        <div class="card shadow">
+                            <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'card-img-top']) ?>
+                            <div class="card-body">
+                                <h5 class="card-title"><?= $menuitem->menuitem_name ?></h5>
+                                <p class="card-text"><?= $menuitem->menuitem_desc ?></p> <!-- Description section -->
+                                <span class="text-muted"><?= $this->Number->currency($menuitem->menuitem_price) ?></span>
+                                <!-- Price aligned left, just below description -->
+                            </div>
+                            <div class="card-footer">
+                                <!-- Add to Cart button, centered in the footer -->
+                                <?= $this->Html->link(__('Add to Cart'), ['controller' => 'OrdersMenuitems', 'action' => 'cart', $menuitem->id, 1], ['class' => 'btn btn-primary']) ?>
                             </div>
                         </div>
-                    <?php endforeach; ?>
+                    </div>
+                <?php endforeach; ?>
+            </div>
+
+            <div class="cartTab">
+                <h1>Cart</h1>
+                <div class="listCart">
+                    <div class="item>
+                        <div class=" image">
+                        <img src="abc.png" alt="">
+                    </div>
+                    <div class="name">
+                        name
+                    </div>
+                    <div class="totalPrice">
+                        $200
+                    </div>
+                    <div class="quantity">
+                        <span class="minus">-</span>
+                        <span>1</span>
+                        <span class="plus">+</span>
+                    </div>
                 </div>
+            </div>
+            <div class="btn">
+                <button class="close">Close</button>
+                <button class="checkout">Checkout</button>
+            </div>
+
         </div>
+
+    </div>
 </body>
 
 <!-- JavaScript for DataTables -->
