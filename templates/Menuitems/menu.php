@@ -10,6 +10,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tasty Bites Menu</title>
     <link rel="stylesheet" type="text/css" href="<?= $this->Url->css('styles.css') ?>">
+    <link rel="stylesheet" type="text/css" href="<?= $this->Url->css('style.css') ?>">
+    <script src="close.js"></script>
     <style>
         body {
             background-color: white;
@@ -115,7 +117,7 @@
             align-items: center;
             color: white;
             border-radius: 50%;
-            /*position: absolute;*/
+            position: absolute;
             top: 50%;
             right: -20px;
         }
@@ -124,7 +126,7 @@
             width: 400px;
             background-color: gray;
             color: white;
-           /* position: fixed;*/
+            position: fixed;
             inset: 0 0 0 auto;
             display: grid;
             grid-template-rows: 70px 1fr 70px;
@@ -137,24 +139,6 @@
             font-weight: 300;
 
         }
-
-        /*.cartTab .btn {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-
-        }*/
-
-        /*.cartTab .btn button {
-            background-color: #273d4f;
-            color: white;
-            border: none;
-            padding: 10px;
-            cursor: pointer;
-        }*/
-
-        /*.cartTab .close {
-            background-color: white;
-        }*/
     </style>
 </head>
 
@@ -205,36 +189,37 @@
                 <?php endforeach; ?>
             </div>
 
-            <div class="cartTab">
-                <h1>Cart</h1>
+            <div id="cart-tab" class="cartTab">
+                <h1>Your Cart</h1>
                 <div class="listCart">
-                    <div class="item>
-                        <div class=" image">
-                        <img src="abc.png" alt="">
-                    </div>
+                    <!-- Cart items will be displayed here -->
                 </div>
-                <div class="name">
-                    name
-                </div>
-                <div class="totalPrice">
-                    $200
-                </div>
-                <div class="quantity">
-                    <span class="minus">-</span>
-                    <span>1</span>
-                    <span class="plus">+</span>
+                <div class="btn">
+                    <button id="close-cart" class="close">CLOSE</button>
+                    <button class="checkOut">Check Out</button>
                 </div>
             </div>
-            <div class="btn">
-            <?= $this->Html->link("Close", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'btn btn-primary']) ?>
-        
-            <?= $this->Html->link("Checkput", ['controller' => 'Checkout', 'action' => 'checkout'], ['class' => 'btn btn-primary']) ?>            </div>
+
+
         </div>
 
-
     </div>
+    <!-- Body content -->
+    <?= $this->fetch('content'); ?> <!-- Your page content goes here -->
 
-    </div>
+    <!-- Inline JavaScript code to handle the button click -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            var closeButton = document.getElementById('close-cart');
+            var cartTab = document.getElementById('cart-tab');
+
+            closeButton.addEventListener('click', function () {
+                // Hide the cart tab
+                cartTab.style.display = 'none';
+            });
+        });
+    </script>
+    <script src="app.js"></script>
 </body>
 
 <!-- JavaScript for DataTables -->
