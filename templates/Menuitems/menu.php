@@ -11,7 +11,6 @@
     <title>Tasty Bites Menu</title>
     <link rel="stylesheet" type="text/css" href="<?= $this->Url->css('styles.css') ?>">
     <style>
-        /*will create a CSS file later*/
         body {
             background-color: white;
             /* Background color for the whole page */
