@@ -19,26 +19,6 @@
 <div class="container my-4">
     <div class="row row-cols-1 row-cols-md-3 g-4">
         <?php foreach ($menuitems as $menuitem): ?>
-            <div class="col mb-4" onclick="window.location.href='<?= $this->Url->build(['controller' => 'MenuItems', 'action' => 'view', $menuitem->id]) ?>'">
-                <div class="card h-100 shadow" style="cursor: pointer;">
-                    <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'card-img-top']) ?>
-                    <div class="card-body">
-                        <h5 class="card-title"><?= $menuitem->menuitem_name ?></h5>
-                        <h5><?= $this->Number->currency($menuitem->menuitem_price) ?></h5>
-                        <p class="card-text"><?= $menuitem->menuitem_desc ?></p>
-                    </div>
-                    <div class="card-footer bg-white border-top-0 text-center">
-                        <!-- <a href="#" class="btn btn-primary">Add to Cart</a> -->
-                    </div>
-                </div>
-            </div>
-        <?php endforeach; ?>
-    </div>
-</div>
-
-<div class="container my-4">
-    <div class="row row-cols-1 row-cols-md-3 g-4">
-        <?php foreach ($menuitems as $menuitem): ?>
             <div class="col mb-4">
                 <div class="card h-100 shadow menuItemCard" data-menuitem="<?= $menuitem->menuitem_id ?>" style="cursor: pointer;">
                     <div class="rectangle-image-wrapper" style="width: 100%; padding-top: 75%; position: relative; overflow: hidden;">
