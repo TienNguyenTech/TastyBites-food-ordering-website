@@ -209,28 +209,29 @@
                 <h1>Cart</h1>
                 <div class="listCart">
                     <div class="item>
-                        <div class=" image">
+                        <div class="image">
                         <img src="abc.png" alt="">
                     </div>
-                    <div class="name">
-                        name
-                    </div>
-                    <div class="totalPrice">
-                        $200
-                    </div>
-                    <div class="quantity">
-                        <span class="minus">-</span>
-                        <span>1</span>
-                        <span class="plus">+</span>
-                    </div>
+                </div>
+                <div class="name">
+                    name
+                </div>
+                <div class="totalPrice">
+                    $200
+                </div>
+                <div class="quantity">
+                    <span class="minus">-</span>
+                    <span>1</span>
+                    <span class="plus">+</span>
                 </div>
             </div>
-            <div class="btn">
-                <button class="close">Close</button>
-                <button class="checkout">Checkout</button>
-            </div>
-
         </div>
+        <div class="btn">
+            <button class="close">Close</button>
+            <button class="checkout">Checkout</button>
+        </div>
+
+    </div>
 
     </div>
 </body>
