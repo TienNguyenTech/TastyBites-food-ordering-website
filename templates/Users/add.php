@@ -12,7 +12,7 @@ echo $this->Form->control('email', ['label' => 'email', 'class' => 'form-control
 echo $this->Form->control('password', ['label' => 'password', 'class' => 'form-control']);
 //echo $this->Form->control('nonce', ['label' => 'nonce', 'class' => 'form-control']);
 //echo $this->Form->control('nonce_expiry', ['label' => 'nonce_expiry',  ['empty' => true],'class' => 'form-control']);
-echo $this->Form->control('user_type', ['label' => 'User Type','options' => ['admin' => 'Admin', 'customer' => 'Customer', 'staff' => 'Staff'],'class' => 'form-control']);
+echo $this->Form->control('user_type', ['label' => 'User Type','options' => ['admin' => 'Admin', 'customer' => 'Customer'],'class' => 'form-control']);
 echo $this->Form->control('first_name', ['label' => 'first_name', 'class' => 'form-control']);
 echo $this->Form->control('last_name', ['label' => 'last_name', 'class' => 'form-control']);
 
