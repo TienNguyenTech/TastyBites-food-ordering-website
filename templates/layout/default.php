@@ -53,10 +53,10 @@
                 <a class="nav-link"
                     href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display', 'home']) ?>">
                     <i class="fas fa-fw fa-home"></i>
-                    <span>Homepage</span></a>
+                    <span>Customer Homepage</span></a>
                 <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Dashboard</span></a>
+                    <span>Admin Dashboard</span></a>
                 <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Menuitems', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-birthday-cake"></i>
                     <span>Menu</span></a>
