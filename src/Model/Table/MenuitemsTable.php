@@ -89,12 +89,12 @@ class MenuitemsTable extends Table
 
         $validator
             ->numeric('menuitem_price')
-            ->maxLength('menuitem_price', 6)
+            ->maxLength('menuitem_price', 7)
             ->requirePresence('menuitem_price', 'create')
             ->notEmptyString('menuitem_price')
             ->add('menuitem_price', [
             'validFormat' => [
-                'rule' => ['decimal', 1],
+                'rule' => ['custom', '/^\d{1,4}(\.\d{1,2})?$/'],
                 'message' => 'Menu item price must have a maximum of four digits before the decimal point and two digits after.'
             ]
         ]);
