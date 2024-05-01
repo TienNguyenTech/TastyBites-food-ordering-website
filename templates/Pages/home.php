@@ -70,7 +70,6 @@ $this->disableAutoLayout();
                 <li class="nav-item"><a class="nav-link active-home fire-text" aria-current="page" href="#!">Home</a></li>
                 <li class="nav-item"><?= $this->Html->link('Contact Us', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?></li>
                 <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
-                <li class="nav-item"><a class="nav-link fire-text" href="#!">Cart</a></li>
                 <?php
                 if (!$this->Identity->isLoggedIn()) {
                     echo $this->Html->link(
