@@ -358,11 +358,12 @@ $this->disableAutoLayout();
     <style>
         .testimonial_color {
             background-color: #273d4f;
+        }
 
-            .testimonial-text {
-                color: #fff5f1;
+        .testimonial-text {
+            color: #fff5f1;
 
-            }
+        }
     </style>
     <section class="py-5 border-bottom testimonial_color" id="testimonials">
         <div class="container px-5 my-5 px-5">
@@ -425,28 +426,5 @@ $this->disableAutoLayout();
     <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
-
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const menuItemCards = document.querySelectorAll('.menuItemCard');
-        menuItemCards.forEach(function (card) {
-            card.addEventListener('click', function () {
-                const menuItemId = card.getAttribute('data-menuitem');
-                const modal = document.getElementById('menuItemModal' + menuItemId);
-                const modalInstance = new bootstrap.Modal(modal);
-                modalInstance.show();
-            });
-        });
-    });
-</script>
-
-<!-- Bootstrap core JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-<!-- JavaScript for DataTables -->
-<script>
-    $(document).ready(function () {
-        $('#dataTable').DataTable();
-    });
-</script>
 
 </html>
