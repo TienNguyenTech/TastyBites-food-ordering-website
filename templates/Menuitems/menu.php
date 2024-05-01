@@ -149,9 +149,6 @@
 
             <div class="container1">
                 <header>
-                    <div class="col">
-                        <h4 class="text-gray-800 mb-0"><b>Tasty Bites Menu</b></h4>
-                    </div>
                     <div class="col-auto">
                         <!-- Add New Item button -->
                         <?= $this->Html->link(__('Add New Item'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
