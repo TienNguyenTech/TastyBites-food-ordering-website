@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Controller\Controller;
-use Cake\Controller\Component\RequestHandlerComponent; // Ensure the correct base controller namespace
 use Cake\Controller\Component\FlashComponent;
 
 class CartItemsController extends AppController
@@ -12,88 +11,84 @@ class CartItemsController extends AppController
     public function initialize(): void
     {
         parent::initialize();
-        $this->loadComponent(FlashComponent::class); // Load the RequestHandler component
-        $this->loadComponent('Flash'); // Load the Flash component for flash messages
+        $this->loadComponent('Flash'); 
     }
 
-    /**
-     * View the current cart contents.
-     */
-    public function view()
+    private function getCartSession()
     {
-        $session = $this->request->getSession();
-        $cart = $session->read('cart', []); // Default to empty cart if session not set
-
-        $this->set(compact('cart')); // Pass the cart data to the view
+        return $this->request->getSession()->read('cart', []); 
     }
 
-    /**
-     * Add an item to the cart.
-     *
-     * @param int $itemId The ID of the menu item to add.
-     * @param int $quantity The quantity to add (default is 1).
-     */
-    public function add($itemId, $quantity = 1)
+    private function setCartSession(array $cart)
     {
-        $session = $this->request->getSession();
-        $cart = $session->read('cart', []); // Default to empty cart if session not set
+        $this->request->getSession()->write('cart', $cart); 
+    }
 
-        if (isset($cart[$itemId])) {
-            $cart[$itemId] += $quantity; // If item already in cart, increase quantity
+    public function addToCart(int $menuitem_id, int $quantity = 1)
+    {
+        $cart = $this->getCartSession(); 
+
+        if (isset($cart[$menuitem_id])) {
+            $cart[$menuitem_id]['quantity'] += $quantity; 
         } else {
-            $cart[$itemId] = $quantity; // Else, add new item to cart
+            
+            $menuitem = $this->fetchTable('Menuitems')->get($menuitem_id);
+
+            
+            $cart[$menuitem_id] = [
+                'name' => $menuitem->menuitem_name,
+                'image' => $menuitem->menuitem_image,
+                'price' => $menuitem->menuitem_price,
+                'quantity' => $quantity,
+            ];
         }
 
-        $session->write('cart', $cart); // Save updated cart back to session
+        
+        $this->setCartSession($cart);
 
-        $this->Flash->success('Item added to cart.'); // Show success message
-        return $this->redirect(['action' => 'view']); // Redirect to cart view
+        
+        $this->Flash->success(__('Item added to cart.'));
+
+       
+        return $this->redirect(['controller' => 'Menuitems', 'action' => 'menu']); // Thay đổi hành động nếu cần
     }
 
-    /**
-     * Update the quantity of an item in the cart.
-     *
-     * @param int $itemId The ID of the menu item to update.
-     * @param int $quantity The new quantity for the item.
-     */
-    public function update(int $itemId, int $quantity)
+    public function viewCart()
     {
-        $session = $this->request->getSession();
-        $cart = $session->read('cart', []);
+        $this->viewBuilder()->setLayout('cart_tab'); 
+        $cart = $this->getCartSession(); 
+        $this->set(compact('cart')); 
+    }
 
-        if (isset($cart[$itemId])) {
+    public function update(int $menuitem_id, int $quantity)
+    {
+        $cart = $this->getCartSession(); 
+
+        if (isset($cart[$menuitem_id])) {
             if ($quantity <= 0) {
-                unset($cart[$itemId]); // Remove item if quantity is zero or less
+                unset($cart[$menuitem_id]); 
                 $this->Flash->success(__('Item removed from cart.'));
             } else {
-                // Update item quantity in the cart
-                $cart[$itemId]['quantity'] = $quantity;
+                
+                $cart[$menuitem_id]['quantity'] = $quantity;
                 $this->Flash->success(__('Cart updated.'));
             }
 
-            // Save the updated cart to the session
-            $session->write('cart', $cart);
+            $this->setCartSession($cart); 
         }
 
-        return $this->redirect(['action' => 'view']); // Redirect back to the cart view
+        return $this->redirect(['action' => 'viewCart']); 
     }
 
-    /**
-     * Remove an item from the cart.
-     *
-     * @param int $itemId The ID of the menu item to remove.
-     */
-    public function remove(int $itemId)
+    public function remove(int $menuitem_id)
     {
-        $session = $this->request->getSession();
-        $cart = $session->read('cart', []);
-
-        if (isset($cart[$itemId])) {
-            unset($cart[$itemId]); // Remove the item from the cart
-            $session->write('cart', $cart); // Save the updated cart
+        $cart = $this->getCartSession(); 
+        if (isset($cart[$menuitem_id])) {
+            unset($cart[$menuitem_id]); 
+            $this->setCartSession($cart); 
             $this->Flash->success(__('Item removed from cart.'));
         }
 
-        return $this->redirect(['action' => 'view']); // Redirect back to the cart view
+        return $this->redirect(['action' => 'viewCart']); 
     }
 }
