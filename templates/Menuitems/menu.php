@@ -188,12 +188,6 @@
                                 <!-- Add to Cart button, centered in the footer -->
                                 <?= $this->Html->link(__('View Cart'), ['controller' => 'CartItems', 'action' => 'viewCart', $menuitem->id, 1], ['class' => 'btn btn-primary']) ?>
                             </div>
-                            <!-- Nút để xem giỏ hàng -->
-                            <div class="card-footer"><?= $this->Html->link(
-                                __('View Cart No id'),
-                                ['controller' => 'CartItems', 'action' => 'viewCart'], // Không cần ID của menuitem
-                                ['class' => 'btn btn-primary']
-                            ) ?> </div>
 
                         </div>
                     </div>
