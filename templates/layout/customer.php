@@ -80,6 +80,7 @@ $this->disableAutoLayout();
             color: #cb4c46;
         }
 
+        /*Nav-bar cool button stye */
         .navbar-nav {
             text-align: center;
             /* Center the text */
@@ -125,7 +126,58 @@ $this->disableAutoLayout();
             font-weight: bold;
             /* Bold text */
         }
+
+        /* Dropdown Style */
+        .dropbtn {
+            background-color: #273d4f;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        /* Change the background color of the dropdown button when the dropdown content is shown */
+        .dropdown:hover .dropbtn {
+            background-color: #415964;
+        }
     </style>
+
+
+
 
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container px-5">
@@ -143,6 +195,17 @@ $this->disableAutoLayout();
                 <li class="nav-item">
                     <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
                 </li>
+                <div class="dropdown">
+                    <button class="dropbtn">Dropdown</button>
+                    <div class="dropdown-content">
+                        
+                            <?= $this->Html->link('Contact Us', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                        
+                            <?= $this->Html->link('Events', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                        
+                            <?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
+                    </div>
+                </div>
                 <li class="nav-item"><?php
                 if (!$this->Identity->isLoggedIn()) {
                     echo $this->Html->link(
