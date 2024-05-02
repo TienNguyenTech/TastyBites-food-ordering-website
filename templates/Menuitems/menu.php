@@ -290,25 +290,8 @@ function truncateDescription($description, $words) {
     </div>
 <?php endforeach; ?>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const menuItemCards = document.querySelectorAll('.menuItemCard');
-        menuItemCards.forEach(function (card) {
-            card.addEventListener('click', function () {
-                const menuItemId = card.getAttribute('data-menuitem');
-                const modal = document.getElementById('menuItemModal' + menuItemId);
-                const modalInstance = new bootstrap.Modal(modal);
-                modalInstance.show();
-            });
-        });
-    });
-</script>
+
 
 <!-- Bootstrap core JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
 <!-- JavaScript for DataTables -->
-<script>
-    $(document).ready(function () {
-        $('#dataTable').DataTable();
-    });
-</script>
