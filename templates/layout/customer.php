@@ -1,3 +1,22 @@
+<?php
+/**
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link      https://cakephp.org CakePHP(tm) Project
+ * @since     0.10.0
+ * @license   https://opensource.org/licenses/mit-license.php MIT License
+ * @var \App\View\AppView $this
+ */
+
+$this->disableAutoLayout();
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,8 +30,7 @@
     <link rel="icon" type="image/x-icon" href="webroot/assets/momo.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles2.css" rel="stylesheet" />
+
 
     <!-- Custom fonts for this template-->
     <?= $this->Html->css('/vendor/fontawesome-free/css/all.min.css') ?>
@@ -22,37 +40,17 @@
 
     <!-- Custom styles for this template-->
     <?= $this->Html->css('sb-admin-2.min.css') ?>
-    <!--    --><?php //= $this->Html->css('styles.css') ?>
 
-    <?= $this->fetch('meta') ?>
-    <?= $this->fetch('css') ?>
-
-    <?= $this->Html->script('/vendor/jquery/jquery.min.js') ?>
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles2.css" rel="stylesheet" />
 </head>
 
 <body>
     <!-- Responsive navbar-->
     <style>
-        .container {
-            display: flex;
-            justify-content: space-between;
-            /* Aligns left and right */
-            padding: 20px;
-        }
-
-        .align-left {
-            justify-content: flex-start;
-        }
-
-        .align-right {
-            justify-content: flex-end;
-        }
-
         /* Override Bootstrap's primary color */
         .navbar-tea {
             background-color: #273d4f;
-            display: flex;
-            justify-content: space-between;
         }
 
         .fire-text {
@@ -82,71 +80,89 @@
             color: #cb4c46;
         }
 
-        .btn-primary {
-            background-color: #273d4f;
-            /* Custom color for the button */
-            width: 100%;
-            /* Button takes full width of the footer */
-            margin: 0;
-            /* No extra margin on any side */
-            width: 100px;
-
-
-        }
-    
-
-        .navbar-links {
-            display: flex;
-            /* This makes the child elements align horizontally */
-            justify-content: flex-start;
-            /* Default alignment */
-            align-items: center;
-            /* Align items vertically in the center */
+        .navbar-nav {
+            text-align: center; /* Center the text */
+            display: flex; /* Flex layout */
+            justify-content: space-around; /* Evenly spaced items */
+           
         }
 
-        .nav-item {
-            margin-right: 15px;
-            /* Spacing between items */
+        .navbar-nav .nav-item {
+            color: white; /* White text */
+            text-decoration: none; /* No underline */
+            transition: background-color 0.3s; /* Smooth hover transition */
         }
+
+        .navbar-nav .nav-item:hover {
+            background-color: #415964; /* Change background on hover */
+        }
+
+        .navbar-nav .nav-item {
+            display: flex; /* Flex layout for menu items */
+            gap: 20px; /* Space between menu items */
+        }
+
+        .navbar-nav .nav-item {
+            border: 1px solid transparent; /* For hover effect */
+            border-radius: 5px; /* Rounded corners */
+        }
+
+        .navbar-nav .nav-item:hover {
+            border-color: white; /* Show border on hover */
+        }
+
+        .container {
+            margin: auto; /* Center container */
+            font-size: 1.5em; /* Larger font size for logo */
+            font-weight: bold; /* Bold text */
+        }
+
     </style>
-    </head>
 
-    <body>
-        <nav class="navbar navbar-expand-lg navbar-tea">
-            <div class="container">
-                <a class="navbar-brand Big-Stuff" href="/">Tasty Bites Kitchen</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <div class="navbar-links ms-auto">
-                        <div class="nav-item">
-                            <a class="nav-link fire-text" aria-current="page" href="/">Home</a>
-                        </div>
-                        <div class="nav-item">
-                            <?= $this->Html->link('Menu', ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
-                        </div>
-                        <div class="nav-item">
-                            <?= $this->Html->link('Contact Us', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
-                        </div>
-                        <div class="nav-item">
-                            <?php if (!$this->Identity->isLoggedIn()): ?>
-                                <?= $this->Html->link('Log in', ['controller' => 'Auth', 'action' => 'login'], ['class' => 'btn btn-primary']) ?>
-                            <?php endif; ?>
-                        </div>
-                        <div class="nav-item">
-                            <?php if ($this->Identity->isLoggedIn()): ?>
-                                <?= $this->Html->link('Dashboard', ['controller' => 'Dashboard', 'action' => 'index'], ['class' => 'btn btn-primary']) ?>
-                                <?= $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'btn btn-primary']) ?>
-                            <?php endif; ?>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </nav>
-    </body>
+    <nav class="navbar navbar-expand-lg navbar-tea">
+        <div class="container px-5">
+        <?= $this->Html->link('Tasty Bites Kitchen', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
+        </div>
 
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link('Contact Us', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
+                </li>
+                <li class="nav-item"><?php
+                if (!$this->Identity->isLoggedIn()) {
+                    echo $this->Html->link(
+                        'Log in',
+                        ['controller' => 'Auth', 'action' => 'login'],
+                        ['class' => 'nav-link fire-text']
+                    );
+                }
+                ?> </li>
+                <li class="nav-item">
+                    <?php
+                    if ($this->Identity->isLoggedIn()) {
+                        echo $this->Html->link(
+                            'Dashboard',
+                            ['controller' => 'Dashboard', 'action' => 'index'],
+                            ['class' => 'nav-link fire-text']
+                        );
+                        echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
+                    }
+                    ?>
+                </li>
+
+            </ul>
+        </div>
+        </div>
+    </nav>
 
     <?= $this->fetch('content') ?>
+</body>
+
+</html>
