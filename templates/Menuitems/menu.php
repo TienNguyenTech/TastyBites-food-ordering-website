@@ -147,24 +147,14 @@
         <div class="row justify-content-between align-items-center mb-3">
 
 
-            <div class="container1">
+            <div class="container">
                 <header>
                     <div class="col-auto">
                         <!-- Add New Item button -->
                         <?= $this->Html->link(__('Add New Item'), ['action' => 'add'], ['class' => 'btn btn-primary']) ?>
                     </div>
-                    <div class="icon-cart1" id="cart-icon"> <!-- Assign ID to the cart icon -->
-                        <svg class="w-6 h-6 text-gray-800 dark:text-white" aria-hidden="true"
-                            xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="none" viewBox="0 0 24 24">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                                d="M5 4h1.5L9 16m0 0h8m-8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm8 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4Zm-8.5-3h9.25L19 7H7.312" />
-                        </svg>
-                        <span>0</span>
-                    </div>
                 </header>
             </div>
-
-
 
             <div class="row row-cols-1 row-cols-md-5 g-4">
                 <?php foreach ($menuitems as $menuitem): ?>
@@ -177,31 +167,10 @@
                                 <span class="text-muted"><?= $this->Number->currency($menuitem->menuitem_price) ?></span>
                                 <!-- Price aligned left, just below description -->
                             </div>
-                            <div class="card-footer">
-                                <!-- Add to Cart button, centered in the footer -->
-                                <?= $this->Html->link(__('Add to Cart'), ['controller' => 'CartItems', 'action' => 'addToCart', $menuitem->id, 1], ['class' => 'btn btn-primary']) ?>
-                            </div>
-                            <div class="card-footer">
-                                <!-- Add to Cart button, centered in the footer -->
-                                <?= $this->Html->link(__('View Cart'), ['controller' => 'CartItems', 'action' => 'viewCart', $menuitem->id, 1], ['class' => 'btn btn-primary']) ?>
-                            </div>
-
                         </div>
                     </div>
                 <?php endforeach; ?>
             </div>
-
-            <div id="cart-tab" class="cartTab">
-                <h1>Your Cart</h1>
-                <div class="listCart">
-                    <!-- Cart items will be displayed here -->
-                </div>
-                <div class="btn">
-                    <button id="close-cart" class="close">CLOSE</button>
-                    <button class="checkOut">Check Out</button>
-                </div>
-            </div>
-
 
         </div>
 
@@ -209,27 +178,12 @@
     <!-- Body content -->
     <?= $this->fetch('content'); ?> <!-- Your page content goes here -->
 
-    <!-- Inline JavaScript code to handle the button click -->
-    <script>
-        document.addEventListener('DOMContentLoaded', function () {
-            var closeButton = document.getElementById('close-cart');
-            var cartTab = document.getElementById('cart-tab');
-            var cartIcon = document.getElementById('cart-icon');
 
-            closeButton.addEventListener('click', function () {
-                cartTab.style.display = 'none';
-            });
-
-            cartIcon.addEventListener('click', function () {
-                cartTab.style.display = 'block';
-            });
-        });
-    </script>
-    <script src="app.js"></script>
 </body>
 
 <?php
-function truncateDescription($description, $words) {
+function truncateDescription($description, $words)
+{
     $wordArray = explode(' ', $description);
     if (count($wordArray) > $words) {
         $wordArray = array_slice($wordArray, 0, $words);
@@ -241,32 +195,32 @@ function truncateDescription($description, $words) {
 
 <!-- Modal -->
 <?php foreach ($menuitems as $menuitem): ?>
-    <div class="modal fade" id="menuItemModal<?= $menuitem->menuitem_id ?>" tabindex="-1" aria-labelledby="menuItemModalLabel<?= $menuitem->menuitem_id ?>" aria-hidden="true">
+    <div class="modal fade" id="menuItemModal<?= $menuitem->menuitem_id ?>" tabindex="-1"
+        aria-labelledby="menuItemModalLabel<?= $menuitem->menuitem_id ?>" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered modal-xl">
             <div class="modal-content">
                 <div class="modal-header d-flex justify-content-between align-items-center">
-                    <h5 class="modal-title fw-bold fs-3" id="menuItemModalLabel<?= $menuitem->menuitem_id ?>" style="font-size: 1.5rem;">
+                    <h5 class="modal-title fw-bold fs-3" id="menuItemModalLabel<?= $menuitem->menuitem_id ?>"
+                        style="font-size: 1.5rem;">
                         <?= $menuitem->menuitem_name ?>
                     </h5>
-                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close" style="font-size: 2rem;">
+                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        style="font-size: 2rem;">
                         <span aria-hidden="true">&times;</span>
                     </button>
                 </div>
                 <div class="modal-body">
                     <div class="row">
                         <div class="col-lg-6">
-                            <div class="rectangle-image-wrapper" style="width: 100%; padding-top: 75%; position: relative; overflow: hidden;">
+                            <div class="rectangle-image-wrapper"
+                                style="width: 100%; padding-top: 75%; position: relative; overflow: hidden;">
                                 <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'img-fluid rectangle-image', 'style' => 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;']) ?>
                             </div>
                         </div>
                         <div class="col-lg-6">
-                            <!--                            <h5 class="modal-title" id="menuItemModalLabel">--><?php //= $menuitem->menuitem_name ?><!--</h5>-->
-                            <!--                            <p id="modalMenuItemPrice" style="font-size: 1.5rem;">--><?php //= $this->Number->currency($menuitem->menuitem_price) ?><!--</p>-->
-                            <!--                            <p id="modalMenuItemDesc">--><?php //= $menuitem->menuitem_desc ?><!--</p>-->
-                            <!--                            <button type="button" class="btn btn-primary mb-2">Choose Quantity</button>-->
-                            <!--                            <button type="button" class="btn btn-success">Add to Cart</button>-->
                             <div class="mb-3">
-                                <p id="modalMenuItemPrice" style="font-size: 1.5rem;"><?= $this->Number->currency($menuitem->menuitem_price) ?></p>
+                                <p id="modalMenuItemPrice" style="font-size: 1.5rem;">
+                                    <?= $this->Number->currency($menuitem->menuitem_price) ?></p>
                             </div>
                             <div class="mb-3">
                                 <p id="modalMenuItemDesc"><?= $menuitem->menuitem_desc ?></p>
@@ -279,9 +233,7 @@ function truncateDescription($description, $words) {
                                     <?php endfor; ?>
                                 </select>
                             </div>
-                            <div>
-                                <button type="button" class="btn btn-success">Add to Cart</button>
-                            </div>
+                            
                         </div>
                     </div>
                 </div>

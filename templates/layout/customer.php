@@ -142,9 +142,6 @@
                                 <?= $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'btn btn-primary']) ?>
                             <?php endif; ?>
                         </div>
-                        <div class="nav-item">
-                            <?= $this->Html->link("Cart", ['controller' => 'Menuitems', 'action' => 'cart'], ['class' => 'btn btn-primary']) ?>
-                        </div>
                     </div>
                 </div>
             </div>
