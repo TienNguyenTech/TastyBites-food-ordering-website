@@ -81,47 +81,55 @@ $this->disableAutoLayout();
         }
 
         .navbar-nav {
-            text-align: center; /* Center the text */
-            display: flex; /* Flex layout */
-            justify-content: space-around; /* Evenly spaced items */
-           
+            text-align: center;
+            /* Center the text */
+
         }
 
         .navbar-nav .nav-item {
-            color: white; /* White text */
-            text-decoration: none; /* No underline */
-            transition: background-color 0.3s; /* Smooth hover transition */
+            text-decoration: none;
+            /* No underline */
+            transition: background-color 0.3s;
+            /* Smooth hover transition */
         }
 
         .navbar-nav .nav-item:hover {
-            background-color: #415964; /* Change background on hover */
+            background-color: #415964;
+            /* Change background on hover */
         }
 
         .navbar-nav .nav-item {
-            display: flex; /* Flex layout for menu items */
-            gap: 20px; /* Space between menu items */
+            display: flex;
+            /* Flex layout for menu items */
+            gap: 20px;
+            /* Space between menu items */
         }
 
         .navbar-nav .nav-item {
-            border: 1px solid transparent; /* For hover effect */
-            border-radius: 5px; /* Rounded corners */
+            border: 1px solid transparent;
+            /* For hover effect */
+            border-radius: 5px;
+            /* Rounded corners */
         }
 
         .navbar-nav .nav-item:hover {
-            border-color: white; /* Show border on hover */
+            border-color: white;
+            /* Show border on hover */
         }
 
         .container {
-            margin: auto; /* Center container */
-            font-size: 1.5em; /* Larger font size for logo */
-            font-weight: bold; /* Bold text */
+            margin: auto;
+            /* Center container */
+            font-size: 1.5em;
+            /* Larger font size for logo */
+            font-weight: bold;
+            /* Bold text */
         }
-
     </style>
 
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container px-5">
-        <?= $this->Html->link('Tasty Bites Kitchen', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
+            <?= $this->Html->link('Tasty Bites Kitchen', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
         </div>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

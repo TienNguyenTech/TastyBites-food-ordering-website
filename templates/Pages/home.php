@@ -68,49 +68,94 @@ $this->disableAutoLayout();
         .active-home:hover {
             color: #cb4c46;
         }
+
+        .navbar-nav {
+            text-align: center;
+            /* Center the text */
+
+        }
+
+        .navbar-nav .nav-item {
+            text-decoration: none;
+            /* No underline */
+            transition: background-color 0.3s;
+            /* Smooth hover transition */
+        }
+
+        .navbar-nav .nav-item:hover {
+            background-color: #415964;
+            /* Change background on hover */
+        }
+
+        .navbar-nav .nav-item {
+            display: flex;
+            /* Flex layout for menu items */
+            gap: 20px;
+            /* Space between menu items */
+        }
+
+        .navbar-nav .nav-item {
+            border: 1px solid transparent;
+            /* For hover effect */
+            border-radius: 5px;
+            /* Rounded corners */
+        }
+
+        .navbar-nav .nav-item:hover {
+            border-color: white;
+            /* Show border on hover */
+        }
+
+        .container {
+            margin: auto;
+            /* Center container */
+            font-size: 1.5em;
+            /* Larger font size for logo */
+            font-weight: bold;
+            /* Bold text */
+        }
     </style>
 
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container px-5">
-            <a class="navbar-brand Big-Stuff" href="#!">Tasty Bites Kitchen</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
-                aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                    <li class="nav-item">
-                        <?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
-                    </li>
-                    <li class="nav-item">
-                        <?= $this->Html->link('Contact Us', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
-                    </li>
-                    <li class="nav-item">
-                        <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
-                    </li>
-                    <li class="nav-item"><?php
-                    if (!$this->Identity->isLoggedIn()) {
+            <?= $this->Html->link('Tasty Bites Kitchen', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
+        </div>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <li class="nav-item">
+                    <?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link('Contact Us', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                </li>
+                <li class="nav-item">
+                    <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
+                </li>
+                <li class="nav-item"><?php
+                if (!$this->Identity->isLoggedIn()) {
+                    echo $this->Html->link(
+                        'Log in',
+                        ['controller' => 'Auth', 'action' => 'login'],
+                        ['class' => 'nav-link fire-text']
+                    );
+                }
+                ?> </li>
+                <li class="nav-item">
+                    <?php
+                    if ($this->Identity->isLoggedIn()) {
                         echo $this->Html->link(
-                            'Log in',
-                            ['controller' => 'Auth', 'action' => 'login'],
+                            'Dashboard',
+                            ['controller' => 'Dashboard', 'action' => 'index'],
                             ['class' => 'nav-link fire-text']
                         );
+                        echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
                     }
-                    ?> </li>
-                    <li class="nav-item">
-                        <?php
-                        if ($this->Identity->isLoggedIn()) {
-                            echo $this->Html->link(
-                                'Dashboard',
-                                ['controller' => 'Dashboard', 'action' => 'index'],
-                                ['class' => 'nav-link fire-text']
-                            );
-                            echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
-                        }
-                        ?>
-                    </li>
+                    ?>
+                </li>
 
-                </ul>
-            </div>
+            </ul>
+        </div>
         </div>
     </nav>
 
