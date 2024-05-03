@@ -216,7 +216,7 @@
             <footer class="sticky-footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Tasty Bites Kitchen 2024</span>
+                        <span>Copyright &copy; <?= $this->ContentBlock->text('copyright-message'); ?></span>
                     </div>
                 </div>
             </footer>

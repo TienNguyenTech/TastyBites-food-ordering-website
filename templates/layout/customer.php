@@ -154,12 +154,19 @@ $this->disableAutoLayout();
                 ?> </li>
                 <li class="nav-item">
                     <?php
-                    if ($this->Identity->isLoggedIn()) {
+                    $user = $this->Identity->get('user_type');
+                    if ($this->Identity->isLoggedIn() && $user === 'admin') {
                         echo $this->Html->link(
                             'Dashboard',
                             ['controller' => 'Dashboard', 'action' => 'index'],
                             ['class' => 'nav-link fire-text']
                         );
+                    }
+                    ?>
+                </li>
+                <li class="nav-item">
+                    <?php
+                    if ($this->Identity->isLoggedIn()) {
                         echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
                     }
                     ?>

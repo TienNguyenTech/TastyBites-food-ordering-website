@@ -8,7 +8,7 @@
 <div class="container my-4">
     <div class="row justify-content-between align-items-center mb-3">
         <div class="col">
-            <h3 class="text-gray-800 mb-0"><b>Tasty Bites Menu</b></h3>
+            <h3 class="text-gray-800 mb-0"><b><?= $this->ContentBlock->text('website-title'); ?> Menu</b></h3>
         </div>
     </div>
 </div>
