@@ -118,11 +118,25 @@ $this->disableAutoLayout();
 
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container px-5">
-            <?= $this->Html->link('Tasty Bites Kitchen', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
+            <?= $this->Html->link($this->ContentBlock->text('website-title'), ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
         </div>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <!--only admin login, the content block will be shown-->
+                <li class="nav-item">
+                <?php
+                if ($this->Identity->isLoggedIn()) {
+                    $user = $this->Identity->get('user_type');
+                    if ($user === 'admin') {
+                        echo $this->Html->link(
+                            'Modify Page',
+                            ['plugin' => 'ContentBlocks', 'controller' => 'ContentBlocks', 'action' => 'index']
+                        );
+                    }
+                }
+                ?>
+                </li>
                 <li class="nav-item">
                     <?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
                 </li>
@@ -143,12 +157,19 @@ $this->disableAutoLayout();
                 ?> </li>
                 <li class="nav-item">
                     <?php
-                    if ($this->Identity->isLoggedIn()) {
+                    $user = $this->Identity->get('user_type');
+                    if ($this->Identity->isLoggedIn() && $user === 'admin') {
                         echo $this->Html->link(
                             'Dashboard',
                             ['controller' => 'Dashboard', 'action' => 'index'],
                             ['class' => 'nav-link fire-text']
                         );
+                    }
+                    ?>
+                </li>
+                <li class="nav-item">
+                    <?php
+                    if ($this->Identity->isLoggedIn()) {
                         echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
                     }
                     ?>
@@ -208,7 +229,7 @@ $this->disableAutoLayout();
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
                     <div class="text-center my-5">
-                        <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to Tasty Bites Kitchen</h1>
+                        <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to <?= $this->ContentBlock->text('website-title'); ?></h1>
                         <p class="lead text-white mb-4 header-text">Experience the most authentic Nepalese cuisine in
                             Melbourne</p>
                         <div class="d-grid gap-3 d-sm-flex justify-content-center">

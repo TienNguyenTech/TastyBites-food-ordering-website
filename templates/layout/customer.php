@@ -129,7 +129,7 @@ $this->disableAutoLayout();
 
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container px-5">
-            <?= $this->Html->link('Tasty Bites Kitchen', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
+            <?= $this->Html->link($this->ContentBlock->text('website-title'), ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
         </div>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">

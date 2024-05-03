@@ -42,7 +42,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-hamburger"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Tasty Bites Kitchen<sup></sup></div>
+                <div class="sidebar-brand-text mx-3"><?= $this->ContentBlock->text('website-title'); ?><sup></sup></div>
             </a>
 
             <!-- Divider -->
