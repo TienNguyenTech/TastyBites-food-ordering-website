@@ -181,7 +181,7 @@ $this->disableAutoLayout();
 
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container px-5">
-            <?= $this->Html->link('Tasty Bites Kitchen', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
+            <?= $this->Html->link($this->ContentBlock->text('website-title'), ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
         </div>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -217,12 +217,19 @@ $this->disableAutoLayout();
                 ?> </li>
                 <li class="nav-item">
                     <?php
-                    if ($this->Identity->isLoggedIn()) {
+                    $user = $this->Identity->get('user_type');
+                    if ($this->Identity->isLoggedIn() && $user === 'admin') {
                         echo $this->Html->link(
                             'Dashboard',
                             ['controller' => 'Dashboard', 'action' => 'index'],
                             ['class' => 'nav-link fire-text']
                         );
+                    }
+                    ?>
+                </li>
+                <li class="nav-item">
+                    <?php
+                    if ($this->Identity->isLoggedIn()) {
                         echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
                     }
                     ?>

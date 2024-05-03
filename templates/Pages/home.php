@@ -118,11 +118,25 @@ $this->disableAutoLayout();
 
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container px-5">
-            <?= $this->Html->link('Tasty Bites Kitchen', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
+            <?= $this->Html->link($this->ContentBlock->text('website-title'), ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
         </div>
 
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                <!--only admin login, the content block will be shown-->
+                <li class="nav-item">
+                <?php
+                if ($this->Identity->isLoggedIn()) {
+                    $user = $this->Identity->get('user_type');
+                    if ($user === 'admin') {
+                        echo $this->Html->link(
+                            'Modify Page',
+                            ['plugin' => 'ContentBlocks', 'controller' => 'ContentBlocks', 'action' => 'index']
+                        );
+                    }
+                }
+                ?>
+                </li>
                 <li class="nav-item">
                     <?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
                 </li>
@@ -132,27 +146,45 @@ $this->disableAutoLayout();
                 <li class="nav-item">
                     <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
                 </li>
-                <li class="nav-item"><?php
-                if (!$this->Identity->isLoggedIn()) {
-                    echo $this->Html->link(
-                        'Log in',
-                        ['controller' => 'Auth', 'action' => 'login'],
-                        ['class' => 'nav-link fire-text']
-                    );
-                }
-                ?> </li>
+<!--                <li class="nav-item">--><?php
+//                if (!$this->Identity->isLoggedIn()) {
+//                    echo $this->Html->link(
+//                        'Log in',
+//                        ['controller' => 'Auth', 'action' => 'login'],
+//                        ['class' => 'nav-link fire-text']
+//                    );
+//                }
+//                ?><!-- </li>-->
                 <li class="nav-item">
                     <?php
+                    if (!$this->Identity->isLoggedIn()) {
+                        echo $this->Html->link(
+                            'Log in',
+                            ['controller' => 'Auth', 'action' => 'login'],
+                            ['class' => 'nav-link fire-text']
+                        );
+                    }
+                    ?>
+                    <?php
+                    $user = $this->Identity->get('user_type');
                     if ($this->Identity->isLoggedIn()) {
+                        if ($user === 'admin'){
                         echo $this->Html->link(
                             'Dashboard',
                             ['controller' => 'Dashboard', 'action' => 'index'],
                             ['class' => 'nav-link fire-text']
-                        );
+                        );}
                         echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
                     }
                     ?>
                 </li>
+<!--                <li class="nav-item">-->
+<!--                    --><?php
+//                    if ($this->Identity->isLoggedIn()) {
+//                        echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
+//                    }
+//                    ?>
+<!--                </li>-->
 
             </ul>
         </div>
@@ -208,7 +240,7 @@ $this->disableAutoLayout();
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
                     <div class="text-center my-5">
-                        <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to Tasty Bites Kitchen</h1>
+                        <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to <?= $this->ContentBlock->text('website-title'); ?></h1>
                         <p class="lead text-white mb-4 header-text">Experience the most authentic Nepalese cuisine in
                             Melbourne</p>
                         <div class="d-grid gap-3 d-sm-flex justify-content-center">
@@ -315,16 +347,20 @@ $this->disableAutoLayout();
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-                                <img src="webroot/img/LMAO1.jpg" class="d-block w-100" alt="Image 1">
+<!--                                <img src="--><?php //= $this->ContentBlock->image('shown-image-1'); ?><!--" class="d-block w-100" alt="Image 1">-->
+                                    <?= $this->ContentBlock->image('shown-image-1'); ?>
                             </div>
                             <div class="carousel-item">
-                                <img src="webroot/img/LMAO3.jpg" class="d-block w-100" alt="Image 3">
+<!--                                <img src="webroot/img/LMAO3.jpg" class="d-block w-100" alt="Image 3">-->
+                                <?= $this->ContentBlock->image('shown-image-2'); ?>
                             </div>
                             <div class="carousel-item">
-                                <img src="webroot/img/LMAO4.jpg" class="d-block w-100" alt="Image 4">
+<!--                                <img src="webroot/img/LMAO4.jpg" class="d-block w-100" alt="Image 4">-->
+                                <?= $this->ContentBlock->image('shown-image-3'); ?>
                             </div>
                             <div class="carousel-item">
-                                <img src="webroot/img/LMAO5.jpg" class="d-block w-100" alt="Image 5">
+<!--                                <img src="webroot/img/LMAO5.jpg" class="d-block w-100" alt="Image 5">-->
+                                <?= $this->ContentBlock->image('shown-image-4'); ?>
                             </div>
                         </div>
                         <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleSlidesOnly"
@@ -459,7 +495,7 @@ $this->disableAutoLayout();
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container px-5">
-            <p class="m-0 text-center text-white">Copyright &copy; Tasty Bites Kitchen</p>
+            <p class="m-0 text-center text-white">Copyright &copy; <?= $this->ContentBlock->text('copyright-message'); ?></p>
         </div>
     </footer>
     <!-- Bootstrap core JS-->
