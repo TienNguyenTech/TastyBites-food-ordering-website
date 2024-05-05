@@ -46,7 +46,7 @@ class MenuitemsTable extends Table
         $this->belongsToMany('Orders', [
             'foreignKey' => 'menuitem_id',
             'targetForeignKey' => 'order_id',
-            'joinTable' => 'orders_menuitems',
+            'joinTable' => 'menuitems_orders',
         ]);
     }
 
