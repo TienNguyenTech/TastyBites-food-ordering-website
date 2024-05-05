@@ -42,7 +42,7 @@
                 <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-hamburger"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Tasty Bites Kitchen<sup></sup></div>
+                <div class="sidebar-brand-text mx-3"><?= $this->ContentBlock->text('website-title'); ?><sup></sup></div>
             </a>
 
             <!-- Divider -->
@@ -216,7 +216,7 @@
             <footer class="sticky-footer">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Tasty Bites Kitchen 2024</span>
+                        <span>Copyright &copy; <?= $this->ContentBlock->text('copyright-message'); ?></span>
                     </div>
                 </div>
             </footer>

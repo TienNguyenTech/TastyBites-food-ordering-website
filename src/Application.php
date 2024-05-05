@@ -62,6 +62,8 @@ class Application extends BaseApplication implements AuthenticationServiceProvid
                 (new TableLocator())->allowFallbackClass(false)
             );
         }
+        //load more plugins here
+        $this->addPlugin('ContentBlocks');
     }
 
     /**

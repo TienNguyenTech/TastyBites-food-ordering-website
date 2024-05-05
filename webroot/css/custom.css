@@ -1,0 +1,35 @@
+/*LAYOUT / CUSTOMER */
+/* Navbar Styles */
+.navbar-tea {
+    background-color: #273d4f;
+    color: #fff5f1;
+  }
+  
+  .fire-text {
+    color: #fff5f1;
+  }
+  
+  .fire-text:hover {
+    color: #cb4c46;
+  }
+  
+  .btn-primary {
+    background-color: #273d4f;
+  }
+  
+  .navbar-brand {
+    font-size: 25px;
+    color: #fff5f1;
+  }
+  
+  .navbar-brand:hover {
+    color: #cb4c46;
+  }
+  
+  .nav-link {
+    color: #fff5f1;
+  }
+  
+  .nav-link:hover {
+    color: #cb4c46;
+  }
