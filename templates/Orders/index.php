@@ -3,25 +3,18 @@
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\Order> $orders
  */
-echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css',['block'=>true]);
-echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js',['block'=>true]);
-echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['block'=>true]);
 ?>
-<div class="orders index content text-gray-800">
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800"><?= __('Orders') ?></h1>
-<!--        <a href="--><?php //= $this->Url->build(['action' => 'add'])?><!--" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i-->
-<!--                class="fas fa-plus fa-sm text-white-50"></i> New Order</a>-->
-    </div>
+<div class="orders index content">
+    <?= $this->Html->link(__('New Order'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <h3><?= __('Orders') ?></h3>
     <div class="table-responsive">
-        <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+        <table>
             <thead>
                 <tr>
-                    <th><?= h('Order ID') ?></th>
-                    <th><?= h('Customer') ?></th>
-                    <th><?= h('Order Time') ?></th>
-                    <th><?= h('Total Price') ?></th>
-
+                    <th><?= $this->Paginator->sort('order_id') ?></th>
+                    <th><?= $this->Paginator->sort('order_datetime') ?></th>
+                    <th><?= $this->Paginator->sort('order_total') ?></th>
+                    <th><?= $this->Paginator->sort('customer_id') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -29,12 +22,12 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                 <?php foreach ($orders as $order): ?>
                 <tr>
                     <td><?= $this->Number->format($order->order_id) ?></td>
-                    <td><?= $order->hasValue('customer') ? $this->Html->link($order->customer->customer_fname . ' ' . $order->customer->customer_lname, ['controller' => 'Customers', 'action' => 'view', $order->customer->customer_id]) : '' ?></td>
                     <td><?= h($order->order_datetime) ?></td>
-                    <td><?= $this->Number->currency($order->order_total) ?></td>
+                    <td><?= $this->Number->format($order->order_total) ?></td>
+                    <td><?= $order->hasValue('customer') ? $this->Html->link($order->customer->customer_fname, ['controller' => 'Customers', 'action' => 'view', $order->customer->customer_id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $order->order_id]) ?>
-<!--                        --><?php //= $this->Html->link(__('Edit'), ['action' => 'edit', $order->order_id]) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $order->order_id]) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $order->order_id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->order_id)]) ?>
                     </td>
                 </tr>
@@ -42,9 +35,14 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
             </tbody>
         </table>
     </div>
-    <script>
-        $(document).ready(function() {
-            $('#dataTable').DataTable();
-        });
-    </script>
+    <div class="paginator">
+        <ul class="pagination">
+            <?= $this->Paginator->first('<< ' . __('first')) ?>
+            <?= $this->Paginator->prev('< ' . __('previous')) ?>
+            <?= $this->Paginator->numbers() ?>
+            <?= $this->Paginator->next(__('next') . ' >') ?>
+            <?= $this->Paginator->last(__('last') . ' >>') ?>
+        </ul>
+        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+    </div>
 </div>

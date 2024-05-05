@@ -24,7 +24,7 @@ class MenuitemsControllerTest extends TestCase
     protected array $fixtures = [
         'app.Menuitems',
         'app.Orders',
-        'app.OrdersMenuitems',
+        'app.MenuitemsOrders',
     ];
 
     /**

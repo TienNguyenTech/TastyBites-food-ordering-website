@@ -25,7 +25,7 @@ class OrdersControllerTest extends TestCase
         'app.Orders',
         'app.Customers',
         'app.Menuitems',
-        'app.OrdersMenuitems',
+        'app.MenuitemsOrders',
     ];
 
     /**
