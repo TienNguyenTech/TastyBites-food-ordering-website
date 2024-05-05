@@ -13,7 +13,6 @@
                 <tr>
                     <th><?= $this->Paginator->sort('order_id') ?></th>
                     <th><?= $this->Paginator->sort('order_datetime') ?></th>
-                    <th><?= $this->Paginator->sort('order_total') ?></th>
                     <th><?= $this->Paginator->sort('customer_id') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
@@ -23,7 +22,6 @@
                 <tr>
                     <td><?= $this->Number->format($order->order_id) ?></td>
                     <td><?= h($order->order_datetime) ?></td>
-                    <td><?= $this->Number->format($order->order_total) ?></td>
                     <td><?= $order->hasValue('customer') ? $this->Html->link($order->customer->customer_fname, ['controller' => 'Customers', 'action' => 'view', $order->customer->customer_id]) : '' ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $order->order_id]) ?>

@@ -81,11 +81,6 @@ class MenuitemsTable extends Table
             ->requirePresence('menuitem_price', 'create')
             ->notEmptyString('menuitem_price');
 
-        $validator
-            ->numeric('menuitem_rating')
-            ->requirePresence('menuitem_rating', 'create')
-            ->notEmptyString('menuitem_rating');
-
         return $validator;
     }
 }

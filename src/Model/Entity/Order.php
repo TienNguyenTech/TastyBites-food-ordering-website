@@ -10,7 +10,6 @@ use Cake\ORM\Entity;
  *
  * @property int $order_id
  * @property \Cake\I18n\DateTime $order_datetime
- * @property float $order_total
  * @property int $customer_id
  *
  * @property \App\Model\Entity\Customer $customer
@@ -29,7 +28,6 @@ class Order extends Entity
      */
     protected array $_accessible = [
         'order_datetime' => true,
-        'order_total' => true,
         'customer_id' => true,
         'customer' => true,
         'menuitems' => true,

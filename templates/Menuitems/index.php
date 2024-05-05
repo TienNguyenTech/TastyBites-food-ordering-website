@@ -16,7 +16,6 @@
                     <th><?= $this->Paginator->sort('menuitem_image') ?></th>
                     <th><?= $this->Paginator->sort('menuitem_desc') ?></th>
                     <th><?= $this->Paginator->sort('menuitem_price') ?></th>
-                    <th><?= $this->Paginator->sort('menuitem_rating') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -28,7 +27,6 @@
                     <td><?= h($menuitem->menuitem_image) ?></td>
                     <td><?= h($menuitem->menuitem_desc) ?></td>
                     <td><?= $this->Number->format($menuitem->menuitem_price) ?></td>
-                    <td><?= $this->Number->format($menuitem->menuitem_rating) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $menuitem->menuitem_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $menuitem->menuitem_id]) ?>

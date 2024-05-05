@@ -38,10 +38,6 @@
                     <th><?= __('Menuitem Price') ?></th>
                     <td><?= $this->Number->format($menuitem->menuitem_price) ?></td>
                 </tr>
-                <tr>
-                    <th><?= __('Menuitem Rating') ?></th>
-                    <td><?= $this->Number->format($menuitem->menuitem_rating) ?></td>
-                </tr>
             </table>
             <div class="related">
                 <h4><?= __('Related Orders') ?></h4>
@@ -51,7 +47,6 @@
                         <tr>
                             <th><?= __('Order Id') ?></th>
                             <th><?= __('Order Datetime') ?></th>
-                            <th><?= __('Order Total') ?></th>
                             <th><?= __('Customer Id') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
@@ -59,7 +54,6 @@
                         <tr>
                             <td><?= h($order->order_id) ?></td>
                             <td><?= h($order->order_datetime) ?></td>
-                            <td><?= h($order->order_total) ?></td>
                             <td><?= h($order->customer_id) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Orders', 'action' => 'view', $order->order_id]) ?>

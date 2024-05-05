@@ -20,7 +20,6 @@
                 <legend><?= __('Add Order') ?></legend>
                 <?php
                     echo $this->Form->control('order_datetime');
-                    echo $this->Form->control('order_total');
                     echo $this->Form->control('customer_id', ['options' => $customers]);
                     echo $this->Form->control('menuitems._ids', ['options' => $menuitems]);
                 ?>

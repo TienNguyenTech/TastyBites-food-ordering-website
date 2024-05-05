@@ -27,10 +27,6 @@
                     <td><?= $this->Number->format($order->order_id) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Order Total') ?></th>
-                    <td><?= $this->Number->format($order->order_total) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Order Datetime') ?></th>
                     <td><?= h($order->order_datetime) ?></td>
                 </tr>
@@ -46,7 +42,6 @@
                             <th><?= __('Menuitem Image') ?></th>
                             <th><?= __('Menuitem Desc') ?></th>
                             <th><?= __('Menuitem Price') ?></th>
-                            <th><?= __('Menuitem Rating') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($order->menuitems as $menuitem) : ?>
@@ -56,7 +51,6 @@
                             <td><?= h($menuitem->menuitem_image) ?></td>
                             <td><?= h($menuitem->menuitem_desc) ?></td>
                             <td><?= h($menuitem->menuitem_price) ?></td>
-                            <td><?= h($menuitem->menuitem_rating) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Menuitems', 'action' => 'view', $menuitem->menuitem_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Menuitems', 'action' => 'edit', $menuitem->menuitem_id]) ?>

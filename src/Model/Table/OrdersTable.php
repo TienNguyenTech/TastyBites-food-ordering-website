@@ -68,11 +68,6 @@ class OrdersTable extends Table
             ->notEmptyDateTime('order_datetime');
 
         $validator
-            ->numeric('order_total')
-            ->requirePresence('order_total', 'create')
-            ->notEmptyString('order_total');
-
-        $validator
             ->integer('customer_id')
             ->notEmptyString('customer_id');
 
