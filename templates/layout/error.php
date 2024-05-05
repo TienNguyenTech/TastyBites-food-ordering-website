@@ -33,7 +33,15 @@
     <div class="error-container">
         <?= $this->Flash->render() ?>
         <?= $this->fetch('content') ?>
-        <?= $this->Html->link(__('Back'), 'javascript:history.back()') ?>
+        <?= $this->Html->link(__('Return to home'), '/', ["class" => "btn btn-primary"]) ?>
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright &copy; Tasty Bites Kitchen 2024</span>
+                </div>
+            </div>
+        </footer>
     </div>
+
 </body>
 </html>

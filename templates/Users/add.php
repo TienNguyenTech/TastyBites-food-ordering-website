@@ -8,13 +8,13 @@
 <h1 class="h3 mb-2 text-gray-800">Add new User</h1>
 <?= $this->Form->create($user, ['type' => 'file', 'class' => 'text-gray-800']) ?>
 <?php
-echo $this->Form->control('email', ['label' => 'email', 'class' => 'form-control']);
-echo $this->Form->control('password', ['label' => 'password', 'class' => 'form-control']);
+echo $this->Form->control('email', ['label' => 'Email', 'class' => 'form-control']);
+echo $this->Form->control('password', ['label' => 'Password', 'class' => 'form-control']);
 //echo $this->Form->control('nonce', ['label' => 'nonce', 'class' => 'form-control']);
 //echo $this->Form->control('nonce_expiry', ['label' => 'nonce_expiry',  ['empty' => true],'class' => 'form-control']);
-echo $this->Form->control('user_type', ['label' => 'User Type','options' => ['admin' => 'Admin', 'customer' => 'Customer', 'staff' => 'Staff'],'class' => 'form-control']);
-echo $this->Form->control('first_name', ['label' => 'first_name', 'class' => 'form-control']);
-echo $this->Form->control('last_name', ['label' => 'last_name', 'class' => 'form-control']);
+echo $this->Form->control('user_type', ['label' => 'User Type','options' => ['admin' => 'Admin', 'customer' => 'Customer'],'class' => 'form-control']);
+echo $this->Form->control('first_name', ['label' => 'First Name', 'class' => 'form-control']);
+echo $this->Form->control('last_name', ['label' => 'Last Name', 'class' => 'form-control']);
 
 ?>
 <?= $this->Form->button(__('Submit'),['class'=>'btn btn-primary']) ?>

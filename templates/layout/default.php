@@ -53,10 +53,10 @@
                 <a class="nav-link"
                     href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display', 'home']) ?>">
                     <i class="fas fa-fw fa-home"></i>
-                    <span>Homepage</span></a>
+                    <span>Customer Homepage</span></a>
                 <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-cog"></i>
-                    <span>Dashboard</span></a>
+                    <span>Admin Dashboard</span></a>
                 <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Menuitems', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-birthday-cake"></i>
                     <span>Menu</span></a>
@@ -126,14 +126,14 @@
 
                     // Render the back button based on the page type
                     if(!$isDashboardPage) {
-                        if ($isMenuItemEditPage || $isMenuItemIndexPage) {
+                        if ($isMenuItemEditPage) {
                             // If it's the edit or index page for menu items, return to the menu item index
                             echo $this->Html->tag(
                                 'button',
                                 $this->Html->tag('i', '', ['class' => 'fas fa-arrow-left']) . ' Return',
                                 ['onclick' => 'returnToMenu()', 'class' => 'btn btn-secondary']
                             );
-                        } elseif ($isUserEditPage || $isUserIndexPage) {
+                        } elseif ($isUserEditPage || $isUserIndexPage || $isMenuItemIndexPage) {
                             // If it's the edit or index page for users, return to the dashboard index
                             echo $this->Html->tag(
                                 'button',
