@@ -116,6 +116,53 @@ $this->disableAutoLayout();
         }
     </style>
 
+    <style>
+        /* Pop-up container positioned at the top-right corner under the navbar */
+        .popup {
+            display: none;
+            /* Hidden by default */
+            position: absolute;
+            top: 70px;
+            /* Just below the navbar */
+            right: 20px;
+            /* Positioned near the right edge */
+            width: 300px;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            padding: 10px;
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1000;
+            /* Ensure it's on top */
+            animation: slideDown 0.5s ease;
+            /* Animation for smooth entry */
+        }
+
+        /* Animation to slide the pop-up down */
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Style for the arrow pointing to the target button */
+        .arrow {
+            position: absolute;
+            top: -10px;
+            right: 20px;
+            width: 0;
+            height: 0;
+            border-left: 10px solid transparent;
+            border-right: 10px solid transparent;
+            border-bottom: 10px solid #f9f9f9;
+        }
+    </style>
+
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container px-5">
             <?= $this->Html->link($this->ContentBlock->text('website-title'), ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
@@ -125,17 +172,17 @@ $this->disableAutoLayout();
             <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                 <!--only admin login, the content block will be shown-->
                 <li class="nav-item">
-                <?php
-                if ($this->Identity->isLoggedIn()) {
-                    $user = $this->Identity->get('user_type');
-                    if ($user === 'admin') {
-                        echo $this->Html->link(
-                            'Modify Page',
-                            ['plugin' => 'ContentBlocks', 'controller' => 'ContentBlocks', 'action' => 'index']
-                        );
+                    <?php
+                    if ($this->Identity->isLoggedIn()) {
+                        $user = $this->Identity->get('user_type');
+                        if ($user === 'admin') {
+                            echo $this->Html->link(
+                                'Modify Page',
+                                ['plugin' => 'ContentBlocks', 'controller' => 'ContentBlocks', 'action' => 'index']
+                            );
+                        }
                     }
-                }
-                ?>
+                    ?>
                 </li>
                 <li class="nav-item">
                     <?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
@@ -146,15 +193,7 @@ $this->disableAutoLayout();
                 <li class="nav-item">
                     <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
                 </li>
-<!--                <li class="nav-item">--><?php
-//                if (!$this->Identity->isLoggedIn()) {
-//                    echo $this->Html->link(
-//                        'Log in',
-//                        ['controller' => 'Auth', 'action' => 'login'],
-//                        ['class' => 'nav-link fire-text']
-//                    );
-//                }
-//                ?><!-- </li>-->
+
                 <li class="nav-item">
                     <?php
                     if (!$this->Identity->isLoggedIn()) {
@@ -168,27 +207,44 @@ $this->disableAutoLayout();
                     <?php
                     $user = $this->Identity->get('user_type');
                     if ($this->Identity->isLoggedIn()) {
-                        if ($user === 'admin'){
-                        echo $this->Html->link(
-                            'Dashboard',
-                            ['controller' => 'Dashboard', 'action' => 'index'],
-                            ['class' => 'nav-link fire-text']
-                        );}
+                        if ($user === 'admin') {
+                            echo $this->Html->link(
+                                'Dashboard',
+                                ['controller' => 'Dashboard', 'action' => 'index'],
+                                ['class' => 'nav-link fire-text']
+                            );
+                        }
                         echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
                     }
                     ?>
                 </li>
-<!--                <li class="nav-item">-->
-<!--                    --><?php
-//                    if ($this->Identity->isLoggedIn()) {
-//                        echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
-//                    }
-//                    ?>
-<!--                </li>-->
+
 
             </ul>
         </div>
+
+        <!-- The pop-up message with an arrow pointing to the target button -->
+        <div class="popup" id="popup">
+            <div class="arrow"></div> <!-- The arrow pointing to the button -->
+            <p>You have been logged in as an admin. Use the Dashboard to manage your business.</p>
         </div>
+
+        <script>
+            // Function to show the pop-up and hide it after 5 seconds
+            function showPopup() {
+                var popup = document.getElementById("popup");
+                popup.style.display = "block"; // Show the pop-up
+
+                // Hide the pop-up after 5 seconds
+                setTimeout(function () {
+                    popup.style.display = "none";
+                }, 12000);
+            }
+
+            // Trigger the pop-up to show when the page loads
+            window.onload = showPopup; // You can change the trigger condition as needed
+        </script>
+
     </nav>
 
 
@@ -240,7 +296,9 @@ $this->disableAutoLayout();
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">
                     <div class="text-center my-5">
-                        <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to <?= $this->ContentBlock->text('website-title'); ?></h1>
+                        <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to
+                            <?= $this->ContentBlock->text('website-title'); ?>
+                        </h1>
                         <p class="lead text-white mb-4 header-text">Experience the most authentic Nepalese cuisine in
                             Melbourne</p>
                         <div class="d-grid gap-3 d-sm-flex justify-content-center">
@@ -347,19 +405,19 @@ $this->disableAutoLayout();
                     <div id="carouselExampleSlidesOnly" class="carousel slide" data-bs-ride="carousel">
                         <div class="carousel-inner">
                             <div class="carousel-item active">
-<!--                                <img src="--><?php //= $this->ContentBlock->image('shown-image-1'); ?><!--" class="d-block w-100" alt="Image 1">-->
-                                    <?= $this->ContentBlock->image('shown-image-1'); ?>
+                                <!--                                <img src="--><?php //= $this->ContentBlock->image('shown-image-1'); ?><!--" class="d-block w-100" alt="Image 1">-->
+                                <?= $this->ContentBlock->image('shown-image-1'); ?>
                             </div>
                             <div class="carousel-item">
-<!--                                <img src="webroot/img/LMAO3.jpg" class="d-block w-100" alt="Image 3">-->
+                                <!--                                <img src="webroot/img/LMAO3.jpg" class="d-block w-100" alt="Image 3">-->
                                 <?= $this->ContentBlock->image('shown-image-2'); ?>
                             </div>
                             <div class="carousel-item">
-<!--                                <img src="webroot/img/LMAO4.jpg" class="d-block w-100" alt="Image 4">-->
+                                <!--                                <img src="webroot/img/LMAO4.jpg" class="d-block w-100" alt="Image 4">-->
                                 <?= $this->ContentBlock->image('shown-image-3'); ?>
                             </div>
                             <div class="carousel-item">
-<!--                                <img src="webroot/img/LMAO5.jpg" class="d-block w-100" alt="Image 5">-->
+                                <!--                                <img src="webroot/img/LMAO5.jpg" class="d-block w-100" alt="Image 5">-->
                                 <?= $this->ContentBlock->image('shown-image-4'); ?>
                             </div>
                         </div>
@@ -495,7 +553,9 @@ $this->disableAutoLayout();
     <!-- Footer-->
     <footer class="py-5 bg-dark">
         <div class="container px-5">
-            <p class="m-0 text-center text-white">Copyright &copy; <?= $this->ContentBlock->text('copyright-message'); ?></p>
+            <p class="m-0 text-center text-white">Copyright &copy;
+                <?= $this->ContentBlock->text('copyright-message'); ?>
+            </p>
         </div>
     </footer>
     <!-- Bootstrap core JS-->
