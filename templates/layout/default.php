@@ -51,16 +51,16 @@
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link"
-                    href="<?= $this->Url->build(['controller' => 'Pages', 'action' => 'display', 'home']) ?>">
+                    href="<?= $this->Url->build(['plugin' => null, 'controller' => 'Pages', 'action' => 'display', 'home']) ?>">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Customer Homepage</span></a>
-                <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Dashboard', 'action' => 'index']) ?>">
+                <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Dashboard', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-cog"></i>
                     <span>Admin Dashboard</span></a>
-                <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Menuitems', 'action' => 'index']) ?>">
+                <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Menuitems', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-birthday-cake"></i>
                     <span>Menu</span></a>
-                <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Enquirys', 'action' => 'index']) ?>">
+                <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Enquirys', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-pen"></i>
                     <span>Enquiries</span></a>
 
