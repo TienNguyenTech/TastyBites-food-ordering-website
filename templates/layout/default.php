@@ -63,6 +63,11 @@
                 <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Enquirys', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-pen"></i>
                     <span>Enquiries</span></a>
+                <a class="nav-link" href="<?= $this->Url->build (
+                    ['plugin' => null,'plugin' => 'ContentBlocks', 'controller' => 'ContentBlocks', 'action' => 'index']) ?>">
+                    <i class="fas fa-fw fa-pen"></i>
+                    <span>Modify Page</span></a>
+
 
             </li>
 
