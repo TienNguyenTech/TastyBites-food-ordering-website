@@ -106,11 +106,6 @@ $this->disableAutoLayout();
             /* Space between menu items */
         }
 
-        .navbar-nav .nav-item {
-            border: 1px solid transparent;
-            /* For hover effect */
-        }
-
         .navbar-nav .nav-item:hover {
             border-color: white;
             /* Show border on hover */
