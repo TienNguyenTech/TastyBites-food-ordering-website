@@ -32,6 +32,25 @@ $this->disableAutoLayout();
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles2.css" rel="stylesheet" />
+
+    <!-- Favicon-->
+    <link rel="icon" type="image/x-icon" href="webroot/assets/momo.ico" />
+    <!-- Bootstrap icons-->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+
+
+    <!-- Custom fonts for this template-->
+    <?= $this->Html->css('/vendor/fontawesome-free/css/all.min.css') ?>
+    <link
+        href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i"
+        rel="stylesheet">
+
+    <!-- Custom styles for this template-->
+    <?= $this->Html->css('sb-admin-2.min.css') ?>
+
+    <!-- Core theme CSS (includes Bootstrap)-->
+    <link href="css/styles2.css" rel="stylesheet" />
+
 </head>
 
 <body>
@@ -69,6 +88,8 @@ $this->disableAutoLayout();
             color: #cb4c46;
         }
 
+        /*Nav-bar cool button style */
+
         .navbar-nav {
             text-align: center;
             /* Center the text */
@@ -82,23 +103,11 @@ $this->disableAutoLayout();
             /* Smooth hover transition */
         }
 
-        .navbar-nav .nav-item:hover {
-            background-color: #415964;
-            /* Change background on hover */
-        }
-
         .navbar-nav .nav-item {
             display: flex;
             /* Flex layout for menu items */
             gap: 20px;
             /* Space between menu items */
-        }
-
-        .navbar-nav .nav-item {
-            border: 1px solid transparent;
-            /* For hover effect */
-            border-radius: 5px;
-            /* Rounded corners */
         }
 
         .navbar-nav .nav-item:hover {
@@ -113,6 +122,54 @@ $this->disableAutoLayout();
             /* Larger font size for logo */
             font-weight: bold;
             /* Bold text */
+        }
+
+        /* Dropdown Style */
+        .dropbtn {
+            background-color: #273d4f;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+        }
+
+        /* The container <div> - needed to position the dropdown content */
+        .dropdown {
+            position: relative;
+            display: inline-block;
+        }
+
+        /* Dropdown Content (Hidden by Default) */
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #f1f1f1;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+        }
+
+        /* Links inside the dropdown */
+        .dropdown-content a {
+            color: black;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+        }
+
+        /* Change color of dropdown links on hover */
+        .dropdown-content a:hover {
+            background-color: #ddd;
+        }
+
+        /* Show the dropdown menu on hover */
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        a.nav-link.dropdown-toggle {
+            color: white;
+            /* Sets the text color to white */
         }
     </style>
 
@@ -164,64 +221,91 @@ $this->disableAutoLayout();
     </style>
 
     <nav class="navbar navbar-expand-lg navbar-tea">
-        <div class="container px-5">
-            <?= $this->Html->link($this->ContentBlock->text('website-title'), ['controller' => 'Pages', 'action' => 'display'], ['class' => 'navbar-brand Big-Stuff']) ?>
-        </div>
+        <div class="container-fluid"> <!-- Using container-fluid for proper spacing -->
+            <!-- Left-aligned navigation, including the restaurant's logo -->
+            <div class="d-flex align-items-center">
+                <?= $this->Html->link(
+                    $this->ContentBlock->text('website-title'),
+                    ['controller' => 'Pages', 'action' => 'display'],
+                    ['class' => 'navbar-brand Big-Stuff']
+                ) ?>
 
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
-                <!--only admin login, the content block will be shown-->
-                <li class="nav-item">
-                    <?php
-                    if ($this->Identity->isLoggedIn()) {
-                        $user = $this->Identity->get('user_type');
-                        if ($user === 'admin') {
-                            echo $this->Html->link(
-                                'Modify Page',
-                                ['plugin' => 'ContentBlocks', 'controller' => 'ContentBlocks', 'action' => 'index']
-                            );
+                <!-- Left-side navigation links -->
+                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!-- 'me-auto' for left alignment -->
+                    <li class="nav-item">
+                        <?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
+                    </li>
+                    <li class="nav-item">
+                        <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                            Contact Us
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><?= $this->Html->link("Order Now", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'dropdown-item']) ?>
+                            </li>
+                            <li><?= $this->Html->link('Give Feedback', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'dropdown-item']) ?>
+                            </li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <?= $this->Html->link('Events', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Right-aligned navigation -->
+            <div class="d-flex align-items-center"> <!-- For vertical alignment -->
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!-- 'ms-auto' for right alignment -->
+                    <li class="nav-item">
+                        <?php
+                        if ($this->Identity->isLoggedIn()) {
+                            $userType = $this->Identity->get('user_type');
+                            if ($userType === 'admin') {
+                                echo $this->Html->link(
+                                    'Modify Page',
+                                    ['plugin' => 'ContentBlocks', 'controller' => 'ContentBlocks', 'action' => 'index'],
+                                    ['class' => 'nav-link fire-text']
+                                );
+                            }
                         }
-                    }
-                    ?>
-                </li>
-                <li class="nav-item">
-                    <?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
-                </li>
-                <li class="nav-item">
-                    <?= $this->Html->link('Contact Us', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
-                </li>
-                <li class="nav-item">
-                    <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
-                </li>
-
-                <li class="nav-item">
-                    <?php
-                    if (!$this->Identity->isLoggedIn()) {
-                        echo $this->Html->link(
-                            'Log in',
-                            ['controller' => 'Auth', 'action' => 'login'],
-                            ['class' => 'nav-link fire-text']
-                        );
-                    }
-                    ?>
-                    <?php
-                    $user = $this->Identity->get('user_type');
-                    if ($this->Identity->isLoggedIn()) {
-                        if ($user === 'admin') {
+                        ?>
+                    </li>
+                    <li class="nav-item">
+                        <?php
+                        $userType = $this->Identity->get('user_type');
+                        if ($this->Identity->isLoggedIn() && $userType === 'admin') {
                             echo $this->Html->link(
                                 'Dashboard',
                                 ['controller' => 'Dashboard', 'action' => 'index'],
                                 ['class' => 'nav-link fire-text']
                             );
                         }
-                        echo $this->Html->link('Logout', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'nav-link fire-text']);
-                    }
-                    ?>
-                </li>
-
-
-            </ul>
+                        ?>
+                    </li>
+                    <li class="nav-item">
+                        <?php
+                        if (!$this->Identity->isLoggedIn()) {
+                            echo $this->Html->link(
+                                'Log in',
+                                ['controller' => 'Auth', 'action' => 'login'],
+                                ['class' => 'nav-link fire-text']
+                            );
+                        } else {
+                            echo $this->Html->link(
+                                'Logout',
+                                ['controller' => 'Auth', 'action' => 'logout'],
+                                ['class' => 'nav-link fire-text']
+                            );
+                        }
+                        ?>
+                    </li>
+                </ul>
+            </div>
         </div>
+
 
         <!-- The pop-up message with an arrow pointing to the target button -->
         <?php
