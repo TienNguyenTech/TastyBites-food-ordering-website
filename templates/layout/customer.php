@@ -193,6 +193,9 @@ $this->disableAutoLayout();
                     <li class="nav-item">
                         <?= $this->Html->link('Events', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
                     </li>
+                    <li class="nav-item">
+                        <?= $this->Html->link('About', ['controller' => 'About', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
+                    </li>
                 </ul>
             </div>
 
