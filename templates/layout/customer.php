@@ -109,8 +109,6 @@ $this->disableAutoLayout();
         .navbar-nav .nav-item {
             border: 1px solid transparent;
             /* For hover effect */
-            border-radius: 5px;
-            /* Rounded corners */
         }
 
         .navbar-nav .nav-item:hover {
