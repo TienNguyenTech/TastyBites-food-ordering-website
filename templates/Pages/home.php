@@ -154,7 +154,7 @@ $this->disableAutoLayout();
         .arrow {
             position: absolute;
             top: -10px;
-            right: 20px;
+            right: 120px;
             width: 0;
             height: 0;
             border-left: 10px solid transparent;
