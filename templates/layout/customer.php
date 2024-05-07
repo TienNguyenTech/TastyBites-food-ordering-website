@@ -190,10 +190,10 @@ $this->disableAutoLayout();
                     <?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= $this->Html->link('Contact Us', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                    <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
                 </li>
                 <li class="nav-item">
-                    <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
+                    <?= $this->Html->link('Contact Us', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
                 </li>
                 <div class="dropdown">
                     <button class="dropbtn">Dropdown</button>
