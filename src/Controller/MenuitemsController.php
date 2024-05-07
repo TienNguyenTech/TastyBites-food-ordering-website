@@ -49,7 +49,7 @@ class MenuitemsController extends AppController
     public function menu()
     {
         //Updated upstream
-        $this->viewBuilder()->setLayout('admin');
+        $this->viewBuilder()->setLayout('customer');
 
         // Use default (customer ) layout
 //         $this->viewBuilder()->setLayout('default');

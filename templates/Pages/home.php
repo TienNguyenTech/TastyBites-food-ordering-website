@@ -224,10 +224,19 @@ $this->disableAutoLayout();
         </div>
 
         <!-- The pop-up message with an arrow pointing to the target button -->
-        <div class="popup" id="popup">
-            <div class="arrow"></div> <!-- The arrow pointing to the button -->
-            <p>You have been logged in as an admin. Use the Dashboard to manage your business.</p>
-        </div>
+        <?php
+        if ($this->Identity->isLoggedIn()) {
+            $userType = $this->Identity->get('user_type');
+            if ($userType === 'admin') {
+                // Display the popup for admin users
+                ?>
+                <div class="popup" id="popup">
+                    <div class="arrow"></div> <!-- The arrow pointing to the button -->
+                    <p>You have been logged in as an admin. Use the Dashboard to manage your business.</p>
+                </div>
+                <?php
+            }
+        } ?>
 
         <script>
             // Function to show the pop-up and hide it after 5 seconds
