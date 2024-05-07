@@ -80,7 +80,7 @@ $this->disableAutoLayout();
             color: #cb4c46;
         }
 
-        /*Nav-bar cool button stye */
+        /*Nav-bar cool button style */
         .navbar-nav {
             text-align: center;
             /* Center the text */
@@ -168,9 +168,6 @@ $this->disableAutoLayout();
             background-color: #415964;
         }
     </style>
-
-
-
 
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container px-5">
