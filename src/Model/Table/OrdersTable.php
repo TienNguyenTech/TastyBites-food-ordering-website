@@ -11,7 +11,6 @@ use Cake\Validation\Validator;
 /**
  * Orders Model
  *
- * @property \App\Model\Table\CustomersTable&\Cake\ORM\Association\BelongsTo $Customers
  * @property \App\Model\Table\MenuitemsTable&\Cake\ORM\Association\BelongsToMany $Menuitems
  *
  * @method \App\Model\Entity\Order newEmptyEntity()
@@ -44,10 +43,6 @@ class OrdersTable extends Table
         $this->setDisplayField('order_id');
         $this->setPrimaryKey('order_id');
 
-        $this->belongsTo('Customers', [
-            'foreignKey' => 'customer_id',
-            'joinType' => 'INNER',
-        ]);
         $this->belongsToMany('Menuitems', [
             'foreignKey' => 'order_id',
             'targetForeignKey' => 'menuitem_id',
@@ -68,23 +63,29 @@ class OrdersTable extends Table
             ->notEmptyDateTime('order_datetime');
 
         $validator
-            ->integer('customer_id')
-            ->notEmptyString('customer_id');
+            ->scalar('order_status')
+            ->maxLength('order_status', 20)
+            ->requirePresence('order_status', 'create')
+            ->notEmptyString('order_status');
+
+        $validator
+            ->scalar('customer_name')
+            ->maxLength('customer_name', 100)
+            ->requirePresence('customer_name', 'create')
+            ->notEmptyString('customer_name');
+
+        $validator
+            ->scalar('customer_email')
+            ->maxLength('customer_email', 100)
+            ->requirePresence('customer_email', 'create')
+            ->notEmptyString('customer_email');
+
+        $validator
+            ->scalar('customer_phone')
+            ->maxLength('customer_phone', 10)
+            ->requirePresence('customer_phone', 'create')
+            ->notEmptyString('customer_phone');
 
         return $validator;
-    }
-
-    /**
-     * Returns a rules checker object that will be used for validating
-     * application integrity.
-     *
-     * @param \Cake\ORM\RulesChecker $rules The rules object to be modified.
-     * @return \Cake\ORM\RulesChecker
-     */
-    public function buildRules(RulesChecker $rules): RulesChecker
-    {
-        $rules->add($rules->existsIn(['customer_id'], 'Customers'), ['errorField' => 'customer_id']);
-
-        return $rules;
     }
 }

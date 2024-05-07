@@ -47,14 +47,20 @@
                         <tr>
                             <th><?= __('Order Id') ?></th>
                             <th><?= __('Order Datetime') ?></th>
-                            <th><?= __('Customer Id') ?></th>
+                            <th><?= __('Order Status') ?></th>
+                            <th><?= __('Customer Name') ?></th>
+                            <th><?= __('Customer Email') ?></th>
+                            <th><?= __('Customer Phone') ?></th>
                             <th class="actions"><?= __('Actions') ?></th>
                         </tr>
                         <?php foreach ($menuitem->orders as $order) : ?>
                         <tr>
                             <td><?= h($order->order_id) ?></td>
                             <td><?= h($order->order_datetime) ?></td>
-                            <td><?= h($order->customer_id) ?></td>
+                            <td><?= h($order->order_status) ?></td>
+                            <td><?= h($order->customer_name) ?></td>
+                            <td><?= h($order->customer_email) ?></td>
+                            <td><?= h($order->customer_phone) ?></td>
                             <td class="actions">
                                 <?= $this->Html->link(__('View'), ['controller' => 'Orders', 'action' => 'view', $order->order_id]) ?>
                                 <?= $this->Html->link(__('Edit'), ['controller' => 'Orders', 'action' => 'edit', $order->order_id]) ?>

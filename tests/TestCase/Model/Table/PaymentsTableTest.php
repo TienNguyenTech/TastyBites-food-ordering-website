@@ -3,20 +3,20 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Model\Table;
 
-use App\Model\Table\OrdersTable;
+use App\Model\Table\PaymentsTable;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Model\Table\OrdersTable Test Case
+ * App\Model\Table\PaymentsTable Test Case
  */
-class OrdersTableTest extends TestCase
+class PaymentsTableTest extends TestCase
 {
     /**
      * Test subject
      *
-     * @var \App\Model\Table\OrdersTable
+     * @var \App\Model\Table\PaymentsTable
      */
-    protected $Orders;
+    protected $Payments;
 
     /**
      * Fixtures
@@ -24,8 +24,8 @@ class OrdersTableTest extends TestCase
      * @var list<string>
      */
     protected array $fixtures = [
+        'app.Payments',
         'app.Orders',
-        'app.Menuitems',
     ];
 
     /**
@@ -36,8 +36,8 @@ class OrdersTableTest extends TestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $config = $this->getTableLocator()->exists('Orders') ? [] : ['className' => OrdersTable::class];
-        $this->Orders = $this->getTableLocator()->get('Orders', $config);
+        $config = $this->getTableLocator()->exists('Payments') ? [] : ['className' => PaymentsTable::class];
+        $this->Payments = $this->getTableLocator()->get('Payments', $config);
     }
 
     /**
@@ -47,7 +47,7 @@ class OrdersTableTest extends TestCase
      */
     protected function tearDown(): void
     {
-        unset($this->Orders);
+        unset($this->Payments);
 
         parent::tearDown();
     }
@@ -56,9 +56,20 @@ class OrdersTableTest extends TestCase
      * Test validationDefault method
      *
      * @return void
-     * @uses \App\Model\Table\OrdersTable::validationDefault()
+     * @uses \App\Model\Table\PaymentsTable::validationDefault()
      */
     public function testValidationDefault(): void
+    {
+        $this->markTestIncomplete('Not implemented yet.');
+    }
+
+    /**
+     * Test buildRules method
+     *
+     * @return void
+     * @uses \App\Model\Table\PaymentsTable::buildRules()
+     */
+    public function testBuildRules(): void
     {
         $this->markTestIncomplete('Not implemented yet.');
     }

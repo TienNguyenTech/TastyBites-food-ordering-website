@@ -19,8 +19,20 @@
             <h3><?= h($order->order_id) ?></h3>
             <table>
                 <tr>
-                    <th><?= __('Customer') ?></th>
-                    <td><?= $order->hasValue('customer') ? $this->Html->link($order->customer->customer_fname, ['controller' => 'Customers', 'action' => 'view', $order->customer->customer_id]) : '' ?></td>
+                    <th><?= __('Order Status') ?></th>
+                    <td><?= h($order->order_status) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Customer Name') ?></th>
+                    <td><?= h($order->customer_name) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Customer Email') ?></th>
+                    <td><?= h($order->customer_email) ?></td>
+                </tr>
+                <tr>
+                    <th><?= __('Customer Phone') ?></th>
+                    <td><?= h($order->customer_phone) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Order Id') ?></th>

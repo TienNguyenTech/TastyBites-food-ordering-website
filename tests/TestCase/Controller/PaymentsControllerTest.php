@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\OrdersController;
+use App\Controller\PaymentsController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Controller\OrdersController Test Case
+ * App\Controller\PaymentsController Test Case
  *
- * @uses \App\Controller\OrdersController
+ * @uses \App\Controller\PaymentsController
  */
-class OrdersControllerTest extends TestCase
+class PaymentsControllerTest extends TestCase
 {
     use IntegrationTestTrait;
 
@@ -22,16 +22,15 @@ class OrdersControllerTest extends TestCase
      * @var list<string>
      */
     protected array $fixtures = [
+        'app.Payments',
         'app.Orders',
-        'app.Menuitems',
-        'app.MenuitemsOrders',
     ];
 
     /**
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\OrdersController::index()
+     * @uses \App\Controller\PaymentsController::index()
      */
     public function testIndex(): void
     {
@@ -42,7 +41,7 @@ class OrdersControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\OrdersController::view()
+     * @uses \App\Controller\PaymentsController::view()
      */
     public function testView(): void
     {
@@ -53,7 +52,7 @@ class OrdersControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\OrdersController::add()
+     * @uses \App\Controller\PaymentsController::add()
      */
     public function testAdd(): void
     {
@@ -64,7 +63,7 @@ class OrdersControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\OrdersController::edit()
+     * @uses \App\Controller\PaymentsController::edit()
      */
     public function testEdit(): void
     {
@@ -75,7 +74,7 @@ class OrdersControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\OrdersController::delete()
+     * @uses \App\Controller\PaymentsController::delete()
      */
     public function testDelete(): void
     {

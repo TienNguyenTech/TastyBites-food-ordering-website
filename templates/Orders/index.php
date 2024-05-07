@@ -13,7 +13,10 @@
                 <tr>
                     <th><?= $this->Paginator->sort('order_id') ?></th>
                     <th><?= $this->Paginator->sort('order_datetime') ?></th>
-                    <th><?= $this->Paginator->sort('customer_id') ?></th>
+                    <th><?= $this->Paginator->sort('order_status') ?></th>
+                    <th><?= $this->Paginator->sort('customer_name') ?></th>
+                    <th><?= $this->Paginator->sort('customer_email') ?></th>
+                    <th><?= $this->Paginator->sort('customer_phone') ?></th>
                     <th class="actions"><?= __('Actions') ?></th>
                 </tr>
             </thead>
@@ -22,7 +25,10 @@
                 <tr>
                     <td><?= $this->Number->format($order->order_id) ?></td>
                     <td><?= h($order->order_datetime) ?></td>
-                    <td><?= $order->hasValue('customer') ? $this->Html->link($order->customer->customer_fname, ['controller' => 'Customers', 'action' => 'view', $order->customer->customer_id]) : '' ?></td>
+                    <td><?= h($order->order_status) ?></td>
+                    <td><?= h($order->customer_name) ?></td>
+                    <td><?= h($order->customer_email) ?></td>
+                    <td><?= h($order->customer_phone) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('View'), ['action' => 'view', $order->order_id]) ?>
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $order->order_id]) ?>
