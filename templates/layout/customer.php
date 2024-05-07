@@ -81,6 +81,7 @@ $this->disableAutoLayout();
         }
 
         /*Nav-bar cool button style */
+
         .navbar-nav {
             text-align: center;
             /* Center the text */
