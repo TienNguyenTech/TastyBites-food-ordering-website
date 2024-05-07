@@ -184,10 +184,27 @@ $this->disableAutoLayout();
                     </div>
                 </li>
 
+                <!--Events-->
                 <li class="nav-item">
                     <?= $this->Html->link('Events', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
                 </li>
 
+                <!--Modify page-->
+                <li class="nav-item">
+                    <?php
+                    if ($this->Identity->isLoggedIn()) {
+                        $user = $this->Identity->get('user_type');
+                        if ($user === 'admin') {
+                            echo $this->Html->link(
+                                'Modify Page',
+                                ['plugin' => 'ContentBlocks', 'controller' => 'ContentBlocks', 'action' => 'index']
+                            );
+                        }
+                    }
+                    ?>
+                </li>
+                
+                <!--Dashboard - Login - Logout-->
                 <li class="nav-item"><?php
                 if (!$this->Identity->isLoggedIn()) {
                     echo $this->Html->link(
