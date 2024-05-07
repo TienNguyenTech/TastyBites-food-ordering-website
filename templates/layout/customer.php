@@ -95,11 +95,6 @@ $this->disableAutoLayout();
             /* Smooth hover transition */
         }
 
-        .navbar-nav .nav-item:hover {
-            background-color: #415964;
-            /* Change background on hover */
-        }
-
         .navbar-nav .nav-item {
             display: flex;
             /* Flex layout for menu items */
@@ -163,11 +158,6 @@ $this->disableAutoLayout();
         .dropdown:hover .dropdown-content {
             display: block;
         }
-
-        /* Change the background color of the dropdown button when the dropdown content is shown */
-        .dropdown:hover .dropbtn {
-            background-color: #415964;
-        }
     </style>
 
     <nav class="navbar navbar-expand-lg navbar-tea">
@@ -186,13 +176,13 @@ $this->disableAutoLayout();
                     <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
                 </li>
 
-                <div class="dropdown">
-                    <button class="dropbtn">Contact Us</button>
+                <li class="dropdown">
+                    <button class="dropbtn fire-text">Contact Us</button>
                     <div class="dropdown-content">
                         <?= $this->Html->link("Order Now", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
                         <?= $this->Html->link('Give Feedbacks', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
                     </div>
-                </div>
+                </li>
 
                 <li class="nav-item">
                     <?= $this->Html->link('Events', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
