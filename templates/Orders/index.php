@@ -27,7 +27,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
             <tbody>
             <?php foreach ($orders as $order): ?>
                 <tr>
-                    <td><?= h($order->order_datetime) ?></td>
+                    <td><?= $order->order_datetime->addHours(10) ?></td>
                     <td><?= h($order->order_status) ?></td>
                     <td><?= h($order->customer_name) ?></td>
                     <td><?= h($order->customer_email) ?></td>

@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Mailer\Mailer;
+
 /**
  * Orders Controller
  *
@@ -101,6 +103,32 @@ class OrdersController extends AppController
         $order = $this->Orders->patchEntity($order, (array)$orderReady);
 
         $this->Orders->save($order);
+
+        $mailer = new Mailer('default');
+
+        $mailer
+            ->setEmailFormat('html')
+            ->setTo($order->customer_email)
+            ->setFrom('noreply@tastybites.u24s1009.monash-ie.me')
+            ->setSubject('Tasty Bites Kitchen: Order Pickup')
+            ->viewBuilder()
+            ->disableAutoLayout()
+            ->setTemplate('order_ready');
+
+        $mailer->setViewVars([
+            'order_status' => $order->order_status,
+            'customer_name' => $order->customer_name,
+            'order_datetime' => $order->order_datetime,
+            'order_id' => $order->order_id
+        ]);
+
+        $email_result = $mailer->deliver();
+
+        if ($email_result) {
+            $this->Flash->success(__('The enquiry has been saved and sent via email.'));
+        } else {
+            $this->Flash->error(__('Email failed to send. Please check the enquiry in the system later. '));
+        }
 
         $this->redirect(['action' => 'index']);
     }
