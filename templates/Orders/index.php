@@ -8,7 +8,6 @@ echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block'
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 <div class="orders index content text-gray-800">
-    <?= $this->Html->link(__('New Order'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3 class="text-gray-800">Orders</h3>
 
     <div class="table-responsive">
