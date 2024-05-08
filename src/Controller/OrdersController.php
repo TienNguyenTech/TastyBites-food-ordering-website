@@ -17,7 +17,7 @@ class OrdersController extends AppController
     {
         parent::initialize();
 
-        $this->Authentication->allowUnauthenticated(['add']);
+        $this->Authentication->allowUnauthenticated(['add', 'view']);
     }
 
     public function beforeFilter(\Cake\Event\EventInterface $event) {
