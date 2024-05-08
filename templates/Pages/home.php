@@ -525,9 +525,11 @@ $this->disableAutoLayout();
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                </div>
-            </div>
+                    <div class="google-maps-widget mt-5">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3150.756198102105!2d145.133957!3d-37.907803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad63c9c1eb47c7b%3A0x8485d30e3ce706b7!2sMonash%20University%20-%20Clayton%20Campus!5e0!3m2!1sen!2sau!4v1634177430748!5m2!1sen!2sau&markers=-37.907803,145.133957" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                    </div>
         </div>
+
+
     </section>
 
     <!-- Features section-->
