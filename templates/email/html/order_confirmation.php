@@ -6,12 +6,13 @@
  * @var \Cake\Database\Type\StringType $customer_email
  * @var \Cake\Database\Type\StringType $customer_phone
  * @var \Cake\Database\Type\IntegerType $order_id
+ * @var \Cake\Database\Type\DateTimeType $order_datetime
  */
 ?>
 
 
 <div>
-    <h1>Tasty Bites Order Confirmation</h1>
+    <h1>Tasty Bites Order Confirmation: <?= $order_datetime ?></h1>
     <h3>Order Status: <?= h($order_status) ?></h3>
     <p>Customer Name: <?= h($customer_name) ?></p>
     <p>Contact Email: <?= h($customer_email) ?></p>

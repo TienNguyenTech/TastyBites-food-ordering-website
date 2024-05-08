@@ -94,7 +94,8 @@ class PaymentsController extends AppController
                     'customer_name' => $order->customer_name,
                     'customer_email' => $order->customer_email,
                     'customer_phone' => $order->customer_phone,
-                    'order_id' => $order->order_id
+                    'order_id' => $order->order_id,
+                    'order_datetime' => $order->order_datetime
                 ]);
 
                 $email_result = $mailer->deliver();
