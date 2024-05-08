@@ -79,6 +79,7 @@ class OrdersTable extends Table
             ->requirePresence('customer_email', 'create')
             ->notEmptyString('customer_email');
 
+
         $validator
             ->scalar('customer_phone')
             ->maxLength('customer_phone', 10)

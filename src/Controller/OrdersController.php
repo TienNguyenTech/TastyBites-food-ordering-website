@@ -76,12 +76,17 @@ class OrdersController extends AppController
         $order = $this->Orders->newEmptyEntity();
         if ($this->request->is('post')) {
             $order = $this->Orders->patchEntity($order, $this->request->getData());
-            if ($this->Orders->save($order)) {
+
+            // Check if customer email contains '@'
+            if (!strpos($order->customer_email, '@')) {
+                $this->Flash->error(__('Please enter a valid email address.'));
+            } elseif ($this->Orders->save($order)) {
                 $this->Flash->success(__('Your order has been placed! Confirmation will be sent to your email.'));
 
                 return $this->redirect(['controller' => 'Payments', 'action' => 'add', $order->order_id]);
+            } else {
+                $this->Flash->error(__('There was an error processing your order. Please, try again.'));
             }
-            $this->Flash->error(__('There was an error processing your order. Please, try again.'));
         }
         $menuitems = $this->Orders->Menuitems->find('list', limit: 200)->all();
         $this->set(compact('order', 'menuitems'));
