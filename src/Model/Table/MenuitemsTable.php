@@ -62,24 +62,41 @@ class MenuitemsTable extends Table
             ->scalar('menuitem_name')
             ->maxLength('menuitem_name', 50)
             ->requirePresence('menuitem_name', 'create')
-            ->notEmptyString('menuitem_name');
+            ->notEmptyString('menuitem_name')
+            ->add('menuitem_name', [
+                'validFormat' => [
+                    'rule' => ['custom', '/^[A-Za-z\s\-]{1,50}$/'],
+                    'message' => 'Menu item name can only contain alphabetic characters and spaces, and must be less than 50 characters.'
+                ]
+            ]);
 
         $validator
             ->scalar('menuitem_image')
-            ->maxLength('menuitem_image', 200)
-            ->requirePresence('menuitem_image', 'create')
-            ->notEmptyFile('menuitem_image');
+            ->maxLength('menuitem_image', 200);
 
         $validator
             ->scalar('menuitem_desc')
-            ->maxLength('menuitem_desc', 200)
+            ->maxLength('menuitem_desc', 1000)
             ->requirePresence('menuitem_desc', 'create')
-            ->notEmptyString('menuitem_desc');
+            ->notEmptyString('menuitem_desc')
+            ->add('menuitem_desc', [
+                'validFormat' => [
+                    'rule' => ['custom', '/^[\w\s.,\'\-()!?":]+$/'],
+                    'message' => 'Menu item description can only contain alphabetic characters, numbers, spaces, Special characters such as". - \'()? ! :"'
+                ]
+            ]);
 
         $validator
             ->numeric('menuitem_price')
+            ->maxLength('menuitem_price', 7)
             ->requirePresence('menuitem_price', 'create')
-            ->notEmptyString('menuitem_price');
+            ->notEmptyString('menuitem_price')
+            ->add('menuitem_price', [
+                'validFormat' => [
+                    'rule' => ['custom', '/^\d{1,4}(\.\d{1,2})?$/'],
+                    'message' => 'Menu item price must have a maximum of four digits before the decimal point and two digits after.'
+                ]
+            ]);
 
         return $validator;
     }

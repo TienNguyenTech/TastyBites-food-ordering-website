@@ -10,6 +10,13 @@ namespace App\Controller;
  */
 class MenuitemsController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+
+        $this->Authentication->allowUnauthenticated(['menu']);
+    }
+
     /**
      * Index method
      *
@@ -21,6 +28,16 @@ class MenuitemsController extends AppController
         $menuitems = $this->paginate($query);
 
         $this->set(compact('menuitems'));
+    }
+
+    public function menu() {
+        $this->viewBuilder()->setLayout('customer');
+
+        $query = $this->Menuitems->find();
+        $menuitems = $this->paginate($query);
+
+        $this->set(compact('menuitems'));
+        $this->set('pageTitle', 'Menu');
     }
 
     /**
@@ -46,12 +63,17 @@ class MenuitemsController extends AppController
         $menuitem = $this->Menuitems->newEmptyEntity();
         if ($this->request->is('post')) {
             $menuitem = $this->Menuitems->patchEntity($menuitem, $this->request->getData());
+            $image = $this->request->getUploadedFiles();
+
+            $menuitem->menuitem_image = $image['menuitem_image']->getClientFilename();
+            $image['menuitem_image']->moveTo(WWW_ROOT . 'img' . DS . 'menu' . DS . $menuitem->menuitem_image);
+
             if ($this->Menuitems->save($menuitem)) {
                 $this->Flash->success(__('The menuitem has been saved.'));
 
                 return $this->redirect(['action' => 'index']);
             }
-            $this->Flash->error(__('The menuitem could not be saved. Please, try again.'));
+            $this->Flash->error(__('The menu item could not be saved. Please, try again.'));
         }
         $orders = $this->Menuitems->Orders->find('list', limit: 200)->all();
         $this->set(compact('menuitem', 'orders'));
@@ -68,6 +90,7 @@ class MenuitemsController extends AppController
     {
         $menuitem = $this->Menuitems->get($id, contain: ['Orders']);
         if ($this->request->is(['patch', 'post', 'put'])) {
+
             $menuitem = $this->Menuitems->patchEntity($menuitem, $this->request->getData());
             if ($this->Menuitems->save($menuitem)) {
                 $this->Flash->success(__('The menuitem has been saved.'));
