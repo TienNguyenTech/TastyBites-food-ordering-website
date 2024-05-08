@@ -10,9 +10,18 @@ use Cake\Utility\Security;
  * Payments Controller
  *
  * @property \App\Model\Table\PaymentsTable $Payments
+ * @property \Authentication\Controller\Component\AuthenticationComponent $Authentication
  */
 class PaymentsController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+
+        $this->Authentication->allowUnauthenticated(['add']);
+    }
+
+
     /**
      * Index method
      *
