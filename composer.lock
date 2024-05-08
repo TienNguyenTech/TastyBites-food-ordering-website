@@ -2156,16 +2156,16 @@
         },
         {
             "name": "ugie-cake/cakephp-content-blocks",
-            "version": "v1.3.0",
+            "version": "v1.3.1",
             "source": {
                 "type": "git",
                 "url": "https://github.com/ugie-cake/cakephp-content-blocks.git",
-                "reference": "ed8d37bffb4923c11ff62fe07a48adacdb4615a4"
+                "reference": "12902e05ff068cb06742839b5abe2b148cb23b77"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/ugie-cake/cakephp-content-blocks/zipball/ed8d37bffb4923c11ff62fe07a48adacdb4615a4",
-                "reference": "ed8d37bffb4923c11ff62fe07a48adacdb4615a4",
+                "url": "https://api.github.com/repos/ugie-cake/cakephp-content-blocks/zipball/12902e05ff068cb06742839b5abe2b148cb23b77",
+                "reference": "12902e05ff068cb06742839b5abe2b148cb23b77",
                 "shasum": ""
             },
             "require": {
@@ -2190,9 +2190,9 @@
             "description": "ContentBlocks plugin for CakePHP",
             "support": {
                 "issues": "https://github.com/ugie-cake/cakephp-content-blocks/issues",
-                "source": "https://github.com/ugie-cake/cakephp-content-blocks/tree/v1.3.0"
+                "source": "https://github.com/ugie-cake/cakephp-content-blocks/tree/v1.3.1"
             },
-            "time": "2024-03-11T00:27:02+00:00"
+            "time": "2024-05-08T03:49:26+00:00"
         }
     ],
     "packages-dev": [
