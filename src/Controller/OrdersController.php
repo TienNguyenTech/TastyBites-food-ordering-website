@@ -59,7 +59,7 @@ class OrdersController extends AppController
             if ($this->Orders->save($order)) {
                 $this->Flash->success(__('Your order has been placed! Confirmation will be sent to your email.'));
 
-                return $this->redirect(['action' => 'add']);
+                return $this->redirect(['controller' => 'Payments', 'action' => 'add', $order->order_id]);
             }
             $this->Flash->error(__('There was an error processing your order. Please, try again.'));
         }

@@ -42,20 +42,39 @@ class PaymentsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($orderID)
     {
         $payment = $this->Payments->newEmptyEntity();
+
+        $order = $this->Payments->Orders->get($orderID, contain: ['Menuitems']);
+
+        $orderTotal = 0;
+
+        foreach ($order->menuitems as $menuitem) {
+            $orderTotal += $menuitem->menuitem_price;
+        }
+
         if ($this->request->is('post')) {
             $payment = $this->Payments->patchEntity($payment, $this->request->getData());
+            $payment->order_id = $orderID;
+            $payment->payment_amount = $orderTotal;
+
             if ($this->Payments->save($payment)) {
                 $this->Flash->success(__('The payment has been saved.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['controller' => 'Orders', 'action' => 'view', $orderID]);
             }
             $this->Flash->error(__('The payment could not be saved. Please, try again.'));
         }
-        $orders = $this->Payments->Orders->find('list', limit: 200)->all();
-        $this->set(compact('payment', 'orders'));
+
+        $orderPaid = $order;
+        $orderPaid->order_status = 'paid';
+
+        $order = $this->Payments->Orders->patchEntity($order, (array)$orderPaid);
+        $this->Payments->Orders->save($order);
+
+
+        $this->set(compact('payment', 'order', 'orderTotal'));
     }
 
     /**
