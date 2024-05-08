@@ -50,7 +50,7 @@ $this->disableAutoLayout();
     <style>
         /* Override Bootstrap's primary color */
         .navbar-tea {
-            background-color: #273d4f;
+            background-color: #22408c;
         }
 
         .fire-text {
