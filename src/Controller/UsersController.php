@@ -10,6 +10,16 @@ namespace App\Controller;
  */
 class UsersController extends AppController
 {
+    public function beforeFilter(\Cake\Event\EventInterface $event) {
+        parent::beforeFilter($event);
+        // Get the authenticated user identity
+        $user = $this->Authentication->getIdentity();
+        if ($user && $user['user_type'] === 'staff') {
+            // If the user is a staff member, set the layout to staff_layout
+            $this->redirect(['controller' => 'Orders', 'action' => 'index']);
+        }
+    }
+
     /**
      * Index method
      *
@@ -57,7 +67,7 @@ class UsersController extends AppController
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
 
-                return $this->redirect(['action' => 'add']);
+                return $this->redirect(['action' => 'admin']);
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
@@ -140,7 +150,7 @@ class UsersController extends AppController
             } else {
                 $this->Flash->error(__('The user could not be deleted. Please, try again.'));
             }
-            return $this->redirect(['action' => 'index']);
+            return $this->redirect(['action' => 'admin']);
         }
     }
 }
