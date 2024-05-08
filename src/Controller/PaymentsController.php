@@ -44,6 +44,8 @@ class PaymentsController extends AppController
      */
     public function add($orderID)
     {
+        $this->viewBuilder()->setLayout('customer');
+
         $payment = $this->Payments->newEmptyEntity();
 
         $order = $this->Payments->Orders->get($orderID, contain: ['Menuitems']);
