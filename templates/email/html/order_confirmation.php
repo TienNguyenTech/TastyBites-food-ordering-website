@@ -9,10 +9,17 @@
  */
 ?>
 
-<h1>Tasty Bites Order Confirmation</h1>
-<h3>Order Status: <?= h($order_status) ?></h3>
-<p>Customer Name: <?= h($customer_name) ?></p>
-<p>Contact Email: <?= h($customer_email) ?></p>
-<p>Contact Phone Number: <?= h($customer_phone) ?></p>
+<head>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+</head>
 
-<?= $this->Html->link('View order', ['controller' => 'Orders', 'action' => 'view', $order_id], ['fullBase' => true]) ?>
+<div class="container">
+    <h1>Tasty Bites Order Confirmation</h1>
+    <h3>Order Status: <?= h($order_status) ?></h3>
+    <p>Customer Name: <?= h($customer_name) ?></p>
+    <p>Contact Email: <?= h($customer_email) ?></p>
+    <p>Contact Phone Number: <?= h($customer_phone) ?></p>
+</div>
+
+
+<?= $this->Html->link('View order', ['controller' => 'Orders', 'action' => 'view', $order_id], ['fullBase' => true, 'class' => 'btn btn-primary']) ?>
