@@ -65,7 +65,6 @@ class OrdersTable extends Table
         $validator
             ->scalar('order_status')
             ->maxLength('order_status', 20)
-            ->requirePresence('order_status', 'create')
             ->notEmptyString('order_status');
 
         $validator

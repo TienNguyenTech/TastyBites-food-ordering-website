@@ -7,6 +7,7 @@ namespace App\Controller;
  * Menuitems Controller
  *
  * @property \App\Model\Table\MenuitemsTable $Menuitems
+ * @property \Authentication\Controller\Component\AuthenticationComponent $Authentication
  */
 class MenuitemsController extends AppController
 {

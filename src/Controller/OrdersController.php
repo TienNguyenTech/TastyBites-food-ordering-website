@@ -7,9 +7,17 @@ namespace App\Controller;
  * Orders Controller
  *
  * @property \App\Model\Table\OrdersTable $Orders
+ * @property \Authentication\Controller\Component\AuthenticationComponent $Authentication
  */
 class OrdersController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+
+        $this->Authentication->allowUnauthenticated(['add']);
+    }
+
     /**
      * Index method
      *
@@ -43,15 +51,17 @@ class OrdersController extends AppController
      */
     public function add()
     {
+        $this->viewBuilder()->setLayout('customer');
+
         $order = $this->Orders->newEmptyEntity();
         if ($this->request->is('post')) {
             $order = $this->Orders->patchEntity($order, $this->request->getData());
             if ($this->Orders->save($order)) {
-                $this->Flash->success(__('The order has been saved.'));
+                $this->Flash->success(__('Your order has been placed! Confirmation will be sent to your email.'));
 
-                return $this->redirect(['action' => 'index']);
+                return $this->redirect(['action' => 'add']);
             }
-            $this->Flash->error(__('The order could not be saved. Please, try again.'));
+            $this->Flash->error(__('There was an error processing your order. Please, try again.'));
         }
         $menuitems = $this->Orders->Menuitems->find('list', limit: 200)->all();
         $this->set(compact('order', 'menuitems'));
