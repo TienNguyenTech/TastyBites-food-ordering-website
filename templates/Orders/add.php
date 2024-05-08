@@ -36,7 +36,7 @@
             echo $this->Form->control('customer_name', ['label' => 'Full Name', 'class' => 'form-control']);
             echo $this->Form->control('customer_email', ['label' => 'Contact Email', 'class' => 'form-control']);
             echo $this->Form->control('customer_phone', ['label' => 'Contact Phone', 'class' => 'form-control']);
-            echo $this->Form->control('menuitems._ids', ['options' => $menuitems, 'class' => 'form-control', 'required']);
+            echo $this->Form->control('menuitems._ids', ['label' => 'Select item(s) to order', 'options' => $menuitems, 'class' => 'form-control', 'required']);
 
             ?>
         </fieldset>
