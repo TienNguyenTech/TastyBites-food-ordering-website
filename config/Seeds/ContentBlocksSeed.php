@@ -46,6 +46,14 @@ class ContentBlocksSeed extends AbstractSeed
             ],
             [
                 'parent' => 'home',
+                'label' => 'Banner',
+                'description' => 'A banner shown at the top of the home page.',
+                'slug' => 'banner',
+                'type' => 'text',
+                'value' => '25% off all menu items before May 20.',
+            ],
+            [
+                'parent' => 'home',
                 'label' => 'Copyright Message',
                 'description' => 'Copyright information shown at the bottom of the home page.',
                 'slug' => 'copyright-message',
