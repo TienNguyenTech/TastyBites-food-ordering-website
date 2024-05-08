@@ -184,7 +184,7 @@ $this->disableAutoLayout();
                             Contact Us
                         </a>
                         <ul class="dropdown-menu">
-                            <li><?= $this->Html->link("Order Now", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'dropdown-item']) ?>
+                            <li><?= $this->Html->link("Order Now", ['controller' => 'Orders', 'action' => 'add'], ['class' => 'dropdown-item']) ?>
                             </li>
                             <li><?= $this->Html->link('Give Feedback', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'dropdown-item']) ?>
                             </li>
@@ -228,18 +228,18 @@ $this->disableAutoLayout();
                         }
                         ?>
                     </li>
-                    <li class="nav-item">
-                        <?php
-                        $userType = $this->Identity->get('user_type');
-                        if ($this->Identity->isLoggedIn() && $userType === 'admin') {
-                            echo $this->Html->link(
-                                'Dashboard 2',
-                                ['controller' => 'Dashboard2', 'action' => 'index'],
-                                ['class' => 'nav-link fire-text']
-                            );
-                        }
-                        ?>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        --><?php
+//                        $userType = $this->Identity->get('user_type');
+//                        if ($this->Identity->isLoggedIn() && $userType === 'admin') {
+//                            echo $this->Html->link(
+//                                'Dashboard 2',
+//                                ['controller' => 'Dashboard2', 'action' => 'index'],
+//                                ['class' => 'nav-link fire-text']
+//                            );
+//                        }
+//                        ?>
+<!--                    </li>-->
                     <li class="nav-item">
                         <?php
                         if (!$this->Identity->isLoggedIn()) {

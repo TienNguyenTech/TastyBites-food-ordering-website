@@ -23,8 +23,9 @@ class UsersController extends AppController
         $this->set(compact('users'));
     }
 
-    public function admin() {
-        $query = $this->Users->find()->where(['user_type' => 'admin']);
+    public function admin()
+    {
+        $query = $this->Users->find()->where(['Users.user_type IN' => ['admin', 'staff']]);
         $users = $this->paginate($query);
 
         $this->set(compact('users'));
