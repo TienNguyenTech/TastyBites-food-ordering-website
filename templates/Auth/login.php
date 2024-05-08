@@ -45,7 +45,7 @@ $this->assign('title', 'Login');
 //                        'value' => $debug ? '1234' : '',
                     ]);
                     ?>
-                    <?= $this->Html->link('Forgot password?', ['controller' => 'Auth', 'action' => 'forgetPassword']) ?>
+<!--                    --><?php //= $this->Html->link('Forgot password?', ['controller' => 'Auth', 'action' => 'forgetPassword']) ?>
                 </fieldset>
 
 <!--                --><?php //= $this->Form->button('Login') ?>

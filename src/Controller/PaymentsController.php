@@ -18,7 +18,7 @@ class PaymentsController extends AppController
     {
         parent::initialize();
 
-        $this->Authentication->allowUnauthenticated(['add/*']);
+        $this->Authentication->allowUnauthenticated(['add']);
     }
 
 
