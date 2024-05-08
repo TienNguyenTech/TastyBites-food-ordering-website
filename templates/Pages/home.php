@@ -58,7 +58,7 @@ $this->disableAutoLayout();
     <style>
         /* Override Bootstrap's primary color */
         .navbar-tea {
-            background-color: #273d4f;
+            background-color: #22408c;
         }
 
         .fire-text {
@@ -67,7 +67,7 @@ $this->disableAutoLayout();
         }
 
         .fire-text:hover {
-            color: #cb4c46;
+            color: #dd1d3c;
         }
 
         .Big-Stuff {
@@ -77,15 +77,15 @@ $this->disableAutoLayout();
         }
 
         .Big-Stuff:hover {
-            color: #cb4c46;
+            color: #dd1d3c;
         }
 
         .active-home {
-            color: #6fb89c;
+            color: #7287bb;
         }
 
         .active-home:hover {
-            color: #cb4c46;
+            color:#7287bb;
         }
 
         /*Nav-bar cool button style */
@@ -126,7 +126,7 @@ $this->disableAutoLayout();
 
         /* Dropdown Style */
         .dropbtn {
-            background-color: #273d4f;
+            background-color: #294890;
             color: white;
             padding: 16px;
             font-size: 16px;
@@ -371,16 +371,16 @@ $this->disableAutoLayout();
         }
 
         .button-primary {
-            background-color: #6fb89c;
+            background-color: #7287bb;
             /* Default button color */
-            border-color: #6fb89c;
-            color: #273d4f;
+            border-color: #7287bb;
+            color:#294890;
         }
 
         .button-primary:hover {
-            background-color: #cb4c46;
+            background-color: #dd1d3c;
             /* Button color on hover */
-            border-color: #cb4c46;
+            border-color:#dd1d3c;
         }
     </style>
 
@@ -410,7 +410,7 @@ $this->disableAutoLayout();
 
     <style>
         .about-us-bg-color {
-            background-color: #273d4f;
+            background-color: #294890;
         }
 
         .about-us-text-color {
@@ -423,12 +423,12 @@ $this->disableAutoLayout();
             height: 3rem;
             background-color: rgba(255, 255, 255, 0.5);
             border-radius: 50%;
-            color: #273d4f;
+            color: #294890;
         }
 
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
-            background-color: #273d4f;
+            background-color: #294890;
         }
 
         .carousel-control-prev:hover,
@@ -439,7 +439,7 @@ $this->disableAutoLayout();
 
     <style>
         .about-us-bg-color {
-            background-color: #273d4f;
+            background-color: #294890;
         }
 
         .about-us-text-color {
@@ -455,7 +455,7 @@ $this->disableAutoLayout();
 
     <style>
         .about-us-bg-color {
-            background-color: #273d4f;
+            background-color:#294890;
         }
 
         .about-us-text-color {
@@ -534,7 +534,7 @@ $this->disableAutoLayout();
     <style>
         /* Override Bootstrap's primary color and gradient */
         .custom-bg {
-            background-color: #273d4f;
+            background-color: #294890;
             /* Your desired background color */
         }
 
@@ -543,18 +543,18 @@ $this->disableAutoLayout();
         }
 
         .custom-icon-bg {
-            background-color: #6fb89c;
+            background-color: #7287bb;
             /* Your desired background color */
         }
 
         .menu-link {
-            color: #6fb89c;
+            color: #dd1d3c;
             /* Base color */
             text-decoration: none;
         }
 
         .menu-link:hover {
-            color: #cb4c46;
+            color: #dd1d3c;
             /* Color on hover */
         }
     </style>
@@ -590,7 +590,7 @@ $this->disableAutoLayout();
 
     <style>
         .testimonial_color {
-            background-color: #273d4f;
+            background-color: #294890;
         }
 
         .testimonial-text {
