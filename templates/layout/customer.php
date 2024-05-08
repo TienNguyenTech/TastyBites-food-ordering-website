@@ -228,18 +228,18 @@ $this->disableAutoLayout();
                         }
                         ?>
                     </li>
-                    <li class="nav-item">
-                        <?php
-                        $userType = $this->Identity->get('user_type');
-                        if ($this->Identity->isLoggedIn() && $userType === 'admin') {
-                            echo $this->Html->link(
-                                'Dashboard 2',
-                                ['controller' => 'Dashboard2', 'action' => 'index'],
-                                ['class' => 'nav-link fire-text']
-                            );
-                        }
-                        ?>
-                    </li>
+<!--                    <li class="nav-item">-->
+<!--                        --><?php
+//                        $userType = $this->Identity->get('user_type');
+//                        if ($this->Identity->isLoggedIn() && $userType === 'admin') {
+//                            echo $this->Html->link(
+//                                'Dashboard 2',
+//                                ['controller' => 'Dashboard2', 'action' => 'index'],
+//                                ['class' => 'nav-link fire-text']
+//                            );
+//                        }
+//                        ?>
+<!--                    </li>-->
                     <li class="nav-item">
                         <?php
                         if (!$this->Identity->isLoggedIn()) {
