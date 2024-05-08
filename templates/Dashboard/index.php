@@ -62,7 +62,7 @@
                 <div class="card-body d-flex flex-column">
                     <div class="mt-auto text-center">
                         <?= $this->Html->link(__('Create New Account'), ['controller' => 'users', 'action' => 'add'], ['class' => 'btn btn-primary btn-block']) ?>
-                        <?= $this->Html->link(__('View Admin Accounts'), ['controller' => 'users', 'action' => 'admin'], ['class' => 'btn btn-success btn-block mt-3']) ?>
+                        <?= $this->Html->link(__('Manage Accounts'), ['controller' => 'users', 'action' => 'admin'], ['class' => 'btn btn-success btn-block mt-3']) ?>
                     </div>
                 </div>
             </div>
