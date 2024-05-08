@@ -41,7 +41,14 @@ class OrdersController extends AppController
     public function view($id = null)
     {
         $order = $this->Orders->get($id, contain: ['Menuitems']);
-        $this->set(compact('order'));
+
+        $orderTotal = 0;
+
+        foreach ($order->menuitems as $menuitem) {
+            $orderTotal += $menuitem->menuitem_price;
+        }
+
+        $this->set(compact('order', 'orderTotal'));
     }
 
     /**
