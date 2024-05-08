@@ -410,8 +410,8 @@ $this->disableAutoLayout();
 
     <header class="bg-dark py-5 header-bg">
         <!--    sale text edit by admin-->
-        <div class="container text-center mt-3" >
-            <p style="color: red;" ><?= $this->ContentBlock->text('banner'); ?></p>
+        <div class="container text-center mt-3" style="background-color: #bcccf3; border-radius: 5px">
+            <p style="color: #294890;" ><?= $this->ContentBlock->text('banner'); ?></p>
         </div>
         <div class="container px-5">
             <div class="row gx-5 justify-content-center">
