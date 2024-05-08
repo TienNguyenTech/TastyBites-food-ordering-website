@@ -207,7 +207,7 @@ class AuthController extends AppController
             } elseif ($user['user_type'] === 'admin') {
                 return $this->redirect(['controller' => 'Dashboard', 'action' => 'index']); // Redirect admin to user page
             } elseif ($user['user_type'] === 'staff') {
-                return $this->redirect(['controller' => 'Dashboard2', 'action' => 'index']); // Redirect staff to dashboard2.php
+                return $this->redirect(['controller' => 'Orders', 'action' => 'index']); // Redirect staff to orders.php
             }
 
             // set a fallback location in case user logged in without triggering 'unauthenticatedRedirect'

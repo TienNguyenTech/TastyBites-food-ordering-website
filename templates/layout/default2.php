@@ -54,9 +54,9 @@
                     href="<?= $this->Url->build(['plugin' => null, 'controller' => 'Pages', 'action' => 'display', 'home']) ?>">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Customer Homepage</span></a>
-                <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Dashboard2', 'action' => 'index']) ?>">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Staff Dashboard</span></a>
+<!--                <a class="nav-link" href="--><?php //= $this->Url->build(['plugin' => null,'controller' => 'Dashboard2', 'action' => 'index']) ?><!--">-->
+<!--                    <i class="fas fa-fw fa-cog"></i>-->
+<!--                    <span>Staff Dashboard</span></a>-->
                 <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Orders', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-birthday-cake"></i>
                     <span>Orders</span></a>
@@ -149,6 +149,11 @@
                         }
                     }
                     ?>
+                    <div class="d-flex justify-content-center align-items-center flex-grow-1">
+                            <h1 class="h3 mb-0 text-gray-800">Staff Dashboard</h1>
+                    </div>
+
+<!--                    <h1 class="h3 mb-0 text-gray-800">Staff Dashboard</h1>-->
                     <script>
                         // Function to navigate back to the menu item index and clear history
                         function returnToMenu() {
