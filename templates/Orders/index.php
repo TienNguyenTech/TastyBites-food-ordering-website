@@ -8,7 +8,6 @@ echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block'
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
 <div class="orders index content text-gray-800">
-    <?= $this->Html->link(__('New Order'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3 class="text-gray-800">Orders</h3>
 
     <div class="table-responsive">
@@ -33,9 +32,26 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= h($order->customer_name) ?></td>
                     <td><?= h($order->customer_email) ?></td>
                     <td><?= h($order->customer_phone) ?></td>
-                    <td>Items will go here</td>
+                    <td>
+                        <ul>
+                        <?php
+                            $counter = 0;
+                            foreach ($order->menuitems as $menuitem) {
+                                echo '<li>' . $menuitem->menuitem_name . '</li>';
+                                $counter++;
+
+                                if($counter == 2) {
+                                    echo '<li>' . $this->Html->link('View more', ['action' => 'view', $order->order_id]) . '</li>';
+                                    break;
+                                };
+                            }
+                        ?>
+                        </ul>
+                    </td>
                     <td class="actions">
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $order->menuitem_id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->menuitem_name)]) ?>
+                        <?= $this->Html->link('Order Ready', ['action' => 'ready', $order->order_id], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Html->link('Order Picked Up', ['action' => 'complete', $order->order_id], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $order->menuitem_id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->menuitem_name), 'class' => 'btn btn-danger']) ?>
                     </td>
                 </tr>
 

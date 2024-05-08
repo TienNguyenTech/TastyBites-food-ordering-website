@@ -38,7 +38,7 @@ class OrdersController extends AppController
      */
     public function index()
     {
-        $query = $this->Orders->find();
+        $query = $this->Orders->find(contain: 'Menuitems');
         $orders = $this->paginate($query);
 
         $this->set(compact('orders'));
@@ -54,7 +54,14 @@ class OrdersController extends AppController
     public function view($id = null)
     {
         $order = $this->Orders->get($id, contain: ['Menuitems']);
-        $this->set(compact('order'));
+
+        $orderTotal = 0;
+
+        foreach ($order->menuitems as $menuitem) {
+            $orderTotal += $menuitem->menuitem_price;
+        }
+
+        $this->set(compact('order', 'orderTotal'));
     }
 
     /**
@@ -72,12 +79,38 @@ class OrdersController extends AppController
             if ($this->Orders->save($order)) {
                 $this->Flash->success(__('Your order has been placed! Confirmation will be sent to your email.'));
 
-                return $this->redirect(['action' => 'add']);
+                return $this->redirect(['controller' => 'Payments', 'action' => 'add', $order->order_id]);
             }
             $this->Flash->error(__('There was an error processing your order. Please, try again.'));
         }
         $menuitems = $this->Orders->Menuitems->find('list', limit: 200)->all();
         $this->set(compact('order', 'menuitems'));
+    }
+
+    public function ready($id) {
+        $order = $this->Orders->get($id, contain: ['Menuitems']);
+
+        $orderReady = $order;
+        $orderReady->order_status = 'ready';
+
+        $order = $this->Orders->patchEntity($order, (array)$orderReady);
+
+        $this->Orders->save($order);
+
+        $this->redirect(['action' => 'index']);
+    }
+
+    public function complete($id) {
+        $order = $this->Orders->get($id, contain: ['Menuitems']);
+
+        $orderReady = $order;
+        $orderReady->order_status = 'complete';
+
+        $order = $this->Orders->patchEntity($order, (array)$orderReady);
+
+        $this->Orders->save($order);
+
+        $this->redirect(['action' => 'index']);
     }
 
     /**

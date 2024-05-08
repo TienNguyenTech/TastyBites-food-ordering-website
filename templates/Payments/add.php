@@ -2,7 +2,8 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Payment $payment
- * @var \Cake\Collection\CollectionInterface|string[] $orders
+ * @var \App\Model\Entity\Order $order
+ * @var \Cake\Database\Type\FloatType $orderTotal
  */
 ?>
 <div class="row">
@@ -16,13 +17,23 @@
         <div class="payments form content">
             <?= $this->Form->create($payment) ?>
             <fieldset>
-                <legend><?= __('Add Payment') ?></legend>
+                <legend><?= __('Checkout') ?></legend>
                 <?php
-                    echo $this->Form->control('payment_amount');
+                    echo h('Items');
+                    echo '<ul>';
+                    foreach ($order->menuitems as $menuitem) {
+
+                        echo '<li>' . h($menuitem->menuitem_name . ': $' . $menuitem->menuitem_price) . '</li>';
+
+                    }
+
+                    echo '</ul>';
+
+                    echo h('Order Total: $' . $orderTotal);
+
                     echo $this->Form->control('card_number');
                     echo $this->Form->control('card_expiry');
                     echo $this->Form->control('card_cvc');
-                    echo $this->Form->control('order_id', ['options' => $orders]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
