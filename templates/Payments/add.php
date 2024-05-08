@@ -32,8 +32,8 @@
                     echo h('Order Total: $' . $orderTotal);
 
                     echo $this->Form->control('card_number');
-                    echo $this->Form->control('card_expiry');
-                    echo $this->Form->control('card_cvc');
+                    echo $this->Form->control('card_expiry', ['label' => 'Expiry Date (MMYY)']);
+                    echo $this->Form->control('card_cvc', ['label' => 'Security Code']);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit')) ?>
