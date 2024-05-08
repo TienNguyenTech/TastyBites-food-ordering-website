@@ -15,4 +15,4 @@
 <p>Contact Email: <?= h($customer_email) ?></p>
 <p>Contact Phone Number: <?= h($customer_phone) ?></p>
 
-<?= $this->Html->link('View order', ['controller' => 'Orders', 'action' => 'view', $order_id], ['fullBase' => 'true']) ?>
+<?= $this->Html->link('View order', ['controller' => 'Orders', 'action' => 'view', $order_id], ['fullBase' => true]) ?>
