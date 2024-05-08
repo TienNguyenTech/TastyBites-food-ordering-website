@@ -60,6 +60,9 @@
                 <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Menuitems', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-birthday-cake"></i>
                     <span>Menu</span></a>
+                <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Orders', 'action' => 'index']) ?>">
+                    <i class="fas fa-fw fa-pen"></i>
+                    <span>Orders</span></a>
                 <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Enquirys', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-pen"></i>
                     <span>Enquiries</span></a>
