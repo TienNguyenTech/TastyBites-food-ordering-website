@@ -35,8 +35,15 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td>
                         <ul>
                         <?php
+                            $counter = 0;
                             foreach ($order->menuitems as $menuitem) {
                                 echo '<li>' . $menuitem->menuitem_name . '</li>';
+                                $counter++;
+
+                                if($counter == 2) {
+                                    echo '<li>' . $this->Html->link('View more', ['action' => 'view', $order->order_id]) . '</li>';
+                                    break;
+                                };
                             }
                         ?>
                         </ul>

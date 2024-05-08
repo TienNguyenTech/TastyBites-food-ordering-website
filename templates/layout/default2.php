@@ -63,6 +63,12 @@
                 <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Enquirys', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-pen"></i>
                     <span>Enquiries</span></a>
+                <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Orders', 'action' => 'index']) ?>">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <span>Orders</span></a>
+                <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Payments', 'action' => 'index']) ?>">
+                    <i class="fas fa-fw fa-dollar-sign"></i>
+                    <span>Payments</span></a>
             </li>
 
             <!-- Divider -->

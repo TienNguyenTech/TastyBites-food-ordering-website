@@ -2,72 +2,45 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Order $order
+ * @var \Cake\Database\Type\FloatType $orderTotal
  */
 ?>
 <div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Order'), ['action' => 'edit', $order->order_id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Order'), ['action' => 'delete', $order->order_id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->order_id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Orders'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Order'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
     <div class="column column-80">
         <div class="orders view content">
-            <h3><?= h($order->order_id) ?></h3>
+            <h3><?= h('Order for ' . $order->customer_name . ' made ' . $order->order_datetime) ?></h3>
             <table>
                 <tr>
                     <th><?= __('Order Status') ?></th>
                     <td><?= h($order->order_status) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Customer Name') ?></th>
-                    <td><?= h($order->customer_name) ?></td>
-                </tr>
-                <tr>
                     <th><?= __('Customer Email') ?></th>
-                    <td><?= h($order->customer_email) ?></td>
+                    <td><?= $this->Html->link($order->customer_email, 'mailto:' . $order->customer_email) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Customer Phone') ?></th>
-                    <td><?= h($order->customer_phone) ?></td>
+                    <td><?= $this->Html->link($order->customer_phone, 'tel:' . $order->customer_phone) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Order Id') ?></th>
-                    <td><?= $this->Number->format($order->order_id) ?></td>
+                    <th><?= __('Order Total') ?></th>
+                    <td><?= h($this->Number->currency($orderTotal)) ?></td>
                 </tr>
                 <tr>
-                    <th><?= __('Order Datetime') ?></th>
-                    <td><?= h($order->order_datetime) ?></td>
-                </tr>
             </table>
             <div class="related">
-                <h4><?= __('Related Menuitems') ?></h4>
+                <h4><?= __('Items') ?></h4>
                 <?php if (!empty($order->menuitems)) : ?>
                 <div class="table-responsive">
                     <table>
                         <tr>
-                            <th><?= __('Menuitem Id') ?></th>
-                            <th><?= __('Menuitem Name') ?></th>
-                            <th><?= __('Menuitem Image') ?></th>
-                            <th><?= __('Menuitem Desc') ?></th>
-                            <th><?= __('Menuitem Price') ?></th>
-                            <th class="actions"><?= __('Actions') ?></th>
+                            <th><?= __('Item') ?></th>
+                            <th><?= __('Price') ?></th>
                         </tr>
                         <?php foreach ($order->menuitems as $menuitem) : ?>
                         <tr>
-                            <td><?= h($menuitem->menuitem_id) ?></td>
                             <td><?= h($menuitem->menuitem_name) ?></td>
-                            <td><?= h($menuitem->menuitem_image) ?></td>
-                            <td><?= h($menuitem->menuitem_desc) ?></td>
-                            <td><?= h($menuitem->menuitem_price) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Menuitems', 'action' => 'view', $menuitem->menuitem_id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Menuitems', 'action' => 'edit', $menuitem->menuitem_id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Menuitems', 'action' => 'delete', $menuitem->menuitem_id], ['confirm' => __('Are you sure you want to delete # {0}?', $menuitem->menuitem_id)]) ?>
-                            </td>
+                            <td><?= h($this->Number->currency($menuitem->menuitem_price)) ?></td>
                         </tr>
                         <?php endforeach; ?>
                     </table>
