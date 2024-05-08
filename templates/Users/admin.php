@@ -14,7 +14,7 @@
                 <th><?= $this->Paginator->sort('first_name') ?></th>
                 <th><?= $this->Paginator->sort('last_name') ?></th>
                 <th><?= $this->Paginator->sort('email') ?></th>
-                <th class="actions"><?= __('Actions') ?></th>
+                <th><?= $this->Paginator->sort('user_type') ?></th>
             </tr>
             </thead>
             <tbody>
@@ -23,6 +23,7 @@
                     <td><?= h($user->first_name) ?></td>
                     <td><?= h($user->last_name) ?></td>
                     <td><?= h($user->email) ?></td>
+                    <td><?= h($user->user_type) ?></td>
                     <td class="actions">
 <!--                        --><?php //= $this->Html->link(__('View'), ['action' => 'view', $user->user_id]) ?>
 <!--                        --><?php //= $this->Html->link(__('Edit'), ['action' => 'edit', $user->user_id]) ?>
