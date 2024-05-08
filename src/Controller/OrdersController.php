@@ -55,6 +55,8 @@ class OrdersController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->setLayout('customer');
+
         $order = $this->Orders->get($id, contain: ['Menuitems']);
 
         $orderTotal = 0;
