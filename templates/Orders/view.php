@@ -6,47 +6,52 @@
  */
 ?>
 <div class="row">
-    <div class="column column-80">
-        <div class="orders view content">
-            <h3><?= h('Order for ' . $order->customer_name . ' made ' . $order->order_datetime->addHours(10)) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('Order Status') ?></th>
-                    <td><?= h($order->order_status) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Customer Email') ?></th>
-                    <td><?= $this->Html->link($order->customer_email, 'mailto:' . $order->customer_email) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Customer Phone') ?></th>
-                    <td><?= $this->Html->link($order->customer_phone, 'tel:' . $order->customer_phone) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Order Total') ?></th>
-                    <td><?= h($this->Number->currency($orderTotal)) ?></td>
-                </tr>
-                <tr>
-            </table>
-            <div class="related">
-                <h4><?= __('Items') ?></h4>
-                <?php if (!empty($order->menuitems)) : ?>
-                <div class="table-responsive">
-                    <table>
-                        <tr>
-                            <th><?= __('Item') ?></th>
-                            <th><?= __('Price') ?></th>
-                        </tr>
-                        <?php foreach ($order->menuitems as $menuitem) : ?>
-                        <tr>
-                            <td><?= h($menuitem->menuitem_name) ?></td>
-                            <td><?= h($this->Number->currency($menuitem->menuitem_price)) ?></td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
-                <?php endif; ?>
+    <div class="orders view container" style="padding: 20px; background-color: #e8e8e8; margin-top: 20px; border-radius: 10px">
+        <?php
+        if ($this->Identity->isLoggedIn()) {
+            echo $this->Html->link(
+                'Back',
+                ['action' => 'index'],
+                ['class' => 'btn btn-primary']
+            );
+        } else {
+            echo $this->Html->link(
+                'Back',
+                '/',
+                ['class' => 'btn btn-primary']
+            );
+        }
+        ?>
+        <h1><?= h('Order for ' . $order->customer_name . ' made ' . $order->order_datetime->addHours(10)) ?></h1>
+        <table>
+            <tr>
+                <th><?= __('Order Status: ') ?></th>
+                <td><?= h($order->order_status) ?></td>
+            </tr>
+            <tr>
+                <th><?= __('Order Total: ') ?></th>
+                <td><?= h($this->Number->currency($orderTotal)) ?></td>
+            </tr>
+            <tr>
+        </table>
+        <div class="related" style="margin-top: 20px">
+            <h3><?= __('Order Items') ?></h3>
+            <?php if (!empty($order->menuitems)) : ?>
+            <div class="table-responsive">
+                <table>
+                    <tr>
+                        <th><?= __('Item') ?></th>
+                        <th><?= __('Price') ?></th>
+                    </tr>
+                    <?php foreach ($order->menuitems as $menuitem) : ?>
+                    <tr>
+                        <td><?= h($menuitem->menuitem_name) ?></td>
+                        <td><?= h($this->Number->currency($menuitem->menuitem_price)) ?></td>
+                    </tr>
+                    <?php endforeach; ?>
+                </table>
             </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
