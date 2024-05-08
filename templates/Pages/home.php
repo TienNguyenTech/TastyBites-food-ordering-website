@@ -276,15 +276,35 @@ $this->disableAutoLayout();
                     <li class="nav-item">
                         <?php
                         $userType = $this->Identity->get('user_type');
-                        if ($this->Identity->isLoggedIn() && $userType === 'admin') {
-                            echo $this->Html->link(
-                                'Dashboard',
-                                ['controller' => 'Dashboard', 'action' => 'index'],
-                                ['class' => 'nav-link fire-text']
-                            );
+                        if ($this->Identity->isLoggedIn()) {
+                            if ($userType === 'admin') {
+                                echo $this->Html->link(
+                                    'Dashboard',
+                                    ['controller' => 'Dashboard', 'action' => 'index'],
+                                    ['class' => 'nav-link fire-text']
+                                );
+                            } elseif ($userType === 'staff') {
+                                echo $this->Html->link(
+                                    'Dashboard',
+                                    ['controller' => 'Orders', 'action' => 'index'],
+                                    ['class' => 'nav-link fire-text']
+                                );
+                            }
                         }
                         ?>
                     </li>
+<!--                    <li class="nav-item">-->
+<!--                        --><?php
+//                        $userType = $this->Identity->get('user_type');
+//                        if ($this->Identity->isLoggedIn() && $userType === 'admin') {
+//                            echo $this->Html->link(
+//                                'Dashboard',
+//                                ['controller' => 'Dashboard', 'action' => 'index'],
+//                                ['class' => 'nav-link fire-text']
+//                            );
+//                        }
+//                        ?>
+<!--                    </li>-->
                     <li class="nav-item">
                         <?php
                         $userType = $this->Identity->get('user_type');

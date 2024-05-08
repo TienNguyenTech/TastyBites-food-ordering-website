@@ -34,7 +34,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-lg-12 text-center mb-5">
-            <h2 class="text-primary">Admin Dashboard</h2>
+            <h2 class="text-primary">Staff Dashboard</h2>
         </div>
     </div>
 
