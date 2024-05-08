@@ -80,9 +80,10 @@ class OrdersController extends AppController
             $order = $this->Orders->patchEntity($order, $this->request->getData());
 
             // Check if customer email contains '@'
-            if (!strpos($order->customer_email, '@')) {
-                $this->Flash->error(__('Please enter a valid email address.'));
-            } elseif ($this->Orders->save($order)) {
+//            if (!strpos($order->customer_email, '@')) {
+//                $this->Flash->error(__('Please enter a valid email address.'));
+//            } else
+              if ($this->Orders->save($order)) {
                 $this->Flash->success(__('Your order has been placed! Confirmation will be sent to your email.'));
 
                 return $this->redirect(['controller' => 'Payments', 'action' => 'add', $order->order_id]);
