@@ -40,7 +40,7 @@
 
             ?>
         </fieldset>
-        <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary', 'style' => 'margin-top: 10px']) ?>
+        <?= $this->Form->button(__('Place Order'), ['class' => 'btn btn-primary', 'style' => 'margin-top: 10px']) ?>
         <?= $this->Form->end() ?>
 
         <?= $this->Flash->render() ?>
