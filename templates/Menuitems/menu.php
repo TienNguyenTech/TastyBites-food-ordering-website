@@ -92,7 +92,7 @@
     }
 </style>
 
-<div><?= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'button float-right']) ?></div>
+<!--<div>--><?php //= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'button float-right']) ?><!--</div>-->
 
 <div class="my-4" style="margin: 0 6rem;">
     <div class="row justify-content-between align-items-center mb-3">
