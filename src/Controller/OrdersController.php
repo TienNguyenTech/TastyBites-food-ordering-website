@@ -25,7 +25,7 @@ class OrdersController extends AppController
      */
     public function index()
     {
-        $query = $this->Orders->find();
+        $query = $this->Orders->find(contain: 'Menuitems');
         $orders = $this->paginate($query);
 
         $this->set(compact('orders'));
@@ -65,6 +65,32 @@ class OrdersController extends AppController
         }
         $menuitems = $this->Orders->Menuitems->find('list', limit: 200)->all();
         $this->set(compact('order', 'menuitems'));
+    }
+
+    public function ready($id) {
+        $order = $this->Orders->get($id, contain: ['Menuitems']);
+
+        $orderReady = $order;
+        $orderReady->order_status = 'ready';
+
+        $order = $this->Orders->patchEntity($order, (array)$orderReady);
+
+        $this->Orders->save($order);
+
+        $this->redirect(['action' => 'index']);
+    }
+
+    public function complete($id) {
+        $order = $this->Orders->get($id, contain: ['Menuitems']);
+
+        $orderReady = $order;
+        $orderReady->order_status = 'complete';
+
+        $order = $this->Orders->patchEntity($order, (array)$orderReady);
+
+        $this->Orders->save($order);
+
+        $this->redirect(['action' => 'index']);
     }
 
     /**

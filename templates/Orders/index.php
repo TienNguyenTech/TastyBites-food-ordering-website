@@ -33,9 +33,19 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= h($order->customer_name) ?></td>
                     <td><?= h($order->customer_email) ?></td>
                     <td><?= h($order->customer_phone) ?></td>
-                    <td>Items will go here</td>
+                    <td>
+                        <ul>
+                        <?php
+                            foreach ($order->menuitems as $menuitem) {
+                                echo '<li>' . $menuitem->menuitem_name . '</li>';
+                            }
+                        ?>
+                        </ul>
+                    </td>
                     <td class="actions">
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $order->menuitem_id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->menuitem_name)]) ?>
+                        <?= $this->Html->link('Order Ready', ['action' => 'ready', $order->order_id], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Html->link('Order Picked Up', ['action' => 'complete', $order->order_id], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $order->menuitem_id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->menuitem_name), 'class' => 'btn btn-danger']) ?>
                     </td>
                 </tr>
 
