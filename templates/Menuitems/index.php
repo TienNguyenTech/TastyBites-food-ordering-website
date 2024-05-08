@@ -35,7 +35,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= $this->Number->currency($menuitem->menuitem_price) ?></td>
                     <td class="actions">
                         <?= $this->Html->link(__('Edit'), ['action' => 'edit', $menuitem->menuitem_id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $menuitem->menuitem_id], ['confirm' => __('Are you sure you want to delete # {0}?', $menuitem->menuitem_name)]) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $menuitem->menuitem_id], ['confirm' => __('Are you sure you want to delete {0}?', $menuitem->menuitem_name)]) ?>
                     </td>
                 </tr>
 
