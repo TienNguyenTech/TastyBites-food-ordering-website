@@ -12,7 +12,7 @@
 
 
 <div>
-    <h1>Tasty Bites Order Confirmation: <?= $order_datetime ?></h1>
+    <h1>Tasty Bites Order Confirmation: <?= $order_datetime->addHours(10) ?></h1>
     <h3>Order Status: <?= h($order_status) ?></h3>
     <p>Customer Name: <?= h($customer_name) ?></p>
     <p>Contact Email: <?= h($customer_email) ?></p>

@@ -8,7 +8,7 @@
 <div class="row">
     <div class="column column-80">
         <div class="orders view content">
-            <h3><?= h('Order for ' . $order->customer_name . ' made ' . $order->order_datetime) ?></h3>
+            <h3><?= h('Order for ' . $order->customer_name . ' made ' . $order->order_datetime->addHours(10)) ?></h3>
             <table>
                 <tr>
                     <th><?= __('Order Status') ?></th>

@@ -24,7 +24,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                 <?php foreach ($payments as $payment): ?>
                     <tr>
                         <td><?= $this->Number->currency($payment->payment_amount) ?></td>
-                        <td><?= $payment->hasValue('order') ? $this->Html->link('Order for ' . $payment->order->customer_name . ' made ' . $payment->order->order_datetime , ['controller' => 'Orders', 'action' => 'view', $payment->order->order_id]) : '' ?></td>
+                        <td><?= $payment->hasValue('order') ? $this->Html->link('Order for ' . $payment->order->customer_name . ' made ' . $payment->order->order_datetime->addHours(10) , ['controller' => 'Orders', 'action' => 'view', $payment->order->order_id]) : '' ?></td>
                     </tr>
                 <?php endforeach; ?>
                 </tbody>

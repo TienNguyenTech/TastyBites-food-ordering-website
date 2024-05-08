@@ -9,7 +9,7 @@
 ?>
 
 <div>
-    <h1>Tasty Bites Order Pickup: <?= $order_datetime ?></h1>
+    <h1>Tasty Bites Order Pickup: <?= $order_datetime->addHours(10) ?></h1>
     <p>Hi <?= $customer_name ?>,</p>
     <p>Your order is now ready for pickup from our kitchen!</p>
 </div>
