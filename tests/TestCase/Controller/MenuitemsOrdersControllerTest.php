@@ -3,16 +3,16 @@ declare(strict_types=1);
 
 namespace App\Test\TestCase\Controller;
 
-use App\Controller\MenuitemsController;
+use App\Controller\MenuitemsOrdersController;
 use Cake\TestSuite\IntegrationTestTrait;
 use Cake\TestSuite\TestCase;
 
 /**
- * App\Controller\MenuitemsController Test Case
+ * App\Controller\MenuitemsOrdersController Test Case
  *
- * @uses \App\Controller\MenuitemsController
+ * @uses \App\Controller\MenuitemsOrdersController
  */
-class MenuitemsControllerTest extends TestCase
+class MenuitemsOrdersControllerTest extends TestCase
 {
     use IntegrationTestTrait;
 
@@ -22,16 +22,16 @@ class MenuitemsControllerTest extends TestCase
      * @var list<string>
      */
     protected array $fixtures = [
+        'app.MenuitemsOrders',
         'app.Menuitems',
         'app.Orders',
-        'app.MenuitemsOrders',
     ];
 
     /**
      * Test index method
      *
      * @return void
-     * @uses \App\Controller\MenuitemsController::index()
+     * @uses \App\Controller\MenuitemsOrdersController::index()
      */
     public function testIndex(): void
     {
@@ -42,7 +42,7 @@ class MenuitemsControllerTest extends TestCase
      * Test view method
      *
      * @return void
-     * @uses \App\Controller\MenuitemsController::view()
+     * @uses \App\Controller\MenuitemsOrdersController::view()
      */
     public function testView(): void
     {
@@ -53,7 +53,7 @@ class MenuitemsControllerTest extends TestCase
      * Test add method
      *
      * @return void
-     * @uses \App\Controller\MenuitemsController::add()
+     * @uses \App\Controller\MenuitemsOrdersController::add()
      */
     public function testAdd(): void
     {
@@ -64,7 +64,7 @@ class MenuitemsControllerTest extends TestCase
      * Test edit method
      *
      * @return void
-     * @uses \App\Controller\MenuitemsController::edit()
+     * @uses \App\Controller\MenuitemsOrdersController::edit()
      */
     public function testEdit(): void
     {
@@ -75,7 +75,7 @@ class MenuitemsControllerTest extends TestCase
      * Test delete method
      *
      * @return void
-     * @uses \App\Controller\MenuitemsController::delete()
+     * @uses \App\Controller\MenuitemsOrdersController::delete()
      */
     public function testDelete(): void
     {

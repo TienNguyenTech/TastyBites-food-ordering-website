@@ -6,17 +6,18 @@ namespace App\Model\Entity;
 use Cake\ORM\Entity;
 
 /**
- * OrdersMenuitem Entity
+ * Payment Entity
  *
+ * @property int $payment_id
+ * @property int $payment_amount
+ * @property int $card_number
+ * @property int $card_expiry
+ * @property int $card_cvc
  * @property int $order_id
- * @property int $menuitem_id
- * @property int $om_quantity
- * @property float $om_price
  *
  * @property \App\Model\Entity\Order $order
- * @property \App\Model\Entity\Menuitem $menuitem
  */
-class OrdersMenuitem extends Entity
+class Payment extends Entity
 {
     /**
      * Fields that can be mass assigned using newEntity() or patchEntity().
@@ -28,9 +29,11 @@ class OrdersMenuitem extends Entity
      * @var array<string, bool>
      */
     protected array $_accessible = [
-        'om_quantity' => true,
-        'om_price' => true,
+        'payment_amount' => true,
+        'card_number' => true,
+        'card_expiry' => true,
+        'card_cvc' => true,
+        'order_id' => true,
         'order' => true,
-        'menuitem' => true,
     ];
 }

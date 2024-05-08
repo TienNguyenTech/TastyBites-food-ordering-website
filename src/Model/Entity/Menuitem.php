@@ -13,7 +13,6 @@ use Cake\ORM\Entity;
  * @property string $menuitem_image
  * @property string $menuitem_desc
  * @property float $menuitem_price
- * @property float $menuitem_rating
  *
  * @property \App\Model\Entity\Order[] $orders
  */
@@ -33,7 +32,6 @@ class Menuitem extends Entity
         'menuitem_image' => true,
         'menuitem_desc' => true,
         'menuitem_price' => true,
-        'menuitem_rating' => true,
         'orders' => true,
     ];
 }

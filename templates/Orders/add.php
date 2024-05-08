@@ -2,41 +2,18 @@
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Order $order
- * @var \Cake\Collection\CollectionInterface|string[] $customers
  * @var \Cake\Collection\CollectionInterface|string[] $menuitems
  */
 ?>
-<h1 class="h3 mb-2 text-gray-800">Add new Order</h1>
-<?= $this->Form->create($order) ?>
+<h1 class="h3 mb-2 text-gray-800">Place an order</h1>
+<?= $this->Flash->render() ?>
+<?= $this->Form->create($order, ['class' => 'text-gray-800']) ?>
 <?php
-echo $this->Form->control('order_datetime');
-echo $this->Form->control('order_total');
-echo $this->Form->control('customer_id', ['options' => $customers]);
-echo $this->Form->control('menuitems._ids', ['options' => $menuitems]);
+echo $this->Form->control('customer_name', ['label' => 'Full Name', 'class' => 'form-control']);
+echo $this->Form->control('customer_email', ['label' => 'Contact Email', 'class' => 'form-control']);
+echo $this->Form->control('customer_phone', ['label' => 'Contact Phone', 'class' => 'form-control']);
+echo $this->Form->control('menuitems._ids', ['options' => $menuitems, 'class' => 'form-control', 'required']);
+
 ?>
 <?= $this->Form->button(__('Submit'),['class'=>'btn btn-primary']) ?>
 <?= $this->Form->end() ?>
-<!--<div class="row">-->
-<!--    <aside class="column">-->
-<!--        <div class="side-nav">-->
-<!--            <h4 class="heading">--><?php //= __('Actions') ?><!--</h4>-->
-<!--            --><?php //= $this->Html->link(__('List Orders'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-<!--        </div>-->
-<!--    </aside>-->
-<!--    <div class="column column-80">-->
-<!--        <div class="orders form content">-->
-<!--            --><?php //= $this->Form->create($order) ?>
-<!--            <fieldset>-->
-<!--                <legend>--><?php //= __('Add Order') ?><!--</legend>-->
-<!--                --><?php
-//                    echo $this->Form->control('order_datetime');
-//                    echo $this->Form->control('order_total');
-//                    echo $this->Form->control('customer_id', ['options' => $customers]);
-//                    echo $this->Form->control('menuitems._ids', ['options' => $menuitems]);
-//                ?>
-<!--            </fieldset>-->
-<!--            --><?php //= $this->Form->button(__('Submit')) ?>
-<!--            --><?php //= $this->Form->end() ?>
-<!--        </div>-->
-<!--    </div>-->
-<!--</div>-->

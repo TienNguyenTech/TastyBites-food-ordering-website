@@ -6,9 +6,9 @@ namespace App\Test\Fixture;
 use Cake\TestSuite\Fixture\TestFixture;
 
 /**
- * MenuitemsFixture
+ * MenuitemsOrdersFixture
  */
-class MenuitemsFixture extends TestFixture
+class MenuitemsOrdersFixture extends TestFixture
 {
     /**
      * Init method
@@ -19,11 +19,10 @@ class MenuitemsFixture extends TestFixture
     {
         $this->records = [
             [
+                'id' => 1,
                 'menuitem_id' => 1,
-                'menuitem_name' => 'Lorem ipsum dolor sit amet',
-                'menuitem_image' => 'Lorem ipsum dolor sit amet',
-                'menuitem_desc' => 'Lorem ipsum dolor sit amet',
-                'menuitem_price' => 1,
+                'order_id' => 1,
+                'quantity' => 1,
             ],
         ];
         parent::init();

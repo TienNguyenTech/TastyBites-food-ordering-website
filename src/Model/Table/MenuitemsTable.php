@@ -46,7 +46,7 @@ class MenuitemsTable extends Table
         $this->belongsToMany('Orders', [
             'foreignKey' => 'menuitem_id',
             'targetForeignKey' => 'order_id',
-            'joinTable' => 'orders_menuitems',
+            'joinTable' => 'menuitems_orders',
         ]);
     }
 
@@ -76,7 +76,7 @@ class MenuitemsTable extends Table
 
         $validator
             ->scalar('menuitem_desc')
-            ->maxLength('menuitem_desc', 500)
+            ->maxLength('menuitem_desc', 1000)
             ->requirePresence('menuitem_desc', 'create')
             ->notEmptyString('menuitem_desc')
             ->add('menuitem_desc', [
@@ -92,15 +92,11 @@ class MenuitemsTable extends Table
             ->requirePresence('menuitem_price', 'create')
             ->notEmptyString('menuitem_price')
             ->add('menuitem_price', [
-            'validFormat' => [
-                'rule' => ['custom', '/^\d{1,4}(\.\d{1,2})?$/'],
-                'message' => 'Menu item price must have a maximum of four digits before the decimal point and two digits after.'
-            ]
-        ]);
-
-
-        $validator
-            ->numeric('menuitem_rating');
+                'validFormat' => [
+                    'rule' => ['custom', '/^\d{1,4}(\.\d{1,2})?$/'],
+                    'message' => 'Menu item price must have a maximum of four digits before the decimal point and two digits after.'
+                ]
+            ]);
 
         return $validator;
     }
