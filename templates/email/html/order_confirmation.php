@@ -9,6 +9,9 @@
  */
 ?>
 
+<head>
+
+
 <style>
     .btn {
         --bs-btn-padding-x: 0.75rem;
@@ -89,6 +92,7 @@
         margin-left: auto;
     }
 </style>
+</head>
 
 <div class="container">
     <h1>Tasty Bites Order Confirmation</h1>
