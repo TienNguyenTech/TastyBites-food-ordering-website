@@ -3,6 +3,9 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Payment $payment
  */
+
+use Cake\Utility\Security;
+
 ?>
 <div class="row">
     <aside class="column">
@@ -32,15 +35,15 @@
                 </tr>
                 <tr>
                     <th><?= __('Card Number') ?></th>
-                    <td><?= $this->Number->format($payment->card_number) ?></td>
+                    <td><?= h($payment->card_number) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Card Expiry') ?></th>
-                    <td><?= $this->Number->format($payment->card_expiry) ?></td>
+                    <td><?= h($payment->card_expiry) ?></td>
                 </tr>
                 <tr>
                     <th><?= __('Card Cvc') ?></th>
-                    <td><?= $this->Number->format($payment->card_cvc) ?></td>
+                    <td><?= h($payment->card_cvc) ?></td>
                 </tr>
             </table>
         </div>

@@ -10,9 +10,9 @@ use Cake\ORM\Entity;
  *
  * @property int $payment_id
  * @property int $payment_amount
- * @property int $card_number
- * @property int $card_expiry
- * @property int $card_cvc
+ * @property string $card_number
+ * @property string $card_expiry
+ * @property string $card_cvc
  * @property int $order_id
  *
  * @property \App\Model\Entity\Order $order

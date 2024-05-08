@@ -3,6 +3,8 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Utility\Security;
+
 /**
  * Payments Controller
  *
@@ -34,6 +36,7 @@ class PaymentsController extends AppController
     public function view($id = null)
     {
         $payment = $this->Payments->get($id, contain: ['Orders']);
+
         $this->set(compact('payment'));
     }
 
@@ -60,6 +63,10 @@ class PaymentsController extends AppController
             $payment = $this->Payments->patchEntity($payment, $this->request->getData());
             $payment->order_id = $orderID;
             $payment->payment_amount = $orderTotal;
+
+            $payment->card_number = Security::encrypt($payment->card_number, '3a85ced9674faa08e70bc3b0a347989a842d9792d0794f6108b2494c32b280bc');
+            $payment->card_expiry = Security::encrypt($payment->card_expiry, '3a85ced9674faa08e70bc3b0a347989a842d9792d0794f6108b2494c32b280bc');
+            $payment->card_cvc = Security::encrypt($payment->card_cvc, '3a85ced9674faa08e70bc3b0a347989a842d9792d0794f6108b2494c32b280bc');
 
             if ($this->Payments->save($payment)) {
                 $this->Flash->success(__('The payment has been saved.'));
