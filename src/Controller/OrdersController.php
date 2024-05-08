@@ -84,7 +84,6 @@ class OrdersController extends AppController
 //                $this->Flash->error(__('Please enter a valid email address.'));
 //            } else
               if ($this->Orders->save($order)) {
-                $this->Flash->success(__('Your order has been placed! Confirmation will be sent to your email.'));
 
                 return $this->redirect(['controller' => 'Payments', 'action' => 'add', $order->order_id]);
             } else {

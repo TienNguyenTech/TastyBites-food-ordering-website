@@ -70,7 +70,6 @@ class PaymentsController extends AppController
 //            $payment->card_cvc = Security::encrypt($payment->card_cvc, '3a85ced9674faa08e70bc3b0a347989a842d9792d0794f6108b2494c32b280bc');
 
             if ($this->Payments->save($payment)) {
-                $this->Flash->success(__('The payment has been saved.'));
 
                 $orderPaid = $order;
                 $orderPaid->order_status = 'paid';
@@ -98,14 +97,23 @@ class PaymentsController extends AppController
                     'order_datetime' => $order->order_datetime
                 ]);
 
-                $email_result = $mailer->deliver();
+                try {
+                    $email_result = $mailer->deliver();
 
-                if ($email_result) {
-                    $this->Flash->success(__('The enquiry has been saved and sent via email.'));
-                } else {
-                    $this->Flash->error(__('Email failed to send. Please check the enquiry in the system later. '));
+                    if ($email_result) {
+                        $this->Flash->success(__('The order confirmation has been sent.'));
+                    } else {
+                        $this->Flash->error(__('Order confirmation failed to send, please ensure that email is correct.'));
+                        $this->redirect(['controller' => 'Orders', 'action' => 'add']);
+                        $this->Payments->Orders->delete($order);
+                    }
+                } catch (\Exception $e) {
+                    $this->Flash->error(__('Order confirmation failed to send, please ensure that email is correct.'));
+                    $this->redirect(['controller' => 'Orders', 'action' => 'add']);
+                    $this->Payments->Orders->delete($order);
                 }
 
+                $this->Flash->success(__('The payment has been saved.'));
                 return $this->redirect(['controller' => 'Orders', 'action' => 'view', $orderID]);
             }
             $this->Flash->error(__('The payment could not be saved. Please, try again.'));
