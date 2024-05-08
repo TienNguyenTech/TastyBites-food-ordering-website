@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Mailer\Mailer;
 use Cake\Utility\Security;
 
 /**
@@ -81,6 +82,33 @@ class PaymentsController extends AppController
 
         $order = $this->Payments->Orders->patchEntity($order, (array)$orderPaid);
         $this->Payments->Orders->save($order);
+
+        $mailer = new Mailer('default');
+
+        $mailer
+            ->setEmailFormat('html')
+            ->setTo($order->customer_email)
+            ->setFrom('noreply@tastybites.u24s1009.monash-ie.me')
+            ->setSubject('Tasty Bites Kitchen: Order Confirmation')
+            ->viewBuilder()
+                ->disableAutoLayout()
+                ->setTemplate('order_confirmation');
+
+        $mailer->setViewVars([
+            'order_status' => $order->order_status,
+            'customer_name' => $order->customer_name,
+            'customer_email' => $order->customer_email,
+            'customer_phone' => $order->customer_phone,
+            'order_id' => $order->order_id
+        ]);
+
+        $email_result = $mailer->deliver();
+
+        if ($email_result) {
+            $this->Flash->success(__('The enquiry has been saved and sent via email.'));
+        } else {
+            $this->Flash->error(__('Email failed to send. Please check the enquiry in the system later. '));
+        }
 
 
         $this->set(compact('payment', 'order', 'orderTotal'));
