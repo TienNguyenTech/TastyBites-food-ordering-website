@@ -251,20 +251,6 @@ $this->disableAutoLayout();
             <!-- Right-aligned navigation -->
             <div class="d-flex align-items-center"> <!-- For vertical alignment -->
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!-- 'ms-auto' for right alignment -->
-<!--                    <li class="nav-item">-->
-<!--                        --><?php
-//                        if ($this->Identity->isLoggedIn()) {
-//                            $userType = $this->Identity->get('user_type');
-//                            if ($userType === 'admin') {
-//                                echo $this->Html->link(
-//                                    'Modify Page',
-//                                    ['plugin' => 'ContentBlocks', 'controller' => 'ContentBlocks', 'action' => 'index'],
-//                                    ['class' => 'nav-link fire-text']
-//                                );
-//                            }
-//                        }
-//                        ?>
-<!--                    </li>-->
                     <li class="nav-item">
                         <?php
                         $userType = $this->Identity->get('user_type');
@@ -285,30 +271,7 @@ $this->disableAutoLayout();
                         }
                         ?>
                     </li>
-<!--                    <li class="nav-item">-->
-<!--                        --><?php
-//                        $userType = $this->Identity->get('user_type');
-//                        if ($this->Identity->isLoggedIn() && $userType === 'admin') {
-//                            echo $this->Html->link(
-//                                'Dashboard',
-//                                ['controller' => 'Dashboard', 'action' => 'index'],
-//                                ['class' => 'nav-link fire-text']
-//                            );
-//                        }
-//                        ?>
-<!--                    </li>-->
-<!--                    <li class="nav-item">-->
-<!--                        --><?php
-//                        $userType = $this->Identity->get('user_type');
-//                        if ($this->Identity->isLoggedIn() && $userType === 'admin') {
-//                            echo $this->Html->link(
-//                                'Dashboard 2',
-//                                ['controller' => 'Dashboard2', 'action' => 'index'],
-//                                ['class' => 'nav-link fire-text']
-//                            );
-//                        }
-//                        ?>
-<!--                    </li>-->
+
                     <li class="nav-item">
                         <?php
                         if (!$this->Identity->isLoggedIn()) {
@@ -687,10 +650,6 @@ $this->disableAutoLayout();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <!-- * *                               SB Forms JS                               * *-->
-    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 
