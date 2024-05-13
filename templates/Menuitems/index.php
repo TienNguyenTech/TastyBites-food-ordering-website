@@ -7,6 +7,9 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['bloc
 echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
+<!-- Bootstrap CSS - This is an experiment-->
+<!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">-->
+
 <div class="menuitems index content text-gray-800">
     <?= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3 class="text-gray-800">Menu Items</h3>
