@@ -7,7 +7,7 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['bloc
 echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
-<!-- Bootstrap CSS - This is an experiment-->
+<!-- Bootstrap CSS, this is an experiment-->
 <!--<link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css" rel="stylesheet">-->
 
 <div class="menuitems index content text-gray-800">
@@ -43,10 +43,10 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                                 ['action' => 'delete', $menuitem->menuitem_id],
                                 [
                                     'confirm' => __('Are you sure you want to delete {0}?', $menuitem->menuitem_name),
-                                    'class' => 'btn btn-danger delete-menu-item-btn'
+                                    'class' => 'btn btn-danger delete-menu-item-btn',
+                                    'id' => 'deleteMenuItemButton' // Add an ID for easy access in JavaScript
                                 ]
                             ) ?>
-
                         </td>
                     </tr>
 
@@ -59,4 +59,5 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
             $('#dataTable').DataTable();
         });
     </script>
+
 </div>
