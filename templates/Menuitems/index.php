@@ -14,32 +14,40 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
-            <tr>
+                <tr>
 
-                <th>Name</th>
-                <!--                    <th>--><?php //= h('menuitem_image') ?><!--</th>-->
-                <th>Image</th>
-                <th>Description</th>
-                <th>Price</th>
-                <!--                    <th>--><?php //= h('menuitem_rating') ?><!--</th>-->
-                <th class="actions"><?= __('Actions') ?></th>
-            </tr>
+                    <th>Name</th>
+                    <!--                    <th>--><?php //= h('menuitem_image') ?><!--</th>-->
+                    <th>Image</th>
+                    <th>Description</th>
+                    <th>Price</th>
+                    <!--                    <th>--><?php //= h('menuitem_rating') ?><!--</th>-->
+                    <th class="actions"><?= __('Actions') ?></th>
+                </tr>
             </thead>
             <tbody>
-            <?php foreach ($menuitems as $menuitem): ?>
-                <tr>
-                    <td><?= h($menuitem->menuitem_name) ?></td>
-                    <td><?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'style' => 'max-width: 100px;']) ?>
-                    </td>
-                    <td><?= h($menuitem->menuitem_desc) ?></td>
-                    <td><?= $this->Number->currency($menuitem->menuitem_price) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $menuitem->menuitem_id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $menuitem->menuitem_id], ['confirm' => __('Are you sure you want to delete {0}?', $menuitem->menuitem_name)]) ?>
-                    </td>
-                </tr>
+                <?php foreach ($menuitems as $menuitem): ?>
+                    <tr>
+                        <td><?= h($menuitem->menuitem_name) ?></td>
+                        <td><?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'style' => 'max-width: 100px;']) ?>
+                        </td>
+                        <td><?= h($menuitem->menuitem_desc) ?></td>
+                        <td><?= $this->Number->currency($menuitem->menuitem_price) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $menuitem->menuitem_id]) ?>
+                            <?= $this->Form->postLink(
+                                __('Delete'),
+                                ['action' => 'delete', $menuitem->menuitem_id],
+                                [
+                                    'confirm' => __('Are you sure you want to delete {0}?', $menuitem->menuitem_name),
+                                    'class' => 'btn btn-danger delete-menu-item-btn'
+                                ]
+                            ) ?>
 
-            <?php endforeach; ?>
+                        </td>
+                    </tr>
+
+                <?php endforeach; ?>
             </tbody>
         </table>
     </div>
