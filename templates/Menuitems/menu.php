@@ -139,31 +139,34 @@
 
     <!-- Modal -->
     <?php foreach ($menuitems as $menuitem): ?>
-        <div class="modal fade" id="menuItemModal<?= $menuitem->menuitem_id ?>" tabindex="-1"
-            aria-labelledby="menuItemModalLabel<?= $menuitem->menuitem_id ?>" aria-hidden="true">
+        <div class="modal fade" id="menuItemModal<?= $menuitem->menuitem_id ?>" tabindex="-1" aria-labelledby="menuItemModalLabel<?= $menuitem->menuitem_id ?>" aria-hidden="true">
             <div class="modal-dialog modal-dialog-centered modal-xl">
                 <div class="modal-content">
                     <div class="modal-header d-flex justify-content-between align-items-center">
-                        <h5 class="modal-title fw-bold fs-3" id="menuItemModalLabel<?= $menuitem->menuitem_id ?>"
-                            style="font-size: 1.5rem;">
+                        <h5 class="modal-title fw-bold fs-3" id="menuItemModalLabel<?= $menuitem->menuitem_id ?>" style="font-size: 1.5rem;">
                             <?= $menuitem->menuitem_name ?>
                         </h5>
-                        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"
-                            style="font-size: 2rem;">
+                        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close" style="font-size: 2rem;">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="card shadow menuItemCard" data-menuitem="<?= $menuitem->menuitem_id ?>"
-                        style="cursor: pointer;">
-                        <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'card-img-top']) ?>
-                        <div class="card-body">
-                            <h5 class="card-title"><?= $menuitem->menuitem_name ?></h5>
-                            <p class="card-text"><?= truncateDescription($menuitem->menuitem_desc, 20) ?></p>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-lg-6">
+                                <div class="rectangle-image-wrapper" style="width: 100%; padding-top: 75%; position: relative; overflow: hidden;">
+                                    <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'img-fluid rectangle-image', 'style' => 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;']) ?>
+                                </div>
+                            </div>
+                            <div class="col-lg-6">
+                                <div class="mb-3">
+                                    <p id="modalMenuItemPrice" style="font-size: 1.5rem;"><?= $this->Number->currency($menuitem->menuitem_price) ?></p>
+                                </div>
+                                <div class="mb-3">
+                                    <p id="modalMenuItemDesc"><?= $menuitem->menuitem_desc ?></p>
+                                </div>
+                            </div>
                         </div>
-                        <!-- Card footer still present, but without "Add to Cart" button -->
-                        <h5 class="modalMenuItemPrice"><?= $this->Number->currency($menuitem->menuitem_price) ?></h5>
                     </div>
-
                 </div>
             </div>
         </div>
