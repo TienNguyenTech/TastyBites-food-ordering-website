@@ -20,7 +20,7 @@
     }
 
     .card {
-        height: 400px;
+        height: 455px;
         /* Fixed height for consistency */
         width: 250px;
         /* Consistent width */
@@ -29,6 +29,7 @@
         justify-content: space-between;
         margin-bottom: 25px;
         /* Uniform spacing between cards */
+        position: relative;
     }
 
     .card-img-top {
@@ -90,6 +91,15 @@
         height: 100%;
         object-fit: cover;
     }
+
+
+    .modalMenuItemPrice {
+        position: absolute;
+        bottom: 10px;
+        left: 10px;
+        font-size: 1.5rem;
+
+    }
 </style>
 
 <!--<div>--><?php //= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'button float-right']) ?><!--</div>-->
@@ -99,85 +109,84 @@
         <div class="row row-cols-1 row-cols-md-5 g-4">
             <?php foreach ($menuitems as $menuitem): ?>
                 <div class="col">
-                    <div class="card shadow menuItemCard" data-menuitem="<?= $menuitem->menuitem_id ?>" style="cursor: pointer;">
+                    <div class="card shadow menuItemCard" data-menuitem="<?= $menuitem->menuitem_id ?>"
+                        style="cursor: pointer;">
                         <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'card-img-top']) ?>
                         <div class="card-body">
                             <h5 class="card-title"><?= $menuitem->menuitem_name ?></h5>
                             <p class="card-text"><?= truncateDescription($menuitem->menuitem_desc, 20) ?></p>
                             <h5><?= $this->Number->currency($menuitem->menuitem_price) ?></h5>
+                        </div>
+                        <!-- Card footer still present, but without "Add to Cart" button -->
                     </div>
-                    <!-- Card footer still present, but without "Add to Cart" button -->
                 </div>
-            </div>
-        <?php endforeach; ?>
+            <?php endforeach; ?>
+        </div>
     </div>
-</div>
 
-<?php
-function truncateDescription($description, $words) {
-    $wordArray = explode(' ', $description);
-    if (count($wordArray) > $words) {
-        $wordArray = array_slice($wordArray, 0, $words);
-        return implode(' ', $wordArray) . '...';
+    <?php
+    function truncateDescription($description, $words)
+    {
+        $wordArray = explode(' ', $description);
+        if (count($wordArray) > $words) {
+            $wordArray = array_slice($wordArray, 0, $words);
+            return implode(' ', $wordArray) . '...';
+        }
+        return $description;
     }
-    return $description;
-}
-?>
+    ?>
 
-<!-- Modal -->
-<?php foreach ($menuitems as $menuitem): ?>
-    <div class="modal fade" id="menuItemModal<?= $menuitem->menuitem_id ?>" tabindex="-1" aria-labelledby="menuItemModalLabel<?= $menuitem->menuitem_id ?>" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-xl">
-            <div class="modal-content">
-                <div class="modal-header d-flex justify-content-between align-items-center">
-                    <h5 class="modal-title fw-bold fs-3" id="menuItemModalLabel<?= $menuitem->menuitem_id ?>" style="font-size: 1.5rem;">
-                        <?= $menuitem->menuitem_name ?>
-                    </h5>
-                    <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close" style="font-size: 2rem;">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <div class="row">
-                        <div class="col-lg-6">
-                            <div class="rectangle-image-wrapper" style="width: 100%; padding-top: 75%; position: relative; overflow: hidden;">
-                                <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'img-fluid rectangle-image', 'style' => 'position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover;']) ?>
-                            </div>
-                        </div>
-                        <div class="col-lg-6">
-                            <div class="mb-3">
-                                <p id="modalMenuItemPrice" style="font-size: 1.5rem;"><?= $this->Number->currency($menuitem->menuitem_price) ?></p>
-                            </div>
-                            <div class="mb-3">
-                                <p id="modalMenuItemDesc"><?= $menuitem->menuitem_desc ?></p>
-                            </div>
-                        </div>
+    <!-- Modal -->
+    <?php foreach ($menuitems as $menuitem): ?>
+        <div class="modal fade" id="menuItemModal<?= $menuitem->menuitem_id ?>" tabindex="-1"
+            aria-labelledby="menuItemModalLabel<?= $menuitem->menuitem_id ?>" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-xl">
+                <div class="modal-content">
+                    <div class="modal-header d-flex justify-content-between align-items-center">
+                        <h5 class="modal-title fw-bold fs-3" id="menuItemModalLabel<?= $menuitem->menuitem_id ?>"
+                            style="font-size: 1.5rem;">
+                            <?= $menuitem->menuitem_name ?>
+                        </h5>
+                        <button type="button" class="btn btn-close" data-bs-dismiss="modal" aria-label="Close"
+                            style="font-size: 2rem;">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
+                    <div class="card shadow menuItemCard" data-menuitem="<?= $menuitem->menuitem_id ?>"
+                        style="cursor: pointer;">
+                        <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'card-img-top']) ?>
+                        <div class="card-body">
+                            <h5 class="card-title"><?= $menuitem->menuitem_name ?></h5>
+                            <p class="card-text"><?= truncateDescription($menuitem->menuitem_desc, 20) ?></p>
+                        </div>
+                        <!-- Card footer still present, but without "Add to Cart" button -->
+                        <h5 class="modalMenuItemPrice"><?= $this->Number->currency($menuitem->menuitem_price) ?></h5>
+                    </div>
+
                 </div>
             </div>
         </div>
-    </div>
-<?php endforeach; ?>
+    <?php endforeach; ?>
 
-<script>
-    document.addEventListener('DOMContentLoaded', function () {
-        const menuItemCards = document.querySelectorAll('.menuItemCard');
-        menuItemCards.forEach(function (card) {
-            card.addEventListener('click', function () {
-                const menuItemId = card.getAttribute('data-menuitem');
-                const modal = document.getElementById('menuItemModal' + menuItemId);
-                const modalInstance = new bootstrap.Modal(modal);
-                modalInstance.show();
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const menuItemCards = document.querySelectorAll('.menuItemCard');
+            menuItemCards.forEach(function (card) {
+                card.addEventListener('click', function () {
+                    const menuItemId = card.getAttribute('data-menuitem');
+                    const modal = document.getElementById('menuItemModal' + menuItemId);
+                    const modalInstance = new bootstrap.Modal(modal);
+                    modalInstance.show();
+                });
             });
         });
-    });
-</script>
+    </script>
 
-<!-- Bootstrap core JS -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
-<!-- JavaScript for DataTables -->
-<script>
-    $(document).ready(function () {
-        $('#dataTable').DataTable();
-    });
-</script>
+    <!-- Bootstrap core JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+    <!-- JavaScript for DataTables -->
+    <script>
+        $(document).ready(function () {
+            $('#dataTable').DataTable();
+        });
+    </script>
