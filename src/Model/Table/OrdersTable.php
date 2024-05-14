@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * Orders Model
  *
  * @property \App\Model\Table\MenuitemsTable&\Cake\ORM\Association\BelongsToMany $Menuitems
+ * @property \App\Model\Table\MenuitemsOrdersTable&\Cake\ORM\Association\BelongsToMany $MenuitemsOrders
  *
  * @method \App\Model\Entity\Order newEmptyEntity()
  * @method \App\Model\Entity\Order newEntity(array $data, array $options = [])
