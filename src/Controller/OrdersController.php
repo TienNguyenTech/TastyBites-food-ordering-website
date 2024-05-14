@@ -102,8 +102,8 @@ class OrdersController extends AppController
                       }
                   }
 
-                  //return $this->redirect(['controller' => 'Payments', 'action' => 'add', $order->order_id]);
-                  return $this->redirect(['action' => 'index']);
+                  return $this->redirect(['controller' => 'Payments', 'action' => 'add', $order->order_id]);
+                  //return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('There was an error processing your order. Please, try again.'));
             }
