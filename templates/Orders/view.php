@@ -3,6 +3,7 @@
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Order $order
  * @var \Cake\Database\Type\FloatType $orderTotal
+ * @var $quantities
  */
 ?>
 <div class="row">
@@ -41,11 +42,13 @@
                 <table>
                     <tr>
                         <th><?= __('Item') ?></th>
-                        <th><?= __('Price') ?></th>
+                        <th><?= __('Quantity')?></th>
+                        <th><?= __('Unit Price') ?></th>
                     </tr>
-                    <?php foreach ($order->menuitems as $menuitem) : ?>
+                    <?php foreach ($order->menuitems as $index => $menuitem) : ?>
                     <tr>
                         <td><?= h($menuitem->menuitem_name) ?></td>
+                        <td><?= h($quantities[$index]['quantity']) ?></td>
                         <td><?= h($this->Number->currency($menuitem->menuitem_price)) ?></td>
                     </tr>
                     <?php endforeach; ?>

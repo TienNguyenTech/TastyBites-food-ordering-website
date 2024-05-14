@@ -58,14 +58,15 @@ class OrdersController extends AppController
         $this->viewBuilder()->setLayout('customer');
 
         $order = $this->Orders->get($id, contain: ['Menuitems']);
+        $quantities = $this->Orders->MenuitemsOrders->find()->where(['order_id' => $id])->all()->toArray();
 
         $orderTotal = 0;
 
-        foreach ($order->menuitems as $menuitem) {
-            $orderTotal += $menuitem->menuitem_price;
+        foreach ($order->menuitems as $index => $menuitem) {
+            $orderTotal += $menuitem->menuitem_price * $quantities[$index]['quantity'];
         }
 
-        $this->set(compact('order', 'orderTotal'));
+        $this->set(compact('order', 'orderTotal', 'quantities'));
     }
 
     /**
