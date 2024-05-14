@@ -87,7 +87,18 @@ class OrdersController extends AppController
 //            } else
               if ($this->Orders->save($order)) {
 
-                return $this->redirect(['controller' => 'Payments', 'action' => 'add', $order->order_id]);
+                  foreach ($this->request->getData('MenuitemsOrder') as $menuitem_id => $menuitem_data) {
+                      if(!empty($menuitem_data['quantity'])) {
+                          $menuitemsOrder = $this->Orders->MenuitemsOrders->newEmptyEntity();
+                          $menuitemsOrder->menuitem_id = $menuitem_id;
+                          $menuitemsOrder->order_id = $order->order_id;
+                          $menuitemsOrder->quantity = $menuitem_data['quantity'];
+                          $this->Orders->MenuitemsOrders->save($menuitemsOrder);
+                      }
+                  }
+
+                  //return $this->redirect(['controller' => 'Payments', 'action' => 'add', $order->order_id]);
+                  return $this->redirect(['action' => 'index']);
             } else {
                 $this->Flash->error(__('There was an error processing your order. Please, try again.'));
             }

@@ -36,7 +36,12 @@
             echo $this->Form->control('customer_name', ['label' => 'Full Name', 'class' => 'form-control']);
             echo $this->Form->control('customer_email', ['label' => 'Contact Email', 'class' => 'form-control']);
             echo $this->Form->control('customer_phone', ['label' => 'Contact Phone', 'class' => 'form-control']);
-            echo $this->Form->control('menuitems._ids', ['label' => 'Select item(s) to order', 'options' => $menuitems, 'class' => 'form-control', 'required']);
+            //echo $this->Form->control('menuitems._ids', ['label' => 'Select item(s) to order', 'options' => $menuitems, 'class' => 'form-control', 'required']);
+
+            foreach ($menuitems as $menuitem_id => $menuitem_name) {
+                echo "<p>$menuitem_name</p>";
+                echo $this->Form->input("MenuitemsOrder.$menuitem_id.quantity", ['label' => $menuitem_name]);
+            }
 
             ?>
         </fieldset>
