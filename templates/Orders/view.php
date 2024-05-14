@@ -44,12 +44,14 @@
                         <th><?= __('Item') ?></th>
                         <th><?= __('Quantity')?></th>
                         <th><?= __('Unit Price') ?></th>
+                        <th><?= __('Total Price') ?></th>
                     </tr>
                     <?php foreach ($order->menuitems as $index => $menuitem) : ?>
                     <tr>
                         <td><?= h($menuitem->menuitem_name) ?></td>
                         <td><?= h($quantities[$index]['quantity']) ?></td>
                         <td><?= h($this->Number->currency($menuitem->menuitem_price)) ?></td>
+                        <td><?= h($this->Number->currency($menuitem->menuitem_price * $quantities[$index]['quantity'])) ?></td>
                     </tr>
                     <?php endforeach; ?>
                 </table>

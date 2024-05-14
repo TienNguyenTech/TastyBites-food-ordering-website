@@ -4,6 +4,7 @@ declare(strict_types=1);
 namespace App\Controller;
 
 use Cake\Mailer\Mailer;
+use Cake\ORM\TableRegistry;
 
 /**
  * Orders Controller
@@ -13,11 +14,14 @@ use Cake\Mailer\Mailer;
  */
 class OrdersController extends AppController
 {
+    private \Cake\ORM\Table $MenuitemsOrders;
+
     public function initialize(): void
     {
         parent::initialize();
 
         $this->Authentication->allowUnauthenticated(['add', 'view']);
+        $this->MenuitemsOrders = TableRegistry::getTableLocator()->get('MenuitemsOrders');
     }
 
     public function beforeFilter(\Cake\Event\EventInterface $event) {
@@ -58,7 +62,7 @@ class OrdersController extends AppController
         $this->viewBuilder()->setLayout('customer');
 
         $order = $this->Orders->get($id, contain: ['Menuitems']);
-        $quantities = $this->Orders->MenuitemsOrders->find()->where(['order_id' => $id])->all()->toArray();
+        $quantities = $this->MenuitemsOrders->find()->where(['order_id' => $id])->all()->toArray();
 
         $orderTotal = 0;
 
@@ -90,11 +94,11 @@ class OrdersController extends AppController
 
                   foreach ($this->request->getData('MenuitemsOrder') as $menuitem_id => $menuitem_data) {
                       if(!empty($menuitem_data['quantity'])) {
-                          $menuitemsOrder = $this->Orders->MenuitemsOrders->newEmptyEntity();
+                          $menuitemsOrder = $this->MenuitemsOrders->newEmptyEntity();
                           $menuitemsOrder->menuitem_id = $menuitem_id;
                           $menuitemsOrder->order_id = $order->order_id;
                           $menuitemsOrder->quantity = $menuitem_data['quantity'];
-                          $this->Orders->MenuitemsOrders->save($menuitemsOrder);
+                          $this->MenuitemsOrders->save($menuitemsOrder);
                       }
                   }
 
