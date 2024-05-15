@@ -3,6 +3,9 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Mailer\Mailer;
+use Cake\ORM\TableRegistry;
+
 /**
  * Orders Controller
  *
@@ -11,11 +14,27 @@ namespace App\Controller;
  */
 class OrdersController extends AppController
 {
+    private \Cake\ORM\Table $MenuitemsOrders;
+
     public function initialize(): void
     {
         parent::initialize();
 
-        $this->Authentication->allowUnauthenticated(['add']);
+        $this->Authentication->allowUnauthenticated(['add', 'view']);
+        $this->MenuitemsOrders = TableRegistry::getTableLocator()->get('MenuitemsOrders');
+    }
+
+    public function beforeFilter(\Cake\Event\EventInterface $event) {
+        parent::beforeFilter($event);
+        // Get the authenticated user identity
+        $user = $this->Authentication->getIdentity();
+        if ($user && $user['user_type'] === 'staff') {
+            // If the user is a staff member, set the layout to staff_layout
+            $this->viewBuilder()->setLayout('default2');
+        } else {
+            // Otherwise, use the default layout
+            $this->viewBuilder()->setLayout('default');
+        }
     }
 
     /**
@@ -25,7 +44,7 @@ class OrdersController extends AppController
      */
     public function index()
     {
-        $query = $this->Orders->find();
+        $query = $this->Orders->find(contain: 'Menuitems');
         $orders = $this->paginate($query);
 
         $this->set(compact('orders'));
@@ -40,8 +59,18 @@ class OrdersController extends AppController
      */
     public function view($id = null)
     {
+        $this->viewBuilder()->setLayout('customer');
+
         $order = $this->Orders->get($id, contain: ['Menuitems']);
-        $this->set(compact('order'));
+        $quantities = $this->MenuitemsOrders->find()->where(['order_id' => $id])->all()->toArray();
+
+        $orderTotal = 0;
+
+        foreach ($order->menuitems as $index => $menuitem) {
+            $orderTotal += $menuitem->menuitem_price * $quantities[$index]['quantity'];
+        }
+
+        $this->set(compact('order', 'orderTotal', 'quantities'));
     }
 
     /**
@@ -56,15 +85,83 @@ class OrdersController extends AppController
         $order = $this->Orders->newEmptyEntity();
         if ($this->request->is('post')) {
             $order = $this->Orders->patchEntity($order, $this->request->getData());
-            if ($this->Orders->save($order)) {
-                $this->Flash->success(__('Your order has been placed! Confirmation will be sent to your email.'));
 
-                return $this->redirect(['action' => 'add']);
+            // Check if customer email contains '@'
+//            if (!strpos($order->customer_email, '@')) {
+//                $this->Flash->error(__('Please enter a valid email address.'));
+//            } else
+              if ($this->Orders->save($order)) {
+
+                  foreach ($this->request->getData('MenuitemsOrder') as $menuitem_id => $menuitem_data) {
+                      if(!empty($menuitem_data['quantity'])) {
+                          $menuitemsOrder = $this->MenuitemsOrders->newEmptyEntity();
+                          $menuitemsOrder->menuitem_id = $menuitem_id;
+                          $menuitemsOrder->order_id = $order->order_id;
+                          $menuitemsOrder->quantity = $menuitem_data['quantity'];
+                          $this->MenuitemsOrders->save($menuitemsOrder);
+                      }
+                  }
+
+                  return $this->redirect(['controller' => 'Checkout', 'action' => 'checkout', $order->order_id]);
+                  //return $this->redirect(['action' => 'index']);
+            } else {
+                $this->Flash->error(__('There was an error processing your order. Please, try again.'));
             }
-            $this->Flash->error(__('There was an error processing your order. Please, try again.'));
         }
         $menuitems = $this->Orders->Menuitems->find('list', limit: 200)->all();
         $this->set(compact('order', 'menuitems'));
+    }
+
+    public function ready($id) {
+        $order = $this->Orders->get($id, contain: ['Menuitems']);
+
+        $orderReady = $order;
+        $orderReady->order_status = 'ready';
+
+        $order = $this->Orders->patchEntity($order, (array)$orderReady);
+
+        $this->Orders->save($order);
+
+        $mailer = new Mailer('default');
+
+        $mailer
+            ->setEmailFormat('html')
+            ->setTo($order->customer_email)
+            ->setFrom('noreply@tastybites.u24s1009.monash-ie.me')
+            ->setSubject('Tasty Bites Kitchen: Order Pickup')
+            ->viewBuilder()
+            ->disableAutoLayout()
+            ->setTemplate('order_ready');
+
+        $mailer->setViewVars([
+            'order_status' => $order->order_status,
+            'customer_name' => $order->customer_name,
+            'order_datetime' => $order->order_datetime,
+            'order_id' => $order->order_id
+        ]);
+
+        $email_result = $mailer->deliver();
+
+        if ($email_result) {
+            $this->Flash->success(__('The enquiry has been saved and sent via email.'));
+        } else {
+            $this->Flash->error(__('Email failed to send. Please check the enquiry in the system later. '));
+        }
+
+        $this->redirect(['action' => 'index']);
+    }
+
+    public function complete($id) {
+        $order = $this->Orders->get($id, contain: ['Menuitems']);
+
+        $orderReady = $order;
+        $orderReady->order_status = 'complete';
+
+        $order = $this->Orders->patchEntity($order, (array)$orderReady);
+
+        $this->Orders->save($order);
+
+        $this->redirect(['action' => 'index']);
     }
 
     /**

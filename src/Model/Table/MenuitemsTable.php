@@ -40,7 +40,7 @@ class MenuitemsTable extends Table
         parent::initialize($config);
 
         $this->setTable('menuitems');
-        $this->setDisplayField('menuitem_desc');
+        $this->setDisplayField('menuitem_name');
         $this->setPrimaryKey('menuitem_id');
 
         $this->belongsToMany('Orders', [

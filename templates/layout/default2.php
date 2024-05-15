@@ -26,6 +26,20 @@
     <?= $this->fetch('css') ?>
 
     <?= $this->Html->script('/vendor/jquery/jquery.min.js') ?>
+
+    <style>
+        .bg-primary {
+            background-color: #22408C !important;
+        }
+
+        .btn-primary {
+            background-color: #22408C !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #2E59D9 !important;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -34,7 +48,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav navbar-colour sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav navbar-colour sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #22408C">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center"
@@ -54,15 +68,21 @@
                     href="<?= $this->Url->build(['plugin' => null, 'controller' => 'Pages', 'action' => 'display', 'home']) ?>">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Customer Homepage</span></a>
-                <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Dashboard2', 'action' => 'index']) ?>">
-                    <i class="fas fa-fw fa-cog"></i>
-                    <span>Staff Dashboard</span></a>
-                <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Menuitems', 'action' => 'index']) ?>">
+<!--                <a class="nav-link" href="--><?php //= $this->Url->build(['plugin' => null,'controller' => 'Dashboard2', 'action' => 'index']) ?><!--">-->
+<!--                    <i class="fas fa-fw fa-cog"></i>-->
+<!--                    <span>Staff Dashboard</span></a>-->
+                <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Orders', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-birthday-cake"></i>
                     <span>Orders</span></a>
                 <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Enquirys', 'action' => 'index']) ?>">
                     <i class="fas fa-fw fa-pen"></i>
                     <span>Enquiries</span></a>
+                <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Orders', 'action' => 'index']) ?>">
+                    <i class="fas fa-fw fa-shopping-cart"></i>
+                    <span>Orders</span></a>
+                <a class="nav-link" href="<?= $this->Url->build(['plugin' => null,'controller' => 'Payments', 'action' => 'index']) ?>">
+                    <i class="fas fa-fw fa-dollar-sign"></i>
+                    <span>Payments</span></a>
             </li>
 
             <!-- Divider -->
@@ -149,6 +169,11 @@
                         }
                     }
                     ?>
+                    <div class="d-flex justify-content-center align-items-center flex-grow-1">
+                            <h1 class="h3 mb-0 text-gray-800">Staff Dashboard</h1>
+                    </div>
+
+<!--                    <h1 class="h3 mb-0 text-gray-800">Staff Dashboard</h1>-->
                     <script>
                         // Function to navigate back to the menu item index and clear history
                         function returnToMenu() {

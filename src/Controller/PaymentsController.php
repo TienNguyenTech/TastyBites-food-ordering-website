@@ -3,13 +3,37 @@ declare(strict_types=1);
 
 namespace App\Controller;
 
+use Cake\Mailer\Mailer;
+use Cake\Utility\Security;
+
 /**
  * Payments Controller
  *
  * @property \App\Model\Table\PaymentsTable $Payments
+ * @property \Authentication\Controller\Component\AuthenticationComponent $Authentication
  */
 class PaymentsController extends AppController
 {
+    public function initialize(): void
+    {
+        parent::initialize();
+
+        $this->Authentication->allowUnauthenticated(['add']);
+    }
+
+    public function beforeFilter(\Cake\Event\EventInterface $event) {
+        parent::beforeFilter($event);
+        // Get the authenticated user identity
+        $user = $this->Authentication->getIdentity();
+        if ($user && $user['user_type'] === 'staff') {
+            // If the user is a staff member, set the layout to staff_layout
+            $this->viewBuilder()->setLayout('default2');
+        } else {
+            // Otherwise, use the default layout
+            $this->viewBuilder()->setLayout('default');
+        }
+    }
+
     /**
      * Index method
      *
@@ -34,6 +58,7 @@ class PaymentsController extends AppController
     public function view($id = null)
     {
         $payment = $this->Payments->get($id, contain: ['Orders']);
+
         $this->set(compact('payment'));
     }
 
@@ -42,20 +67,71 @@ class PaymentsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add()
+    public function add($orderID, $orderTotal)
     {
-        $payment = $this->Payments->newEmptyEntity();
-        if ($this->request->is('post')) {
-            $payment = $this->Payments->patchEntity($payment, $this->request->getData());
-            if ($this->Payments->save($payment)) {
-                $this->Flash->success(__('The payment has been saved.'));
+        $this->viewBuilder()->setLayout('customer');
 
-                return $this->redirect(['action' => 'index']);
+        $payment = $this->Payments->newEmptyEntity();
+
+        $order = $this->Payments->Orders->get($orderID, contain: ['Menuitems']);
+
+        $payment = $this->Payments->patchEntity($payment, $this->request->getData());
+        $payment->order_id = $orderID;
+        $payment->payment_amount = $orderTotal;
+
+        if ($this->Payments->save($payment)) {
+
+            $orderPaid = $order;
+            $orderPaid->order_status = 'paid';
+
+            $order = $this->Payments->Orders->patchEntity($order, (array)$orderPaid);
+            $this->Payments->Orders->save($order);
+
+            $mailer = new Mailer('default');
+
+            $mailer
+                ->setEmailFormat('html')
+                ->setTo($order->customer_email)
+                ->setFrom('noreply@tastybites.u24s1009.monash-ie.me')
+                ->setSubject('Tasty Bites Kitchen: Order Confirmation')
+                ->viewBuilder()
+                ->disableAutoLayout()
+                ->setTemplate('order_confirmation');
+
+            $mailer->setViewVars([
+                'order_status' => $order->order_status,
+                'customer_name' => $order->customer_name,
+                'customer_email' => $order->customer_email,
+                'customer_phone' => $order->customer_phone,
+                'order_id' => $order->order_id,
+                'order_datetime' => $order->order_datetime
+            ]);
+
+            try {
+                $email_result = $mailer->deliver();
+
+                if ($email_result) {
+                    $this->Flash->success(__('The order confirmation has been sent.'));
+                } else {
+                    $this->Flash->error(__('Order confirmation failed to send, please ensure that email is correct.'));
+                    $this->redirect(['controller' => 'Orders', 'action' => 'add']);
+                    $this->Payments->Orders->delete($order);
+                }
+            } catch (\Exception $e) {
+                $this->Flash->error(__('Order confirmation failed to send, please ensure that email is correct.'));
+                $this->redirect(['controller' => 'Orders', 'action' => 'add']);
+                $this->Payments->Orders->delete($order);
             }
-            $this->Flash->error(__('The payment could not be saved. Please, try again.'));
+
+            $this->Flash->success(__('The payment has been saved.'));
+            return $this->redirect(['controller' => 'Orders', 'action' => 'view', $orderID]);
         }
-        $orders = $this->Payments->Orders->find('list', limit: 200)->all();
-        $this->set(compact('payment', 'orders'));
+        $this->Flash->error(__('The payment could not be saved. Please, try again.'));
+
+
+
+
+        $this->set(compact('payment', 'order', 'orderTotal'));
     }
 
     /**

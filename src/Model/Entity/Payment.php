@@ -9,10 +9,8 @@ use Cake\ORM\Entity;
  * Payment Entity
  *
  * @property int $payment_id
- * @property int $payment_amount
- * @property int $card_number
- * @property int $card_expiry
- * @property int $card_cvc
+ * @property \Cake\I18n\DateTime $payment_datetime
+ * @property string $card_cvc
  * @property int $order_id
  *
  * @property \App\Model\Entity\Order $order
@@ -30,9 +28,7 @@ class Payment extends Entity
      */
     protected array $_accessible = [
         'payment_amount' => true,
-        'card_number' => true,
-        'card_expiry' => true,
-        'card_cvc' => true,
+        'payment_datetime' => true,
         'order_id' => true,
         'order' => true,
     ];

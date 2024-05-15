@@ -234,26 +234,18 @@ $this->disableAutoLayout();
                 <!-- Left-side navigation links -->
                 <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!-- 'me-auto' for left alignment -->
                     <li class="nav-item">
-                        <?= $this->Html->link('Home', ['controller' => 'Pages', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
-                    </li>
-                    <li class="nav-item">
                         <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
                     </li>
-                    <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle fire-text" href="#" role="button" data-bs-toggle="dropdown"
-                            aria-expanded="false">
-                            Contact Us
-                        </a>
-                        <ul class="dropdown-menu">
-                            <li><?= $this->Html->link("Order Now", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'dropdown-item']) ?>
-                            </li>
-                            <li><?= $this->Html->link('Give Feedback', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'dropdown-item']) ?>
-                            </li>
-                        </ul>
+                    <li class="nav-item">
+                        <?= $this->Html->link("Place an Order", ['controller' => 'Orders', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
                     </li>
                     <li class="nav-item">
-                        <?= $this->Html->link('Events', ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                        <?= $this->Html->link("Contact Us", ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
                     </li>
+
+                    <!--                    <li class="nav-item">-->
+                    <!--                        --><?php //= $this->Html->link('About', ['controller' => 'About', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
+                    <!--                    </li>-->
                 </ul>
             </div>
 
@@ -262,42 +254,25 @@ $this->disableAutoLayout();
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!-- 'ms-auto' for right alignment -->
                     <li class="nav-item">
                         <?php
+                        $userType = $this->Identity->get('user_type');
                         if ($this->Identity->isLoggedIn()) {
-                            $userType = $this->Identity->get('user_type');
                             if ($userType === 'admin') {
                                 echo $this->Html->link(
-                                    'Modify Page',
-                                    ['plugin' => 'ContentBlocks', 'controller' => 'ContentBlocks', 'action' => 'index'],
+                                    'Dashboard',
+                                    ['controller' => 'Dashboard', 'action' => 'index'],
+                                    ['class' => 'nav-link fire-text']
+                                );
+                            } elseif ($userType === 'staff') {
+                                echo $this->Html->link(
+                                    'Dashboard',
+                                    ['controller' => 'Orders', 'action' => 'index'],
                                     ['class' => 'nav-link fire-text']
                                 );
                             }
                         }
                         ?>
                     </li>
-                    <li class="nav-item">
-                        <?php
-                        $userType = $this->Identity->get('user_type');
-                        if ($this->Identity->isLoggedIn() && $userType === 'admin') {
-                            echo $this->Html->link(
-                                'Dashboard',
-                                ['controller' => 'Dashboard', 'action' => 'index'],
-                                ['class' => 'nav-link fire-text']
-                            );
-                        }
-                        ?>
-                    </li>
-                    <li class="nav-item">
-                        <?php
-                        $userType = $this->Identity->get('user_type');
-                        if ($this->Identity->isLoggedIn() && $userType === 'admin') {
-                            echo $this->Html->link(
-                                'Dashboard 2',
-                                ['controller' => 'Dashboard2', 'action' => 'index'],
-                                ['class' => 'nav-link fire-text']
-                            );
-                        }
-                        ?>
-                    </li>
+
                     <li class="nav-item">
                         <?php
                         if (!$this->Identity->isLoggedIn()) {
@@ -406,6 +381,10 @@ $this->disableAutoLayout();
 
 
     <header class="bg-dark py-5 header-bg">
+        <!--    sale text edit by admin-->
+        <div class="container text-center mt-3" style="background-color: #bcccf3; border-radius: 5px">
+            <p style="color: #294890;" ><?= $this->ContentBlock->text('banner'); ?></p>
+        </div>
         <div class="container px-5">
             <div class="row gx-5 justify-content-center">
                 <div class="col-lg-6">

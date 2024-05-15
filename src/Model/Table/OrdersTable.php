@@ -12,6 +12,7 @@ use Cake\Validation\Validator;
  * Orders Model
  *
  * @property \App\Model\Table\MenuitemsTable&\Cake\ORM\Association\BelongsToMany $Menuitems
+ * @property \App\Model\Table\MenuitemsOrdersTable&\Cake\ORM\Association\BelongsToMany $MenuitemsOrders
  *
  * @method \App\Model\Entity\Order newEmptyEntity()
  * @method \App\Model\Entity\Order newEntity(array $data, array $options = [])
@@ -77,13 +78,26 @@ class OrdersTable extends Table
             ->scalar('customer_email')
             ->maxLength('customer_email', 100)
             ->requirePresence('customer_email', 'create')
-            ->notEmptyString('customer_email');
+            ->notEmptyString('customer_email')
+            ->add('customer_email', [
+                'validFormat' => [
+                    'rule' => ['custom', '/\b[\w\.-]+@[\w\.-]+\.\w{2,4}\b/'],
+                    'message' => 'Please enter a valid email address.'
+                ]
+            ]);
+
 
         $validator
             ->scalar('customer_phone')
             ->maxLength('customer_phone', 10)
             ->requirePresence('customer_phone', 'create')
-            ->notEmptyString('customer_phone');
+            ->notEmptyString('customer_phone')
+            ->add('customer_phone', [
+                'validFormat' => [
+                    'rule' => ['custom', '/^((\+61\s?)?(\((0|02|03|04|07|08)\))?)?\s?\d{1,4}\s?\d{1,4}\s?\d{0,4}$/'],
+                    'message' => 'Please enter a valid phone number.'
+                ]
+            ]);
 
         return $validator;
     }

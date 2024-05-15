@@ -15,6 +15,19 @@ class EnquirysController extends AppController
         // Controller-level function/action whitelist for authentication
         $this->Authentication->allowUnauthenticated(['add']);
     }
+
+    public function beforeFilter(\Cake\Event\EventInterface $event) {
+        parent::beforeFilter($event);
+        // Get the authenticated user identity
+        $user = $this->Authentication->getIdentity();
+        if ($user && $user['user_type'] === 'staff') {
+            // If the user is a staff member, set the layout to staff_layout
+            $this->viewBuilder()->setLayout('default2');
+        } else {
+            // Otherwise, use the default layout
+            $this->viewBuilder()->setLayout('default');
+        }
+    }
     /**
      * Index method
      *
@@ -57,7 +70,7 @@ class EnquirysController extends AppController
                 $this->Flash->success(__('The enquiry has been saved.'));
 
                 //return $this->redirect(['action' => 'index']);
-                return;
+                return $this->redirect(['action' => 'add']);
             }
             $this->Flash->error(__('The enquiry could not be saved. Please, try again.'));
         }

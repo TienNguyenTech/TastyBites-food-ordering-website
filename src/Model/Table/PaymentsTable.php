@@ -63,19 +63,8 @@ class PaymentsTable extends Table
             ->notEmptyString('payment_amount');
 
         $validator
-            ->integer('card_number')
-            ->requirePresence('card_number', 'create')
-            ->notEmptyString('card_number');
-
-        $validator
-            ->integer('card_expiry')
-            ->requirePresence('card_expiry', 'create')
-            ->notEmptyString('card_expiry');
-
-        $validator
-            ->integer('card_cvc')
-            ->requirePresence('card_cvc', 'create')
-            ->notEmptyString('card_cvc');
+            ->dateTime('payment_datetime')
+            ->notEmptyDateTime('payment_datetime');
 
         $validator
             ->integer('order_id')

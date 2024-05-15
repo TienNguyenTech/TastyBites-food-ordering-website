@@ -33,7 +33,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
                         <td><?= h($enquiry->enquiry_message) ?></td>
                         <td class="actions">
 <!--                            --><?php //= $this->Html->link(__('View'), ['action' => 'view', $enquiry->enquiry_id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $enquiry->enquiry_id], ['confirm' => __('Are you sure you want to delete this enquiry from# {0}?', $enquiry->enquiry_email)]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $enquiry->enquiry_id], ['class' => 'btn btn-danger','confirm' => __('Are you sure you want to delete this enquiry from# {0}?', $enquiry->enquiry_email)]) ?>
                         </td>
                     </tr>
                     <?php endforeach; ?>

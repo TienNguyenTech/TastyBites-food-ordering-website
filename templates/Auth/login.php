@@ -45,7 +45,7 @@ $this->assign('title', 'Login');
 //                        'value' => $debug ? '1234' : '',
                     ]);
                     ?>
-                    <?= $this->Html->link('Forgot password?', ['controller' => 'Auth', 'action' => 'forgetPassword']) ?>
+<!--                    --><?php //= $this->Html->link('Forgot password?', ['controller' => 'Auth', 'action' => 'forgetPassword']) ?>
                 </fieldset>
 
 <!--                --><?php //= $this->Form->button('Login') ?>
@@ -55,7 +55,7 @@ $this->assign('title', 'Login');
 
                 <hr class="hr-between-buttons">
 
-                <?= $this->Html->link("Don't have an account? Sign Up", ['controller' => 'Auth', 'action' => 'register'], ['class' => 'button button-clear']) ?>
+<!--                --><?php //= $this->Html->link("Don't have an account? Sign Up", ['controller' => 'Auth', 'action' => 'register'], ['class' => 'button button-clear']) ?>
                 <?= $this->Html->link('Go to Homepage', '/', ['class' => 'button button-clear']) ?>
             </div>
         </div>
