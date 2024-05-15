@@ -11,6 +11,11 @@
 </head>
 
 <body>
+    <style>
+        footer {
+            margin-top: 50px;
+        }
+    </style>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <div class="row">
         <div class="enquirys form container"
@@ -39,5 +44,13 @@
         }
     </script>
 </body>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container px-5">
+        <p class="m-0 text-center text-white">Copyright &copy;
+            <?= $this->ContentBlock->text('copyright-message'); ?>
+        </p>
+    </div>
+</footer>
 
 </html>
