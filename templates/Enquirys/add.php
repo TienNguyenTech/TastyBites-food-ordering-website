@@ -22,7 +22,7 @@
             style="padding: 20px; background-color: #e8e8e8; margin-top: 20px; border-radius: 10px">
             <?= $this->Form->create($enquiry, ['id' => 'enquiryForm']) ?>
             <fieldset>
-                <legend><?= __('Contact Us') ?></legend>
+                <legend style="font-size: 32px; text-align: center; color: #22408c;"><?= __('Contact Us') ?></legend>
                 <?php
                 echo $this->Form->control('enquiry_name', ['label' => 'Name', 'class' => 'form-control']);
                 echo $this->Form->control('enquiry_email', ['label' => 'Email', 'class' => 'form-control', 'type' => 'email']);
