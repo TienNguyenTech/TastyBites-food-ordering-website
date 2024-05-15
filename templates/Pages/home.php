@@ -151,7 +151,7 @@ $this->disableAutoLayout();
 
         /* Links inside the dropdown */
         .dropdown-content a {
-            color: black;
+            color: #2f3e85;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
@@ -159,7 +159,7 @@ $this->disableAutoLayout();
 
         /* Change color of dropdown links on hover */
         .dropdown-content a:hover {
-            background-color: #ddd;
+            background-color: #ebf3fb;
         }
 
         /* Show the dropdown menu on hover */
@@ -168,7 +168,7 @@ $this->disableAutoLayout();
         }
 
         a.nav-link.dropdown-toggle {
-            color: white;
+            color: #2f3e85;
             /* Sets the text color to white */
         }
     </style>
@@ -240,7 +240,7 @@ $this->disableAutoLayout();
                         <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                        <a class="nav-link dropdown-toggle fire-text" href="#" role="button" data-bs-toggle="dropdown"
                             aria-expanded="false">
                             Contact Us
                         </a>
@@ -397,6 +397,14 @@ $this->disableAutoLayout();
         }
     </style>
 
+    <style>
+        /* Custom button text color */
+        .custom-btn {
+            color: #2f3e85; /* Text color */
+        }
+    </style>
+
+
     <header class="bg-dark py-5 header-bg">
         <div class="container px-5">
             <div class="row gx-5 justify-content-center">
@@ -409,9 +417,9 @@ $this->disableAutoLayout();
                         <p class="lead text-white mb-4 header-text">Experience the most authentic Nepalese cuisine in
                             Melbourne</p>
                         <div class="d-grid gap-3 d-sm-flex justify-content-center">
-
-                            <?= $this->Html->link("Browse Dishes", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'btn button-primary btn-lg px-4']) ?>
+                            <?= $this->Html->link("Browse Dishes", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'btn button-primary btn-lg px-4 custom-btn']) ?>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -539,11 +547,36 @@ $this->disableAutoLayout();
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                    <div class="google-maps-widget mt-5">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3150.756198102105!2d145.133957!3d-37.907803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad63c9c1eb47c7b%3A0x8485d30e3ce706b7!2sMonash%20University%20-%20Clayton%20Campus!5e0!3m2!1sen!2sau!4v1634177430748!5m2!1sen!2sau&markers=-37.907803,145.133957" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                    </div>
+
+
+
+
+    </section>
+    <!-- GMAP section-->
+    <style>
+        .google-maps-section {
+            background-color: #ebf3fb; /* Example background color */
+             /* Example padding */
+        }
+        .google-maps-widget {
+            margin-top: -20px; /* Adjust to remove any remaining space */
+        }
+        .google-maps-widget iframe {
+            margin: 0;
+            padding: 0;
+            border: none; /* Remove any borders */
+            width: 100%; /* Ensure iframe fills its container */
+            height: 100%; /* Ensure iframe fills its container */
+        }
+    </style>
+
+
+    <section class="google-maps-section mt-5">
+        <div class="container">
+            <div class="google-maps-widget">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3150.756198102105!2d145.133957!3d-37.907803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad63c9c1eb47c7b%3A0x8485d30e3ce706b7!2sMonash%20University%20-%20Clayton%20Campus!5e0!3m2!1sen!2sau!4v1634177430748!5m2!1sen!2sau&markers=-37.907803,145.133957" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+            </div>
         </div>
-
-
     </section>
 
     <!-- Features section-->
@@ -659,9 +692,43 @@ $this->disableAutoLayout();
             </div>
         </div>
     </section>
-<!--Scroll back to top button-->
-    <div class="d-grid gap-3 d-sm-flex justify-content-center">
-        <?= $this->Html->link("TESTING", '#top', ['class' => 'btn button-primary btn-lg px-4']) ?>
+
+
+    <style>
+        /* Scroll to top container */
+        .scroll-to-top-container {
+            display: flex;
+            justify-content: flex-start; /* Align button to the left */
+            background-color: #ecf1ff; /* Background color */
+            padding-left: 20px; /* Add padding to adjust button position */
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top-btn {
+            display: flex;
+            align-items: center;
+            height: 40px; /* Button height */
+            background-color: #2f3e85; /* Button background color */
+            color: #ebf3fb; /* Button text color */
+            font-size: 16px; /* Button text size */
+            text-decoration: none; /* Remove default link styling */
+            padding: 0 15px; /* Add padding to adjust button size */
+            border-radius: 5px; /* Add border radius for rounded corners */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        /* Hover effect */
+        .scroll-to-top-btn:hover {
+
+
+            background-color: #5d99df; /* Darker shade of the button color on hover */
+            color: #ebf3fb;
+        }
+    </style>
+
+    <!--Scroll back to top button-->
+    <div class="scroll-to-top-container">
+        <?= $this->Html->link('Return to top', '#top', ['class' => 'scroll-to-top-btn']) ?>
     </div>
 
 
