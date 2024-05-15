@@ -11,6 +11,11 @@
 </head>
 
 <body>
+    <style>
+        footer {
+            margin-top: 50px;
+        }
+    </style>
     <script src="https://www.google.com/recaptcha/api.js" async defer></script>
     <div class="row">
         <div class="enquirys form container"

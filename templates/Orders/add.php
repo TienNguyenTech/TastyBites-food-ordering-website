@@ -24,6 +24,11 @@
 </head>
 
 <body>
+    <style>
+        footer {
+            margin-top: 50px;
+        }
+    </style>
     <script>
         function validateQuantities() {
             const quantities = document.getElementById('quantities').childElementCount;
