@@ -25,11 +25,13 @@ $this->disableAutoLayout();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Menu | Tasty Bites Kitchen</title>
+    
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="webroot/assets/momo.ico" />
+    <link rel="icon" type="image/x-icon" href="webroot/img/true_favi.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <?= $this->Html->meta('icon') ?>
+    <link rel="icon" type="image/x-icon" href="webroot/img/true_favi.ico" />
 
 
     <!-- Custom fonts for this template-->
