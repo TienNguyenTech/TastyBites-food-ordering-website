@@ -131,6 +131,14 @@
         </div>
     </div>
 </body>
+<!-- Footer-->
+<footer class="py-5 bg-dark">
+    <div class="container px-5">
+        <p class="m-0 text-center text-white">Copyright &copy;
+            <?= $this->ContentBlock->text('copyright-message'); ?>
+        </p>
+    </div>
+</footer>
 
 </html>
 <?php
@@ -200,14 +208,7 @@ function truncateDescription($description, $words)
     });
 </script>
 
-<!-- Footer-->
-<footer class="py-5 bg-dark">
-    <div class="container px-5">
-        <p class="m-0 text-center text-white">Copyright &copy;
-            <?= $this->ContentBlock->text('copyright-message'); ?>
-        </p>
-    </div>
-</footer>
+
 
 <!-- Bootstrap core JS -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
