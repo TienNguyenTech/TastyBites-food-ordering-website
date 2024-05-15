@@ -15,6 +15,7 @@
                 <th><?= $this->Paginator->sort('last_name') ?></th>
                 <th><?= $this->Paginator->sort('email') ?></th>
                 <th><?= $this->Paginator->sort('user_type') ?></th>
+                <th><?= __('Actions')?></th>
             </tr>
             </thead>
             <tbody>
@@ -25,9 +26,8 @@
                     <td><?= h($user->email) ?></td>
                     <td><?= h($user->user_type) ?></td>
                     <td class="actions">
-<!--                        --><?php //= $this->Html->link(__('View'), ['action' => 'view', $user->user_id]) ?>
-<!--                        --><?php //= $this->Html->link(__('Edit'), ['action' => 'edit', $user->user_id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->user_id], ['confirm' => __('Are you sure you want to delete # {0} {1}?', $user->first_name ,$user->last_name)]) ?>
+                        <?= $this->Html->link(__('Change password'), ['action' => 'edit', $user->user_id], ['class' => 'btn btn-secondary']) ?>
+                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->user_id], ['confirm' => __('Are you sure you want to delete # {0} {1}?', $user->first_name ,$user->last_name), 'class' => 'btn btn-danger']) ?>
                     </td>
                 </tr>
             <?php endforeach; ?>
