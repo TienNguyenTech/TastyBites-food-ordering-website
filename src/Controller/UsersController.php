@@ -27,10 +27,11 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $query = $this->Users->find();
-        $users = $this->paginate($query);
-
-        $this->set(compact('users'));
+//        $query = $this->Users->find();
+//        $users = $this->paginate($query);
+//
+//        $this->set(compact('users'));
+        $this->redirect(['action' => 'admin']);
     }
 
     public function admin()
@@ -84,7 +85,26 @@ class UsersController extends AppController
     public function edit($id = null)
     {
         $user = $this->Users->get($id, contain: []);
+
+        $this->set(compact('user'));
+
         if ($this->request->is(['patch', 'post', 'put'])) {
+            $data = $this->request->getData();
+
+            if($data['password'] != $data['password-confirm']) {
+                return $this->Flash->error(__('Passwords must match'));
+            }
+
+            if(strlen($data['password']) < 10) {
+                return $this->Flash->error(__('Password must be at least 10 characters long'));
+            }
+
+            preg_match_all('/\d/', $data['password'], $matches);
+
+            if(count($matches[0]) < 2) {
+                return $this->Flash->error(__('Password must contain at least 2 numbers'));
+            }
+
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
@@ -93,7 +113,7 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+
     }
 
 //    /**
