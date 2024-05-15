@@ -25,7 +25,7 @@ $this->disableAutoLayout();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    
+
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="webroot/img/true_favi.ico" />
     <!-- Bootstrap icons-->
@@ -52,34 +52,34 @@ $this->disableAutoLayout();
     <style>
         /* Override Bootstrap's primary color */
         .navbar-tea {
-            background-color: #22408c;
+            background-color: #ecf1ff;
         }
 
         .fire-text {
-            color: #fff5f1;
+            color: #26367b;
             /* Color of fire text */
         }
 
         .fire-text:hover {
-            color: #cb4c46;
+            color: #dd1d3c;
         }
 
         .Big-Stuff {
-            color: #fff5f1;
+            color: #26367b;
             /* Color of active page */
             font-size: 25px;
         }
 
         .Big-Stuff:hover {
-            color: #cb4c46;
+            color: #dd1d3c;
         }
 
         .active-home {
-            color: #6fb89c;
+            color: #7287bb;
         }
 
         .active-home:hover {
-            color: #cb4c46;
+            color:#7287bb;
         }
 
         /*Nav-bar cool button style */
@@ -120,7 +120,7 @@ $this->disableAutoLayout();
 
         /* Dropdown Style */
         .dropbtn {
-            background-color: #273d4f;
+            background-color: #ecf1ff;
             color: white;
             padding: 16px;
             font-size: 16px;
@@ -145,7 +145,7 @@ $this->disableAutoLayout();
 
         /* Links inside the dropdown */
         .dropdown-content a {
-            color: black;
+            color: #2f3e85;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
@@ -153,14 +153,20 @@ $this->disableAutoLayout();
 
         /* Change color of dropdown links on hover */
         .dropdown-content a:hover {
-            background-color: #ddd;
+            background-color: #ebf3fb;
         }
 
         /* Show the dropdown menu on hover */
         .dropdown:hover .dropdown-content {
             display: block;
         }
+
+        a.nav-link.dropdown-toggle {
+            color: #2f3e85;
+            /* Sets the text color to white */
+        }
     </style>
+
 
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container-fluid"> <!-- Using container-fluid for proper spacing -->
