@@ -7,6 +7,27 @@ echo $this->Html->css('/vendor/datatables/dataTables.bootstrap4.min.css', ['bloc
 echo $this->Html->script('/vendor/datatables/jquery.dataTables.min.js', ['block' => true]);
 echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['block' => true]);
 ?>
+<style>
+    .success-message {
+        background-color: #d4edda !important;
+        color: #155724 !important;
+        border-color: #c3e6cb;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+    }
+
+    .error-message {
+        background-color: #f8d7da;
+        color: #721c24;
+        border-color: #f5c6cb;
+        padding: 0.75rem 1.25rem;
+        margin-bottom: 1rem;
+        border: 1px solid transparent;
+        border-radius: 0.25rem;
+    }
+</style>
 <div class="orders index content text-gray-800">
     <h3 class="text-gray-800">Orders</h3>
 
@@ -49,8 +70,10 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                         </ul>
                     </td>
                     <td class="actions">
-                        <?= $this->Html->link('Order Ready', ['action' => 'ready', $order->order_id], ['class' => 'btn btn-primary']) ?>
-                        <?= $this->Html->link('Order Picked Up', ['action' => 'complete', $order->order_id], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Form->postLink(__('Order Ready'), ['action' => 'ready', $order->order_id], ['confirm' => __('Are you sure you want the order to be ready {0}?', $order->menuitem_name), 'class' => 'btn btn-primary']) ?>
+<!--                        --><?php //= $this->Html->link('Order Ready', ['action' => 'ready', $order->order_id], ['class' => 'btn btn-primary']) ?>
+                        <?= $this->Form->postLink(__('Order Picked Up'), ['action' => 'complete', $order->order_id], ['confirm' => __('Are you sure you want the order to be complete{0}?', $order->menuitem_name), 'class' => 'btn btn-success']) ?>
+<!--                        --><?php //= $this->Html->link('Order Picked Up', ['action' => 'complete', $order->order_id], ['class' => 'btn btn-primary']) ?>
                         <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $order->order_id], ['confirm' => __('Are you sure you want to delete # {0}?', $order->menuitem_name), 'class' => 'btn btn-danger']) ?>
                     </td>
                 </tr>
