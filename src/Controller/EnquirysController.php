@@ -70,7 +70,7 @@ class EnquirysController extends AppController
                 $this->Flash->success(__('The enquiry has been saved.'));
 
                 //return $this->redirect(['action' => 'index']);
-                return;
+                return $this->redirect(['action' => 'add']);
             }
             $this->Flash->error(__('The enquiry could not be saved. Please, try again.'));
         }
