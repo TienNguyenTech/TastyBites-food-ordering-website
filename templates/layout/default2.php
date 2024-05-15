@@ -26,6 +26,20 @@
     <?= $this->fetch('css') ?>
 
     <?= $this->Html->script('/vendor/jquery/jquery.min.js') ?>
+
+    <style>
+        .bg-primary {
+            background-color: #22408C !important;
+        }
+
+        .btn-primary {
+            background-color: #22408C !important;
+        }
+
+        .btn-primary:hover {
+            background-color: #2E59D9 !important;
+        }
+    </style>
 </head>
 
 <body id="page-top">
@@ -34,7 +48,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="navbar-nav navbar-colour sidebar sidebar-dark accordion" id="accordionSidebar">
+        <ul class="navbar-nav navbar-colour sidebar sidebar-dark accordion" id="accordionSidebar" style="background-color: #22408C">
 
             <!-- Sidebar - Brand -->
             <a class="sidebar-brand d-flex align-items-center justify-content-center"
