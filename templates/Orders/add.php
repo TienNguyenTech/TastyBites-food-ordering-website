@@ -24,7 +24,7 @@
         let atLeastOneFieldFilled = false;
 
         for(let i = 0; i < quantities; i++) {
-            if(!document.getElementById(`quantity-${i}`).value == null) {
+            if(document.getElementById(`quantity-${i}`).value != false) {
                 atLeastOneFieldFilled = true;
                 break;
             }
