@@ -617,7 +617,7 @@ $this->disableAutoLayout();
                     <div class="feature custom-icon-bg text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
                     <h2 class="h4 fw-bolder feature-text">Step 1: Place an Order </h2>
                     <p class="feature-text">Choose from our wide selection of Nepalese momo and soup dishes.</p>
-                    <a class="text-decoration-none menu-link" href="#!">
+                    <a class="text-decoration-none menu-link" href="<?= $this->Url->build(['controller' => 'Menuitems', 'action' => 'menu']) ?>">
                         Check out our Menu!
                         <i class="bi bi-arrow-right"></i>
                     </a>
