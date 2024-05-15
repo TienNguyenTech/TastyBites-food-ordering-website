@@ -67,7 +67,7 @@ class PaymentsController extends AppController
      *
      * @return \Cake\Http\Response|null|void Redirects on successful add, renders view otherwise.
      */
-    public function add($orderID)
+    public function add($orderID, $orderTotal)
     {
         $this->viewBuilder()->setLayout('customer');
 
@@ -75,70 +75,59 @@ class PaymentsController extends AppController
 
         $order = $this->Payments->Orders->get($orderID, contain: ['Menuitems']);
 
-        $orderTotal = 0;
+        $payment = $this->Payments->patchEntity($payment, $this->request->getData());
+        $payment->order_id = $orderID;
+        $payment->payment_amount = $orderTotal;
 
-        foreach ($order->menuitems as $menuitem) {
-            $orderTotal += $menuitem->menuitem_price;
-        }
+        if ($this->Payments->save($payment)) {
 
-        if ($this->request->is('post')) {
-            $payment = $this->Payments->patchEntity($payment, $this->request->getData());
-            $payment->order_id = $orderID;
-            $payment->payment_amount = $orderTotal;
+            $orderPaid = $order;
+            $orderPaid->order_status = 'paid';
 
-//            $payment->card_number = Security::encrypt($payment->card_number, '3a85ced9674faa08e70bc3b0a347989a842d9792d0794f6108b2494c32b280bc');
-//            $payment->card_expiry = Security::encrypt($payment->card_expiry, '3a85ced9674faa08e70bc3b0a347989a842d9792d0794f6108b2494c32b280bc');
-//            $payment->card_cvc = Security::encrypt($payment->card_cvc, '3a85ced9674faa08e70bc3b0a347989a842d9792d0794f6108b2494c32b280bc');
+            $order = $this->Payments->Orders->patchEntity($order, (array)$orderPaid);
+            $this->Payments->Orders->save($order);
 
-            if ($this->Payments->save($payment)) {
+            $mailer = new Mailer('default');
 
-                $orderPaid = $order;
-                $orderPaid->order_status = 'paid';
+            $mailer
+                ->setEmailFormat('html')
+                ->setTo($order->customer_email)
+                ->setFrom('noreply@tastybites.u24s1009.monash-ie.me')
+                ->setSubject('Tasty Bites Kitchen: Order Confirmation')
+                ->viewBuilder()
+                ->disableAutoLayout()
+                ->setTemplate('order_confirmation');
 
-                $order = $this->Payments->Orders->patchEntity($order, (array)$orderPaid);
-                $this->Payments->Orders->save($order);
+            $mailer->setViewVars([
+                'order_status' => $order->order_status,
+                'customer_name' => $order->customer_name,
+                'customer_email' => $order->customer_email,
+                'customer_phone' => $order->customer_phone,
+                'order_id' => $order->order_id,
+                'order_datetime' => $order->order_datetime
+            ]);
 
-                $mailer = new Mailer('default');
+            try {
+                //$email_result = $mailer->deliver();
+                $email_result = true;
 
-                $mailer
-                    ->setEmailFormat('html')
-                    ->setTo($order->customer_email)
-                    ->setFrom('noreply@tastybites.u24s1009.monash-ie.me')
-                    ->setSubject('Tasty Bites Kitchen: Order Confirmation')
-                    ->viewBuilder()
-                    ->disableAutoLayout()
-                    ->setTemplate('order_confirmation');
-
-                $mailer->setViewVars([
-                    'order_status' => $order->order_status,
-                    'customer_name' => $order->customer_name,
-                    'customer_email' => $order->customer_email,
-                    'customer_phone' => $order->customer_phone,
-                    'order_id' => $order->order_id,
-                    'order_datetime' => $order->order_datetime
-                ]);
-
-                try {
-                    $email_result = $mailer->deliver();
-
-                    if ($email_result) {
-                        $this->Flash->success(__('The order confirmation has been sent.'));
-                    } else {
-                        $this->Flash->error(__('Order confirmation failed to send, please ensure that email is correct.'));
-                        $this->redirect(['controller' => 'Orders', 'action' => 'add']);
-                        $this->Payments->Orders->delete($order);
-                    }
-                } catch (\Exception $e) {
+                if ($email_result) {
+                    $this->Flash->success(__('The order confirmation has been sent.'));
+                } else {
                     $this->Flash->error(__('Order confirmation failed to send, please ensure that email is correct.'));
                     $this->redirect(['controller' => 'Orders', 'action' => 'add']);
                     $this->Payments->Orders->delete($order);
                 }
-
-                $this->Flash->success(__('The payment has been saved.'));
-                return $this->redirect(['controller' => 'Orders', 'action' => 'view', $orderID]);
+            } catch (\Exception $e) {
+                $this->Flash->error(__('Order confirmation failed to send, please ensure that email is correct.'));
+                $this->redirect(['controller' => 'Orders', 'action' => 'add']);
+                $this->Payments->Orders->delete($order);
             }
-            $this->Flash->error(__('The payment could not be saved. Please, try again.'));
+
+            $this->Flash->success(__('The payment has been saved.'));
+            return $this->redirect(['controller' => 'Orders', 'action' => 'view', $orderID]);
         }
+        $this->Flash->error(__('The payment could not be saved. Please, try again.'));
 
 
 

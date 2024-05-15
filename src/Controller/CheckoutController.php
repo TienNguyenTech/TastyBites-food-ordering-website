@@ -41,6 +41,12 @@ class CheckoutController extends AppController
 
         $line_items = [];
 
+        $orderTotal = 0;
+
+        foreach ($order->menuitems as $index => $menuitem) {
+            $orderTotal += $menuitem->menuitem_price * $quantities[$index]['quantity'];
+        }
+
         foreach ($order['menuitems'] as $index => $menuitem) {
             array_push($line_items, [
                 'price_data' => [
@@ -55,7 +61,7 @@ class CheckoutController extends AppController
         }
 
         $checkout_session = Session::create([
-            'success_url' => Router::fullBaseUrl() . Router::url(['controller' => 'Payments', 'action' => 'add', $orderID]),
+            'success_url' => Router::fullBaseUrl() . Router::url(['controller' => 'Payments', 'action' => 'add', $orderID, $orderTotal]),
             'cancel_url' => Router::fullBaseUrl() . Router::url(['controller' => 'Orders', 'action' => 'add']),
             'payment_method_types' => ['card'],
             'mode' => 'payment',
