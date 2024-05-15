@@ -63,7 +63,22 @@ class UsersController extends AppController
     public function add()
     {
         $user = $this->Users->newEmptyEntity();
+
+        $this->set(compact('user'));
+
         if ($this->request->is('post')) {
+            $data = $this->request->getData();
+
+            if(strlen($data['password']) < 10) {
+                return $this->Flash->error(__('Password must be at least 10 characters long'));
+            }
+
+            preg_match_all('/\d/', $data['password'], $matches);
+
+            if(count($matches[0]) < 2) {
+                return $this->Flash->error(__('Password must contain at least 2 numbers'));
+            }
+
             $user = $this->Users->patchEntity($user, $this->request->getData());
             if ($this->Users->save($user)) {
                 $this->Flash->success(__('The user has been saved.'));
@@ -72,7 +87,7 @@ class UsersController extends AppController
             }
             $this->Flash->error(__('The user could not be saved. Please, try again.'));
         }
-        $this->set(compact('user'));
+
     }
 
     /**
