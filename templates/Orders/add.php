@@ -19,17 +19,28 @@
 <?php ////= $this->Form->end() ?>
 
 <script>
-    function isNumeric(evt) {
-        var charCode = (evt.which) ? evt.which : event.keyCode;
-        if (charCode >= 48 && charCode <= 57) {
-            return true;
+    function validateQuantities() {
+        const quantities = document.getElementById('quantities').childElementCount;
+        let atLeastOneFieldFilled = false;
+
+        for(let i = 0; i < quantities; i++) {
+            if(!document.getElementById(`quantity-${i}`).value == null) {
+                atLeastOneFieldFilled = true;
+                break;
+            }
         }
-        return false;
+
+        if(!atLeastOneFieldFilled) {
+            alert('At least one menu item must be selected');
+            return false;
+        }
+
+        return true;
     }
 </script>
 <div class="row">
     <div class="enquirys form container" style="padding: 20px; background-color: #e8e8e8; margin-top: 20px; border-radius: 10px">
-        <?= $this->Form->create($order) ?>
+        <?= $this->Form->create($order, ['onsubmit' => 'return validateQuantities()']) ?>
         <fieldset>
             <legend><?= __('Place an Order') ?></legend>
             <?php
@@ -39,12 +50,16 @@
             //echo $this->Form->control('menuitems._ids', ['label' => 'Select item(s) to order', 'options' => $menuitems, 'class' => 'form-control', 'required']);
 
             echo __('Select Items');
+            echo '<div id="quantities">';
+            $counter = 0;
             foreach ($menuitems as $menuitem_id => $menuitem_name) {
                 echo '<div class="input-group">';
                 echo "<span class='input-group-text col-2'>$menuitem_name</span>";
-                echo $this->Form->input("MenuitemsOrder.$menuitem_id.quantity", ['label' => $menuitem_name, 'class' => 'form-control col-1', 'type' => 'number', 'placeholder' => '0', 'min' => '0']);
+                echo $this->Form->input("MenuitemsOrder.$menuitem_id.quantity", ['label' => $menuitem_name, 'class' => 'form-control col-1', 'type' => 'number', 'placeholder' => '0', 'min' => '0', 'id' => "quantity-$counter"]);
                 echo '</div>';
+                $counter++;
             }
+            echo '</div>';
 
             ?>
         </fieldset>
