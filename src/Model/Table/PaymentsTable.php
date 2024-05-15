@@ -63,25 +63,8 @@ class PaymentsTable extends Table
             ->notEmptyString('payment_amount');
 
         $validator
-            ->integer('card_number')
-            ->requirePresence('card_number', 'create')
-            ->notEmptyString('card_number')
-            ->numeric('card_number', 'Card Number must contain only number')
-            ->lengthBetween('card_number', [16, 16], 'Card Number must be exactly 16 digits');
-
-        $validator
-            ->integer('card_expiry')
-            ->requirePresence('card_expiry', 'create')
-            ->notEmptyString('card_expiry')
-            ->numeric('card_expiry', 'Expiry Date must contain only number')
-            ->lengthBetween('card_expiry', [4, 4], 'Expiry Date must be exactly 4 digits (MMYY)');
-
-        $validator
-            ->integer('card_cvc')
-            ->requirePresence('card_cvc', 'create')
-            ->notEmptyString('card_cvc')
-            ->numeric('card_cvc', 'Security Code must contain only numbers')
-            ->lengthBetween('card_cvc', [3, 4], 'Security code must be either 3 or 4 digits');
+            ->dateTime('payment_datetime')
+            ->notEmptyDateTime('payment_datetime');
 
         $validator
             ->integer('order_id')
