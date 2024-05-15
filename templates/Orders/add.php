@@ -24,11 +24,7 @@
 </head>
 
 <body>
-    <style>
-        footer {
-            margin-top: 50px;
-        }
-    </style>
+    
     <script>
         function validateQuantities() {
             const quantities = document.getElementById('quantities').childElementCount;
@@ -54,13 +50,13 @@
             style="padding: 20px; background-color: #e8e8e8; margin-top: 20px; border-radius: 10px">
             <?= $this->Form->create($order, ['onsubmit' => 'return validateQuantities()']) ?>
             <fieldset>
-                <legend><?= __('Place an Order') ?></legend>
+                <legend style="font-size: 32px; text-align: center; color: #22408c;"><?= __('Place an Order') ?></legend>
                 <?php
                 echo $this->Form->control('customer_name', ['label' => 'Full Name', 'class' => 'form-control']);
                 echo $this->Form->control('customer_email', ['label' => 'Contact Email', 'class' => 'form-control']);
                 echo $this->Form->control('customer_phone', ['label' => 'Contact Phone', 'class' => 'form-control']);
                 //echo $this->Form->control('menuitems._ids', ['label' => 'Select item(s) to order', 'options' => $menuitems, 'class' => 'form-control', 'required']);
-                
+
                 echo __('Select Items');
                 echo '<div id="quantities">';
                 $counter = 0;

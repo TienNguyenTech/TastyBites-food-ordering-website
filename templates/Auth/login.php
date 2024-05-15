@@ -11,17 +11,7 @@ $this->layout = 'login';
 $this->assign('title', 'Login');
 ?>
 
-<html>
 
-<body>
-    <style>
-        body{
-            background-color: #22408c;
-        }
-        .centered-button {
-            background-color: #22408c;
-        }
-    </style>
     <div class="container login">
         <div class="row">
             <div class="column column-50 column-offset-25">
@@ -73,6 +63,3 @@ $this->assign('title', 'Login');
                 </div>
             </div>
         </div>
-</body>
-
-</html>
