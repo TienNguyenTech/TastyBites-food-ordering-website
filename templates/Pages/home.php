@@ -58,11 +58,11 @@ $this->disableAutoLayout();
     <style>
         /* Override Bootstrap's primary color */
         .navbar-tea {
-            background-color: #22408c;
+            background-color: #ecf1ff;
         }
 
         .fire-text {
-            color: #fff5f1;
+            color: #26367b;
             /* Color of fire text */
         }
 
@@ -71,7 +71,7 @@ $this->disableAutoLayout();
         }
 
         .Big-Stuff {
-            color: #fff5f1;
+            color: #26367b;
             /* Color of active page */
             font-size: 25px;
         }
@@ -126,7 +126,7 @@ $this->disableAutoLayout();
 
         /* Dropdown Style */
         .dropbtn {
-            background-color: #294890;
+            background-color: #ecf1ff;
             color: white;
             padding: 16px;
             font-size: 16px;
@@ -151,7 +151,7 @@ $this->disableAutoLayout();
 
         /* Links inside the dropdown */
         .dropdown-content a {
-            color: black;
+            color: #2f3e85;
             padding: 12px 16px;
             text-decoration: none;
             display: block;
@@ -159,7 +159,7 @@ $this->disableAutoLayout();
 
         /* Change color of dropdown links on hover */
         .dropdown-content a:hover {
-            background-color: #ddd;
+            background-color: #ebf3fb;
         }
 
         /* Show the dropdown menu on hover */
@@ -168,7 +168,7 @@ $this->disableAutoLayout();
         }
 
         a.nav-link.dropdown-toggle {
-            color: white;
+            color: #2f3e85;
             /* Sets the text color to white */
         }
     </style>
@@ -219,6 +219,7 @@ $this->disableAutoLayout();
             border-bottom: 10px solid #f9f9f9;
         }
     </style>
+    <a id="top"></a>
 
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container-fluid"> <!-- Using container-fluid for proper spacing -->
@@ -339,7 +340,7 @@ $this->disableAutoLayout();
         }
 
         .header-title {
-            color: #fff5f1;
+            color: #26367b;
             font-size: 36px;
             margin-bottom: 20px;
             /* Add text shadow */
@@ -350,7 +351,7 @@ $this->disableAutoLayout();
         }
 
         .header-text {
-            color: #fff5f1;
+            color: #26367b;
             font-size: 18px;
             margin-bottom: 20px;
             /* Add text shadow */
@@ -361,7 +362,7 @@ $this->disableAutoLayout();
             background-color: #bcccf3;
             /* Default button color */
             border-color: #7287bb;
-            color:#294890;
+            color:#ecf1ff;
         }
 
         .button-primary:hover {
@@ -370,6 +371,14 @@ $this->disableAutoLayout();
             border-color:#f4b4bc;
         }
     </style>
+
+    <style>
+        /* Custom button text color */
+        .custom-btn {
+            color: #2f3e85; /* Text color */
+        }
+    </style>
+
 
     <header class="bg-dark py-5 header-bg">
         <!--    sale text edit by admin-->
@@ -383,12 +392,13 @@ $this->disableAutoLayout();
                         <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to
                             <?= $this->ContentBlock->text('website-title'); ?>
                         </h1>
+
                         <p class="lead text-white mb-4 header-text">Experience the most authentic Nepalese cuisine in
                             Melbourne</p>
                         <div class="d-grid gap-3 d-sm-flex justify-content-center">
-
-                            <?= $this->Html->link("Browse Dishes", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'btn button-primary btn-lg px-4']) ?>
+                            <?= $this->Html->link("Browse Dishes", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'btn button-primary btn-lg px-4 custom-btn']) ?>
                         </div>
+
                     </div>
                 </div>
             </div>
@@ -401,11 +411,11 @@ $this->disableAutoLayout();
 
     <style>
         .about-us-bg-color {
-            background-color: #294890;
+            background-color: #ecf1ff;
         }
 
         .about-us-text-color {
-            color: #fff5f1;
+            color: #26367b;
         }
 
         .carousel-control-prev,
@@ -414,12 +424,12 @@ $this->disableAutoLayout();
             height: 3rem;
             background-color: rgba(255, 255, 255, 0.5);
             border-radius: 50%;
-            color: #294890;
+            color: #ecf1ff;
         }
 
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
-            background-color: #294890;
+            background-color: #ecf1ff;
         }
 
         .carousel-control-prev:hover,
@@ -430,11 +440,11 @@ $this->disableAutoLayout();
 
     <style>
         .about-us-bg-color {
-            background-color: #294890;
+            background-color: #ecf1ff;
         }
 
         .about-us-text-color {
-            color: #fff5f1;
+            color: #26367b;
         }
 
         .carousel-item img {
@@ -446,11 +456,11 @@ $this->disableAutoLayout();
 
     <style>
         .about-us-bg-color {
-            background-color:#294890;
+            background-color: #ecf1ff;
         }
 
         .about-us-text-color {
-            color: #fff5f1;
+            color: #26367b;
         }
 
         .carousel-item img {
@@ -516,10 +526,36 @@ $this->disableAutoLayout();
                             <span class="visually-hidden">Next</span>
                         </button>
                     </div>
-                    <div class="google-maps-widget mt-5">
-                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3150.756198102105!2d145.133957!3d-37.907803!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad63c9c1eb47c7b%3A0x8485d30e3ce706b7!2sMonash%20University%20-%20Clayton%20Campus!5e0!3m2!1sen!2sau!4v1634177430748!5m2!1sen!2sau&markers=-37.907803,145.133957" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"></iframe>                    </div>
-        </div>
 
+
+
+
+
+    <!-- GMAP section-->
+    <style>
+        .google-maps-section {
+            background-color: #ebf3fb; /* Example background color */
+            padding: 20px; /* Example padding */
+        }
+        .google-maps-title {
+            text-align: center; /* Center the title */
+            margin-bottom: 20px; /* Example margin */
+            margin-top: 20px;
+        }
+        .google-maps-image {
+            float: right; /* Align the image to the right */
+            margin-left: 20px; /* Example margin */
+        }
+        .google-maps-image img {
+            width: 500px; /* Adjust to your desired width */
+            height: auto; /* Maintain aspect ratio */
+    </style>
+
+        <div class="container">
+            <h2 class="google-maps-title"><a href="https://maps.app.goo.gl/FLPCFajV7bpmx9kM6"  target="_blank" >Where to Find Us!</a></h2>
+            <div class="google-maps-iframe">
+                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d974.1693785493786!2d145.13548986707153!3d-37.909728420394025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad66b7b5148f6f3%3A0x389a5526496c59a0!2sWoodside%20Building%20for%20Technology%20and%20Design!5e0!3m2!1sen!2sau!4v1715766998412!5m2!1sen!2sau" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+            </div>
 
     </section>
 
@@ -527,12 +563,12 @@ $this->disableAutoLayout();
     <style>
         /* Override Bootstrap's primary color and gradient */
         .custom-bg {
-            background-color: #294890;
+            background-color:#ecf1ff;
             /* Your desired background color */
         }
 
         .feature-text {
-            color: #fff5f1;
+            color: #26367b;
         }
 
         .custom-icon-bg {
@@ -560,7 +596,7 @@ $this->disableAutoLayout();
                     <div class="feature custom-icon-bg text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
                     <h2 class="h4 fw-bolder feature-text">Step 1: Place an Order </h2>
                     <p class="feature-text">Choose from our wide selection of Nepalese momo and soup dishes.</p>
-                    <a class="text-decoration-none menu-link" href="#!">
+                    <a class="text-decoration-none menu-link" href="<?= $this->Url->build(['controller' => 'Menuitems', 'action' => 'menu']) ?>">
                         Check out our Menu!
                         <i class="bi bi-arrow-right"></i>
                     </a>
@@ -585,11 +621,11 @@ $this->disableAutoLayout();
 
     <style>
         .testimonial_color {
-            background-color: #294890;
+            background-color:#ecf1ff;
         }
 
         .testimonial-text {
-            color: #fff5f1;
+            color: #26367b;
 
         }
     </style>
@@ -636,6 +672,44 @@ $this->disableAutoLayout();
             </div>
         </div>
     </section>
+
+
+    <style>
+        /* Scroll to top container */
+        .scroll-to-top-container {
+            display: flex;
+            justify-content: flex-start; /* Align button to the left */
+            background-color: #ecf1ff; /* Background color */
+            padding-left: 20px; /* Add padding to adjust button position */
+        }
+
+        /* Scroll to top button */
+        .scroll-to-top-btn {
+            display: flex;
+            align-items: center;
+            height: 40px; /* Button height */
+            background-color: #2f3e85; /* Button background color */
+            color: #ebf3fb; /* Button text color */
+            font-size: 16px; /* Button text size */
+            text-decoration: none; /* Remove default link styling */
+            padding: 0 15px; /* Add padding to adjust button size */
+            border-radius: 5px; /* Add border radius for rounded corners */
+            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+        }
+
+        /* Hover effect */
+        .scroll-to-top-btn:hover {
+
+
+            background-color: #5d99df; /* Darker shade of the button color on hover */
+            color: #ebf3fb;
+        }
+    </style>
+
+    <!--Scroll back to top button-->
+    <div class="scroll-to-top-container">
+        <?= $this->Html->link('Return to top', '#top', ['class' => 'scroll-to-top-btn']) ?>
+    </div>
 
 
     <!-- Footer-->
