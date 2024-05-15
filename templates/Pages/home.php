@@ -231,66 +231,73 @@ $this->disableAutoLayout();
                     ['class' => 'navbar-brand Big-Stuff']
                 ) ?>
 
-                <!-- Left-side navigation links -->
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0"> <!-- 'me-auto' for left alignment -->
-                    <li class="nav-item">
-                        <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
-                    </li>
-                    <li class="nav-item">
-                        <?= $this->Html->link("Place an Order", ['controller' => 'Orders', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
-                    </li>
-                    <li class="nav-item">
-                        <?= $this->Html->link("Contact Us", ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
-                    </li>
-
-                    <!--                    <li class="nav-item">-->
-                    <!--                        --><?php //= $this->Html->link('About', ['controller' => 'About', 'action' => 'display'], ['class' => 'nav-link fire-text']) ?>
-                    <!--                    </li>-->
-                </ul>
             </div>
 
             <!-- Right-aligned navigation -->
             <div class="d-flex align-items-center"> <!-- For vertical alignment -->
-                <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> <!-- 'ms-auto' for right alignment -->
-                    <li class="nav-item">
-                        <?php
-                        $userType = $this->Identity->get('user_type');
-                        if ($this->Identity->isLoggedIn()) {
-                            if ($userType === 'admin') {
-                                echo $this->Html->link(
-                                    'Dashboard',
-                                    ['controller' => 'Dashboard', 'action' => 'index'],
-                                    ['class' => 'nav-link fire-text']
-                                );
-                            } elseif ($userType === 'staff') {
-                                echo $this->Html->link(
-                                    'Dashboard',
-                                    ['controller' => 'Orders', 'action' => 'index'],
-                                    ['class' => 'nav-link fire-text']
-                                );
-                            }
-                        }
-                        ?>
-                    </li>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                          <span class="navbar-toggler-icon"></span>
+                    </button>
 
-                    <li class="nav-item">
-                        <?php
-                        if (!$this->Identity->isLoggedIn()) {
-                            echo $this->Html->link(
-                                'Log in',
-                                ['controller' => 'Auth', 'action' => 'login'],
-                                ['class' => 'nav-link fire-text']
-                            );
-                        } else {
-                            echo $this->Html->link(
-                                'Logout',
-                                ['controller' => 'Auth', 'action' => 'logout'],
-                                ['class' => 'nav-link fire-text']
-                            );
-                        }
-                        ?>
-                    </li>
-                </ul>
+
+                <!-- HAMBURGER -->
+                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+                      <div class="offcanvas-header">
+                        <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Tasty Bites Kitchen</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+                      </div>
+                      <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                          <li class="nav-item">
+                              <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
+                          </li>
+                          <li class="nav-item">
+                              <?= $this->Html->link("Place an Order", ['controller' => 'Orders', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                          </li>
+                          <li class="nav-item">
+                              <?= $this->Html->link("Contact Us", ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                          </li>
+                          <li class="nav-item">
+                              <?php
+                              $userType = $this->Identity->get('user_type');
+                              if ($this->Identity->isLoggedIn()) {
+                                  if ($userType === 'admin') {
+                                      echo $this->Html->link(
+                                          'Dashboard',
+                                          ['controller' => 'Dashboard', 'action' => 'index'],
+                                          ['class' => 'nav-link fire-text']
+                                      );
+                                  } elseif ($userType === 'staff') {
+                                      echo $this->Html->link(
+                                          'Dashboard',
+                                          ['controller' => 'Orders', 'action' => 'index'],
+                                          ['class' => 'nav-link fire-text']
+                                      );
+                                  }
+                              }
+                              ?>
+                          </li>
+                          <li class="nav-item">
+                              <?php
+                              if (!$this->Identity->isLoggedIn()) {
+                                  echo $this->Html->link(
+                                      'Log in',
+                                      ['controller' => 'Auth', 'action' => 'login'],
+                                      ['class' => 'nav-link fire-text']
+                                  );
+                              } else {
+                                  echo $this->Html->link(
+                                      'Logout',
+                                      ['controller' => 'Auth', 'action' => 'logout'],
+                                      ['class' => 'nav-link fire-text']
+                                  );
+                              }
+                              ?>
+                          </li>
+                        </ul>
+                      </div>
+                    </div>
+
             </div>
         </div>
 
