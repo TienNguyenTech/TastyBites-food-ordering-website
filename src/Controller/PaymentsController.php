@@ -108,8 +108,7 @@ class PaymentsController extends AppController
             ]);
 
             try {
-                //$email_result = $mailer->deliver();
-                $email_result = true;
+                $email_result = $mailer->deliver();
 
                 if ($email_result) {
                     $this->Flash->success(__('The order confirmation has been sent.'));
