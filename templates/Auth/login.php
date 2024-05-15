@@ -10,11 +10,23 @@ $debug = Configure::read('debug');
 $this->layout = 'login';
 $this->assign('title', 'Login');
 ?>
-<div class="container login">
-    <div class="row">
-        <div class="column column-50 column-offset-25">
-            <h1 class="page-title">Tasty Bites Kitchen</h1>
-            <div class="users form content">
+
+<html>
+
+<body>
+    <style>
+        body{
+            background-color: #22408c;
+        }
+        .centered-button {
+            background-color: #22408c;
+        }
+    </style>
+    <div class="container login">
+        <div class="row">
+            <div class="column column-50 column-offset-25">
+                <h1 class="page-title">Tasty Bites Kitchen</h1>
+                <div class="users form content">
 
                 <?= $this->Form->create() ?>
 
@@ -55,9 +67,10 @@ $this->assign('title', 'Login');
 
                 <hr class="hr-between-buttons">
 
-<!--                --><?php //= $this->Html->link("Don't have an account? Sign Up", ['controller' => 'Auth', 'action' => 'register'], ['class' => 'button button-clear']) ?>
-                <?= $this->Html->link('Go to Homepage', '/', ['class' => 'button button-clear']) ?>
+                        <!--                --><?php //= $this->Html->link("Don't have an account? Sign Up", ['controller' => 'Auth', 'action' => 'register'], ['class' => 'button button-clear']) ?>
+                        <?= $this->Html->link('Go to Homepage', '/', ['class' => 'button button-clear']) ?>
+                    </div>
+                </div>
             </div>
         </div>
-    </div>
-</div>
+</body>
