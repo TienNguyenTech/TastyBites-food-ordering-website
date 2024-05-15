@@ -219,6 +219,7 @@ $this->disableAutoLayout();
             border-bottom: 10px solid #f9f9f9;
         }
     </style>
+    <a id="top"></a>
 
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container-fluid"> <!-- Using container-fluid for proper spacing -->
@@ -404,6 +405,7 @@ $this->disableAutoLayout();
                         <h1 class="display-5 fw-bolder text-white mb-2 header-title">Welcome to
                             <?= $this->ContentBlock->text('website-title'); ?>
                         </h1>
+
                         <p class="lead text-white mb-4 header-text">Experience the most authentic Nepalese cuisine in
                             Melbourne</p>
                         <div class="d-grid gap-3 d-sm-flex justify-content-center">
@@ -657,6 +659,10 @@ $this->disableAutoLayout();
             </div>
         </div>
     </section>
+<!--Scroll back to top button-->
+    <div class="d-grid gap-3 d-sm-flex justify-content-center">
+        <?= $this->Html->link("TESTING", '#top', ['class' => 'btn button-primary btn-lg px-4']) ?>
+    </div>
 
 
     <!-- Footer-->
