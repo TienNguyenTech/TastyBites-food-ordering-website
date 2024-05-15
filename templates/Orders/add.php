@@ -4,7 +4,7 @@
  * @var \App\Model\Entity\Order $order
  * @var \Cake\Collection\CollectionInterface|string[] $menuitems
  */
-//?>
+// ?>
 <!--<h1 class="h3 mb-2 text-gray-800">Place an order</h1>-->
 <?php ////= $this->Flash->render() ?>
 <?php ////= $this->Form->create($order, ['class' => 'text-gray-800']) ?>
@@ -14,59 +14,68 @@
 ////echo $this->Form->control('customer_phone', ['label' => 'Contact Phone', 'class' => 'form-control']);
 ////echo $this->Form->control('menuitems._ids', ['options' => $menuitems, 'class' => 'form-control', 'required']);
 ////
-////?>
+//// ?>
 <?php ////= $this->Form->button(__('Submit'),['class'=>'btn btn-primary']) ?>
 <?php ////= $this->Form->end() ?>
+<html>
 
-<script>
-    function validateQuantities() {
-        const quantities = document.getElementById('quantities').childElementCount;
-        let atLeastOneFieldFilled = false;
+<head>
+    <title>Place an Order | Tasty Bites Kitchen</title>
+</head>
 
-        for(let i = 0; i < quantities; i++) {
-            if(document.getElementById(`quantity-${i}`).value != false) {
-                atLeastOneFieldFilled = true;
-                break;
+<body>
+    <script>
+        function validateQuantities() {
+            const quantities = document.getElementById('quantities').childElementCount;
+            let atLeastOneFieldFilled = false;
+
+            for (let i = 0; i < quantities; i++) {
+                if (document.getElementById(`quantity-${i}`).value != false) {
+                    atLeastOneFieldFilled = true;
+                    break;
+                }
             }
+
+            if (!atLeastOneFieldFilled) {
+                alert('At least one menu item must be selected');
+                return false;
+            }
+
+            return true;
         }
-
-        if(!atLeastOneFieldFilled) {
-            alert('At least one menu item must be selected');
-            return false;
-        }
-
-        return true;
-    }
-</script>
-<div class="row">
-    <div class="enquirys form container" style="padding: 20px; background-color: #e8e8e8; margin-top: 20px; border-radius: 10px">
-        <?= $this->Form->create($order, ['onsubmit' => 'return validateQuantities()']) ?>
-        <fieldset>
-            <legend><?= __('Place an Order') ?></legend>
-            <?php
-            echo $this->Form->control('customer_name', ['label' => 'Full Name', 'class' => 'form-control']);
-            echo $this->Form->control('customer_email', ['label' => 'Contact Email', 'class' => 'form-control']);
-            echo $this->Form->control('customer_phone', ['label' => 'Contact Phone', 'class' => 'form-control']);
-            //echo $this->Form->control('menuitems._ids', ['label' => 'Select item(s) to order', 'options' => $menuitems, 'class' => 'form-control', 'required']);
-
-            echo __('Select Items');
-            echo '<div id="quantities">';
-            $counter = 0;
-            foreach ($menuitems as $menuitem_id => $menuitem_name) {
-                echo '<div class="input-group">';
-                echo "<span class='input-group-text col-2'>$menuitem_name</span>";
-                echo $this->Form->input("MenuitemsOrder.$menuitem_id.quantity", ['label' => $menuitem_name, 'class' => 'form-control col-1', 'type' => 'number', 'placeholder' => '0', 'min' => '0', 'id' => "quantity-$counter"]);
+    </script>
+    <div class="row">
+        <div class="enquirys form container"
+            style="padding: 20px; background-color: #e8e8e8; margin-top: 20px; border-radius: 10px">
+            <?= $this->Form->create($order, ['onsubmit' => 'return validateQuantities()']) ?>
+            <fieldset>
+                <legend><?= __('Place an Order') ?></legend>
+                <?php
+                echo $this->Form->control('customer_name', ['label' => 'Full Name', 'class' => 'form-control']);
+                echo $this->Form->control('customer_email', ['label' => 'Contact Email', 'class' => 'form-control']);
+                echo $this->Form->control('customer_phone', ['label' => 'Contact Phone', 'class' => 'form-control']);
+                //echo $this->Form->control('menuitems._ids', ['label' => 'Select item(s) to order', 'options' => $menuitems, 'class' => 'form-control', 'required']);
+                
+                echo __('Select Items');
+                echo '<div id="quantities">';
+                $counter = 0;
+                foreach ($menuitems as $menuitem_id => $menuitem_name) {
+                    echo '<div class="input-group">';
+                    echo "<span class='input-group-text col-2'>$menuitem_name</span>";
+                    echo $this->Form->input("MenuitemsOrder.$menuitem_id.quantity", ['label' => $menuitem_name, 'class' => 'form-control col-1', 'type' => 'number', 'placeholder' => '0', 'min' => '0', 'id' => "quantity-$counter"]);
+                    echo '</div>';
+                    $counter++;
+                }
                 echo '</div>';
-                $counter++;
-            }
-            echo '</div>';
 
-            ?>
-        </fieldset>
-        <?= $this->Form->button(__('Place Order'), ['class' => 'btn btn-primary', 'style' => 'margin-top: 10px']) ?>
-        <?= $this->Form->end() ?>
+                ?>
+            </fieldset>
+            <?= $this->Form->button(__('Place Order'), ['class' => 'btn btn-primary', 'style' => 'margin-top: 10px']) ?>
+            <?= $this->Form->end() ?>
 
-        <?= $this->Flash->render() ?>
+            <?= $this->Flash->render() ?>
+        </div>
     </div>
-</div>
+</body>
 
+</html>
