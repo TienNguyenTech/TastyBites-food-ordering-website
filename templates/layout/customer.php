@@ -25,7 +25,7 @@ $this->disableAutoLayout();
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
     <meta name="description" content="" />
     <meta name="author" content="" />
-    <title>Menu | Tasty Bites Kitchen</title>
+    
     <!-- Favicon-->
     <link rel="icon" type="image/x-icon" href="webroot/img/true_favi.ico" />
     <!-- Bootstrap icons-->
