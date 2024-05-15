@@ -12,7 +12,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
 
 
 <div class="menuitems index content text-gray-800">
-<?= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+<?= $this->Html->link(__('New Menuitem'), ['action' => 'add'], ['class' => 'btn btn-primary float-right']) ?>
 <h3 class="text-gray-800">Menu Items</h3>
 
 <div class="table-responsive">
@@ -34,7 +34,7 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
                     <td><?= h($menuitem->menuitem_desc) ?></td>
                     <td><?= $this->Number->currency($menuitem->menuitem_price) ?></td>
                     <td class="actions">
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $menuitem->menuitem_id]) ?>
+                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $menuitem->menuitem_id], ['class' => 'btn btn-secondary']) ?>
                         <?= $this->Form->postLink(
                             __('Delete'),
                             ['action' => 'delete', $menuitem->menuitem_id],
