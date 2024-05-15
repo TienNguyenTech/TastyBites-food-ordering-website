@@ -58,11 +58,11 @@ $this->disableAutoLayout();
     <style>
         /* Override Bootstrap's primary color */
         .navbar-tea {
-            background-color: #22408c;
+            background-color: #ecf1ff;
         }
 
         .fire-text {
-            color: #fff5f1;
+            color: #26367b;
             /* Color of fire text */
         }
 
@@ -71,7 +71,7 @@ $this->disableAutoLayout();
         }
 
         .Big-Stuff {
-            color: #fff5f1;
+            color: #26367b;
             /* Color of active page */
             font-size: 25px;
         }
@@ -126,7 +126,7 @@ $this->disableAutoLayout();
 
         /* Dropdown Style */
         .dropbtn {
-            background-color: #294890;
+            background-color: #ecf1ff;
             color: white;
             padding: 16px;
             font-size: 16px;
@@ -365,7 +365,7 @@ $this->disableAutoLayout();
         }
 
         .header-title {
-            color: #fff5f1;
+            color: #26367b;
             font-size: 36px;
             margin-bottom: 20px;
             /* Add text shadow */
@@ -376,7 +376,7 @@ $this->disableAutoLayout();
         }
 
         .header-text {
-            color: #fff5f1;
+            color: #26367b;
             font-size: 18px;
             margin-bottom: 20px;
             /* Add text shadow */
@@ -387,7 +387,7 @@ $this->disableAutoLayout();
             background-color: #bcccf3;
             /* Default button color */
             border-color: #7287bb;
-            color:#294890;
+            color:#ecf1ff;
         }
 
         .button-primary:hover {
@@ -424,11 +424,11 @@ $this->disableAutoLayout();
 
     <style>
         .about-us-bg-color {
-            background-color: #294890;
+            background-color: #ecf1ff;
         }
 
         .about-us-text-color {
-            color: #fff5f1;
+            color: #26367b;
         }
 
         .carousel-control-prev,
@@ -437,12 +437,12 @@ $this->disableAutoLayout();
             height: 3rem;
             background-color: rgba(255, 255, 255, 0.5);
             border-radius: 50%;
-            color: #294890;
+            color: #ecf1ff;
         }
 
         .carousel-control-prev-icon,
         .carousel-control-next-icon {
-            background-color: #294890;
+            background-color: #ecf1ff;
         }
 
         .carousel-control-prev:hover,
@@ -453,11 +453,11 @@ $this->disableAutoLayout();
 
     <style>
         .about-us-bg-color {
-            background-color: #294890;
+            background-color: #ecf1ff;
         }
 
         .about-us-text-color {
-            color: #fff5f1;
+            color: #26367b;
         }
 
         .carousel-item img {
@@ -469,11 +469,11 @@ $this->disableAutoLayout();
 
     <style>
         .about-us-bg-color {
-            background-color:#294890;
+            background-color: #ecf1ff;
         }
 
         .about-us-text-color {
-            color: #fff5f1;
+            color: #26367b;
         }
 
         .carousel-item img {
@@ -550,12 +550,12 @@ $this->disableAutoLayout();
     <style>
         /* Override Bootstrap's primary color and gradient */
         .custom-bg {
-            background-color: #294890;
+            background-color:#ecf1ff;
             /* Your desired background color */
         }
 
         .feature-text {
-            color: #fff5f1;
+            color: #26367b;
         }
 
         .custom-icon-bg {
@@ -608,11 +608,11 @@ $this->disableAutoLayout();
 
     <style>
         .testimonial_color {
-            background-color: #294890;
+            background-color:#ecf1ff;
         }
 
         .testimonial-text {
-            color: #fff5f1;
+            color: #26367b;
 
         }
     </style>
@@ -677,10 +677,6 @@ $this->disableAutoLayout();
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
-    <!-- * *                               SB Forms JS                               * *-->
-    <!-- * * Activate your form at https://startbootstrap.com/solution/contact-forms * *-->
-    <!-- * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * *-->
     <script src="https://cdn.startbootstrap.com/sb-forms-latest.js"></script>
 </body>
 
