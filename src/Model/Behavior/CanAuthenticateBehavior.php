@@ -51,8 +51,10 @@ class CanAuthenticateBehavior extends Behavior {
     public function validationDefault(Validator $validator): Validator {
         $validator
             ->email('email')
+            ->maxLength('email', 255)
             ->requirePresence('email', 'create')
             ->notEmptyString('email');
+
 
         $validator
             ->scalar('password')

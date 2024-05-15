@@ -143,7 +143,11 @@ class OrdersController extends AppController
         $email_result = $mailer->deliver();
 
         if ($email_result) {
-            $this->Flash->success(__('The enquiry has been saved and sent via email.'));
+            $this->Flash->success('The order status has been changed and sent via email.', ['class' => 'success-message']);
+
+            // Display success pop-up
+//            $this->Flash->success(__('The enquiry has been saved and sent via email.'));
+
         } else {
             $this->Flash->error(__('Email failed to send. Please check the enquiry in the system later. '));
         }
@@ -160,6 +164,7 @@ class OrdersController extends AppController
         $order = $this->Orders->patchEntity($order, (array)$orderReady);
 
         $this->Orders->save($order);
+        $this->Flash->success('The order status has been complete.', ['class' => 'success-message']);
 
         $this->redirect(['action' => 'index']);
     }
