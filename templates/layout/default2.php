@@ -9,6 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
     <?= $this->Html->meta('icon') ?>
+    <link rel="icon" type="image/x-icon" href="webroot/img/true_favi.ico" />
 
     <title><?= $this->fetch('title') ?></title>
 
