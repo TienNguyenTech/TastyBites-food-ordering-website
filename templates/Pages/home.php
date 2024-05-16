@@ -85,7 +85,7 @@ $this->disableAutoLayout();
         }
 
         .active-home:hover {
-            color:#7287bb;
+            color: #7287bb;
         }
 
         /*Nav-bar cool button style */
@@ -235,68 +235,70 @@ $this->disableAutoLayout();
 
             <!-- Right-aligned navigation -->
             <div class="d-flex align-items-center"> <!-- For vertical alignment -->
-                    <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
-                        Menu
-                    </button>
+                <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas"
+                    data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+                    Menu
+                </button>
 
 
                 <!-- HAMBURGER -->
-                    <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
-                      <div class="offcanvas-header">
+                <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar"
+                    aria-labelledby="offcanvasNavbarLabel">
+                    <div class="offcanvas-header">
                         <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Tasty Bites Kitchen</h5>
                         <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
-                      </div>
-                      <div class="offcanvas-body">
-                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
-                          <li class="nav-item">
-                              <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
-                          </li>
-                          <li class="nav-item">
-                              <?= $this->Html->link("Place an Order", ['controller' => 'Orders', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
-                          </li>
-                          <li class="nav-item">
-                              <?= $this->Html->link("Contact Us", ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
-                          </li>
-                          <li class="nav-item">
-                              <?php
-                              $userType = $this->Identity->get('user_type');
-                              if ($this->Identity->isLoggedIn()) {
-                                  if ($userType === 'admin') {
-                                      echo $this->Html->link(
-                                          'Dashboard',
-                                          ['controller' => 'Dashboard', 'action' => 'index'],
-                                          ['class' => 'nav-link fire-text']
-                                      );
-                                  } elseif ($userType === 'staff') {
-                                      echo $this->Html->link(
-                                          'Dashboard',
-                                          ['controller' => 'Orders', 'action' => 'index'],
-                                          ['class' => 'nav-link fire-text']
-                                      );
-                                  }
-                              }
-                              ?>
-                          </li>
-                          <li class="nav-item">
-                              <?php
-                              if (!$this->Identity->isLoggedIn()) {
-                                  echo $this->Html->link(
-                                      'Log in',
-                                      ['controller' => 'Auth', 'action' => 'login'],
-                                      ['class' => 'nav-link fire-text']
-                                  );
-                              } else {
-                                  echo $this->Html->link(
-                                      'Logout',
-                                      ['controller' => 'Auth', 'action' => 'logout'],
-                                      ['class' => 'nav-link fire-text']
-                                  );
-                              }
-                              ?>
-                          </li>
-                        </ul>
-                      </div>
                     </div>
+                    <div class="offcanvas-body">
+                        <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+                            <li class="nav-item">
+                                <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
+                            </li>
+                            <li class="nav-item">
+                                <?= $this->Html->link("Place an Order", ['controller' => 'Orders', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                            </li>
+                            <li class="nav-item">
+                                <?= $this->Html->link("Contact Us", ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                            </li>
+                            <li class="nav-item">
+                                <?php
+                                $userType = $this->Identity->get('user_type');
+                                if ($this->Identity->isLoggedIn()) {
+                                    if ($userType === 'admin') {
+                                        echo $this->Html->link(
+                                            'Dashboard',
+                                            ['controller' => 'Dashboard', 'action' => 'index'],
+                                            ['class' => 'nav-link fire-text']
+                                        );
+                                    } elseif ($userType === 'staff') {
+                                        echo $this->Html->link(
+                                            'Dashboard',
+                                            ['controller' => 'Orders', 'action' => 'index'],
+                                            ['class' => 'nav-link fire-text']
+                                        );
+                                    }
+                                }
+                                ?>
+                            </li>
+                            <li class="nav-item">
+                                <?php
+                                if (!$this->Identity->isLoggedIn()) {
+                                    echo $this->Html->link(
+                                        'Log in',
+                                        ['controller' => 'Auth', 'action' => 'login'],
+                                        ['class' => 'nav-link fire-text']
+                                    );
+                                } else {
+                                    echo $this->Html->link(
+                                        'Logout',
+                                        ['controller' => 'Auth', 'action' => 'logout'],
+                                        ['class' => 'nav-link fire-text']
+                                    );
+                                }
+                                ?>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
 
             </div>
         </div>
@@ -369,20 +371,21 @@ $this->disableAutoLayout();
             background-color: #bcccf3;
             /* Default button color */
             border-color: #7287bb;
-            color:#ecf1ff;
+            color: #ecf1ff;
         }
 
         .button-primary:hover {
             background-color: #f4b4bc;
             /* Button color on hover */
-            border-color:#f4b4bc;
+            border-color: #f4b4bc;
         }
     </style>
 
     <style>
         /* Custom button text color */
         .custom-btn {
-            color: #2f3e85; /* Text color */
+            color: #2f3e85;
+            /* Text color */
         }
     </style>
 
@@ -390,7 +393,7 @@ $this->disableAutoLayout();
     <header class="bg-dark py-5 header-bg">
         <!--    sale text edit by admin-->
         <div class="container text-center mt-3" style="background-color: #bcccf3; border-radius: 5px">
-            <p style="color: #294890;" ><?= $this->ContentBlock->text('banner'); ?></p>
+            <p style="color: #294890;"><?= $this->ContentBlock->text('banner'); ?></p>
         </div>
         <div class="container px-5">
             <div class="row gx-5 justify-content-center">
@@ -538,31 +541,46 @@ $this->disableAutoLayout();
 
 
 
-    <!-- GMAP section-->
-    <style>
-        .google-maps-section {
-            background-color: #ebf3fb; /* Example background color */
-            padding: 20px; /* Example padding */
-        }
-        .google-maps-title {
-            text-align: center; /* Center the title */
-            margin-bottom: 20px; /* Example margin */
-            margin-top: 20px;
-        }
-        .google-maps-image {
-            float: right; /* Align the image to the right */
-            margin-left: 20px; /* Example margin */
-        }
-        .google-maps-image img {
-            width: 500px; /* Adjust to your desired width */
-            height: auto; /* Maintain aspect ratio */
-    </style>
+                    <!-- GMAP section-->
+                    <style>
+                        .google-maps-section {
+                            background-color: #ebf3fb;
+                            /* Example background color */
+                            padding: 20px;
+                            /* Example padding */
+                        }
 
-        <div class="container">
-            <h2 class="google-maps-title"><a href="https://maps.app.goo.gl/FLPCFajV7bpmx9kM6"  target="_blank" >Where to Find Us!</a></h2>
-            <div class="google-maps-iframe">
-                <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d974.1693785493786!2d145.13548986707153!3d-37.909728420394025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad66b7b5148f6f3%3A0x389a5526496c59a0!2sWoodside%20Building%20for%20Technology%20and%20Design!5e0!3m2!1sen!2sau!4v1715766998412!5m2!1sen!2sau" width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-            </div>
+                        .google-maps-title {
+                            text-align: center;
+                            /* Center the title */
+                            margin-bottom: 20px;
+                            /* Example margin */
+                            margin-top: 20px;
+                        }
+
+                        .google-maps-image {
+                            float: right;
+                            /* Align the image to the right */
+                            margin-left: 20px;
+                            /* Example margin */
+                        }
+
+                        .google-maps-image img {
+                            width: 500px;
+                            /* Adjust to your desired width */
+                            height: auto;
+                            /* Maintain aspect ratio */
+                    </style>
+
+                    <div class="container">
+                        <h2 class="google-maps-title"><a href="https://maps.app.goo.gl/FLPCFajV7bpmx9kM6"
+                                target="_blank">Where to Find Us!</a></h2>
+                        <div class="google-maps-iframe">
+                            <iframe
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d974.1693785493786!2d145.13548986707153!3d-37.909728420394025!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6ad66b7b5148f6f3%3A0x389a5526496c59a0!2sWoodside%20Building%20for%20Technology%20and%20Design!5e0!3m2!1sen!2sau!4v1715766998412!5m2!1sen!2sau"
+                                width="100%" height="450" style="border:0;" allowfullscreen="" loading="lazy"
+                                referrerpolicy="no-referrer-when-downgrade"></iframe>
+                        </div>
 
     </section>
 
@@ -570,7 +588,7 @@ $this->disableAutoLayout();
     <style>
         /* Override Bootstrap's primary color and gradient */
         .custom-bg {
-            background-color:#ecf1ff;
+            background-color: #ecf1ff;
             /* Your desired background color */
         }
 
@@ -584,13 +602,15 @@ $this->disableAutoLayout();
         }
 
         .menu-link {
-            color: #f4b4bc; /* Base color */
+            color: #f4b4bc;
+            /* Base color */
             text-decoration: underline;
             text-decoration-color: #7287bb;
         }
 
         .menu-link:hover {
-            color: #dd1d3c; /* Color on hover */
+            color: #dd1d3c;
+            /* Color on hover */
             text-decoration: underline;
             text-decoration-color: #7287bb;
         }
@@ -603,7 +623,8 @@ $this->disableAutoLayout();
                     <div class="feature custom-icon-bg text-white rounded-3 mb-3"><i class="bi bi-collection"></i></div>
                     <h2 class="h4 fw-bolder feature-text">Step 1: Place an Order </h2>
                     <p class="feature-text">Choose from our wide selection of Nepalese momo and soup dishes.</p>
-                    <a class="text-decoration-none menu-link" href="<?= $this->Url->build(['controller' => 'Menuitems', 'action' => 'menu']) ?>">
+                    <a class="text-decoration-none menu-link"
+                        href="<?= $this->Url->build(['controller' => 'Menuitems', 'action' => 'menu']) ?>">
                         Check out our Menu!
                         <i class="bi bi-arrow-right"></i>
                     </a>
@@ -628,7 +649,7 @@ $this->disableAutoLayout();
 
     <style>
         .testimonial_color {
-            background-color:#ecf1ff;
+            background-color: #ecf1ff;
         }
 
         .testimonial-text {
@@ -685,38 +706,109 @@ $this->disableAutoLayout();
         /* Scroll to top container */
         .scroll-to-top-container {
             display: flex;
-            justify-content: flex-start; /* Align button to the left */
-            background-color: #ecf1ff; /* Background color */
-            padding-left: 20px; /* Add padding to adjust button position */
+            justify-content: flex-start;
+            /* Align button to the left */
+            background-color: #ecf1ff;
+            /* Background color */
+            padding-left: 20px;
+            /* Add padding to adjust button position */
         }
 
         /* Scroll to top button */
         .scroll-to-top-btn {
             display: flex;
             align-items: center;
-            height: 40px; /* Button height */
-            background-color: #2f3e85; /* Button background color */
-            color: #ebf3fb; /* Button text color */
-            font-size: 16px; /* Button text size */
-            text-decoration: none; /* Remove default link styling */
-            padding: 0 15px; /* Add padding to adjust button size */
-            border-radius: 5px; /* Add border radius for rounded corners */
-            transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+            height: 40px;
+            /* Button height */
+            background-color: #2f3e85;
+            /* Button background color */
+            color: #ebf3fb;
+            /* Button text color */
+            font-size: 16px;
+            /* Button text size */
+            text-decoration: none;
+            /* Remove default link styling */
+            padding: 0 15px;
+            /* Add padding to adjust button size */
+            border-radius: 5px;
+            /* Add border radius for rounded corners */
+            transition: background-color 0.3s ease;
+            /* Smooth transition for hover effect */
         }
 
         /* Hover effect */
         .scroll-to-top-btn:hover {
 
 
-            background-color: #5d99df; /* Darker shade of the button color on hover */
+            background-color: #5d99df;
+            /* Darker shade of the button color on hover */
             color: #ebf3fb;
         }
     </style>
 
     <!--Scroll back to top button-->
-    <div class="scroll-to-top-container">
-        <?= $this->Html->link('Return to top', '#top', ['class' => 'scroll-to-top-btn']) ?>
-    </div>
+    <style>
+        #myBtn {
+            display: none;
+            position: fixed;
+            bottom: 20px;
+            right: 30px;
+            z-index: 99;
+            font-size: 14px;
+            /* Reduced font size */
+            border: none;
+            outline: none;
+            background-color: transparent;
+            color: white;
+            cursor: pointer;
+            padding: 10px;
+            /* Reduced padding */
+            border-radius: 4px;
+            text-align: center;
+        }
+
+        #myBtn img {
+            display: block;
+            margin: 0 auto;
+            width: 40px;
+            /* Reduced image width */
+            height: 40px;
+            /* Reduced image height */
+        }
+
+        #myBtn:hover {
+            background-color: #555;
+        }
+    </style>
+
+    <button onclick="topFunction()" id="myBtn" title="Go to top">
+        <img src="webroot/img/back_to_top.png" alt="Back To Top" width="50" height="50">
+        <div>
+            <p style="color: brown">Back To Top</p>
+        </div>
+    </button>
+
+    <script>
+        // Get the button
+        let mybutton = document.getElementById("myBtn");
+
+        // When the user scrolls down 20px from the top of the document, show the button
+        window.onscroll = function () { scrollFunction() };
+
+        function scrollFunction() {
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                mybutton.style.display = "block";
+            } else {
+                mybutton.style.display = "none";
+            }
+        }
+
+        // When the user clicks on the button, scroll to the top of the document
+        function topFunction() {
+            document.body.scrollTop = 0;
+            document.documentElement.scrollTop = 0;
+        }
+    </script>
 
 
     <!-- Footer-->
