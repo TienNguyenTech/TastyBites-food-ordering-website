@@ -171,6 +171,8 @@ $this->disableAutoLayout();
             color: #2f3e85;
             /* Sets the text color to white */
         }
+
+        .nav-item
     </style>
 
     <style>
@@ -217,6 +219,29 @@ $this->disableAutoLayout();
             border-left: 10px solid transparent;
             border-right: 10px solid transparent;
             border-bottom: 10px solid #f9f9f9;
+        }
+
+        /* Style for the Auth button on Nav bar*/
+
+        .btn-primarys {
+            background-color: #22408c;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            text-align: center;
+            display: inline-block;
+            font-size: 14px;
+            cursor: pointer;
+            text-decoration: none;
+            /* Remove underline from links */
+        }
+
+        .btn-primarys:hover {
+            background-color: #004080;
+            /* Darker blue on hover */
+            text-decoration: none;
+            /* Ensure no underline on hover */
         }
     </style>
     <a id="top"></a>
@@ -285,17 +310,18 @@ $this->disableAutoLayout();
                                     echo $this->Html->link(
                                         'Log in',
                                         ['controller' => 'Auth', 'action' => 'login'],
-                                        ['class' => 'nav-link fire-text']
+                                        ['class' => 'nav-link fire-text btn btn-primarys'] // Added btn and btn-primary classes
                                     );
                                 } else {
                                     echo $this->Html->link(
                                         'Logout',
                                         ['controller' => 'Auth', 'action' => 'logout'],
-                                        ['class' => 'nav-link fire-text']
+                                        ['class' => 'nav-link fire-text btn btn-primarys'] // Added btn and btn-primary classes
                                     );
                                 }
                                 ?>
                             </li>
+
                         </ul>
                     </div>
                 </div>
