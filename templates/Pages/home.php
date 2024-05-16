@@ -226,7 +226,7 @@ $this->disableAutoLayout();
         .btn-primarys {
             background-color: #22408c;
             color: white;
-            padding: 10px 20px;
+            padding: 10px 20px 10px 20px;
             border: none;
             border-radius: 4px;
             text-align: center;
@@ -311,13 +311,13 @@ $this->disableAutoLayout();
                                     echo $this->Html->link(
                                         'Log in',
                                         ['controller' => 'Auth', 'action' => 'login'],
-                                        ['class' => 'nav-link fire-text btn btn-primarys'] // Added btn and btn-primary classes
+                                        ['class' => 'nav-link fire-text'] // Added btn and btn-primary classes
                                     );
                                 } else {
                                     echo $this->Html->link(
                                         'Logout',
                                         ['controller' => 'Auth', 'action' => 'logout'],
-                                        ['class' => 'nav-link fire-text btn btn-primarys'] // Added btn and btn-primary classes
+                                        ['class' => 'nav-link fire-text'] // Added btn and btn-primary classes
                                     );
                                 }
                                 ?>
