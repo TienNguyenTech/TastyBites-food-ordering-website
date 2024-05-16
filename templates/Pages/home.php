@@ -242,6 +242,7 @@ $this->disableAutoLayout();
             /* Darker blue on hover */
             text-decoration: none;
             /* Ensure no underline on hover */
+
         }
     </style>
     <a id="top"></a>
@@ -253,7 +254,7 @@ $this->disableAutoLayout();
                 <?= $this->Html->link(
                     $this->ContentBlock->text('website-title'),
                     ['controller' => 'Pages', 'action' => 'display'],
-                    ['class' => 'navbar-brand Big-Stuff']
+                    ['class' => 'navbar-brand Big-Stuff', 'style' => 'font-weight: bold;']
                 ) ?>
 
             </div>
@@ -276,13 +277,13 @@ $this->disableAutoLayout();
                     <div class="offcanvas-body">
                         <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
                             <li class="nav-item">
-                                <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text']) ?>
+                                <?= $this->Html->link("Menu", ['controller' => 'Menuitems', 'action' => 'menu'], ['class' => 'nav-link fire-text', 'style' => 'font-weight: bold;']) ?>
                             </li>
                             <li class="nav-item">
-                                <?= $this->Html->link("Place an Order", ['controller' => 'Orders', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                                <?= $this->Html->link("Place an Order", ['controller' => 'Orders', 'action' => 'add'], ['class' => 'nav-link fire-text', 'style' => 'font-weight: bold;']) ?>
                             </li>
                             <li class="nav-item">
-                                <?= $this->Html->link("Contact Us", ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text']) ?>
+                                <?= $this->Html->link("Contact Us", ['controller' => 'Enquirys', 'action' => 'add'], ['class' => 'nav-link fire-text', 'style' => 'font-weight: bold;']) ?>
                             </li>
                             <li class="nav-item">
                                 <?php
@@ -292,13 +293,13 @@ $this->disableAutoLayout();
                                         echo $this->Html->link(
                                             'Dashboard',
                                             ['controller' => 'Dashboard', 'action' => 'index'],
-                                            ['class' => 'nav-link fire-text']
+                                            ['class' => 'nav-link fire-text', 'style' => 'font-weight: bold;']
                                         );
                                     } elseif ($userType === 'staff') {
                                         echo $this->Html->link(
                                             'Dashboard',
                                             ['controller' => 'Orders', 'action' => 'index'],
-                                            ['class' => 'nav-link fire-text']
+                                            ['class' => 'nav-link fire-text', 'style' => 'font-weight: bold;']
                                         );
                                     }
                                 }
@@ -310,13 +311,13 @@ $this->disableAutoLayout();
                                     echo $this->Html->link(
                                         'Log in',
                                         ['controller' => 'Auth', 'action' => 'login'],
-                                        ['class' => 'nav-link fire-text btn btn-primarys'] // Added btn and btn-primary classes
+                                        ['class' => 'nav-link fire-text btn btn-primarys', 'style' => 'font-weight: bold;'] // Added btn and btn-primary classes
                                     );
                                 } else {
                                     echo $this->Html->link(
                                         'Logout',
                                         ['controller' => 'Auth', 'action' => 'logout'],
-                                        ['class' => 'nav-link fire-text btn btn-primarys'] // Added btn and btn-primary classes
+                                        ['class' => 'nav-link fire-text btn btn-primarys', 'style' => 'font-weight: bold;'] // Added btn and btn-primary classes
                                     );
                                 }
                                 ?>
