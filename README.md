@@ -24,8 +24,8 @@ To clone this repository to your local machine, follow these steps:
 
 4. Once the cloning process is complete, navigate into the cloned directory using the cd command:
 
-  ```bash
-  cd team009-app_fit3047
+   ```bash
+   cd team009-app_fit3047
 
 5. You now have a local copy of the repository on your machine.
 
