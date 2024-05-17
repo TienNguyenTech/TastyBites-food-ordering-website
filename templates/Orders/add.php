@@ -21,8 +21,6 @@
 
 <head>
     <title>Place an Order | Tasty Bites Kitchen</title>
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="webroot/assets/true_favi.ico" />
 </head>
 
 <body>
