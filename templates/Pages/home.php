@@ -74,6 +74,7 @@ $this->disableAutoLayout();
             color: #26367b;
             /* Color of active page */
             font-size: 25px;
+            margin-left: 30px !important;
         }
 
         .Big-Stuff:hover {
@@ -172,7 +173,6 @@ $this->disableAutoLayout();
             /* Sets the text color to white */
         }
 
-        .nav-item
     </style>
 
     <style>
