@@ -36,7 +36,7 @@ We use CakePHP 5.0.1 [https://book.cakephp.org/5/en/installation.html](https://b
 
 ## About Us
 
-Momos Food Ordering Online is a web application built with CakePHP, CSS, JavaScript, HTML, and PHP. It allows users to browse a menu, place orders, and make payments online. The project utilizes the Stripe plugin for payment processing and the SB Admin 2 template for the dashboard interface. ContentBlocks plugin is used for managing dynamic content. Additionally, we utilized cPanel for hosting, PHPMyAdmin for database management, referred to the CakePHP cookbook for guidance, and worked with PHPStorm and Visual Studio Code for development.
+Momos Food Ordering Online is a web application built with CakePHP, CSS, JavaScript, HTML, and PHP. It allows users to browse a menu, place orders, and make payments online. The project utilizes the Stripe plugin for payment processing and the SB Admin 2 template for the dashboard interface. ContentBlocks plugin is used for managing dynamic content. Additionally, we utilized cPanel for hosting, PHPMyAdmin for database management, referred to the CakePHP cookbook for guidance, and worked with PHPStorm and Visual Studio Code for development. We also utilized Git and GitHub Desktop for version control and collaboration. Furthermore, we used Google Drive to create the Project Governance Portfolio and Trello for project management.
 
 ## Features
 
@@ -72,8 +72,9 @@ Momos Food Ordering Online is a web application built with CakePHP, CSS, JavaScr
 
 - Sign up for a Stripe account.
 
-    Email: tiennguyen0802200239@gmail.com
-    Password: 0802200239nT@
+Email: tiennguyen0802200239@gmail.com
+
+Password: 0802200239nT@
 
 - Set your Stripe API keys in config/app.php.
 - You can find your API secret keys and publishable keys by clicking on "Developers" link the top right Navigation bar.
@@ -89,21 +90,33 @@ Open your web browser and navigate to http://localhost:8765.
 
 ## Usage
 
-- As a user, you can:
-* Browse the menu and add items to the cart.
-* Proceed to checkout and make payments securely with Stripe.
-- As an admin, you can:
-* Manage orders through the admin dashboard.
+As a user, you can:
+- Browse the menu and add items to the cart.
+- Proceed to checkout and make payments securely with Stripe.
+
+As an admin, you can:
+- Manage orders through the admin dashboard.
 
 ## Contributing
 
-Contributions are welcome! Please follow these steps:
+### How can you contribute
+
+By Command Prompt:
 
 1. Fork the repository.
 2. Create a new branch for your feature: git checkout -b feature-name.
-3. Commit your changes: git commit -am 'Add new feature'.
+3. Commit your changes: git commit -m 'Add new feature'.
 4. Push to the branch: git push origin feature-name.
 5. Submit a pull request.
+
+By GitHub Desktop:
+
+1. Add the repository.
+2. Fetch origin from Main.
+3. Edit in your PHPStorm.
+4. Add a commit message 'Add new feature'.
+5. Click the commit button.
+6. Push to Main.
 
 ## License
 
