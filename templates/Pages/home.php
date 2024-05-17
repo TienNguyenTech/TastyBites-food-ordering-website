@@ -254,7 +254,7 @@ $this->disableAutoLayout();
                 <?= $this->Html->link(
                     $this->ContentBlock->text('website-title'),
                     ['controller' => 'Pages', 'action' => 'display'],
-                    ['class' => 'navbar-brand Big-Stuff', 'style' => 'font-weight: 500;']
+                    ['class' => 'navbar-brand Big-Stuff']
                 ) ?>
 
             </div>

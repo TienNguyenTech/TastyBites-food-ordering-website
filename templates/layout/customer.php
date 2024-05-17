@@ -227,11 +227,11 @@ $this->disableAutoLayout();
     <nav class="navbar navbar-expand-lg navbar-tea">
         <div class="container-fluid"> <!-- Using container-fluid for proper spacing -->
         <!-- Left-aligned navigation, including the restaurant's logo -->
-            <div class="d-flex align-items-center">
+            <div clCass="d-flex align-items-center">
                 <?= $this->Html->link(
                 $this->ContentBlock->text('website-title'),
                 ['controller' => 'Pages', 'action' => 'display'],
-                ['class' => 'navbar-brand Big-Stuff']
+                ['class' => 'navbar-brand Big-Stuff', 'style' => 'font-weight: 500 !important;']
                 ) ?>
 
             </div>
