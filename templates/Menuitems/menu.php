@@ -7,19 +7,20 @@
 <html>
 
 <head>
-    <title>Menu | Tasty Bites Kitchen</title>
+    <title>Menu | <?= $this->ContentBlock->text('website-title'); ?></title>
     <!-- Favicon-->
    <link rel="icon" type="image/x-icon" href="webroot/assets/true_favi.ico" />
 </head>
 
 <body>
-    <div class="container my-4">
-        <div class="row justify-content-between align-items-center mb-3">
-            <div class="col">
-                <h3 class="text-gray-800 mb-0"><b><?= $this->ContentBlock->text('website-title'); ?> Menu</b></h3>
-            </div>
+<div class="container my-4">
+    <div class="row justify-content-between align-items-center mb-3">
+        <div class="col d-flex align-items-center">
+            <h3 class="text-gray-800 mb-0 mr-3"><b><?= $this->ContentBlock->text('website-title'); ?> Menu</b></h3>
+            <?= $this->Html->link("Order now", ['controller' => 'Orders', 'action' => 'add'], ['class' => 'btn btn-primary']) ?>
         </div>
     </div>
+</div>
 
     <style>
         body {
