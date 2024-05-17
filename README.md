@@ -6,6 +6,28 @@
 
 - Link to website: [TastyBitesKitchen](https://tastybites.u24s1009.iedev.org/)
 - Source code: [https://drive.google.com/drive/folders/1s2Hsf_50c0x-huRdoC37rN-jlEqqeqXi?usp=drive_link](https://drive.google.com/drive/folders/1s2Hsf_50c0x-huRdoC37rN-jlEqqeqXi?usp=drive_link)
+- Git Link: [https://git.infotech.monash.edu/UGIE/ugie-2024/team009/team009-app_fit3047](https://git.infotech.monash.edu/UGIE/ugie-2024/team009/team009-app_fit3047)
+- Git Clone: [https://git.infotech.monash.edu/UGIE/ugie-2024/team009/team009-app_fit3047.git](https://git.infotech.monash.edu/UGIE/ugie-2024/team009/team009-app_fit3047.git)
+
+### Cloning the Repository
+
+To clone this repository to your local machine, follow these steps:
+
+1. Open your terminal or command prompt.
+
+2. Navigate to the directory where you want to clone the repository.
+
+3. Run the following command to clone the repository:
+
+   ```bash
+   git clone https://git.infotech.monash.edu/UGIE/ugie-2024/team009/team009-app_fit3047.git
+
+4. Once the cloning process is complete, navigate into the cloned directory using the cd command:
+
+  ```bash
+  cd team009-app_fit3047
+
+5. You now have a local copy of the repository on your machine.
 
 #### Admin Login
 
