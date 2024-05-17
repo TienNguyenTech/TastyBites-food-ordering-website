@@ -64,9 +64,9 @@ Momos Food Ordering Online is a web application built with CakePHP, CSS, JavaScr
 - Set your Stripe API keys in config/app.php.
 - You can find your API secret keys and publishable keys by clicking on "Developers" link the top right Navigation bar.
 
-5. **Start the development server:**
-  ```bash
-  bin/cake server
+2. **Start the development server:**
+   ```bash
+   bin/cake server
 
 6. **Access the application:**
 Open your web browser and navigate to http://localhost:8765.
