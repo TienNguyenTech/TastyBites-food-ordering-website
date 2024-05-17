@@ -32,7 +32,7 @@
                 echo $this->Form->control('enquiry_name', ['label' => 'Name', 'class' => 'form-control']);
                 echo $this->Form->control('enquiry_email', ['label' => 'Email', 'class' => 'form-control', 'type' => 'email']);
                 echo $this->Form->control('enquiry_message', ['label' => 'Message', 'class' => 'form-control', 'type' => 'textarea']);
-                echo '<div id="captchaContainer" class="g-recaptcha" data-sitekey="6LcjQ90pAAAAAJ39FVLi6JVnSf_5pXB8T03oZHF0" data-callback="enableSubmit"></div>';
+                echo '<div id="captchaContainer" class="g-recaptcha" data-sitekey="6LcjQ90pAAAAAJ39FVLi6JVnSf_5pXB8T03oZHF0" data-callback="enableSubmit" style="margin-top: 10px;"></div>';
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary', 'style' => 'margin-top: 10px', 'id' => 'submitButton', 'disabled' => 'disabled']) ?>
@@ -40,6 +40,8 @@
 
             <?= $this->Flash->render() ?>
         </div>
+    </div>
+
     </div>
 
     <script>
