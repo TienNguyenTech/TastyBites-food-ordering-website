@@ -1,53 +1,112 @@
-# CakePHP Application Skeleton
-## FIT3047 - S1 2024 - Team009 - Arasaka
-![Build Status](https://github.com/cakephp/app/actions/workflows/ci.yml/badge.svg?branch=master)
-[![Total Downloads](https://img.shields.io/packagist/dt/cakephp/app.svg?style=flat-square)](https://packagist.org/packages/cakephp/app)
-[![PHPStan](https://img.shields.io/badge/PHPStan-level%207-brightgreen.svg?style=flat-square)](https://github.com/phpstan/phpstan)
+# Tasty Bites Kitchen Nepalese Food Ordering Online
+## Monash University - FIT3047 - S1 2024 - Team009 - Arasaka
 
-A skeleton for creating applications with [CakePHP](https://cakephp.org) 5.x.
+### Run Sheet/Access Instructions
 
-The framework source code can be found here: [cakephp/cakephp](https://github.com/cakephp/cakephp).
+- Link to website: [TastyBitesKitchen](https://tastybites.u24s1009.iedev.org/)
+- Source code: [https://drive.google.com/drive/folders/1s2Hsf_50c0x-huRdoC37rN-jlEqqeqXi?usp=drive_link](https://drive.google.com/drive/folders/1s2Hsf_50c0x-huRdoC37rN-jlEqqeqXi?usp=drive_link)
+
+#### Admin Login
+- Email: admin@tastybites.com
+- Password: tastybites123
+
+#### Staff Login
+- Email: staff@tastybites.com
+- Password: tastybites123
+
+#### Email for testing forms
+- Email: admin@tastybites.u24s1009.iedev.org
+
+#### Credit card number for testing payment form
+- Card number: 4000 0566 5566 5556
+- Expiration date: 12/34
+- CVC: 123
+
+We use Composer 2.7.2 [https://getcomposer.org/download/](https://getcomposer.org/download/)
+We use CakePHP 5.0.1 [https://book.cakephp.org/5/en/installation.html](https://book.cakephp.org/5/en/installation.html)
+
+#### Our PGP
+[PGP](https://drive.google.com/drive/folders/1MycB56sLoiEeIzH2biT4pfbxDvyx7m9Z?usp=drive_link)
+
+## About Us
+
+Momos Food Ordering Online is a web application built with CakePHP, CSS, JavaScript, HTML, and PHP. It allows users to browse a menu, place orders, and make payments online. The project utilizes the Stripe plugin for payment processing and the SB Admin 2 template for the dashboard interface. ContentBlocks plugin is used for managing dynamic content. Additionally, we utilized cPanel for hosting, PHPMyAdmin for database management, referred to the CakePHP cookbook for guidance, and worked with PHPStorm and Visual Studio Code for development.
+
+## Features
+
+- Browse menu items
+- Place orders online
+- Secure payment processing with Stripe
+- Admin dashboard for order management
+- Dynamic content management with ContentBlocks
 
 ## Installation
 
-1. Download [Composer](https://getcomposer.org/doc/00-intro.md) or update `composer self-update`.
-2. Run `php composer.phar create-project --prefer-dist cakephp/app [app_name]`.
+1. **Clone the repository:**
+   ```bash
+   git clone https://github.com/your/repository.git
 
-If Composer is installed globally, run
+2. **Install dependencies:**
+   ```bash
+   composer install
 
-```bash
-composer create-project --prefer-dist cakephp/app
-```
+3. **Set up database:**
+- Create a MySQL database.
+- Copy config/app.default.php to config/app.php and update the database configuration.
+- Run migrations to create database schema:
+  ```bash
+  bin/cake migrations migrate
 
-In case you want to use a custom app dir name (e.g. `/myapp/`):
+4. **Configure Stripe:**
+- Sign up for a Stripe account.
+    Email: tiennguyen0802200239@gmail.com
+    Password: 0802200239nT@
+- Set your Stripe API keys in config/app.php.
+- You can find your API secret keys and publishable keys by clicking on "Developers" link the top right Navigation bar.
 
-```bash
-composer create-project --prefer-dist cakephp/app myapp
-```
+5. **Start the development server:**
+  ```bash
+  bin/cake server
 
-You can now either use your machine's webserver to view the default home page, or start
-up the built-in webserver with:
+6. **Access the application:**
+Open your web browser and navigate to http://localhost:8765.
 
-```bash
-bin/cake server -p 8765
-```
+## Usage
 
-Then visit `http://localhost:8765` to see the welcome page.
+- As a user, you can:
+* Browse the menu and add items to the cart.
+* Proceed to checkout and make payments securely with Stripe.
+- As an admin, you can:
+* Manage orders through the admin dashboard.
 
-## Update
+## Contributing
 
-Since this skeleton is a starting point for your application and various files
-would have been modified as per your needs, there isn't a way to provide
-automated upgrades, so you have to do any updates manually.
+Contributions are welcome! Please follow these steps:
 
-## Configuration
+1. **Fork the repository.**
+2. **Create a new branch for your feature: git checkout -b feature-name.**
+3. **Commit your changes: git commit -am 'Add new feature'.**
+4. **Push to the branch: git push origin feature-name.**
+5. **Submit a pull request.**
 
-Read and edit the environment specific `config/app_local.php` and set up the
-`'Datasources'` and any other configuration relevant for your application.
-Other environment agnostic settings can be changed in `config/app.php`.
+## License
 
-## Layout
+This project is licensed under the MIT License.
 
-The app skeleton uses [Milligram](https://milligram.io/) (v1.3) minimalist CSS
-framework by default. You can, however, replace it with any other library or
-custom styles.
+## Acknowledgements
+
+- SB Admin 2 template: [https://startbootstrap.com/theme/sb-admin-2](https://startbootstrap.com/theme/sb-admin-2)
+- Stripe: [https://stripe.com](https://stripe.com)
+- CakePHP: [https://cakephp.org](https://cakephp.org)
+
+## Contact
+For any inquiries, please contact IE Monash team [FIT-IEmonash@monash.edu](FIT-IEmonash@monash.edu)
+or our team 009 members:
+
+User Issues:
+- Christina Doan: cdoa0004@student.monash.edu
+- Surya Rao: srao0005@student.monash.edu
+Tech & Security Issues:
+- Ben Hetherington: bhet0004@student.monash.edu
+- Tien Nhat Nguyen: tngu0394@student.monash.edu
+- Yiming Huang: yhua0196@student.monash.edu
