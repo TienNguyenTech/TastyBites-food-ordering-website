@@ -597,6 +597,7 @@ $this->disableAutoLayout();
                             /* Adjust to your desired width */
                             height: auto;
                             /* Maintain aspect ratio */
+                        }
                     </style>
 
                     <div class="container">
