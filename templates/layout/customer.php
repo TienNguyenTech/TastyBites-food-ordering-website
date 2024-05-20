@@ -19,17 +19,16 @@
 <html lang="en">
 
 <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
 
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-    <meta name="description" content="" />
-    <meta name="author" content="" />
+    <!-- Favicon-->
+    <link href="<?= $this->Url->build('/img/true_favi2.jpg') ?>" type="image/x-icon" rel="icon">
+    <!-- Including the shortcut icon ensures that all browsers, regardless of their version, will correctly find and use this favicon.  -->
+    <link href="<?= $this->Url->build('/img/true_favi2.jpg') ?>" type="image/x-icon" rel="shortcut icon">
 
-
-    <?= $this->Html->image('true_favi2.jpg', ['alt' => 'Favicon']) ?>
-
-    
-    <!--<link rel="icon" type="image/x-icon" href="webroot/img/true_favi.ico" />-->
 
     <!-- Custom fonts for this template-->
     <?= $this->Html->css('/vendor/fontawesome-free/css/all.min.css') ?>
@@ -41,14 +40,7 @@
 
     <!-- Custom styles for this template-->
     <?= $this->Html->css('sb-admin-2.min.css') ?>
-
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles2.css" rel="stylesheet" />
-
-   
-
-
-
+    <link href="css/styles2.css" rel="stylesheet">
 </head>
 
 <body>
