@@ -10,7 +10,10 @@
     <meta name="author" content="">
    
     
-    
+    <!-- Favicon-->
+    <link href="<?= $this->Url->build('/img/true_favi2.jpg') ?>" type="image/x-icon" rel="icon">
+    <!-- Including the shortcut icon ensures that all browsers, regardless of their version, will correctly find and use this favicon.  -->
+    <link href="<?= $this->Url->build('/img/true_favi2.jpg') ?>" type="image/x-icon" rel="shortcut icon">
 
     <title><?= $this->fetch('title') ?></title>
 
