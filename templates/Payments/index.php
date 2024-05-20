@@ -35,7 +35,9 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js',['blo
     </div>
     <script>
         $(document).ready(function () {
-            $('#dataTable').DataTable();
+            $('#dataTable').DataTable({
+                "order": [[0, "desc"]]
+            });
         });
     </script>
 </div>

@@ -219,7 +219,7 @@
                                 <div class="modal-body" style="color: black;">Are you sure you want to logout?</div>
                                 <div class="modal-footer">
                                     <button class="btn btn-secondary" type="button" data-dismiss="modal">No</button>
-                                    <?= $this->Html->link('Yes', ['controller' => 'Auth', 'action' => 'logout'], ['class' => 'btn btn-primary']) ?>
+                                    <?= $this->Html->link('Yes', ['plugin' => null,'controller' => 'Auth', 'action' => 'logout'], ['class' => 'btn btn-primary']) ?>
                                 </div>
                             </div>
                         </div>
