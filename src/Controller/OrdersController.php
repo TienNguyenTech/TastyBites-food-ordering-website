@@ -48,6 +48,18 @@ class OrdersController extends AppController
         $orders = $this->paginate($query);
 
         $this->set(compact('orders'));
+
+        $status = $this->request->getQuery('status');
+
+        $query = $this->Orders->find();
+
+        if ($status) {
+            $query->where(['order_status' => $status]);
+        }
+
+        $orders = $this->paginate($query);
+
+        $this->set(compact('orders'));
     }
 
     /**

@@ -31,6 +31,14 @@ echo $this->Html->script('/vendor/datatables/dataTables.bootstrap4.min.js', ['bl
 <div class="orders index content text-gray-800">
     <h3 class="text-gray-800">Orders</h3>
 
+    <div class="mb-3">
+        <?= $this->Html->link("All", ['action' => 'index'], ['class' => 'btn btn-secondary']) ?>
+        <?= $this->Html->link("Pending", ['action' => 'index', '?' => ['status' => 'Pending']], ['class' => 'btn btn-primary']) ?>
+        <?= $this->Html->link("Paid", ['action' => 'index', '?' => ['status' => 'Paid']], ['class' => 'btn btn-success']) ?>
+        <?= $this->Html->link("Ready", ['action' => 'index', '?' => ['status' => 'Ready']], ['class' => 'btn btn-success']) ?>
+        <?= $this->Html->link("Complete", ['action' => 'index', '?' => ['status' => 'Complete']], ['class' => 'btn btn-success']) ?>
+    </div>
+
     <div class="table-responsive">
         <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
             <thead>
