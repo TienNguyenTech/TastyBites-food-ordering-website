@@ -8,8 +8,6 @@
 
 <head>
     <title>Menu | <?= $this->ContentBlock->text('website-title'); ?></title>
-    <!-- Favicon-->
-   <link rel="icon" type="image/x-icon" href="webroot/assets/true_favi.ico" />
 </head>
 
 <body>

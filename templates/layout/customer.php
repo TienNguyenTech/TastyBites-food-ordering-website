@@ -14,8 +14,6 @@
  * @var \App\View\AppView $this
  */
 
-$this->disableAutoLayout();
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -27,18 +25,11 @@ $this->disableAutoLayout();
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="webroot/assets/true_favi.ico" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
-    <?= $this->Html->meta('icon') ?>
-    <link rel="icon" type="image/x-icon" href="webroot/img/true_favi.ico" />
 
-    <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles2.css" rel="stylesheet" />
+    <?= $this->Html->image('true_favi2.jpg', ['alt' => 'Favicon']) ?>
 
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    
+    <!--<link rel="icon" type="image/x-icon" href="webroot/img/true_favi.ico" />-->
 
     <!-- Custom fonts for this template-->
     <?= $this->Html->css('/vendor/fontawesome-free/css/all.min.css') ?>
@@ -53,6 +44,9 @@ $this->disableAutoLayout();
 
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles2.css" rel="stylesheet" />
+
+   
+
 
 
 </head>
