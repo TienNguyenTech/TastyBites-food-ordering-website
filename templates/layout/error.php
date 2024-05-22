@@ -23,25 +23,33 @@
     </title>
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
+<!--    --><?php //= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
     <?= $this->fetch('script') ?>
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+            integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 <body>
-    <div class="error-container">
-        <?= $this->Flash->render() ?>
-        <?= $this->fetch('content') ?>
+    <h1 style="text-align: center;">Tasty Bites Kitchen</h1>
+
+
+    <div class="container" style="text-align: center; background-color: #E8E8E8; border-radius: 10px; padding: 10px">
+<!--        --><?php //= $this->fetch('content') ?>
+        <h2>Error 404: Page not found</h2>
+        <p>The page you were trying to access could not be found or does not exist.</p>
         <?= $this->Html->link(__('Return to home'), '/', ["class" => "btn btn-primary"]) ?>
-        <footer class="sticky-footer">
-            <div class="container my-auto">
-                <div class="copyright text-center my-auto">
-                    <span>Copyright &copy; Tasty Bites Kitchen 2024</span>
-                </div>
-            </div>
-        </footer>
     </div>
+
+    <footer class="py-5 bg-dark" style="position: absolute; bottom: 0; width: 100%;">
+            <div class="container px-5">
+                <p class="m-0 text-center text-white">Copyright &copy;
+                    <?= $this->ContentBlock->text('copyright-message'); ?>
+                </p>
+            </div>
+    </footer>
 
 </body>
 </html>
