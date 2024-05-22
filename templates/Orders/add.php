@@ -58,11 +58,32 @@
                 <legend style="font-size: 32px; text-align: center; color: #22408c;"><?= __('Place an Order') ?>
                 </legend>
                 <?php
-                echo $this->Form->control('customer_name', ['label' => 'Full Name', 'class' => 'form-control']);
-                echo $this->Form->control('customer_email', ['label' => 'Contact Email', 'class' => 'form-control']);
-                echo $this->Form->control('customer_phone', ['label' => 'Contact Phone', 'class' => 'form-control']);
+                echo $this->Form->control('customer_name', [
+                    'label' => [
+                        'text' => 'Full Name <span style="color: red;">*</span>',
+                        'escape' => false
+                    ],
+                    'class' => 'form-control'
+                ]);
+
+                echo $this->Form->control('customer_email', [
+                    'label' => [
+                        'text' => 'Contact Email <span style="color: red;">*</span>',
+                        'escape' => false
+                    ],
+                    'class' => 'form-control',
+                    'type' => 'email'
+                ]);
+
+                echo $this->Form->control('customer_phone', [
+                    'label' => [
+                        'text' => 'Contact Phone <span style="color: red;">*</span>',
+                        'escape' => false
+                    ],
+                    'class' => 'form-control'
+                ]);
                 //echo $this->Form->control('menuitems._ids', ['label' => 'Select item(s) to order', 'options' => $menuitems, 'class' => 'form-control', 'required']);
-                
+
                 echo __('Select Items');
                 echo '<div id="quantities">';
                 $counter = 0;
