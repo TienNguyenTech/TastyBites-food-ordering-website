@@ -29,9 +29,31 @@
             <fieldset>
                 <legend style="font-size: 32px; text-align: center; color: #22408c;"><?= __('Contact Us') ?></legend>
                 <?php
-                echo $this->Form->control('enquiry_name', ['label' => 'Name', 'class' => 'form-control']);
-                echo $this->Form->control('enquiry_email', ['label' => 'Email', 'class' => 'form-control', 'type' => 'email']);
-                echo $this->Form->control('enquiry_message', ['label' => 'Message', 'class' => 'form-control', 'type' => 'textarea']);
+                echo $this->Form->control('enquiry_name', [
+                    'label' => [
+                        'text' => 'Name <span style="color: red;">*</span>',
+                        'escape' => false
+                    ],
+                    'class' => 'form-control'
+                ]);
+
+                echo $this->Form->control('enquiry_email', [
+                    'label' => [
+                        'text' => 'Email <span style="color: red;">*</span>',
+                        'escape' => false
+                    ],
+                    'class' => 'form-control',
+                    'type' => 'email'
+                ]);
+
+                echo $this->Form->control('enquiry_message', [
+                    'label' => [
+                        'text' => 'Message <span style="color: red;">*</span>',
+                        'escape' => false
+                    ],
+                    'class' => 'form-control',
+                    'type' => 'textarea'
+                ]);
                 echo '<div id="captchaContainer" class="g-recaptcha" data-sitekey="6LcjQ90pAAAAAJ39FVLi6JVnSf_5pXB8T03oZHF0" data-callback="enableSubmit" style="margin-top: 10px;"></div>';
                 ?>
             </fieldset>
