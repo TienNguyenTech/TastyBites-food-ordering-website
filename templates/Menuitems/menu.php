@@ -11,13 +11,18 @@
 </head>
 
 <body>
-<div class="container my-4">
-    <div class="row justify-content-between align-items-center mb-3">
-        <div class="col d-flex align-items-center">
-            <h3 class="text-gray-800 mb-0 mr-3"><b><?= $this->ContentBlock->text('website-title'); ?> Menu</b></h3>
-            <?= $this->Html->link("Order now", ['controller' => 'Orders', 'action' => 'add'], ['class' => 'btn btn-primary']) ?>
-        </div>
-    </div>
+<!--<div class="container my-4">-->
+<!--    <div class="row justify-content-between align-items-center mb-3">-->
+<!--        <div class="d-flex align-items-center">-->
+<!--            <h3 class="text-gray-800 mb-0 mr-3"><b>--><?php //= $this->ContentBlock->text('website-title'); ?><!-- Menu</b></h3>-->
+<!--            --><?php //= $this->Html->link("Order now", ['controller' => 'Orders', 'action' => 'add'], ['class' => 'btn btn-primary']) ?>
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->
+
+<div class="container my-4" style="text-align: center">
+    <h3 class="text-gray-800 mb-3"><b><?= $this->ContentBlock->text('website-title'); ?> Menu</b></h3>
+    <?= $this->Html->link("Order now", ['controller' => 'Orders', 'action' => 'add'], ['class' => 'btn btn-primary btn-lg']) ?>
 </div>
 
     <style>
@@ -116,7 +121,7 @@
             <div class="row row-cols-1 row-cols-md-5 g-4">
                 <?php foreach ($menuitems as $menuitem): ?>
                     <div class="col">
-                        <div class="card shadow menuItemCard" data-menuitem="<?= $menuitem->menuitem_id ?>"
+                        <div class="card shadow menuItemCard" style="margin: auto" data-menuitem="<?= $menuitem->menuitem_id ?>"
                             style="cursor: pointer;">
                             <?= $this->Html->image('menu/' . $menuitem->menuitem_image, ['alt' => $menuitem->menuitem_name, 'class' => 'card-img-top']) ?>
                             <div class="card-body">
