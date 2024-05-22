@@ -11,8 +11,23 @@
             <fieldset>
                 <legend><?= __("Change password for $user->first_name $user->last_name") ?></legend>
                 <?php
-                    echo $this->Form->control('password', ['label' => 'New Password', 'class' => 'form-control', 'value' => '']);
-                    echo $this->Form->control('password-confirm', ['label' => 'Confirm New Password', 'class' => 'form-control', 'type' => 'password']);
+                echo $this->Form->control('password', [
+                    'label' => [
+                        'text' => 'New Password <span style="color: red;">*</span>',
+                        'escape' => false
+                    ],
+                    'class' => 'form-control',
+                    'value' => ''
+                ]);
+
+                echo $this->Form->control('password-confirm', [
+                    'label' => [
+                        'text' => 'Confirm New Password <span style="color: red;">*</span>',
+                        'escape' => false
+                    ],
+                    'class' => 'form-control',
+                    'type' => 'password'
+                ]);
                 ?>
             </fieldset>
             <?= $this->Form->button(__('Submit'), ['class' => 'btn btn-primary', 'style' => 'margin-top: 10px']) ?>
