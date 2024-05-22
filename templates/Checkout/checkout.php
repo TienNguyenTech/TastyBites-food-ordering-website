@@ -8,7 +8,7 @@
 
 <body>
 <script type="text/javascript">
-    var stripe = Stripe('pk_test_51PGCIxP0JLdKd5JZoxjvwrptCVUxRez3HRm0sWx2l0nuoOv9x3Uk4T5x7QKrK6HqO0ePBRyMVOp6OvkJ2zeMnEEq004OtORBay');
+    var stripe = Stripe('pk_test_51PGCIxP0JLdKd5JZb2cFYYwNpALcYBABBzAUiDW3EiA8lVF8GfLlhAky2do0sXpM0z91B2c2GIi44O5kJZiP6AcU00JISGElGK');
     var session = "<?php echo h($sessionId); ?>";
     stripe.redirectToCheckout({ sessionId: session })
         .then(function (result) {
