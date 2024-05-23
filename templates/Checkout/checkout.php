@@ -8,6 +8,7 @@
 
 <body>
 <script type="text/javascript">
+    // Need to update this publishable key everytime the payment page doesn't load
     var stripe = Stripe('pk_test_51PGCIxP0JLdKd5JZb2cFYYwNpALcYBABBzAUiDW3EiA8lVF8GfLlhAky2do0sXpM0z91B2c2GIi44O5kJZiP6AcU00JISGElGK');
     var session = "<?php echo h($sessionId); ?>";
     stripe.redirectToCheckout({ sessionId: session })
