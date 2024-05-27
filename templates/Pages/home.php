@@ -115,9 +115,9 @@ $this->disableAutoLayout();
             font-size: 1.5em;
             /* Larger font size for logo */
             font-weight: bold;
-            /* Bold text */
+            /* Bold text*/
         }
-
+        
         /* Dropdown Style */
         .dropbtn {
             background-color: #ecf1ff;
