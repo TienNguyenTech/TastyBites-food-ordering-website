@@ -26,11 +26,13 @@ $this->disableAutoLayout();
     <meta name="description" content="" />
     <meta name="author" content="" />
     <title>Tasty Bites Kitchen</title>
+
     <!-- Favicon-->
-    <!--<link rel="icon" type="image/x-icon" href="webroot/assets/true_favi.ico" />-->
-    <link rel="icon" type="image/x-icon" href="webroot/assets/true_favi2.jpg" />
-    <!-- Bootstrap icons-->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.4.1/font/bootstrap-icons.css" rel="stylesheet" />
+    <link href="<?= $this->Url->build('/img/true_favi2.jpg') ?>" type="image/x-icon" rel="icon">
+    <!-- Including the shortcut icon ensures that all browsers, regardless of their version, will correctly find and use this favicon.  -->
+    <link href="<?= $this->Url->build('/img/true_favi2.jpg') ?>" type="image/x-icon" rel="shortcut icon">
+   
+
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles2.css" rel="stylesheet" />
     <!-- Bootstrap icons-->
