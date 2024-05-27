@@ -31,7 +31,7 @@ $this->disableAutoLayout();
     <link href="<?= $this->Url->build('/img/true_favi2.jpg') ?>" type="image/x-icon" rel="icon">
     <!-- Including the shortcut icon ensures that all browsers, regardless of their version, will correctly find and use this favicon.  -->
     <link href="<?= $this->Url->build('/img/true_favi2.jpg') ?>" type="image/x-icon" rel="shortcut icon">
-   
+
     <!-- Custom fonts for this template-->
     <?= $this->Html->css('/vendor/fontawesome-free/css/all.min.css') ?>
     <link
@@ -117,7 +117,7 @@ $this->disableAutoLayout();
             font-weight: bold;
             /* Bold text*/
         }
-        
+
         /* Dropdown Style */
         .dropbtn {
             background-color: #ecf1ff;
