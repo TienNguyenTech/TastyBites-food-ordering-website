@@ -147,22 +147,8 @@ This project is licensed under the [MIT License](https://en.wikipedia.org/wiki/M
 
 ## Contact
 
-For any inquiries, please contact IE Monash team [FIT-IEmonash@monash.edu](FIT-IEmonash@monash.edu)
-or our team 009 members:
-
-User Issues:
-
-- Christina Doan: cdoa0004@student.monash.edu
-- Surya Rao: srao0005@student.monash.edu
-
-Tech & Security Issues:
-
-- Ben Hetherington: bhet0004@student.monash.edu
-- Tien Nhat Nguyen: tngu0394@student.monash.edu
-- Yiming Huang: yhua0196@student.monash.edu
+For any inquiries, please contact Developer Team
 
 ## Copyright
 
-This project belongs to Monash University and the product owner Tasty Bites Kitchen. 
-
-This product is developed by FIT3047-3048 Team 009 Arasaka.
+Tasty Bites Kitchen
