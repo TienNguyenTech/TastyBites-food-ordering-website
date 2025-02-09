@@ -93,11 +93,6 @@ Momos Food Ordering Online is a web application built with CakePHP, CSS, JavaScr
 4. **Configure Stripe:**
 
 - Sign up for a Stripe account.
-
-Email: tiennguyen0802200239@gmail.com
-
-Password: 0802200239nT@
-
 - Set your Stripe API keys in config/app.php.
 - You can find your API secret keys and publishable keys by clicking on "Developers" link the top right Navigation bar.
 
