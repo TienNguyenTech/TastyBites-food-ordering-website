@@ -2,31 +2,23 @@
 
 ## Monash University - FIT3047 - S1 2024 - Team009 - Arasaka
 
-### Run Sheet/Access Instructions
+## About the Project
 
-- **Website**: [TastyBitesKitchen](https://tastybites.u24s1009.iedev.org/)
-- **Source Code**: [Google Drive](https://drive.google.com/drive/folders/1s2Hsf_50c0x-huRdoC37rN-jlEqqeqXi?usp=drive_link)
-- **Git Repository**: [Monash GitLab](https://git.infotech.monash.edu/UGIE/ugie-2024/team009/team009-app_fit3047)
-- **Git Clone URL**:
-  ```bash
-  git clone https://git.infotech.monash.edu/UGIE/ugie-2024/team009/team009-app_fit3047.git
-  ```
+**Website**: [TastyBitesKitchen](https://tastybites.u24s1009.iedev.org/)
 
-### Cloning the Repository
+Tasty Bites Kitchen is a Nepalese food ordering web application built using CakePHP, HTML, CSS, JavaScript, and PHP. Users can browse the menu, place orders, and make payments online. The project integrates:
 
-To clone this repository to your local machine, follow these steps:
+- **Stripe** for secure payment processing.
+- **SB Admin 2 Template** for the admin dashboard UI.
+- **ContentBlocks Plugin** for managing dynamic content.
 
-1. Open your terminal or command prompt.
-2. Navigate to the directory where you want to clone the repository.
-3. Run the following command:
-   ```bash
-   git clone https://git.infotech.monash.edu/UGIE/ugie-2024/team009/team009-app_fit3047.git
-   ```
-4. Navigate into the cloned directory:
-   ```bash
-   cd team009-app_fit3047
-   ```
-5. You now have a local copy of the repository.
+## Features
+
+✅ Browse menu items  
+✅ Add items to cart & place orders online  
+✅ Secure payment processing with Stripe  
+✅ Admin dashboard for managing orders  
+✅ Dynamic content management with ContentBlocks  
 
 ### Admin & Staff Login Credentials (For Testing)
 
@@ -55,30 +47,23 @@ To clone this repository to your local machine, follow these steps:
 - **Project Management**: Trello
 - **Development Tools**: PHPStorm & Visual Studio Code
 
-## About the Project
-
-Tasty Bites Kitchen is a Nepalese food ordering web application built using CakePHP, HTML, CSS, JavaScript, and PHP. Users can browse the menu, place orders, and make payments online. The project integrates:
-
-- **Stripe** for secure payment processing.
-- **SB Admin 2 Template** for the admin dashboard UI.
-- **ContentBlocks Plugin** for managing dynamic content.
-
-## Features
-
-✅ Browse menu items  
-✅ Add items to cart & place orders online  
-✅ Secure payment processing with Stripe  
-✅ Admin dashboard for managing orders  
-✅ Dynamic content management with ContentBlocks  
-
 ## Installation Guide
 
-### 1. Clone the Repository
+### 1. Cloning the Repository
 
-```bash
-git clone https://git.infotech.monash.edu/UGIE/ugie-2024/team009/team009-app_fit3047.git
-cd team009-app_fit3047
-```
+To clone this repository to your local machine, follow these steps:
+
+1. Open your terminal or command prompt.
+2. Navigate to the directory where you want to clone the repository.
+3. Run the following command:
+   ```bash
+   git clone https://github.com/TienNguyenTech/TastyBites-food-ordering-website.git
+   ```
+4. Navigate into the cloned directory:
+   ```bash
+   cd TastyBites-food-ordering-website
+   ```
+5. You now have a local copy of the repository.
 
 ### 2. Install Dependencies
 
@@ -86,14 +71,16 @@ cd team009-app_fit3047
 composer install
 ```
 
+```bash
+composer update
+```
+- Note: Sometimes the website got 'Failed to open stream: No such file or directory' error. You must run `composer update` again.
+
 ### 3. Database Setup
 
-- Create a MySQL database.
-- Copy `config/app.default.php` to `config/app.php` and update the database credentials.
-- Run migrations to create the database schema:
-  ```bash
-  bin/cake migrations migrate
-  ```
+- Create a MySQL database including name, username and password. 
+- Import the schema `fit3048_project` into the database.
+- Update the `Datasourse` in your `config/app_local.php` with your database name, username and password.
 
 ### 4. Configure Stripe
 
@@ -106,6 +93,7 @@ composer install
 ```bash
 bin/cake server
 ```
+- Use 'CTRL-C' to exit.
 
 ### 6. Access the Application
 
@@ -161,10 +149,6 @@ This project is licensed under the [MIT License](https://en.wikipedia.org/wiki/M
 - [SB Admin 2 Template](https://startbootstrap.com/theme/sb-admin-2)
 - [Stripe](https://stripe.com)
 - [CakePHP](https://cakephp.org)
-
-## Contact
-
-For any inquiries, please contact the **Developer Team**.
 
 ## Copyright
 
