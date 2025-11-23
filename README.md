@@ -1,8 +1,8 @@
-# Tasty Bites Kitchen - Nepalese Food Ordering Online
+# Tasty Bites Kitchen 
 
-## Monash University - FIT3047 - S1 2024 - Team009 - Arasaka
+## Nepalese online food ordering system
 
-## About the Project
+## About the project
 
 **Website**: [TastyBitesKitchen](https://tastybites.u24s1009.iedev.org/)
 
