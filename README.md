@@ -1,6 +1,4 @@
-# Tasty Bites Kitchen 
-
-## Nepalese online food ordering system
+# Tasty Bites Kitchen - Nepalese online food ordering system
 
 ## About the project
 
